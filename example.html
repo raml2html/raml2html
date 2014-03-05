@@ -1,0 +1,233 @@
+<html>
+<head>
+    <title>Example</title>
+    <link rel="stylesheet" href="http://netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css">
+    <script src="http://netdna.bootstrapcdn.com/bootstrap/3.1.1/js/bootstrap.min.js"></script>
+    
+    <style>
+    h3 .parent {
+        color: #999;
+    }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <div class="jumbotron">
+            <h1>Example <small>version 0.1</small></h1>
+            <p>http://example.com/{version}</p>
+        </div>
+        
+        
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    <h3 class="panel-title">/account</h3>
+                </div>
+
+                <div class="panel-body">
+                    <div class="resource">
+                        <h3>/account</h3>
+                        
+                            <div class="method"><strong>post</strong>: Creates a new account</div>
+                        
+                    </div>
+
+                    
+    <div class="resource">
+        <h3><span class="parent">/account</span>/{id}</h3>
+        
+            <div class="method"><strong>get</strong>: Get the account</div>
+        
+            <div class="method"><strong>put</strong>: Update the account</div>
+        
+            <div class="method"><strong>delete</strong>: Delete the account</div>
+        
+    </div>
+
+    
+
+
+    <div class="resource">
+        <h3><span class="parent">/account</span>/login</h3>
+        
+            <div class="method"><strong>post</strong>: Login with email and password</div>
+        
+    </div>
+
+    
+
+
+    <div class="resource">
+        <h3><span class="parent">/account</span>/forgot</h3>
+        
+            <div class="method"><strong>post</strong>: Sends an email to the user with a link to set a new password</div>
+        
+    </div>
+
+    
+
+
+    <div class="resource">
+        <h3><span class="parent">/account</span>/session</h3>
+        
+            <div class="method"><strong>get</strong>: Gets the sessions</div>
+        
+            <div class="method"><strong>delete</strong>: Deletes the session, logging out the user</div>
+        
+    </div>
+
+    
+
+
+
+                </div>
+            </div>
+        
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    <h3 class="panel-title">/conversations</h3>
+                </div>
+
+                <div class="panel-body">
+                    <div class="resource">
+                        <h3>/conversations</h3>
+                        
+                            <div class="method"><strong>get</strong>: Get a list of conversation for the current user</div>
+                        
+                            <div class="method"><strong>post</strong>: Create a new conversions. The currently logged in user doesn&#x27;t need to be supplied in the members list, it&#x27;s implied.</div>
+                        
+                    </div>
+
+                    
+    <div class="resource">
+        <h3><span class="parent">/conversations</span>/{convId}</h3>
+        
+            <div class="method"><strong>get</strong>: Get a single conversation including its messages</div>
+        
+            <div class="method"><strong>put</strong>: Update a conversation (change members)</div>
+        
+    </div>
+
+    
+    <div class="resource">
+        <h3><span class="parent">/conversations/{convId}</span>/messages</h3>
+        
+            <div class="method"><strong>get</strong>: Get the messages for the conversation</div>
+        
+            <div class="method"><strong>post</strong>: Add a new message to a conversation</div>
+        
+    </div>
+
+    
+    <div class="resource">
+        <h3><span class="parent">/conversations/{convId}/messages</span>/{messageId}</h3>
+        
+            <div class="method"><strong>put</strong>: Update the message</div>
+        
+            <div class="method"><strong>delete</strong>: Delete the message</div>
+        
+    </div>
+
+    
+
+
+
+
+
+
+
+                </div>
+            </div>
+        
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    <h3 class="panel-title">/users</h3>
+                </div>
+
+                <div class="panel-body">
+                    <div class="resource">
+                        <h3>/users</h3>
+                        
+                            <div class="method"><strong>get</strong>: Get a list of all users</div>
+                        
+                            <div class="method"><strong>post</strong>: Creates a new user</div>
+                        
+                    </div>
+
+                    
+    <div class="resource">
+        <h3><span class="parent">/users</span>/{userId}</h3>
+        
+            <div class="method"><strong>get</strong>: Get the details of a user including a list of groups he belongs to</div>
+        
+            <div class="method"><strong>put</strong>: Update a user</div>
+        
+            <div class="method"><strong>delete</strong>: Deletes a user</div>
+        
+    </div>
+
+    
+
+
+
+                </div>
+            </div>
+        
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    <h3 class="panel-title">/groups</h3>
+                </div>
+
+                <div class="panel-body">
+                    <div class="resource">
+                        <h3>/groups</h3>
+                        
+                            <div class="method"><strong>get</strong>: Get a list of all the groups</div>
+                        
+                            <div class="method"><strong>post</strong>: Create a new group</div>
+                        
+                    </div>
+
+                    
+    <div class="resource">
+        <h3><span class="parent">/groups</span>/{groupId}</h3>
+        
+            <div class="method"><strong>get</strong>: Get the details of a group, including the member list</div>
+        
+            <div class="method"><strong>put</strong>: Update the group, **optionally** supplying the new list of members (overwrites current list)</div>
+        
+            <div class="method"><strong>delete</strong>: Removes the group</div>
+        
+    </div>
+
+    
+    <div class="resource">
+        <h3><span class="parent">/groups/{groupId}</span>/users</h3>
+        
+            <div class="method"><strong>post</strong>: Adds a user to a group</div>
+        
+    </div>
+
+    
+    <div class="resource">
+        <h3><span class="parent">/groups/{groupId}/users</span>/{userId}</h3>
+        
+            <div class="method"><strong>delete</strong>: Removes a user from a group</div>
+        
+    </div>
+
+    
+
+
+
+
+
+
+
+                </div>
+            </div>
+        
+    </div>
+</body>
+</html>
+

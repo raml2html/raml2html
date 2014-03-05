@@ -1,0 +1,175 @@
+#%RAML 0.8
+title: Example
+version: 0.1
+baseUri: http://example.com/{version}
+
+
+/account:
+  post:
+    description: Creates a new account
+    body:
+      application/json:
+        example: |
+          {
+            "email": "john@example.com",
+            "password": "super_secret",
+            "name": "John Doe"
+          }
+    responses:
+      200:
+        description: Account was created and user is now logged in
+  
+  /{id}:
+    get:
+      description: Get the account
+
+    put:
+      description: Update the account
+
+    delete:
+      description: Delete the account
+  
+  /login:
+    post:
+      description: Login with email and password
+      body:
+        application/json:
+          example: |
+            {
+              "email": "john@example.com",
+              "password": "super_secret"
+            }
+      responses:
+        200:
+          description: Login was correct
+        400:
+          description: Login was incorrect, please try again
+  
+  /forgot:
+    post:
+      description: Sends an email to the user with a link to set a new password
+      body:
+        application/json:
+          example: |
+            {
+              "email": "john@example.com"
+            }
+
+  /session:
+    get:
+      description: Gets the sessions
+
+    delete:
+      description: Deletes the session, logging out the user
+
+
+/conversations:
+  get:
+    description: Get a list of conversation for the current user
+
+  post:
+    description: Create a new conversions. The currently logged in user doesn't need to be supplied in the members list, it's implied.
+    body:
+      application/json:
+        example: |
+          {
+            "content": "My message!",
+            "members": [1, 2, 3]
+          }
+    responses:
+      200:
+        description: A conversation with these members already existed, the message was added to that one
+      201:
+        description: The conversation was created and the message added to it
+
+  /{convId}:
+    get:
+      description: Get a single conversation including its messages
+
+    put:
+      description: Update a conversation (change members)
+
+    /messages:
+      get:
+        description: Get the messages for the conversation
+
+      post:
+        description: Add a new message to a conversation
+
+      /{messageId}:
+        put:
+          description: Update the message
+
+        delete:
+          description: Delete the message
+
+
+/users:
+  get:
+    description: Get a list of all users
+
+  post:
+    description: Creates a new user
+    body:
+      application/json:
+        example: |
+          {
+            "email": "john@example.com",
+            "name": "John Doe",
+          }
+
+  /{userId}:
+    get:
+      description: Get the details of a user including a list of groups he belongs to
+    
+    put:
+      description: Update a user
+
+    delete:
+      description: Deletes a user
+
+
+/groups:
+  get:
+    description: Get a list of all the groups
+
+  post:
+    description: Create a new group
+    body:
+      application/json:
+        example: |
+          {
+            "name": "Cool people",
+            "members": [1, 2, 3]
+          }
+
+  /{groupId}:
+    get:
+      description: Get the details of a group, including the member list
+
+    put:
+      description: Update the group, **optionally** supplying the new list of members (overwrites current list)
+      body:
+        application/json:
+          example: |
+            {
+              "name": "Cool people",
+              "members": [1, 2, 3]
+            }
+
+    delete:
+      description: Removes the group
+
+    /users:
+      post:
+        description: Adds a user to a group
+        body:
+          application/json:
+            example: |
+              {
+                "user_id": 4,
+              }
+
+      /{userId}:
+        delete:
+          description: Removes a user from a group

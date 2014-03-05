@@ -1,0 +1,41 @@
+<html>
+<head>
+    <title>{{title}}</title>
+    <link rel="stylesheet" href="http://netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css">
+    <script src="http://netdna.bootstrapcdn.com/bootstrap/3.1.1/js/bootstrap.min.js"></script>
+    
+    <style>
+    h3 .parent {
+        color: #999;
+    }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <div class="jumbotron">
+            <h1>{{title}} <small>version {{version}}</small></h1>
+            <p>{{baseUri}}</p>
+        </div>
+        
+        {{#resources}}
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    <h3 class="panel-title">{{relativeUri}}</h3>
+                </div>
+
+                <div class="panel-body">
+                    <div class="resource">
+                        <h3>{{relativeUri}}</h3>
+                        {{#methods}}
+                            <div class="method"><strong>{{method}}</strong>: {{description}}</div>
+                        {{/methods}}
+                    </div>
+
+                    {{> resource}}
+                </div>
+            </div>
+        {{/resources}}
+    </div>
+</body>
+</html>

@@ -1,0 +1,15 @@
+{
+  "name": "raml2html",
+  "version": "0.1.0",
+  "description": "RAML to HTML parser",
+  "main": "raml2html.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Kevin Renskers",
+  "license": "MIT",
+  "dependencies": {
+    "raml-parser": "~0.8.5",
+    "handlebars": "~2.0.0-alpha.1"
+  }
+}

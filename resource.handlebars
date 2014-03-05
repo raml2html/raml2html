@@ -1,0 +1,10 @@
+{{#resources}}
+    <div class="resource">
+        <h3><span class="parent">{{parentUrl}}</span>{{relativeUri}}</h3>
+        {{#methods}}
+            <div class="method"><strong>{{method}}</strong>: {{description}}</div>
+        {{/methods}}
+    </div>
+
+    {{> resource}}
+{{/resources}}
