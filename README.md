@@ -8,3 +8,6 @@ To install the required dependancies run `npm install` first.
 ```
 node raml2htm.js example.raml > example.html
 ```
+
+## Example output
+![Example output](example.png)
