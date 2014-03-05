@@ -6,7 +6,7 @@ To install the required dependancies run `npm install` first.
 
 ## Usage
 ```
-node raml2html.js example.raml > example.html
+./raml2html example.raml > example.html
 ```
 
 ## To do
