@@ -13,7 +13,7 @@
             float: none;
             margin-right: 6px;
         }
-        .panel-title > .badge {
+        .panel-title > .block > .badge {
             float: right;
             margin-left: 5px;
         }
@@ -24,6 +24,12 @@
             font-weight: normal;
             color: #f3f3f6;
             line-height: normal;
+        }
+        .block .badge {
+            visibility: hidden;
+        }
+        .block.collapsed .badge {
+            visibility: visible;
         }
         .badge_get {
             background-color: #63a8e2;
@@ -62,13 +68,13 @@
                 <div class="panel-body">
 
                     <div class="panel-group" id="accordion_{{rootId}}">
-                        <div class="panel panel-info">
+                        <div class="panel panel-default">
                             <div class="panel-heading">
                                 <h4 class="panel-title">
-                                    {{#methods}}
-                                        <span class="badge badge_{{method}}">{{method}}</span>
-                                    {{/methods}}
-                                    <a class="block" data-toggle="collapse" data-parent="#accordion_{{rootId}}" href="#{{uniqueId}}">
+                                    <a class="block collapsed" data-toggle="collapse" data-parent="#accordion_{{rootId}}" href="#{{uniqueId}}">
+                                        {{#methods}}
+                                            <span class="badge badge_{{method}}">{{method}}</span>
+                                        {{/methods}}
                                         {{relativeUri}}
                                     </a>
                                 </h4>

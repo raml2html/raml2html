@@ -13,7 +13,7 @@
             float: none;
             margin-right: 6px;
         }
-        .panel-title > .badge {
+        .panel-title > .block > .badge {
             float: right;
             margin-left: 5px;
         }
@@ -24,6 +24,12 @@
             font-weight: normal;
             color: #f3f3f6;
             line-height: normal;
+        }
+        .block .badge {
+            visibility: hidden;
+        }
+        .block.collapsed .badge {
+            visibility: visible;
         }
         .badge_get {
             background-color: #63a8e2;
@@ -62,13 +68,13 @@
                 <div class="panel-body">
 
                     <div class="panel-group" id="accordion__account">
-                        <div class="panel panel-info">
+                        <div class="panel panel-default">
                             <div class="panel-heading">
                                 <h4 class="panel-title">
-                                    
-                                        <span class="badge badge_post">post</span>
-                                    
-                                    <a class="block" data-toggle="collapse" data-parent="#accordion__account" href="#_account">
+                                    <a class="block collapsed" data-toggle="collapse" data-parent="#accordion__account" href="#_account">
+                                        
+                                            <span class="badge badge_post">post</span>
+                                        
                                         /account
                                     </a>
                                 </h4>
@@ -85,17 +91,17 @@
                         </div>
 
                         
-    <div class="panel panel-info">
+    <div class="panel panel-default">
         <div class="panel-heading">
             <h4 class="panel-title">
-                
-                    <span class="badge badge_get">get</span>
-                
-                    <span class="badge badge_put">put</span>
-                
-                    <span class="badge badge_delete">delete</span>
-                
-                <a class="block" data-toggle="collapse" data-parent="#accordion__account" href="#_account__id_">
+                <a class="block collapsed" data-toggle="collapse" data-parent="#accordion__account" href="#_account__id_">
+                    
+                        <span class="badge badge_get">get</span>
+                    
+                        <span class="badge badge_put">put</span>
+                    
+                        <span class="badge badge_delete">delete</span>
+                    
                     <span class="parent">/account</span>/{id}
                 </a>
             </h4>
@@ -118,13 +124,13 @@
     
 
 
-    <div class="panel panel-info">
+    <div class="panel panel-default">
         <div class="panel-heading">
             <h4 class="panel-title">
-                
-                    <span class="badge badge_post">post</span>
-                
-                <a class="block" data-toggle="collapse" data-parent="#accordion__account" href="#_account_login">
+                <a class="block collapsed" data-toggle="collapse" data-parent="#accordion__account" href="#_account_login">
+                    
+                        <span class="badge badge_post">post</span>
+                    
                     <span class="parent">/account</span>/login
                 </a>
             </h4>
@@ -143,13 +149,13 @@
     
 
 
-    <div class="panel panel-info">
+    <div class="panel panel-default">
         <div class="panel-heading">
             <h4 class="panel-title">
-                
-                    <span class="badge badge_post">post</span>
-                
-                <a class="block" data-toggle="collapse" data-parent="#accordion__account" href="#_account_forgot">
+                <a class="block collapsed" data-toggle="collapse" data-parent="#accordion__account" href="#_account_forgot">
+                    
+                        <span class="badge badge_post">post</span>
+                    
                     <span class="parent">/account</span>/forgot
                 </a>
             </h4>
@@ -168,15 +174,15 @@
     
 
 
-    <div class="panel panel-info">
+    <div class="panel panel-default">
         <div class="panel-heading">
             <h4 class="panel-title">
-                
-                    <span class="badge badge_get">get</span>
-                
-                    <span class="badge badge_delete">delete</span>
-                
-                <a class="block" data-toggle="collapse" data-parent="#accordion__account" href="#_account_session">
+                <a class="block collapsed" data-toggle="collapse" data-parent="#accordion__account" href="#_account_session">
+                    
+                        <span class="badge badge_get">get</span>
+                    
+                        <span class="badge badge_delete">delete</span>
+                    
                     <span class="parent">/account</span>/session
                 </a>
             </h4>
@@ -210,16 +216,16 @@
 
                 <div class="panel-body">
 
-                    <div class="panel-group" id="accordion__account">
-                        <div class="panel panel-info">
+                    <div class="panel-group" id="accordion__conversations">
+                        <div class="panel panel-default">
                             <div class="panel-heading">
                                 <h4 class="panel-title">
-                                    
-                                        <span class="badge badge_get">get</span>
-                                    
-                                        <span class="badge badge_post">post</span>
-                                    
-                                    <a class="block" data-toggle="collapse" data-parent="#accordion__account" href="#_conversations">
+                                    <a class="block collapsed" data-toggle="collapse" data-parent="#accordion__conversations" href="#_conversations">
+                                        
+                                            <span class="badge badge_get">get</span>
+                                        
+                                            <span class="badge badge_post">post</span>
+                                        
                                         /conversations
                                     </a>
                                 </h4>
@@ -238,15 +244,15 @@
                         </div>
 
                         
-    <div class="panel panel-info">
+    <div class="panel panel-default">
         <div class="panel-heading">
             <h4 class="panel-title">
-                
-                    <span class="badge badge_get">get</span>
-                
-                    <span class="badge badge_put">put</span>
-                
-                <a class="block" data-toggle="collapse" data-parent="#accordion__account" href="#_conversations__convId_">
+                <a class="block collapsed" data-toggle="collapse" data-parent="#accordion__conversations" href="#_conversations__convId_">
+                    
+                        <span class="badge badge_get">get</span>
+                    
+                        <span class="badge badge_put">put</span>
+                    
                     <span class="parent">/conversations</span>/{convId}
                 </a>
             </h4>
@@ -265,15 +271,15 @@
     </div>
 
     
-    <div class="panel panel-info">
+    <div class="panel panel-default">
         <div class="panel-heading">
             <h4 class="panel-title">
-                
-                    <span class="badge badge_get">get</span>
-                
-                    <span class="badge badge_post">post</span>
-                
-                <a class="block" data-toggle="collapse" data-parent="#accordion__account" href="#_conversations__convId__messages">
+                <a class="block collapsed" data-toggle="collapse" data-parent="#accordion__conversations" href="#_conversations__convId__messages">
+                    
+                        <span class="badge badge_get">get</span>
+                    
+                        <span class="badge badge_post">post</span>
+                    
                     <span class="parent">/conversations/{convId}</span>/messages
                 </a>
             </h4>
@@ -292,15 +298,15 @@
     </div>
 
     
-    <div class="panel panel-info">
+    <div class="panel panel-default">
         <div class="panel-heading">
             <h4 class="panel-title">
-                
-                    <span class="badge badge_put">put</span>
-                
-                    <span class="badge badge_delete">delete</span>
-                
-                <a class="block" data-toggle="collapse" data-parent="#accordion__account" href="#_conversations__convId__messages__messageId_">
+                <a class="block collapsed" data-toggle="collapse" data-parent="#accordion__conversations" href="#_conversations__convId__messages__messageId_">
+                    
+                        <span class="badge badge_put">put</span>
+                    
+                        <span class="badge badge_delete">delete</span>
+                    
                     <span class="parent">/conversations/{convId}/messages</span>/{messageId}
                 </a>
             </h4>
@@ -338,16 +344,16 @@
 
                 <div class="panel-body">
 
-                    <div class="panel-group" id="accordion__account">
-                        <div class="panel panel-info">
+                    <div class="panel-group" id="accordion__users">
+                        <div class="panel panel-default">
                             <div class="panel-heading">
                                 <h4 class="panel-title">
-                                    
-                                        <span class="badge badge_get">get</span>
-                                    
-                                        <span class="badge badge_post">post</span>
-                                    
-                                    <a class="block" data-toggle="collapse" data-parent="#accordion__account" href="#_users">
+                                    <a class="block collapsed" data-toggle="collapse" data-parent="#accordion__users" href="#_users">
+                                        
+                                            <span class="badge badge_get">get</span>
+                                        
+                                            <span class="badge badge_post">post</span>
+                                        
                                         /users
                                     </a>
                                 </h4>
@@ -366,17 +372,17 @@
                         </div>
 
                         
-    <div class="panel panel-info">
+    <div class="panel panel-default">
         <div class="panel-heading">
             <h4 class="panel-title">
-                
-                    <span class="badge badge_get">get</span>
-                
-                    <span class="badge badge_put">put</span>
-                
-                    <span class="badge badge_delete">delete</span>
-                
-                <a class="block" data-toggle="collapse" data-parent="#accordion__account" href="#_users__userId_">
+                <a class="block collapsed" data-toggle="collapse" data-parent="#accordion__users" href="#_users__userId_">
+                    
+                        <span class="badge badge_get">get</span>
+                    
+                        <span class="badge badge_put">put</span>
+                    
+                        <span class="badge badge_delete">delete</span>
+                    
                     <span class="parent">/users</span>/{userId}
                 </a>
             </h4>
@@ -412,16 +418,16 @@
 
                 <div class="panel-body">
 
-                    <div class="panel-group" id="accordion__account">
-                        <div class="panel panel-info">
+                    <div class="panel-group" id="accordion__groups">
+                        <div class="panel panel-default">
                             <div class="panel-heading">
                                 <h4 class="panel-title">
-                                    
-                                        <span class="badge badge_get">get</span>
-                                    
-                                        <span class="badge badge_post">post</span>
-                                    
-                                    <a class="block" data-toggle="collapse" data-parent="#accordion__account" href="#_groups">
+                                    <a class="block collapsed" data-toggle="collapse" data-parent="#accordion__groups" href="#_groups">
+                                        
+                                            <span class="badge badge_get">get</span>
+                                        
+                                            <span class="badge badge_post">post</span>
+                                        
                                         /groups
                                     </a>
                                 </h4>
@@ -440,17 +446,17 @@
                         </div>
 
                         
-    <div class="panel panel-info">
+    <div class="panel panel-default">
         <div class="panel-heading">
             <h4 class="panel-title">
-                
-                    <span class="badge badge_get">get</span>
-                
-                    <span class="badge badge_put">put</span>
-                
-                    <span class="badge badge_delete">delete</span>
-                
-                <a class="block" data-toggle="collapse" data-parent="#accordion__account" href="#_groups__groupId_">
+                <a class="block collapsed" data-toggle="collapse" data-parent="#accordion__groups" href="#_groups__groupId_">
+                    
+                        <span class="badge badge_get">get</span>
+                    
+                        <span class="badge badge_put">put</span>
+                    
+                        <span class="badge badge_delete">delete</span>
+                    
                     <span class="parent">/groups</span>/{groupId}
                 </a>
             </h4>
@@ -471,13 +477,13 @@
     </div>
 
     
-    <div class="panel panel-info">
+    <div class="panel panel-default">
         <div class="panel-heading">
             <h4 class="panel-title">
-                
-                    <span class="badge badge_post">post</span>
-                
-                <a class="block" data-toggle="collapse" data-parent="#accordion__account" href="#_groups__groupId__users">
+                <a class="block collapsed" data-toggle="collapse" data-parent="#accordion__groups" href="#_groups__groupId__users">
+                    
+                        <span class="badge badge_post">post</span>
+                    
                     <span class="parent">/groups/{groupId}</span>/users
                 </a>
             </h4>
@@ -494,13 +500,13 @@
     </div>
 
     
-    <div class="panel panel-info">
+    <div class="panel panel-default">
         <div class="panel-heading">
             <h4 class="panel-title">
-                
-                    <span class="badge badge_delete">delete</span>
-                
-                <a class="block" data-toggle="collapse" data-parent="#accordion__account" href="#_groups__groupId__users__userId_">
+                <a class="block collapsed" data-toggle="collapse" data-parent="#accordion__groups" href="#_groups__groupId__users__userId_">
+                    
+                        <span class="badge badge_delete">delete</span>
+                    
                     <span class="parent">/groups/{groupId}/users</span>/{userId}
                 </a>
             </h4>
