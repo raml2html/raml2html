@@ -18,7 +18,7 @@ baseUri: http://example.com/{version}
     responses:
       200:
         description: Account was created and user is now logged in
-  
+
   /{id}:
     get:
       description: Get the account
@@ -28,7 +28,7 @@ baseUri: http://example.com/{version}
 
     delete:
       description: Delete the account
-  
+
   /login:
     post:
       description: Login with email and password
@@ -44,7 +44,7 @@ baseUri: http://example.com/{version}
           description: Login was correct
         400:
           description: Login was incorrect, please try again
-  
+
   /forgot:
     post:
       description: Sends an email to the user with a link to set a new password
@@ -121,7 +121,7 @@ baseUri: http://example.com/{version}
   /{userId}:
     get:
       description: Get the details of a user including a list of groups he belongs to
-    
+
     put:
       description: Update a user
 

@@ -2,130 +2,320 @@
 <head>
     <title>Example</title>
     <link rel="stylesheet" href="http://netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css">
+    <script src="http://code.jquery.com/jquery-1.11.0.min.js"></script>
     <script src="http://netdna.bootstrapcdn.com/bootstrap/3.1.1/js/bootstrap.min.js"></script>
-    
+
     <style>
-    h3 .parent {
-        color: #999;
-    }
+        .parent {
+            color: #999;
+        }
+        .list-group-item > .badge {
+            float: none;
+            margin-right: 6px;
+        }
+        .panel-title > .badge {
+            float: right;
+            margin-left: 5px;
+        }
+        .badge {
+            border-radius: 0;
+            text-transform: uppercase;
+            width: 60px;
+            font-weight: normal;
+            color: #f3f3f6;
+            line-height: normal;
+        }
+        .badge_get {
+            background-color: #63a8e2;
+        }
+        .badge_post {
+            background-color: #6cbd7d;
+        }
+        .badge_put {
+            background-color: #22bac4;
+        }
+        .badge_delete {
+            background-color: #d26460;
+        }
+        .block {
+            display: block;
+        }
+        .list-group, .panel-group {
+            margin-bottom: 0;
+        }
     </style>
 </head>
 
 <body>
     <div class="container">
-        <div class="jumbotron">
-            <h1>Example <small>version 0.1</small></h1>
-            <p>http://example.com/{version}</p>
+        <div class="page-header">
+            <h1>Example API documentation <small>version 0.1</small></h1>
+            <p>http://example.com/0.1</p>
         </div>
+
         
-        
-            <div class="panel panel-default">
+            <div class="panel panel-primary">
                 <div class="panel-heading">
                     <h3 class="panel-title">/account</h3>
                 </div>
 
                 <div class="panel-body">
-                    <div class="resource">
-                        <h3>/account</h3>
-                        
-                            <div class="method"><strong>post</strong>: Creates a new account</div>
-                        
-                    </div>
 
+                    <div class="panel-group" id="accordion__account">
+                        <div class="panel panel-info">
+                            <div class="panel-heading">
+                                <h4 class="panel-title">
+                                    
+                                        <span class="badge badge_post">post</span>
+                                    
+                                    <a class="block" data-toggle="collapse" data-parent="#accordion__account" href="#_account">
+                                        /account
+                                    </a>
+                                </h4>
+                            </div>
+                            <div id="_account" class="panel-collapse collapse">
+                                <div class="panel-body">
+                                    <div class="list-group">
+                                        
+                                            <a href="#" class="list-group-item"><span class="badge badge_post">post</span> Creates a new account</a>
+                                        
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        
+    <div class="panel panel-info">
+        <div class="panel-heading">
+            <h4 class="panel-title">
+                
+                    <span class="badge badge_get">get</span>
+                
+                    <span class="badge badge_put">put</span>
+                
+                    <span class="badge badge_delete">delete</span>
+                
+                <a class="block" data-toggle="collapse" data-parent="#accordion__account" href="#_account__id_">
+                    <span class="parent">/account</span>/{id}
+                </a>
+            </h4>
+        </div>
+        <div id="_account__id_" class="panel-collapse collapse">
+            <div class="panel-body">
+                <div class="list-group">
                     
-    <div class="resource">
-        <h3><span class="parent">/account</span>/{id}</h3>
-        
-            <div class="method"><strong>get</strong>: Get the account</div>
-        
-            <div class="method"><strong>put</strong>: Update the account</div>
-        
-            <div class="method"><strong>delete</strong>: Delete the account</div>
-        
+                        <a href="#" class="list-group-item"><span class="badge badge_get">get</span> Get the account</a>
+                    
+                        <a href="#" class="list-group-item"><span class="badge badge_put">put</span> Update the account</a>
+                    
+                        <a href="#" class="list-group-item"><span class="badge badge_delete">delete</span> Delete the account</a>
+                    
+                </div>
+            </div>
+        </div>
     </div>
 
     
 
 
-    <div class="resource">
-        <h3><span class="parent">/account</span>/login</h3>
-        
-            <div class="method"><strong>post</strong>: Login with email and password</div>
-        
+    <div class="panel panel-info">
+        <div class="panel-heading">
+            <h4 class="panel-title">
+                
+                    <span class="badge badge_post">post</span>
+                
+                <a class="block" data-toggle="collapse" data-parent="#accordion__account" href="#_account_login">
+                    <span class="parent">/account</span>/login
+                </a>
+            </h4>
+        </div>
+        <div id="_account_login" class="panel-collapse collapse">
+            <div class="panel-body">
+                <div class="list-group">
+                    
+                        <a href="#" class="list-group-item"><span class="badge badge_post">post</span> Login with email and password</a>
+                    
+                </div>
+            </div>
+        </div>
     </div>
 
     
 
 
-    <div class="resource">
-        <h3><span class="parent">/account</span>/forgot</h3>
-        
-            <div class="method"><strong>post</strong>: Sends an email to the user with a link to set a new password</div>
-        
+    <div class="panel panel-info">
+        <div class="panel-heading">
+            <h4 class="panel-title">
+                
+                    <span class="badge badge_post">post</span>
+                
+                <a class="block" data-toggle="collapse" data-parent="#accordion__account" href="#_account_forgot">
+                    <span class="parent">/account</span>/forgot
+                </a>
+            </h4>
+        </div>
+        <div id="_account_forgot" class="panel-collapse collapse">
+            <div class="panel-body">
+                <div class="list-group">
+                    
+                        <a href="#" class="list-group-item"><span class="badge badge_post">post</span> Sends an email to the user with a link to set a new password</a>
+                    
+                </div>
+            </div>
+        </div>
     </div>
 
     
 
 
-    <div class="resource">
-        <h3><span class="parent">/account</span>/session</h3>
-        
-            <div class="method"><strong>get</strong>: Gets the sessions</div>
-        
-            <div class="method"><strong>delete</strong>: Deletes the session, logging out the user</div>
-        
+    <div class="panel panel-info">
+        <div class="panel-heading">
+            <h4 class="panel-title">
+                
+                    <span class="badge badge_get">get</span>
+                
+                    <span class="badge badge_delete">delete</span>
+                
+                <a class="block" data-toggle="collapse" data-parent="#accordion__account" href="#_account_session">
+                    <span class="parent">/account</span>/session
+                </a>
+            </h4>
+        </div>
+        <div id="_account_session" class="panel-collapse collapse">
+            <div class="panel-body">
+                <div class="list-group">
+                    
+                        <a href="#" class="list-group-item"><span class="badge badge_get">get</span> Gets the sessions</a>
+                    
+                        <a href="#" class="list-group-item"><span class="badge badge_delete">delete</span> Deletes the session, logging out the user</a>
+                    
+                </div>
+            </div>
+        </div>
     </div>
 
     
 
 
+
+                    </div>
 
                 </div>
             </div>
         
-            <div class="panel panel-default">
+            <div class="panel panel-primary">
                 <div class="panel-heading">
                     <h3 class="panel-title">/conversations</h3>
                 </div>
 
                 <div class="panel-body">
-                    <div class="resource">
-                        <h3>/conversations</h3>
-                        
-                            <div class="method"><strong>get</strong>: Get a list of conversation for the current user</div>
-                        
-                            <div class="method"><strong>post</strong>: Create a new conversions. The currently logged in user doesn&#x27;t need to be supplied in the members list, it&#x27;s implied.</div>
-                        
-                    </div>
 
+                    <div class="panel-group" id="accordion__account">
+                        <div class="panel panel-info">
+                            <div class="panel-heading">
+                                <h4 class="panel-title">
+                                    
+                                        <span class="badge badge_get">get</span>
+                                    
+                                        <span class="badge badge_post">post</span>
+                                    
+                                    <a class="block" data-toggle="collapse" data-parent="#accordion__account" href="#_conversations">
+                                        /conversations
+                                    </a>
+                                </h4>
+                            </div>
+                            <div id="_conversations" class="panel-collapse collapse">
+                                <div class="panel-body">
+                                    <div class="list-group">
+                                        
+                                            <a href="#" class="list-group-item"><span class="badge badge_get">get</span> Get a list of conversation for the current user</a>
+                                        
+                                            <a href="#" class="list-group-item"><span class="badge badge_post">post</span> Create a new conversions. The currently logged in user doesn&#x27;t need to be supplied in the members list, it&#x27;s implied.</a>
+                                        
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        
+    <div class="panel panel-info">
+        <div class="panel-heading">
+            <h4 class="panel-title">
+                
+                    <span class="badge badge_get">get</span>
+                
+                    <span class="badge badge_put">put</span>
+                
+                <a class="block" data-toggle="collapse" data-parent="#accordion__account" href="#_conversations__convId_">
+                    <span class="parent">/conversations</span>/{convId}
+                </a>
+            </h4>
+        </div>
+        <div id="_conversations__convId_" class="panel-collapse collapse">
+            <div class="panel-body">
+                <div class="list-group">
                     
-    <div class="resource">
-        <h3><span class="parent">/conversations</span>/{convId}</h3>
-        
-            <div class="method"><strong>get</strong>: Get a single conversation including its messages</div>
-        
-            <div class="method"><strong>put</strong>: Update a conversation (change members)</div>
-        
+                        <a href="#" class="list-group-item"><span class="badge badge_get">get</span> Get a single conversation including its messages</a>
+                    
+                        <a href="#" class="list-group-item"><span class="badge badge_put">put</span> Update a conversation (change members)</a>
+                    
+                </div>
+            </div>
+        </div>
     </div>
 
     
-    <div class="resource">
-        <h3><span class="parent">/conversations/{convId}</span>/messages</h3>
-        
-            <div class="method"><strong>get</strong>: Get the messages for the conversation</div>
-        
-            <div class="method"><strong>post</strong>: Add a new message to a conversation</div>
-        
+    <div class="panel panel-info">
+        <div class="panel-heading">
+            <h4 class="panel-title">
+                
+                    <span class="badge badge_get">get</span>
+                
+                    <span class="badge badge_post">post</span>
+                
+                <a class="block" data-toggle="collapse" data-parent="#accordion__account" href="#_conversations__convId__messages">
+                    <span class="parent">/conversations/{convId}</span>/messages
+                </a>
+            </h4>
+        </div>
+        <div id="_conversations__convId__messages" class="panel-collapse collapse">
+            <div class="panel-body">
+                <div class="list-group">
+                    
+                        <a href="#" class="list-group-item"><span class="badge badge_get">get</span> Get the messages for the conversation</a>
+                    
+                        <a href="#" class="list-group-item"><span class="badge badge_post">post</span> Add a new message to a conversation</a>
+                    
+                </div>
+            </div>
+        </div>
     </div>
 
     
-    <div class="resource">
-        <h3><span class="parent">/conversations/{convId}/messages</span>/{messageId}</h3>
-        
-            <div class="method"><strong>put</strong>: Update the message</div>
-        
-            <div class="method"><strong>delete</strong>: Delete the message</div>
-        
+    <div class="panel panel-info">
+        <div class="panel-heading">
+            <h4 class="panel-title">
+                
+                    <span class="badge badge_put">put</span>
+                
+                    <span class="badge badge_delete">delete</span>
+                
+                <a class="block" data-toggle="collapse" data-parent="#accordion__account" href="#_conversations__convId__messages__messageId_">
+                    <span class="parent">/conversations/{convId}/messages</span>/{messageId}
+                </a>
+            </h4>
+        </div>
+        <div id="_conversations__convId__messages__messageId_" class="panel-collapse collapse">
+            <div class="panel-body">
+                <div class="list-group">
+                    
+                        <a href="#" class="list-group-item"><span class="badge badge_put">put</span> Update the message</a>
+                    
+                        <a href="#" class="list-group-item"><span class="badge badge_delete">delete</span> Delete the message</a>
+                    
+                </div>
+            </div>
+        </div>
     </div>
 
     
@@ -135,85 +325,195 @@
 
 
 
+
+                    </div>
 
                 </div>
             </div>
         
-            <div class="panel panel-default">
+            <div class="panel panel-primary">
                 <div class="panel-heading">
                     <h3 class="panel-title">/users</h3>
                 </div>
 
                 <div class="panel-body">
-                    <div class="resource">
-                        <h3>/users</h3>
-                        
-                            <div class="method"><strong>get</strong>: Get a list of all users</div>
-                        
-                            <div class="method"><strong>post</strong>: Creates a new user</div>
-                        
-                    </div>
 
+                    <div class="panel-group" id="accordion__account">
+                        <div class="panel panel-info">
+                            <div class="panel-heading">
+                                <h4 class="panel-title">
+                                    
+                                        <span class="badge badge_get">get</span>
+                                    
+                                        <span class="badge badge_post">post</span>
+                                    
+                                    <a class="block" data-toggle="collapse" data-parent="#accordion__account" href="#_users">
+                                        /users
+                                    </a>
+                                </h4>
+                            </div>
+                            <div id="_users" class="panel-collapse collapse">
+                                <div class="panel-body">
+                                    <div class="list-group">
+                                        
+                                            <a href="#" class="list-group-item"><span class="badge badge_get">get</span> Get a list of all users</a>
+                                        
+                                            <a href="#" class="list-group-item"><span class="badge badge_post">post</span> Creates a new user</a>
+                                        
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        
+    <div class="panel panel-info">
+        <div class="panel-heading">
+            <h4 class="panel-title">
+                
+                    <span class="badge badge_get">get</span>
+                
+                    <span class="badge badge_put">put</span>
+                
+                    <span class="badge badge_delete">delete</span>
+                
+                <a class="block" data-toggle="collapse" data-parent="#accordion__account" href="#_users__userId_">
+                    <span class="parent">/users</span>/{userId}
+                </a>
+            </h4>
+        </div>
+        <div id="_users__userId_" class="panel-collapse collapse">
+            <div class="panel-body">
+                <div class="list-group">
                     
-    <div class="resource">
-        <h3><span class="parent">/users</span>/{userId}</h3>
-        
-            <div class="method"><strong>get</strong>: Get the details of a user including a list of groups he belongs to</div>
-        
-            <div class="method"><strong>put</strong>: Update a user</div>
-        
-            <div class="method"><strong>delete</strong>: Deletes a user</div>
-        
+                        <a href="#" class="list-group-item"><span class="badge badge_get">get</span> Get the details of a user including a list of groups he belongs to</a>
+                    
+                        <a href="#" class="list-group-item"><span class="badge badge_put">put</span> Update a user</a>
+                    
+                        <a href="#" class="list-group-item"><span class="badge badge_delete">delete</span> Deletes a user</a>
+                    
+                </div>
+            </div>
+        </div>
     </div>
 
     
 
 
 
+                    </div>
+
                 </div>
             </div>
         
-            <div class="panel panel-default">
+            <div class="panel panel-primary">
                 <div class="panel-heading">
                     <h3 class="panel-title">/groups</h3>
                 </div>
 
                 <div class="panel-body">
-                    <div class="resource">
-                        <h3>/groups</h3>
-                        
-                            <div class="method"><strong>get</strong>: Get a list of all the groups</div>
-                        
-                            <div class="method"><strong>post</strong>: Create a new group</div>
-                        
-                    </div>
 
+                    <div class="panel-group" id="accordion__account">
+                        <div class="panel panel-info">
+                            <div class="panel-heading">
+                                <h4 class="panel-title">
+                                    
+                                        <span class="badge badge_get">get</span>
+                                    
+                                        <span class="badge badge_post">post</span>
+                                    
+                                    <a class="block" data-toggle="collapse" data-parent="#accordion__account" href="#_groups">
+                                        /groups
+                                    </a>
+                                </h4>
+                            </div>
+                            <div id="_groups" class="panel-collapse collapse">
+                                <div class="panel-body">
+                                    <div class="list-group">
+                                        
+                                            <a href="#" class="list-group-item"><span class="badge badge_get">get</span> Get a list of all the groups</a>
+                                        
+                                            <a href="#" class="list-group-item"><span class="badge badge_post">post</span> Create a new group</a>
+                                        
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        
+    <div class="panel panel-info">
+        <div class="panel-heading">
+            <h4 class="panel-title">
+                
+                    <span class="badge badge_get">get</span>
+                
+                    <span class="badge badge_put">put</span>
+                
+                    <span class="badge badge_delete">delete</span>
+                
+                <a class="block" data-toggle="collapse" data-parent="#accordion__account" href="#_groups__groupId_">
+                    <span class="parent">/groups</span>/{groupId}
+                </a>
+            </h4>
+        </div>
+        <div id="_groups__groupId_" class="panel-collapse collapse">
+            <div class="panel-body">
+                <div class="list-group">
                     
-    <div class="resource">
-        <h3><span class="parent">/groups</span>/{groupId}</h3>
-        
-            <div class="method"><strong>get</strong>: Get the details of a group, including the member list</div>
-        
-            <div class="method"><strong>put</strong>: Update the group, **optionally** supplying the new list of members (overwrites current list)</div>
-        
-            <div class="method"><strong>delete</strong>: Removes the group</div>
-        
+                        <a href="#" class="list-group-item"><span class="badge badge_get">get</span> Get the details of a group, including the member list</a>
+                    
+                        <a href="#" class="list-group-item"><span class="badge badge_put">put</span> Update the group, **optionally** supplying the new list of members (overwrites current list)</a>
+                    
+                        <a href="#" class="list-group-item"><span class="badge badge_delete">delete</span> Removes the group</a>
+                    
+                </div>
+            </div>
+        </div>
     </div>
 
     
-    <div class="resource">
-        <h3><span class="parent">/groups/{groupId}</span>/users</h3>
-        
-            <div class="method"><strong>post</strong>: Adds a user to a group</div>
-        
+    <div class="panel panel-info">
+        <div class="panel-heading">
+            <h4 class="panel-title">
+                
+                    <span class="badge badge_post">post</span>
+                
+                <a class="block" data-toggle="collapse" data-parent="#accordion__account" href="#_groups__groupId__users">
+                    <span class="parent">/groups/{groupId}</span>/users
+                </a>
+            </h4>
+        </div>
+        <div id="_groups__groupId__users" class="panel-collapse collapse">
+            <div class="panel-body">
+                <div class="list-group">
+                    
+                        <a href="#" class="list-group-item"><span class="badge badge_post">post</span> Adds a user to a group</a>
+                    
+                </div>
+            </div>
+        </div>
     </div>
 
     
-    <div class="resource">
-        <h3><span class="parent">/groups/{groupId}/users</span>/{userId}</h3>
-        
-            <div class="method"><strong>delete</strong>: Removes a user from a group</div>
-        
+    <div class="panel panel-info">
+        <div class="panel-heading">
+            <h4 class="panel-title">
+                
+                    <span class="badge badge_delete">delete</span>
+                
+                <a class="block" data-toggle="collapse" data-parent="#accordion__account" href="#_groups__groupId__users__userId_">
+                    <span class="parent">/groups/{groupId}/users</span>/{userId}
+                </a>
+            </h4>
+        </div>
+        <div id="_groups__groupId__users__userId_" class="panel-collapse collapse">
+            <div class="panel-body">
+                <div class="list-group">
+                    
+                        <a href="#" class="list-group-item"><span class="badge badge_delete">delete</span> Removes a user from a group</a>
+                    
+                </div>
+            </div>
+        </div>
     </div>
 
     
@@ -223,6 +523,8 @@
 
 
 
+
+                    </div>
 
                 </div>
             </div>
@@ -230,4 +532,3 @@
     </div>
 </body>
 </html>
-

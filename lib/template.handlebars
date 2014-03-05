@@ -2,37 +2,91 @@
 <head>
     <title>{{title}}</title>
     <link rel="stylesheet" href="http://netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css">
+    <script src="http://code.jquery.com/jquery-1.11.0.min.js"></script>
     <script src="http://netdna.bootstrapcdn.com/bootstrap/3.1.1/js/bootstrap.min.js"></script>
-    
+
     <style>
-    h3 .parent {
-        color: #999;
-    }
+        .parent {
+            color: #999;
+        }
+        .list-group-item > .badge {
+            float: none;
+            margin-right: 6px;
+        }
+        .panel-title > .badge {
+            float: right;
+            margin-left: 5px;
+        }
+        .badge {
+            border-radius: 0;
+            text-transform: uppercase;
+            width: 60px;
+            font-weight: normal;
+            color: #f3f3f6;
+            line-height: normal;
+        }
+        .badge_get {
+            background-color: #63a8e2;
+        }
+        .badge_post {
+            background-color: #6cbd7d;
+        }
+        .badge_put {
+            background-color: #22bac4;
+        }
+        .badge_delete {
+            background-color: #d26460;
+        }
+        .block {
+            display: block;
+        }
+        .list-group, .panel-group {
+            margin-bottom: 0;
+        }
     </style>
 </head>
 
 <body>
     <div class="container">
-        <div class="jumbotron">
-            <h1>{{title}} <small>version {{version}}</small></h1>
+        <div class="page-header">
+            <h1>{{title}} API documentation <small>version {{version}}</small></h1>
             <p>{{baseUri}}</p>
         </div>
-        
+
         {{#resources}}
-            <div class="panel panel-default">
+            <div class="panel panel-primary">
                 <div class="panel-heading">
                     <h3 class="panel-title">{{relativeUri}}</h3>
                 </div>
 
                 <div class="panel-body">
-                    <div class="resource">
-                        <h3>{{relativeUri}}</h3>
-                        {{#methods}}
-                            <div class="method"><strong>{{method}}</strong>: {{description}}</div>
-                        {{/methods}}
+
+                    <div class="panel-group" id="accordion_{{rootId}}">
+                        <div class="panel panel-info">
+                            <div class="panel-heading">
+                                <h4 class="panel-title">
+                                    {{#methods}}
+                                        <span class="badge badge_{{method}}">{{method}}</span>
+                                    {{/methods}}
+                                    <a class="block" data-toggle="collapse" data-parent="#accordion_{{rootId}}" href="#{{uniqueId}}">
+                                        {{relativeUri}}
+                                    </a>
+                                </h4>
+                            </div>
+                            <div id="{{uniqueId}}" class="panel-collapse collapse">
+                                <div class="panel-body">
+                                    <div class="list-group">
+                                        {{#methods}}
+                                            <a href="#" class="list-group-item"><span class="badge badge_{{method}}">{{method}}</span> {{description}}</a>
+                                        {{/methods}}
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        {{> resource}}
                     </div>
 
-                    {{> resource}}
                 </div>
             </div>
         {{/resources}}
