@@ -2,11 +2,16 @@
 
 A simple RAML to HTML parser written for Node.js.
 
-To install the required dependancies run `npm install` first.
+
+## Install
+```
+npm i -g raml2html
+```
+
 
 ## Usage
 ```
-./raml2html example.raml > example.html
+raml2html example.raml > example.html
 ```
 
 ## To do
@@ -17,8 +22,10 @@ This project is in a very early stage, with plenty left to do:
 * Make this into a proper command line script
 * Publish to NPM
 
+
 ## Example output
 ![Example output](example.png)
+
 
 ## License
 raml2html is available under the MIT license. See the LICENSE file for more info.

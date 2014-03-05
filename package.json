@@ -1,15 +1,30 @@
 {
   "name": "raml2html",
-  "version": "0.1.0",
   "description": "RAML to HTML parser",
-  "main": "raml2html.js",
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
-  },
+  "version": "0.1.0",
   "author": "Kevin Renskers",
-  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/kevinrenskers/raml2html/issues"
+  },
   "dependencies": {
-    "raml-parser": "~0.8.5",
-    "handlebars": "~2.0.0-alpha.1"
+    "handlebars": "~2.0.0-alpha.1",
+    "raml-parser": "~0.8.5"
+  },
+  "engines": {
+    "node": "0.8"
+  },
+  "homepage": "https://github.com/kevinrenskers/raml2html",
+  "keywords": [
+    "RAML"
+  ],
+  "license": "MIT",
+  "main": "lib/raml2html.js",
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/kevinrenskers/raml2html.git"
+  },
+  "preferGlobal": "true",
+  "bin": {
+    "raml2html" : "lib/raml2html.js"
   }
 }
