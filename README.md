@@ -18,9 +18,7 @@ raml2html example.raml > example.html
 This project is in a very early stage, with plenty left to do:
 
 * Finish HTML output, currently there a lot missing (request, response, headers, etc)
-* Better error checking, especially concerting argument parsing
-* Make this into a proper command line script
-* Publish to NPM
+* Better error checking
 
 
 ## Example output
