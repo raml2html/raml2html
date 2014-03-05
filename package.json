@@ -2,7 +2,10 @@
   "name": "raml2html",
   "description": "RAML to HTML parser",
   "version": "0.1.0",
-  "author": "Kevin Renskers",
+  "author": {
+    "name": "Kevin Renskers",
+    "email": "info@mixedcase.nl"
+  },
   "bugs": {
     "url": "https://github.com/kevinrenskers/raml2html/issues"
   },
