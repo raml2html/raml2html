@@ -24,7 +24,7 @@ This project is in a very early stage, with plenty left to do:
 
 
 ## Example output
-![Example output](example.png)
+![Example output](https://raw.github.com/kevinrenskers/raml2html/master/example.png)
 
 
 ## License
