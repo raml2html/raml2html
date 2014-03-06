@@ -49,6 +49,21 @@
         .list-group, .panel-group {
             margin-bottom: 0;
         }
+        .panel-group .panel+.panel-white {
+            margin-top: 0;
+        }
+        .panel-group .panel-white {
+            border-bottom: 1px solid #F5F5F5;
+            border-radius: 0;
+        }
+        .panel-white:last-child {
+            border-bottom-color: white;
+            -webkit-box-shadow: none;
+            box-shadow: none;
+        }
+        .panel-white .panel-heading {
+            background: white;
+        }
     </style>
 </head>
 
@@ -60,7 +75,7 @@
         </div>
 
         
-            <div class="panel panel-primary">
+            <div class="panel panel-default">
                 <div class="panel-heading">
                     <h3 class="panel-title">/account</h3>
                 </div>
@@ -68,7 +83,7 @@
                 <div class="panel-body">
 
                     <div class="panel-group" id="accordion__account">
-                        <div class="panel panel-default">
+                        <div class="panel panel-white">
                             <div class="panel-heading">
                                 <h4 class="panel-title">
                                     <a class="block collapsed" data-toggle="collapse" data-parent="#accordion__account" href="#_account">
@@ -91,7 +106,7 @@
                         </div>
 
                         
-    <div class="panel panel-default">
+    <div class="panel panel-white">
         <div class="panel-heading">
             <h4 class="panel-title">
                 <a class="block collapsed" data-toggle="collapse" data-parent="#accordion__account" href="#_account__id_">
@@ -124,7 +139,7 @@
     
 
 
-    <div class="panel panel-default">
+    <div class="panel panel-white">
         <div class="panel-heading">
             <h4 class="panel-title">
                 <a class="block collapsed" data-toggle="collapse" data-parent="#accordion__account" href="#_account_login">
@@ -149,7 +164,7 @@
     
 
 
-    <div class="panel panel-default">
+    <div class="panel panel-white">
         <div class="panel-heading">
             <h4 class="panel-title">
                 <a class="block collapsed" data-toggle="collapse" data-parent="#accordion__account" href="#_account_forgot">
@@ -174,7 +189,7 @@
     
 
 
-    <div class="panel panel-default">
+    <div class="panel panel-white">
         <div class="panel-heading">
             <h4 class="panel-title">
                 <a class="block collapsed" data-toggle="collapse" data-parent="#accordion__account" href="#_account_session">
@@ -209,7 +224,7 @@
                 </div>
             </div>
         
-            <div class="panel panel-primary">
+            <div class="panel panel-default">
                 <div class="panel-heading">
                     <h3 class="panel-title">/conversations</h3>
                 </div>
@@ -217,7 +232,7 @@
                 <div class="panel-body">
 
                     <div class="panel-group" id="accordion__conversations">
-                        <div class="panel panel-default">
+                        <div class="panel panel-white">
                             <div class="panel-heading">
                                 <h4 class="panel-title">
                                     <a class="block collapsed" data-toggle="collapse" data-parent="#accordion__conversations" href="#_conversations">
@@ -244,7 +259,7 @@
                         </div>
 
                         
-    <div class="panel panel-default">
+    <div class="panel panel-white">
         <div class="panel-heading">
             <h4 class="panel-title">
                 <a class="block collapsed" data-toggle="collapse" data-parent="#accordion__conversations" href="#_conversations__convId_">
@@ -271,7 +286,7 @@
     </div>
 
     
-    <div class="panel panel-default">
+    <div class="panel panel-white">
         <div class="panel-heading">
             <h4 class="panel-title">
                 <a class="block collapsed" data-toggle="collapse" data-parent="#accordion__conversations" href="#_conversations__convId__messages">
@@ -298,7 +313,7 @@
     </div>
 
     
-    <div class="panel panel-default">
+    <div class="panel panel-white">
         <div class="panel-heading">
             <h4 class="panel-title">
                 <a class="block collapsed" data-toggle="collapse" data-parent="#accordion__conversations" href="#_conversations__convId__messages__messageId_">
@@ -337,7 +352,7 @@
                 </div>
             </div>
         
-            <div class="panel panel-primary">
+            <div class="panel panel-default">
                 <div class="panel-heading">
                     <h3 class="panel-title">/users</h3>
                 </div>
@@ -345,7 +360,7 @@
                 <div class="panel-body">
 
                     <div class="panel-group" id="accordion__users">
-                        <div class="panel panel-default">
+                        <div class="panel panel-white">
                             <div class="panel-heading">
                                 <h4 class="panel-title">
                                     <a class="block collapsed" data-toggle="collapse" data-parent="#accordion__users" href="#_users">
@@ -372,7 +387,7 @@
                         </div>
 
                         
-    <div class="panel panel-default">
+    <div class="panel panel-white">
         <div class="panel-heading">
             <h4 class="panel-title">
                 <a class="block collapsed" data-toggle="collapse" data-parent="#accordion__users" href="#_users__userId_">
@@ -411,7 +426,7 @@
                 </div>
             </div>
         
-            <div class="panel panel-primary">
+            <div class="panel panel-default">
                 <div class="panel-heading">
                     <h3 class="panel-title">/groups</h3>
                 </div>
@@ -419,7 +434,7 @@
                 <div class="panel-body">
 
                     <div class="panel-group" id="accordion__groups">
-                        <div class="panel panel-default">
+                        <div class="panel panel-white">
                             <div class="panel-heading">
                                 <h4 class="panel-title">
                                     <a class="block collapsed" data-toggle="collapse" data-parent="#accordion__groups" href="#_groups">
@@ -446,7 +461,7 @@
                         </div>
 
                         
-    <div class="panel panel-default">
+    <div class="panel panel-white">
         <div class="panel-heading">
             <h4 class="panel-title">
                 <a class="block collapsed" data-toggle="collapse" data-parent="#accordion__groups" href="#_groups__groupId_">
@@ -477,7 +492,7 @@
     </div>
 
     
-    <div class="panel panel-default">
+    <div class="panel panel-white">
         <div class="panel-heading">
             <h4 class="panel-title">
                 <a class="block collapsed" data-toggle="collapse" data-parent="#accordion__groups" href="#_groups__groupId__users">
@@ -500,7 +515,7 @@
     </div>
 
     
-    <div class="panel panel-default">
+    <div class="panel panel-white">
         <div class="panel-heading">
             <h4 class="panel-title">
                 <a class="block collapsed" data-toggle="collapse" data-parent="#accordion__groups" href="#_groups__groupId__users__userId_">

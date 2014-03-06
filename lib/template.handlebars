@@ -49,6 +49,21 @@
         .list-group, .panel-group {
             margin-bottom: 0;
         }
+        .panel-group .panel+.panel-white {
+            margin-top: 0;
+        }
+        .panel-group .panel-white {
+            border-bottom: 1px solid #F5F5F5;
+            border-radius: 0;
+        }
+        .panel-white:last-child {
+            border-bottom-color: white;
+            -webkit-box-shadow: none;
+            box-shadow: none;
+        }
+        .panel-white .panel-heading {
+            background: white;
+        }
     </style>
 </head>
 
@@ -60,7 +75,7 @@
         </div>
 
         {{#resources}}
-            <div class="panel panel-primary">
+            <div class="panel panel-default">
                 <div class="panel-heading">
                     <h3 class="panel-title">{{relativeUri}}</h3>
                 </div>
@@ -68,7 +83,7 @@
                 <div class="panel-body">
 
                     <div class="panel-group" id="accordion_{{rootId}}">
-                        <div class="panel panel-default">
+                        <div class="panel panel-white">
                             <div class="panel-heading">
                                 <h4 class="panel-title">
                                     <a class="block collapsed" data-toggle="collapse" data-parent="#accordion_{{rootId}}" href="#{{uniqueId}}">
