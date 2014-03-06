@@ -1,7 +1,7 @@
 {
   "name": "raml2html",
   "description": "RAML to HTML parser",
-  "version": "0.2.1",
+  "version": "0.2.2",
   "author": {
     "name": "Kevin Renskers",
     "email": "info@mixedcase.nl"
@@ -12,9 +12,6 @@
   "dependencies": {
     "handlebars": "~2.0.0-alpha.1",
     "raml-parser": "~0.8.5"
-  },
-  "engines": {
-    "node": "0.8"
   },
   "homepage": "https://github.com/kevinrenskers/raml2html",
   "keywords": [
