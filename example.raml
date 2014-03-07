@@ -1,8 +1,17 @@
 #%RAML 0.8
 title: Example
-version: 0.1
+version: 1
 baseUri: http://example.com/{version}
 
+traits:
+  - paged:
+      queryParameters:
+        page_size:
+          description: The number of items per page
+          type: number
+        page:
+          description: The page to return
+          type: number
 
 /account:
   post:
@@ -91,6 +100,7 @@ baseUri: http://example.com/{version}
 
     /messages:
       get:
+        is: [ paged ]
         description: Get the messages for the conversation
 
       post:
@@ -106,6 +116,7 @@ baseUri: http://example.com/{version}
 
 /users:
   get:
+    is: [ paged ]
     description: Get a list of all users
 
   post:

@@ -64,6 +64,15 @@
         .panel-white .panel-heading {
             background: white;
         }
+        .tab-pane ul {
+            padding-left: 2em;
+        }
+        .tab-content {
+            border-left: 1px solid #ddd;
+            border-right: 1px solid #ddd;
+            border-bottom: 1px solid #ddd;
+            padding: 10px;
+        }
     </style>
 </head>
 
@@ -81,7 +90,7 @@
                 </div>
 
                 <div class="panel-body">
-                    <div class="panel-group" id="accordion_{{rootId}}">
+                    <div class="panel-group">
                         {{> resource}}
                     </div>
                 </div>
