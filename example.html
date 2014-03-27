@@ -1,6 +1,8 @@
+<!DOCTYPE HTML>
 <html>
 <head>
     <title>Example API documentation</title>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <link rel="stylesheet" href="http://netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css">
     <script src="http://code.jquery.com/jquery-1.11.0.min.js"></script>
     <script src="http://netdna.bootstrapcdn.com/bootstrap/3.1.1/js/bootstrap.min.js"></script>
@@ -73,28 +75,44 @@
             border-bottom: 1px solid #ddd;
             padding: 10px;
         }
+        #sidebar {
+            margin-top: 30px;
+        }
     </style>
 </head>
 
-<body>
+<body data-spy="scroll" data-target="#sidebar">
     <div class="container">
-        <div class="page-header">
-            <h1>Example API documentation <small>version 1</small></h1>
-            <p>http://example.com/1</p>
-        </div>
+        <div class="row">
+            <div class="col-md-9" role="main">
+                <div class="page-header">
+                    <h1>Example API documentation <small>version 1</small></h1>
+                    <p>http://example.com/1</p>
 
-        
-            <div class="panel panel-default">
-                <div class="panel-heading">
-                    <h3 class="panel-title">/account</h3>
+                    
+                        <h3>Welcome</h3>
+                        <p>Welcome to the Example Documentation. The Example API allows you
+to do stuff. See also <a href="https://www.example.com">example.com</a>.</p>
+
+                    
+                        <h3>Chapter two</h3>
+                        <p>More content here. Including <strong>bold</strong> text!</p>
+
+                    
                 </div>
 
-                <div class="panel-body">
-                    <div class="panel-group">
-                        <div class="panel panel-white">
+                
+                    <div class="panel panel-default">
+                        <div class="panel-heading">
+                            <h3 id="_account" class="panel-title">/account</h3>
+                        </div>
+
+                        <div class="panel-body">
+                            <div class="panel-group">
+                                <div class="panel panel-white">
     <div class="panel-heading">
         <h4 class="panel-title">
-            <a class="block collapsed" data-toggle="collapse" href="#_account">
+            <a class="block collapsed" data-toggle="collapse" href="#panel__account">
                 
                     <span class="badge badge_post">post</span>
                 
@@ -102,7 +120,7 @@
             </a>
         </h4>
     </div>
-    <div id="_account" class="panel-collapse collapse">
+    <div id="panel__account" class="panel-collapse collapse">
         <div class="panel-body">
             <div class="list-group">
                 
@@ -175,7 +193,7 @@
     <div class="panel panel-white">
     <div class="panel-heading">
         <h4 class="panel-title">
-            <a class="block collapsed" data-toggle="collapse" href="#_account__id_">
+            <a class="block collapsed" data-toggle="collapse" href="#panel__account__id_">
                 
                     <span class="badge badge_get">get</span>
                 
@@ -187,7 +205,7 @@
             </a>
         </h4>
     </div>
-    <div id="_account__id_" class="panel-collapse collapse">
+    <div id="panel__account__id_" class="panel-collapse collapse">
         <div class="panel-body">
             <div class="list-group">
                 
@@ -345,7 +363,7 @@
     <div class="panel panel-white">
     <div class="panel-heading">
         <h4 class="panel-title">
-            <a class="block collapsed" data-toggle="collapse" href="#_account_login">
+            <a class="block collapsed" data-toggle="collapse" href="#panel__account_login">
                 
                     <span class="badge badge_post">post</span>
                 
@@ -353,7 +371,7 @@
             </a>
         </h4>
     </div>
-    <div id="_account_login" class="panel-collapse collapse">
+    <div id="panel__account_login" class="panel-collapse collapse">
         <div class="panel-body">
             <div class="list-group">
                 
@@ -429,7 +447,7 @@
     <div class="panel panel-white">
     <div class="panel-heading">
         <h4 class="panel-title">
-            <a class="block collapsed" data-toggle="collapse" href="#_account_forgot">
+            <a class="block collapsed" data-toggle="collapse" href="#panel__account_forgot">
                 
                     <span class="badge badge_post">post</span>
                 
@@ -437,7 +455,7 @@
             </a>
         </h4>
     </div>
-    <div id="_account_forgot" class="panel-collapse collapse">
+    <div id="panel__account_forgot" class="panel-collapse collapse">
         <div class="panel-body">
             <div class="list-group">
                 
@@ -503,7 +521,7 @@
     <div class="panel panel-white">
     <div class="panel-heading">
         <h4 class="panel-title">
-            <a class="block collapsed" data-toggle="collapse" href="#_account_session">
+            <a class="block collapsed" data-toggle="collapse" href="#panel__account_session">
                 
                     <span class="badge badge_get">get</span>
                 
@@ -513,7 +531,7 @@
             </a>
         </h4>
     </div>
-    <div id="_account_session" class="panel-collapse collapse">
+    <div id="panel__account_session" class="panel-collapse collapse">
         <div class="panel-body">
             <div class="list-group">
                 
@@ -608,21 +626,21 @@
 
 
 
+                            </div>
+                        </div>
                     </div>
-                </div>
-            </div>
-        
-            <div class="panel panel-default">
-                <div class="panel-heading">
-                    <h3 class="panel-title">/conversations</h3>
-                </div>
+                
+                    <div class="panel panel-default">
+                        <div class="panel-heading">
+                            <h3 id="_conversations" class="panel-title">/conversations</h3>
+                        </div>
 
-                <div class="panel-body">
-                    <div class="panel-group">
-                        <div class="panel panel-white">
+                        <div class="panel-body">
+                            <div class="panel-group">
+                                <div class="panel panel-white">
     <div class="panel-heading">
         <h4 class="panel-title">
-            <a class="block collapsed" data-toggle="collapse" href="#_conversations">
+            <a class="block collapsed" data-toggle="collapse" href="#panel__conversations">
                 
                     <span class="badge badge_get">get</span>
                 
@@ -632,7 +650,7 @@
             </a>
         </h4>
     </div>
-    <div id="_conversations" class="panel-collapse collapse">
+    <div id="panel__conversations" class="panel-collapse collapse">
         <div class="panel-body">
             <div class="list-group">
                 
@@ -746,7 +764,7 @@
     <div class="panel panel-white">
     <div class="panel-heading">
         <h4 class="panel-title">
-            <a class="block collapsed" data-toggle="collapse" href="#_conversations__convId_">
+            <a class="block collapsed" data-toggle="collapse" href="#panel__conversations__convId_">
                 
                     <span class="badge badge_get">get</span>
                 
@@ -756,7 +774,7 @@
             </a>
         </h4>
     </div>
-    <div id="_conversations__convId_" class="panel-collapse collapse">
+    <div id="panel__conversations__convId_" class="panel-collapse collapse">
         <div class="panel-body">
             <div class="list-group">
                 
@@ -865,7 +883,7 @@
     <div class="panel panel-white">
     <div class="panel-heading">
         <h4 class="panel-title">
-            <a class="block collapsed" data-toggle="collapse" href="#_conversations__convId__messages">
+            <a class="block collapsed" data-toggle="collapse" href="#panel__conversations__convId__messages">
                 
                     <span class="badge badge_get">get</span>
                 
@@ -875,7 +893,7 @@
             </a>
         </h4>
     </div>
-    <div id="_conversations__convId__messages" class="panel-collapse collapse">
+    <div id="panel__conversations__convId__messages" class="panel-collapse collapse">
         <div class="panel-body">
             <div class="list-group">
                 
@@ -979,7 +997,7 @@
     <div class="panel panel-white">
     <div class="panel-heading">
         <h4 class="panel-title">
-            <a class="block collapsed" data-toggle="collapse" href="#_conversations__convId__messages__messageId_">
+            <a class="block collapsed" data-toggle="collapse" href="#panel__conversations__convId__messages__messageId_">
                 
                     <span class="badge badge_put">put</span>
                 
@@ -989,7 +1007,7 @@
             </a>
         </h4>
     </div>
-    <div id="_conversations__convId__messages__messageId_" class="panel-collapse collapse">
+    <div id="panel__conversations__convId__messages__messageId_" class="panel-collapse collapse">
         <div class="panel-body">
             <div class="list-group">
                 
@@ -1102,21 +1120,21 @@
 
 
 
+                            </div>
+                        </div>
                     </div>
-                </div>
-            </div>
-        
-            <div class="panel panel-default">
-                <div class="panel-heading">
-                    <h3 class="panel-title">/users</h3>
-                </div>
+                
+                    <div class="panel panel-default">
+                        <div class="panel-heading">
+                            <h3 id="_users" class="panel-title">/users</h3>
+                        </div>
 
-                <div class="panel-body">
-                    <div class="panel-group">
-                        <div class="panel panel-white">
+                        <div class="panel-body">
+                            <div class="panel-group">
+                                <div class="panel panel-white">
     <div class="panel-heading">
         <h4 class="panel-title">
-            <a class="block collapsed" data-toggle="collapse" href="#_users">
+            <a class="block collapsed" data-toggle="collapse" href="#panel__users">
                 
                     <span class="badge badge_get">get</span>
                 
@@ -1126,7 +1144,7 @@
             </a>
         </h4>
     </div>
-    <div id="_users" class="panel-collapse collapse">
+    <div id="panel__users" class="panel-collapse collapse">
         <div class="panel-body">
             <div class="list-group">
                 
@@ -1240,7 +1258,7 @@
     <div class="panel panel-white">
     <div class="panel-heading">
         <h4 class="panel-title">
-            <a class="block collapsed" data-toggle="collapse" href="#_users__userId_">
+            <a class="block collapsed" data-toggle="collapse" href="#panel__users__userId_">
                 
                     <span class="badge badge_get">get</span>
                 
@@ -1252,7 +1270,7 @@
             </a>
         </h4>
     </div>
-    <div id="_users__userId_" class="panel-collapse collapse">
+    <div id="panel__users__userId_" class="panel-collapse collapse">
         <div class="panel-body">
             <div class="list-group">
                 
@@ -1408,21 +1426,21 @@
 
 
 
+                            </div>
+                        </div>
                     </div>
-                </div>
-            </div>
-        
-            <div class="panel panel-default">
-                <div class="panel-heading">
-                    <h3 class="panel-title">/groups</h3>
-                </div>
+                
+                    <div class="panel panel-default">
+                        <div class="panel-heading">
+                            <h3 id="_groups" class="panel-title">/groups</h3>
+                        </div>
 
-                <div class="panel-body">
-                    <div class="panel-group">
-                        <div class="panel panel-white">
+                        <div class="panel-body">
+                            <div class="panel-group">
+                                <div class="panel panel-white">
     <div class="panel-heading">
         <h4 class="panel-title">
-            <a class="block collapsed" data-toggle="collapse" href="#_groups">
+            <a class="block collapsed" data-toggle="collapse" href="#panel__groups">
                 
                     <span class="badge badge_get">get</span>
                 
@@ -1432,7 +1450,7 @@
             </a>
         </h4>
     </div>
-    <div id="_groups" class="panel-collapse collapse">
+    <div id="panel__groups" class="panel-collapse collapse">
         <div class="panel-body">
             <div class="list-group">
                 
@@ -1537,7 +1555,7 @@
     <div class="panel panel-white">
     <div class="panel-heading">
         <h4 class="panel-title">
-            <a class="block collapsed" data-toggle="collapse" href="#_groups__groupId_">
+            <a class="block collapsed" data-toggle="collapse" href="#panel__groups__groupId_">
                 
                     <span class="badge badge_get">get</span>
                 
@@ -1549,7 +1567,7 @@
             </a>
         </h4>
     </div>
-    <div id="_groups__groupId_" class="panel-collapse collapse">
+    <div id="panel__groups__groupId_" class="panel-collapse collapse">
         <div class="panel-body">
             <div class="list-group">
                 
@@ -1715,7 +1733,7 @@
     <div class="panel panel-white">
     <div class="panel-heading">
         <h4 class="panel-title">
-            <a class="block collapsed" data-toggle="collapse" href="#_groups__groupId__users">
+            <a class="block collapsed" data-toggle="collapse" href="#panel__groups__groupId__users">
                 
                     <span class="badge badge_post">post</span>
                 
@@ -1723,7 +1741,7 @@
             </a>
         </h4>
     </div>
-    <div id="_groups__groupId__users" class="panel-collapse collapse">
+    <div id="panel__groups__groupId__users" class="panel-collapse collapse">
         <div class="panel-body">
             <div class="list-group">
                 
@@ -1787,7 +1805,7 @@
     <div class="panel panel-white">
     <div class="panel-heading">
         <h4 class="panel-title">
-            <a class="block collapsed" data-toggle="collapse" href="#_groups__groupId__users__userId_">
+            <a class="block collapsed" data-toggle="collapse" href="#panel__groups__groupId__users__userId_">
                 
                     <span class="badge badge_delete">delete</span>
                 
@@ -1795,7 +1813,7 @@
             </a>
         </h4>
     </div>
-    <div id="_groups__groupId__users__userId_" class="panel-collapse collapse">
+    <div id="panel__groups__groupId__users__userId_" class="panel-collapse collapse">
         <div class="panel-body">
             <div class="list-group">
                 
@@ -1861,10 +1879,28 @@
 
 
 
+                            </div>
+                        </div>
                     </div>
+                
+            </div>
+
+            <div class="col-md-3">
+                <div id="sidebar" class="hidden-print affix" role="complementary">
+                    <ul class="nav nav-pills nav-stacked">
+                        
+                            <li><a href="#_account">/account</a></li>
+                        
+                            <li><a href="#_conversations">/conversations</a></li>
+                        
+                            <li><a href="#_users">/users</a></li>
+                        
+                            <li><a href="#_groups">/groups</a></li>
+                        
+                    </ul>
                 </div>
             </div>
-        
+        </div>
     </div>
 </body>
 </html>

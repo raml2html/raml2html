@@ -88,6 +88,11 @@
                 <div class="page-header">
                     <h1>{{title}} API documentation <small>version {{version}}</small></h1>
                     <p>{{baseUri}}</p>
+
+                    {{#documentation}}
+                        <h3>{{title}}</h3>
+                        {{md content}}
+                    {{/documentation}}
                 </div>
 
                 {{#resources}}
