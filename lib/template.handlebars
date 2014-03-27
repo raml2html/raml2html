@@ -1,6 +1,8 @@
+<!DOCTYPE HTML>
 <html>
 <head>
     <title>{{title}} API documentation</title>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <link rel="stylesheet" href="http://netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css">
     <script src="http://code.jquery.com/jquery-1.11.0.min.js"></script>
     <script src="http://netdna.bootstrapcdn.com/bootstrap/3.1.1/js/bootstrap.min.js"></script>
@@ -73,29 +75,46 @@
             border-bottom: 1px solid #ddd;
             padding: 10px;
         }
+        #sidebar {
+            margin-top: 30px;
+        }
     </style>
 </head>
 
-<body>
+<body data-spy="scroll" data-target="#sidebar">
     <div class="container">
-        <div class="page-header">
-            <h1>{{title}} API documentation <small>version {{version}}</small></h1>
-            <p>{{baseUri}}</p>
-        </div>
-
-        {{#resources}}
-            <div class="panel panel-default">
-                <div class="panel-heading">
-                    <h3 class="panel-title">{{relativeUri}}</h3>
+        <div class="row">
+            <div class="col-md-9" role="main">
+                <div class="page-header">
+                    <h1>{{title}} API documentation <small>version {{version}}</small></h1>
+                    <p>{{baseUri}}</p>
                 </div>
 
-                <div class="panel-body">
-                    <div class="panel-group">
-                        {{> resource}}
+                {{#resources}}
+                    <div class="panel panel-default">
+                        <div class="panel-heading">
+                            <h3 id="{{uniqueId}}" class="panel-title">{{relativeUri}}</h3>
+                        </div>
+
+                        <div class="panel-body">
+                            <div class="panel-group">
+                                {{> resource}}
+                            </div>
+                        </div>
                     </div>
+                {{/resources}}
+            </div>
+
+            <div class="col-md-3">
+                <div id="sidebar" class="hidden-print affix" role="complementary">
+                    <ul class="nav nav-pills nav-stacked">
+                        {{#resources}}
+                            <li><a href="#{{uniqueId}}">{{relativeUri}}</a></li>
+                        {{/resources}}
+                    </ul>
                 </div>
             </div>
-        {{/resources}}
+        </div>
     </div>
 </body>
 </html>
