@@ -22,8 +22,14 @@ traits:
           type: number
 
 /account:
+  description: |
+    This is the top level description for /account.
+    * One
+    * Two
+    * Three
+
   post:
-    description: Creates a new account
+    description: Creates a new account. Some **bold** text here.
     body:
       application/json:
         example: |
@@ -38,7 +44,6 @@ traits:
 
   /{id}:
     get:
-      description: Get the account
 
     put:
       description: Update the account

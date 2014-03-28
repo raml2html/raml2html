@@ -13,7 +13,10 @@
         <div class="panel-body">
             <div class="list-group">
                 {{#methods}}
-                    <a href="#" data-toggle="modal" data-target="#{{../uniqueId}}_{{method}}" class="list-group-item"><span class="badge badge_{{method}}">{{method}}</span> {{description}}</a>
+                    <a href="#" data-toggle="modal" data-target="#{{../uniqueId}}_{{method}}" class="list-group-item">
+                        <span class="badge badge_{{method}}">{{method}}</span>
+                        {{description}}
+                    </a>
                 {{/methods}}
             </div>
         </div>
@@ -31,7 +34,7 @@
                         </h4>
                     </div>
                     <div class="modal-body">
-                        <div class="alert alert-info">{{description}}</div>
+                        <div class="alert alert-info">{{md description}}</div>
 
                         <!-- Nav tabs -->
                         <ul class="nav nav-tabs">

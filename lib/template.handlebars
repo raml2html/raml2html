@@ -78,6 +78,10 @@
         #sidebar {
             margin-top: 30px;
         }
+        .resource-description {
+            background: #F5F5F5;
+            padding: 10px;
+        }
     </style>
 </head>
 
@@ -102,6 +106,12 @@
                         </div>
 
                         <div class="panel-body">
+                            {{#if description}}
+                                <div class="resource-description">
+                                    {{md description}}
+                                </div>
+                            {{/if}}
+
                             <div class="panel-group">
                                 {{> resource}}
                             </div>
