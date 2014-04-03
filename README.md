@@ -15,10 +15,11 @@ raml2html example.raml > example.html
 ```
 
 ## To do
-This project is in a very early stage, with plenty left to do:
+This project is still very much a work in progress, but the output is quite useable already.
 
-* Finish HTML output, currently there a lot missing (request, response, headers, etc)
-* Better error checking
+* Template options (for example to turn off side bar navigation)
+* Finish HTML output, currently there's still a lot missing (like headers) and a bit messy (need to hide empty tabs)
+* Different templates (for example render to Markdown to create awesome README's)
 
 
 ## Example output
