@@ -55,9 +55,6 @@ traits:
         number:
           type: integer
   /{id}:
-    uriParameters:
-      id:
-        description: The account id.
     get:
 
     put:
@@ -65,10 +62,6 @@ traits:
 
     delete:
       description: Delete the account
-
-    /printable:
-      get:
-        description: A nice printable version
 
   /login:
     post:
