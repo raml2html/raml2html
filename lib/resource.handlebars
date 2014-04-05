@@ -45,14 +45,12 @@
                         <!-- Tab panes -->
                         <div class="tab-content">
                             <div class="tab-pane active" id="{{../uniqueId}}_{{method}}_request">
-                                {{#if ../uriParameters}}
-                                    <h4>URI Parameters</h4>
-                                    <ul>
-                                        {{#each ../../uriParameters}}
-                                            <li><strong>{{this.displayName}}</strong>: {{this.type}}</li>
-                                        {{/each}}
-                                    </ul>
-                                {{/if}}
+                                <h4>URI Parameters</h4>
+                                <ul>
+                                  {{#getparams ../parentUrl ../relativeUri}}
+                                  <li><strong>{{this.displayName}}</strong>: {{this.type}}</li>
+                                  {{/getparams}}
+                                </ul>
 
                                 {{#if queryParameters}}
                                     <h4>Query Parameters</h4>
