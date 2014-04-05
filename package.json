@@ -12,7 +12,8 @@
   "dependencies": {
     "handlebars": "~2.0.0-alpha.1",
     "marked": "^0.3.2",
-    "raml-parser": "~0.8.5"
+    "raml-parser": "~0.8.5",
+    "traverse": "^0.6.6"
   },
   "homepage": "https://github.com/kevinrenskers/raml2html",
   "keywords": [
