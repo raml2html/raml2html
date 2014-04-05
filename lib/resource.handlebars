@@ -58,7 +58,25 @@
                                     <h4>Query Parameters</h4>
                                     <ul>
                                         {{#each queryParameters}}
-                                            <li><strong>{{@key}}</strong>: {{this.description}}</li>
+                                            <li>
+                                              <strong>{{@key}}</strong>
+                                              <em>
+                                                {{#if this.required}}
+                                                  required
+                                                {{/if}}
+                                                {{#if this.enum}}
+                                                  one of ({{this.enum}})
+                                                {{else}}
+                                                  ({{this.type}})
+                                                {{/if}}
+                                              </em> <br>{{this.description}}
+                                              {{#if this.example}}
+                                              <br>
+                                              <small><strong>Example:</strong>
+                                                <code>{{this.example}}</code>
+                                            </small>
+                                              {{/if}}
+                                            </li>
                                         {{/each}}
                                     </ul>
                                 {{/if}}

@@ -42,6 +42,18 @@ traits:
       200:
         description: Account was created and user is now logged in
 
+  /find:
+    get:
+      description: find an account
+      queryParameters:
+        name:
+          description: name on account
+          required: true
+          example: Naruto Uzumaki
+        gender:
+          enum: ["male", "female"]
+        number:
+          type: integer
   /{id}:
     get:
 
