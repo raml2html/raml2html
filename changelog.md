@@ -1,4 +1,7 @@
-0.8.1. - April 7, 2014
+0.8.2 - April 7, 2014
+- Showing all uri parameters, also those from parents
+
+0.8.1 - April 7, 2014
 - Code cleanup, added allUriParameters property to every resource
 
 0.8.0 - April 5, 2014
