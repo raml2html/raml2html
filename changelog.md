@@ -1,3 +1,6 @@
+0.10.0 - April 8, 2014
+- New parseWithConfig method allowing you to override the templates
+
 0.9.0 - April 8, 2014
 - Allow raml2html to be used programmatically from another module
 
