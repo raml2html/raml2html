@@ -1,3 +1,6 @@
+0.9.0 - April 8, 2014
+- Allow raml2html to be used programmatically from another module
+
 0.8.2 - April 7, 2014
 - Showing all uri parameters, also those from parents
 
