@@ -1,3 +1,6 @@
+0.11.0 - April 9, 2014
+- Render the description of query params with Markdown
+
 0.10.0 - April 8, 2014
 - New parseWithConfig method allowing you to override the templates
 
