@@ -39,14 +39,16 @@
                         <!-- Nav tabs -->
                         <ul class="nav nav-tabs">
                             <li class="active"><a href="#{{../uniqueId}}_{{method}}_request" data-toggle="tab">Request</a></li>
-                            <li><a href="#{{../uniqueId}}_{{method}}_response" data-toggle="tab">Response</a></li>
+                            {{#if responses}}
+                                <li><a href="#{{../../uniqueId}}_{{method}}_response" data-toggle="tab">Response</a></li>
+                            {{/if}}
                         </ul>
 
                         <!-- Tab panes -->
                         <div class="tab-content">
                             <div class="tab-pane active" id="{{../uniqueId}}_{{method}}_request">
                                 {{#if ../allUriParameters}}
-                                    <h4>URI Parameters</h4>
+                                    <h3>URI Parameters</h3>
                                     <ul>
                                         {{#each ../../allUriParameters}}
                                             <li><strong>{{this.displayName}}</strong>: {{this.type}}</li>
@@ -55,7 +57,7 @@
                                 {{/if}}
 
                                 {{#if queryParameters}}
-                                    <h4>Query Parameters</h4>
+                                    <h3>Query Parameters</h3>
                                     <ul>
                                         {{#each queryParameters}}
                                             <li>
@@ -87,7 +89,7 @@
                                 {{/if}}
 
                                 {{#if body}}
-                                    <h4>Body</h4>
+                                    <h3>Body</h3>
                                     {{#each body}}
                                         <p><strong>Type: {{@key}}</strong></p>
                                         <pre>{{this.example}}</pre>
@@ -95,16 +97,31 @@
                                 {{/if}}
                             </div>
 
-                            <div class="tab-pane" id="{{../uniqueId}}_{{method}}_response">
-                                {{#if responses}}
-                                    <h4>Responses</h4>
-                                    <ul>
-                                        {{#each responses}}
-                                            <li><strong>{{@key}}</strong>: {{this.description}}</li>
-                                        {{/each}}
-                                    </ul>
-                                {{/if}}
-                            </div>
+                            {{#if responses}}
+                                <div class="tab-pane" id="{{../../uniqueId}}_{{method}}_response">
+                                    {{#each responses}}
+                                        <h2>HTTP status code {{@key}}</h2>
+                                        {{md this.description}}
+
+                                        {{#if this.headers}}
+                                            <h3>Headers</h3>
+                                            <ul>
+                                                {{#each this.headers}}
+                                                    <li><strong>{{@key}}</strong>: {{this.type}}</li>
+                                                {{/each}}
+                                            </ul>
+                                        {{/if}}
+
+                                        {{#if this.body}}
+                                            <h3>Body</h3>
+                                            {{#each this.body}}
+                                                <p><strong>Type: {{@key}}</strong></p>
+                                                <pre>{{this.example}}</pre>
+                                            {{/each}}
+                                        {{/if}}
+                                    {{/each}}
+                                </div>
+                            {{/if}}
                         </div>
                     </div>
                 </div>
