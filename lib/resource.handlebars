@@ -59,23 +59,28 @@
                                     <ul>
                                         {{#each queryParameters}}
                                             <li>
-                                              <strong>{{@key}}</strong>
-                                              <em>
-                                                {{#if this.required}}
-                                                  required
+                                                <strong>{{@key}}</strong>
+                                                <em>
+                                                    {{#if this.required}}
+                                                      required
+                                                    {{/if}}
+                                                    {{#if this.enum}}
+                                                      one of ({{this.enum}})
+                                                    {{else}}
+                                                      ({{this.type}})
+                                                    {{/if}}
+                                                </em>
+
+                                                {{md description}}
+
+                                                {{#if this.example}}
+                                                    <p>
+                                                        <small>
+                                                            <strong>Example:</strong>
+                                                            <code>{{this.example}}</code>
+                                                        </small>
+                                                    </p>
                                                 {{/if}}
-                                                {{#if this.enum}}
-                                                  one of ({{this.enum}})
-                                                {{else}}
-                                                  ({{this.type}})
-                                                {{/if}}
-                                              </em> <br>{{this.description}}
-                                              {{#if this.example}}
-                                              <br>
-                                              <small><strong>Example:</strong>
-                                                <code>{{this.example}}</code>
-                                            </small>
-                                              {{/if}}
                                             </li>
                                         {{/each}}
                                     </ul>
