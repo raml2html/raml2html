@@ -1,3 +1,6 @@
+0.12.0 - April 14, 2014
+- Added UTF-8 meta tag
+
 0.11.0 - April 9, 2014
 - Render the description of query params with Markdown
 
