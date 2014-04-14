@@ -92,7 +92,22 @@
                                     <h3>Body</h3>
                                     {{#each body}}
                                         <p><strong>Type: {{@key}}</strong></p>
-                                        <pre>{{this.example}}</pre>
+                                        {{#if this.schema}}
+                                            <p>
+                                                <small>
+                                                    <strong>Schema:</strong>
+                                                    <pre>{{this.schema}}</pre>
+                                                </small>
+                                            </p>
+                                        {{/if}}
+                                        {{#if this.example}}
+                                            <p>
+                                                <small>
+                                                    <strong>Example:</strong>
+                                                    <pre>{{this.example}}</pre>
+                                                </small>
+                                            </p>
+                                        {{/if}}
                                     {{/each}}
                                 {{/if}}
                             </div>
@@ -116,7 +131,22 @@
                                             <h3>Body</h3>
                                             {{#each this.body}}
                                                 <p><strong>Type: {{@key}}</strong></p>
-                                                <pre>{{this.example}}</pre>
+                                                {{#if this.schema}}
+                                                    <p>
+                                                        <small>
+                                                            <strong>Schema:</strong>
+                                                            <pre>{{this.schema}}</pre>
+                                                        </small>
+                                                    </p>
+                                                {{/if}}
+                                                {{#if this.example}}
+                                                    <p>
+                                                        <small>
+                                                            <strong>Example:</strong>
+                                                            <pre>{{this.example}}</pre>
+                                                        </small>
+                                                    </p>
+                                                {{/if}}
                                             {{/each}}
                                         {{/if}}
                                     {{/each}}
