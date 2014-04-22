@@ -92,7 +92,7 @@
                                     <h3>Body</h3>
                                     {{#each body}}
                                         <p><strong>Type: {{@key}}</strong></p>
-                                        <pre>{{this.example}}</pre>
+                                        <pre>{{highlight this.example}}</pre>
                                     {{/each}}
                                 {{/if}}
                             </div>
@@ -116,7 +116,7 @@
                                             <h3>Body</h3>
                                             {{#each this.body}}
                                                 <p><strong>Type: {{@key}}</strong></p>
-                                                <pre>{{this.example}}</pre>
+                                                <pre>{{highlight this.example}}</pre>
                                             {{/each}}
                                         {{/if}}
                                     {{/each}}
