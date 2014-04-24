@@ -5,6 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
     <link rel="stylesheet" href="http://netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css">
+    <link rel="stylesheet" href="http://yandex.st/highlightjs/8.0/styles/github.min.css">
     <script src="http://code.jquery.com/jquery-1.11.0.min.js"></script>
     <script src="http://netdna.bootstrapcdn.com/bootstrap/3.1.1/js/bootstrap.min.js"></script>
 
@@ -101,7 +102,7 @@
         <div class="row">
             <div class="col-md-9" role="main">
                 <div class="page-header">
-                    <h1>{{title}} API documentation <small>version {{version}}</small></h1>
+                    <h1>{{title}} API documentation{{#if version}} <small>version {{version}}</small>{{/if}}</h1>
                     <p>{{baseUri}}</p>
 
                     {{#documentation}}
