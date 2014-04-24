@@ -1,3 +1,6 @@
+0.13.0 - April 24, 2014
+- Added syntax highlighting
+
 0.12.0 - April 14, 2014
 - Added UTF-8 meta tag
 
