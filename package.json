@@ -13,7 +13,8 @@
     "handlebars": "~2.0.0-alpha.1",
     "highlight.js": "^8.0.0",
     "marked": "^0.3.2",
-    "raml-parser": "~0.8.5"
+    "raml-parser": "~0.8.5",
+    "optimist": "~0.6.1"
   },
   "homepage": "https://github.com/kevinrenskers/raml2html",
   "keywords": [
