@@ -14,7 +14,8 @@
     "highlight.js": "^8.0.0",
     "marked": "^0.3.2",
     "raml-parser": "~0.8.5",
-    "optimist": "~0.6.1"
+    "optimist": "~0.6.1",
+    "express": "~4.1.1"
   },
   "homepage": "https://github.com/kevinrenskers/raml2html",
   "keywords": [

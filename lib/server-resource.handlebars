@@ -1,0 +1,22 @@
+{{#methods}}
+app.{{method}}('{{../relativeUri}}', function(request, response, next) {
+  {{#if responses}}
+    {{#each responses}}
+      {{#ifEquals @key '200'}}
+        {{#if body}}
+  response.writeHead({{@key}}, {
+          {{#each this.body}}
+    'Content-Type': '{{@key}}'
+  });
+  response.write({{json this.example}});
+          {{/each}}
+        {{/if}}
+      {{/ifEquals}}
+    {{/each}}
+  {{else}}
+  response.writeHead(200);
+  response.write("<html><head></head><body><h1>OK</h1></body></html>");
+  {{/if}}
+  response.end();
+});
+{{/methods}}
