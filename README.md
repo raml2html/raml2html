@@ -11,7 +11,7 @@ npm i -g raml2html
 
 ## Usage
 ```
-raml2html example.raml > example.html
+raml2html --raml example.raml -o example.html
 ```
 
 ## To do
