@@ -38,10 +38,12 @@
 
                         <!-- Nav tabs -->
                         <ul class="nav nav-tabs">
-                            <li class="active"><a href="#{{../uniqueId}}_{{method}}_request"
-                                                  data-toggle="tab">Request</a></li>
+                            <li class="active">
+                                <a href="#{{../uniqueId}}_{{method}}_request"data-toggle="tab">Request</a>
+                            </li>
                             {{#if responses}}
-                                <li><a href="#{{../../uniqueId}}_{{method}}_response" data-toggle="tab">Response</a>
+                                <li>
+                                    <a href="#{{../../uniqueId}}_{{method}}_response" data-toggle="tab">Response</a>
                                 </li>
                             {{/if}}
                         </ul>
