@@ -38,9 +38,11 @@
 
                         <!-- Nav tabs -->
                         <ul class="nav nav-tabs">
-                            <li class="active"><a href="#{{../uniqueId}}_{{method}}_request" data-toggle="tab">Request</a></li>
+                            <li class="active"><a href="#{{../uniqueId}}_{{method}}_request"
+                                                  data-toggle="tab">Request</a></li>
                             {{#if responses}}
-                                <li><a href="#{{../../uniqueId}}_{{method}}_response" data-toggle="tab">Response</a></li>
+                                <li><a href="#{{../../uniqueId}}_{{method}}_response" data-toggle="tab">Response</a>
+                                </li>
                             {{/if}}
                         </ul>
 
@@ -64,17 +66,24 @@
                                                 <strong>{{@key}}</strong>
                                                 <em>
                                                     {{#if this.required}}
-                                                      required
+                                                        required
                                                     {{/if}}
                                                     {{#if this.enum}}
-                                                      one of ({{this.enum}})
+                                                        one of ({{this.enum}})
                                                     {{else}}
-                                                      ({{this.type}})
+                                                        ({{this.type}})
                                                     {{/if}}
                                                 </em>
 
                                                 {{md description}}
-
+                                                {{#if this.schema}}
+                                                    <p>
+                                                        <small>
+                                                            <strong>Schema:</strong>
+                                                            <code>{{this.schema}}</code>
+                                                        </small>
+                                                    </p>
+                                                {{/if}}
                                                 {{#if this.example}}
                                                     <p>
                                                         <small>
@@ -92,7 +101,14 @@
                                     <h3>Body</h3>
                                     {{#each body}}
                                         <p><strong>Type: {{@key}}</strong></p>
-                                        <pre>{{highlight this.example}}</pre>
+                                        {{#if this.schema}}
+                                            <strong>Schema:</strong>
+                                            <pre>{{highlight this.schema}}</pre>
+                                        {{/if}}
+                                        {{#if this.example}}
+                                            <strong>Example:</strong>
+                                            <pre>{{highlight this.example}}</pre>
+                                        {{/if}}
                                     {{/each}}
                                 {{/if}}
                             </div>
@@ -116,7 +132,14 @@
                                             <h3>Body</h3>
                                             {{#each this.body}}
                                                 <p><strong>Type: {{@key}}</strong></p>
-                                                <pre>{{highlight this.example}}</pre>
+                                                {{#if this.schema}}
+                                                    <strong>Schema:</strong>
+                                                    <pre>{{highlight this.schema}}</pre>
+                                                {{/if}}
+                                                {{#if this.example}}
+                                                    <strong>Example:</strong>
+                                                    <pre>{{highlight this.example}}</pre>
+                                                {{/if}}
                                             {{/each}}
                                         {{/if}}
                                     {{/each}}
