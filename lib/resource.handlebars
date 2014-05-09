@@ -16,6 +16,7 @@
                     <a href="#" data-toggle="modal" data-target="#{{../uniqueId}}_{{method}}" class="list-group-item">
                         <span class="badge badge_{{method}}">{{method}}</span>
                         {{description}}
+                        {{#if securedBy}}<span class="pull-right"><span class="glyphicon glyphicon-lock" title="Authentication required"></span></span>{{/if}}
                     </a>
                 {{/methods}}
             </div>
