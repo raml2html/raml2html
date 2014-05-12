@@ -1,3 +1,10 @@
+0.15.0 - May 12, 2014
+- Show padlock for secured methods
+- Handle resource urls with periods
+
+0.14.0 - May 6, 2014
+- Better schema handling
+
 0.13.0 - April 24, 2014
 - Added syntax highlighting
 
