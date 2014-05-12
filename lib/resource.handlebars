@@ -3,7 +3,7 @@
         <h4 class="panel-title">
             <a class="block collapsed" data-toggle="collapse" href="#panel_{{uniqueId}}">
                 {{#methods}}
-                    <span class="badge badge_{{method}}">{{method}}{{#if securedBy}} <span class="glyphicon glyphicon-lock" title="Authentication required"></span>{{/if}}</span>
+                    <span class="badge badge_{{method}}">{{method}}{{lock securedBy}}</span>
                 {{/methods}}
                 <span class="parent">{{parentUrl}}</span>{{relativeUri}}
             </a>
@@ -14,7 +14,7 @@
             <div class="list-group">
                 {{#methods}}
                     <a href="#" data-toggle="modal" data-target="#{{../uniqueId}}_{{method}}" class="list-group-item">
-                        <span class="badge badge_{{method}}">{{method}}{{#if securedBy}} <span class="glyphicon glyphicon-lock" title="Authentication required"></span>{{/if}}</span>
+                        <span class="badge badge_{{method}}">{{method}}{{lock securedBy}}</span>
                         {{description}}
                     </a>
                 {{/methods}}
@@ -29,7 +29,7 @@
                     <div class="modal-header">
                         <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
                         <h4 class="modal-title" id="myModalLabel">
-                            <span class="badge badge_{{method}}">{{method}}{{#if securedBy}} <span class="glyphicon glyphicon-lock" title="Authentication required"></span>{{/if}}</span>
+                            <span class="badge badge_{{method}}">{{method}}{{lock securedBy}}</span>
                             <span class="parent">{{../parentUrl}}</span>{{../relativeUri}}
                         </h4>
                     </div>

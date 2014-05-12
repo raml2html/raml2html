@@ -1,3 +1,6 @@
+0.15.1 - May 12, 2014
+- Hide padlock for unsecured methods when the default is secured
+
 0.15.0 - May 12, 2014
 - Show padlock for secured methods
 - Handle resource urls with periods
