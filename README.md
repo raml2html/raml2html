@@ -10,15 +10,32 @@ npm i -g raml2html
 
 
 ## Usage
+As a command line script:
+
 ```
 raml2html example.raml > example.html
 ```
+
+As a library:
+
+```
+var raml2html = require('raml2html');
+
+// Using the default templates:
+// source can either be a filename, file contents (string) or parsed RAML object
+raml2html.parse(source, onSuccess, onError);
+
+// Using your own templates:
+// config should be an object with at least an `template` property
+raml2html.parseWithConfig(source, config, onSuccess, onError);
+```
+
 
 ## To do
 This project is still very much a work in progress, but the output is quite useable already.
 
 * Template options (for example to turn off side bar navigation)
-* Finish HTML output, currently there's still a lot missing (like headers) and a bit messy (need to hide empty tabs)
+* Finish HTML output, currently there's still some stuff missing (like securedBy and headers)
 * Different templates (for example render to Markdown to create awesome README's)
 
 

@@ -1,24 +1,27 @@
+0.16.0 - May 13, 2014
+- Support loading source from file, string or buffer (#9)
+
 0.15.1 - May 12, 2014
-- Hide padlock for unsecured methods when the default is secured
+- Hide padlock for unsecured methods when the default is secured (#16)
 
 0.15.0 - May 12, 2014
-- Show padlock for secured methods
-- Handle resource urls with periods
+- Show padlock for secured methods (#14)
+- Handle resource urls with periods (#15)
 
 0.14.0 - May 6, 2014
-- Better schema handling
+- Better schema handling (#12)
 
 0.13.0 - April 24, 2014
-- Added syntax highlighting
+- Added syntax highlighting (#8)
 
 0.12.0 - April 14, 2014
-- Added UTF-8 meta tag
+- Added UTF-8 meta tag (#7)
 
 0.11.0 - April 9, 2014
 - Render the description of query params with Markdown
 
 0.10.0 - April 8, 2014
-- New parseWithConfig method allowing you to override the templates
+- New parseWithConfig method allowing you to override the templates (#5)
 
 0.9.0 - April 8, 2014
 - Allow raml2html to be used programmatically from another module
