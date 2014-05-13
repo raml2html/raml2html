@@ -118,7 +118,7 @@
                             {{#if responses}}
                                 <div class="tab-pane" id="{{../../uniqueId}}_{{method}}_response">
                                     {{#each responses}}
-                                        <h2>HTTP status code {{@key}}</h2>
+                                        <h2>HTTP status code <a href="http://httpstatus.es/{{@key}}" target="_blank">{{@key}}</a></h2>
                                         {{md this.description}}
 
                                         {{#if this.headers}}
