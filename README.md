@@ -1,6 +1,6 @@
 # RAML to HTML
 
-A simple RAML to HTML parser written for Node.js.
+A simple RAML to HTML documentation generator, written for Node.js.
 
 
 ## Install
