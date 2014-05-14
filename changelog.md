@@ -1,3 +1,6 @@
+0.17.0 - May 14, 2014
+- Support for command line arguments
+
 0.16.0 - May 13, 2014
 - Support loading source from file, string or buffer (#9)
 
