@@ -10,6 +10,7 @@
     "url": "https://github.com/kevinrenskers/raml2html/issues"
   },
   "dependencies": {
+    "commander": "^2.2.0",
     "handlebars": "~2.0.0-alpha.1",
     "highlight.js": "^8.0.0",
     "marked": "^0.3.2",

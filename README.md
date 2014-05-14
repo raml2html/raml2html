@@ -14,6 +14,7 @@ As a command line script:
 
 ```
 raml2html example.raml > example.html
+raml2html -i example.raml -o example.html
 ```
 
 As a library:
