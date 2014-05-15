@@ -32,14 +32,6 @@ raml2html.parseWithConfig(source, config, onSuccess, onError);
 ```
 
 
-## To do
-This project is still very much a work in progress, but the output is quite usable already.
-
-* Template options (for example to turn off side bar navigation)
-* Finish HTML output, currently there's still some stuff missing (like securedBy and headers)
-* Different templates (for example render to Markdown to create awesome README's)
-
-
 ## Example output
 ![Example output](https://raw.github.com/kevinrenskers/raml2html/master/example.png)
 
@@ -54,6 +46,14 @@ raml2html is an open source project and your contribution is very much appreciat
 
 A big thank you goes out to everyone who helped with the project, our [contributors](https://github.com/kevinrenskers/raml2html/graphs/contributors)
 and everyone who took the time to report issues and give feedback.
+
+
+## To do
+This project is still very much a work in progress, but the output is quite usable already.
+
+* Template options (for example to turn off side bar navigation)
+* Finish HTML output, currently there's still some stuff missing (like securedBy and headers)
+* Different templates (for example render to Markdown to create awesome README's)
 
 
 ## License
