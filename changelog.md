@@ -1,3 +1,6 @@
+0.17.1 - May 14, 2014
+- Bugfix: properly replace all non-word characters in resource with underscores (#20)
+
 0.17.0 - May 14, 2014
 - Support for command line arguments
 
@@ -5,11 +8,11 @@
 - Support loading source from file, string or buffer (#9)
 
 0.15.1 - May 12, 2014
-- Hide padlock for unsecured methods when the default is secured (#16)
+- Bugfix: hide padlock for unsecured methods when the default is secured (#16)
 
 0.15.0 - May 12, 2014
 - Show padlock for secured methods (#14)
-- Handle resource urls with periods (#15)
+- Bugfix: Handle resource urls with periods (#15)
 
 0.14.0 - May 6, 2014
 - Better schema handling (#12)
@@ -27,7 +30,7 @@
 - New parseWithConfig method allowing you to override the templates (#5)
 
 0.9.0 - April 8, 2014
-- Allow raml2html to be used programmatically from another module
+- Allow raml2html to be used pragmatically from another module
 
 0.8.2 - April 7, 2014
 - Showing all uri parameters, also those from parents
