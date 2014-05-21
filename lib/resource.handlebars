@@ -107,7 +107,27 @@
                                             <strong>Schema:</strong>
                                             <pre>{{highlight this.schema}}</pre>
                                         {{/if}}
-                                        {{#if this.example}}
+
+                                        {{#if this.formParameters}}
+                                            <strong>Parameters:</strong>
+                                            <table class="table table-condensed table-striped">
+                                                <tbody>
+                                                    {{#each this.formParameters}}
+                                                        <tr>
+                                                            <td>{{@key}}</td>
+                                                            <td>{{type}}</td>
+                                                            <td>
+                                                                {{#if required}}<strong>Required.</strong>{{/if}}
+                                                                {{description}}
+                                                                {{#if example}}<br>Example: <em>{{example}}</em>{{/if}}
+                                                            </td>
+                                                        </tr>
+                                                    {{/each}}
+                                                </tbody>
+                                            </table>
+                                        {{/if}}
+
+                                         {{#if this.example}}
                                             <strong>Example:</strong>
                                             <pre>{{highlight this.example}}</pre>
                                         {{/if}}
