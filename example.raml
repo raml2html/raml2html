@@ -61,6 +61,15 @@ traits:
 
     put:
       description: Update the account
+      body:
+        application/x-www-form-urlencoded:
+          formParameters:
+            name:
+              description: name on account
+              type: string
+              example: Naruto Uzumaki
+            gender:
+              enum: ["male", "female"]
 
     delete:
       description: Delete the account
