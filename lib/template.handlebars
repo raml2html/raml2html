@@ -114,7 +114,7 @@
                 {{#resources}}
                     <div class="panel panel-default">
                         <div class="panel-heading">
-                            <h3 id="{{uniqueId}}" class="panel-title">{{relativeUri}}</h3>
+                            <h3 id="{{uniqueId}}" class="panel-title">{{#if displayName}}{{displayName}}{{/if}}{{#unless displayName}}{{relativeUri}}{{/unless}}</h3>
                         </div>
 
                         <div class="panel-body">
@@ -136,7 +136,7 @@
                 <div id="sidebar" class="hidden-print affix" role="complementary">
                     <ul class="nav nav-pills nav-stacked">
                         {{#resources}}
-                            <li><a href="#{{uniqueId}}">{{relativeUri}}</a></li>
+                            <li><a href="#{{uniqueId}}">{{#if displayName}}{{displayName}}{{/if}}{{#unless displayName}}{{relativeUri}}{{/unless}}</a></li>
                         {{/resources}}
                     </ul>
                 </div>
