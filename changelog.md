@@ -1,3 +1,7 @@
+0.next - May 14, 2014
+- Render the displayName property of resources
+- Render formParameters
+
 0.17.1 - May 14, 2014
 - Bugfix: properly replace all non-word characters in resource with underscores (#20)
 
