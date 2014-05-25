@@ -1,4 +1,4 @@
-0.next - May 14, 2014
+0.18.0 - May 25, 2014
 - Render the displayName property of resources
 - Render formParameters
 
