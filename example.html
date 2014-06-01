@@ -4,10 +4,14 @@
     <title>Example API documentation</title>
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-    <link rel="stylesheet" href="http://netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css">
-    <link rel="stylesheet" href="http://yandex.st/highlightjs/8.0/styles/github.min.css">
-    <script src="http://code.jquery.com/jquery-1.11.0.min.js"></script>
-    <script src="http://netdna.bootstrapcdn.com/bootstrap/3.1.1/js/bootstrap.min.js"></script>
+
+    <script type="text/javascript">
+        var protocol = ((document.location.protocol === 'https:') ? 'https:': 'http:');
+        document.write('<link rel="stylesheet" href="' + protocol + '//netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css">');
+        document.write('<link rel="stylesheet" href="' + protocol + '//yandex.st/highlightjs/8.0/styles/github.min.css">');
+        document.write('<script type="text/javascript" src="' + protocol + '//code.jquery.com/jquery-1.11.0.min.js"><\/sc' + 'ript>');
+        document.write('<script type="text/javascript" src="' + protocol + '//netdna.bootstrapcdn.com/bootstrap/3.1.1/js/bootstrap.min.js"><\/sc' + 'ript>');
+    </script>
 
     <style>
         .parent {
@@ -199,6 +203,7 @@ to do stuff. See also <a href="https://www.example.com">example.com</a>.</p>
                                     <h3>Body</h3>
                                     
                                         <p><strong>Type: application/json</strong></p>
+                                        
                                         
                                         
                                             <strong>Example:</strong>
@@ -486,6 +491,48 @@ to do stuff. See also <a href="https://www.example.com">example.com</a>.</p>
                                     
                                         <p><strong>Type: application/x-www-form-urlencoded</strong></p>
                                         
+                                            <strong>Form Parameters</strong>
+                                            <ul>
+                                                
+                                                    <li>
+                                                        <strong>name</strong>
+                                                        <em>
+                                                            
+                                                            
+                                                                (string)
+                                                            
+                                                        </em>
+
+                                                        <p>name on account</p>
+
+                                                        
+                                                        
+                                                            <p>
+                                                                <small>
+                                                                    <strong>Example:</strong>
+                                                                    <code>Naruto Uzumaki</code>
+                                                                </small>
+                                                            </p>
+                                                        
+                                                    </li>
+                                                
+                                                    <li>
+                                                        <strong>gender</strong>
+                                                        <em>
+                                                            
+                                                            
+                                                                one of (male,female)
+                                                            
+                                                        </em>
+
+                                                        
+                                                        
+                                                        
+                                                    </li>
+                                                
+                                            </ul>
+                                        
+                                        
                                         
                                     
                                 
@@ -613,6 +660,7 @@ to do stuff. See also <a href="https://www.example.com">example.com</a>.</p>
                                         <p><strong>Type: application/json</strong></p>
                                         
                                         
+                                        
                                             <strong>Example:</strong>
                                             <pre>{
   "<span class="hljs-attribute">email</span>": <span class="hljs-value"><span class="hljs-string">"john@example.com"</span></span>,
@@ -714,6 +762,7 @@ to do stuff. See also <a href="https://www.example.com">example.com</a>.</p>
                                     <h3>Body</h3>
                                     
                                         <p><strong>Type: application/json</strong></p>
+                                        
                                         
                                         
                                             <strong>Example:</strong>
@@ -980,6 +1029,7 @@ to do stuff. See also <a href="https://www.example.com">example.com</a>.</p>
                                     <h3>Body</h3>
                                     
                                         <p><strong>Type: application/json</strong></p>
+                                        
                                         
                                         
                                             <strong>Example:</strong>
@@ -1604,6 +1654,7 @@ to do stuff. See also <a href="https://www.example.com">example.com</a>.</p>
                                         <p><strong>Type: application/json</strong></p>
                                         
                                         
+                                        
                                             <strong>Example:</strong>
                                             <pre>{
   "<span class="hljs-attribute">email</span>": <span class="hljs-value"><span class="hljs-string">"john@example.com"</span></span>,
@@ -1927,6 +1978,7 @@ to do stuff. See also <a href="https://www.example.com">example.com</a>.</p>
                                         <p><strong>Type: application/json</strong></p>
                                         
                                         
+                                        
                                             <strong>Example:</strong>
                                             <pre>{
   "<span class="hljs-attribute">name</span>": <span class="hljs-value"><span class="hljs-string">"Cool people"</span></span>,
@@ -2075,6 +2127,7 @@ to do stuff. See also <a href="https://www.example.com">example.com</a>.</p>
                                         <p><strong>Type: application/json</strong></p>
                                         
                                         
+                                        
                                             <strong>Example:</strong>
                                             <pre>{
   "<span class="hljs-attribute">name</span>": <span class="hljs-value"><span class="hljs-string">"Cool people"</span></span>,
@@ -2207,6 +2260,7 @@ to do stuff. See also <a href="https://www.example.com">example.com</a>.</p>
                                     <h3>Body</h3>
                                     
                                         <p><strong>Type: application/json</strong></p>
+                                        
                                         
                                         
                                             <strong>Example:</strong>

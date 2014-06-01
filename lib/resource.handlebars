@@ -39,7 +39,7 @@
                         <!-- Nav tabs -->
                         <ul class="nav nav-tabs">
                             <li class="active">
-                                <a href="#{{../uniqueId}}_{{method}}_request"data-toggle="tab">Request</a>
+                                <a href="#{{../uniqueId}}_{{method}}_request" data-toggle="tab">Request</a>
                             </li>
                             {{#if responses}}
                                 <li>
@@ -103,6 +103,44 @@
                                     <h3>Body</h3>
                                     {{#each body}}
                                         <p><strong>Type: {{@key}}</strong></p>
+                                        {{#if formParameters}}
+                                            <strong>Form Parameters</strong>
+                                            <ul>
+                                                {{#each formParameters}}
+                                                    <li>
+                                                        <strong>{{@key}}</strong>
+                                                        <em>
+                                                            {{#if this.required}}
+                                                                required
+                                                            {{/if}}
+                                                            {{#if this.enum}}
+                                                                one of ({{this.enum}})
+                                                            {{else}}
+                                                                ({{this.type}})
+                                                            {{/if}}
+                                                        </em>
+
+                                                        {{md description}}
+                                                        {{#if this.schema}}
+                                                            <p>
+                                                                <small>
+                                                                    <strong>Schema:</strong>
+                                                                    <code>{{this.schema}}</code>
+                                                                </small>
+                                                            </p>
+                                                        {{/if}}
+                                                        {{#if this.example}}
+                                                            <p>
+                                                                <small>
+                                                                    <strong>Example:</strong>
+                                                                    <code>{{this.example}}</code>
+                                                                </small>
+                                                            </p>
+                                                        {{/if}}
+                                                    </li>
+                                                {{/each}}
+                                            </ul>
+                                        {{/if}}
                                         {{#if this.schema}}
                                             <strong>Schema:</strong>
                                             <pre>{{highlight this.schema}}</pre>

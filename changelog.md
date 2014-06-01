@@ -1,4 +1,8 @@
-0.next - May 14, 2014
+0.19.0 - May 28, 2014
+- External resources automatically switch between http and https links
+- Attach the config object to the RAML object so it's accessible in your handlebars templates
+
+0.18.0 - May 25, 2014
 - Render the displayName property of resources
 - Render formParameters
 
