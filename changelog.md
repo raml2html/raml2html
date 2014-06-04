@@ -1,3 +1,7 @@
+0.20.0 - June 4, 2014
+- Fixed html output
+- Added anchors to top level documentation chapters
+
 0.19.0 - May 28, 2014
 - External resources automatically switch between http and https links
 - Attach the config object to the RAML object so it's accessible in your handlebars templates
