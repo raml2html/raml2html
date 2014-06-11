@@ -31,6 +31,9 @@ raml2html.parse(source, onSuccess, onError);
 raml2html.parseWithConfig(source, config, onSuccess, onError);
 ```
 
+### Gulp
+There's a Gulp plugin at https://www.npmjs.org/package/gulp-raml2html.
+
 
 ## Example output
 ![Example output](https://raw.github.com/kevinrenskers/raml2html/master/example.png)
