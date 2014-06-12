@@ -1,3 +1,6 @@
+0.21.0 - June 12, 2014
+- Split all the raml parsing logic into its own raml2obj project
+
 0.20.0 - June 4, 2014
 - Fixed html output
 - Added anchors to top level documentation chapters
