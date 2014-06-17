@@ -60,6 +60,15 @@
                                     </ul>
                                 {{/if}}
 
+                                {{#if headers}}
+                                    <h3>Headers</h3>
+                                    <ul>
+                                        {{#each headers}}
+                                            <li><strong>{{@key}}</strong>: ({{this.type}}) {{#if this.required}} <em>required</em>{{/if}} {{this.description}}</li>
+                                        {{/each}}
+                                    </ul>
+                                {{/if}}
+
                                 {{#if queryParameters}}
                                     <h3>Query Parameters</h3>
                                     <ul>
