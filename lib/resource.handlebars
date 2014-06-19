@@ -172,7 +172,7 @@
                                             <h3>Headers</h3>
                                             <ul>
                                                 {{#each this.headers}}
-                                                    <li><strong>{{@key}}</strong>: {{this.type}}</li>
+                                                    <li><strong>{{@key}}</strong>: ({{this.type}}) {{#if this.required}} <em>required</em>{{/if}} {{this.description}}</li>
                                                 {{/each}}
                                             </ul>
                                         {{/if}}
