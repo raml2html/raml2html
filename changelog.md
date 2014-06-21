@@ -1,3 +1,6 @@
+0.22.1 - June 21, 2014
+- Fixed error handling
+
 0.22.0 - June 21, 2014
 - Added headers to request and response information
 
