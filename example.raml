@@ -66,6 +66,9 @@ traits:
           type: integer
   /{id}:
     get:
+      headers:
+        Authorization:
+          type: string
 
     put:
       description: Update the account

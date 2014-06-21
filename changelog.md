@@ -1,3 +1,6 @@
+0.22.0 - June 21, 2014
+- Added headers to request and response information
+
 0.21.0 - June 12, 2014
 - Split all the raml parsing logic into its own raml2obj project
 
