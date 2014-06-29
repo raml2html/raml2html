@@ -1,3 +1,7 @@
+0.23.1 - June 29, 2014
+- Fixed Markdown output for long sentences
+- Added GitHub API example
+
 0.23.0 - June 29, 2014
 - Parse method descriptions in the main view with Markdown as well
 

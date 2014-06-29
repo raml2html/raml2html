@@ -2,9 +2,11 @@
     <div class="panel-heading">
         <h4 class="panel-title">
             <a class="block collapsed" data-toggle="collapse" href="#panel_{{uniqueId}}">
-                {{#methods}}
-                    <span class="badge badge_{{method}}">{{method}}{{lock securedBy}}</span>
-                {{/methods}}
+                <span class="methods">
+                    {{#methods}}
+                        <span class="badge badge_{{method}}">{{method}}{{lock securedBy}}</span>
+                    {{/methods}}
+                </span>
                 <span class="parent">{{parentUrl}}</span>{{relativeUri}}
             </a>
         </h4>

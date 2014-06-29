@@ -22,9 +22,8 @@
             float: none;
             margin-right: 6px;
         }
-        .panel-title > .block > .badge {
+        .panel-title > .block > .methods {
             float: right;
-            margin-left: 5px;
         }
         .badge {
             border-radius: 0;
@@ -99,11 +98,11 @@
             padding: 15px 15px 0 15px;
             margin: -15px -15px 10px -15px;
         }
-        .list-group-item .badge {
+        .list-group .badge {
             float: left;
         }
         .method_description {
-            float: left;
+            margin-left: 85px;
         }
         .method_description p:last-child {
             margin: 0;
@@ -155,9 +154,11 @@ to do stuff. See also <a href="https://www.example.com">example.com</a>.</p>
     <div class="panel-heading">
         <h4 class="panel-title">
             <a class="block collapsed" data-toggle="collapse" href="#panel__account">
-                
-                    <span class="badge badge_post">post</span>
-                
+                <span class="methods">
+                    
+                        <span class="badge badge_post">post</span>
+                    
+                </span>
                 <span class="parent"></span>/account
             </a>
         </h4>
@@ -169,7 +170,8 @@ to do stuff. See also <a href="https://www.example.com">example.com</a>.</p>
                     <a href="#" data-toggle="modal" data-target="#_account_post" class="list-group-item">
                         <span class="badge badge_post">post</span>
                         <div class="method_description">
-                            <p>Creates a new account. Some <strong>bold</strong> text here.<br>Line two</p>
+                            <p>Creates a new account. Some <strong>bold</strong> text here. More text. Need to fill the line, so make it longer still. Hooray!
+Line two</p>
 <p>Paragraph two</p>
 
                         </div>
@@ -192,7 +194,8 @@ to do stuff. See also <a href="https://www.example.com">example.com</a>.</p>
                         </h4>
                     </div>
                     <div class="modal-body">
-                        <div class="alert alert-info"><p>Creates a new account. Some <strong>bold</strong> text here.<br>Line two</p>
+                        <div class="alert alert-info"><p>Creates a new account. Some <strong>bold</strong> text here. More text. Need to fill the line, so make it longer still. Hooray!
+Line two</p>
 <p>Paragraph two</p>
 </div>
 
@@ -262,9 +265,11 @@ to do stuff. See also <a href="https://www.example.com">example.com</a>.</p>
     <div class="panel-heading">
         <h4 class="panel-title">
             <a class="block collapsed" data-toggle="collapse" href="#panel__account_find">
-                
-                    <span class="badge badge_get">get</span>
-                
+                <span class="methods">
+                    
+                        <span class="badge badge_get">get</span>
+                    
+                </span>
                 <span class="parent">/account</span>/find
             </a>
         </h4>
@@ -394,13 +399,15 @@ to do stuff. See also <a href="https://www.example.com">example.com</a>.</p>
     <div class="panel-heading">
         <h4 class="panel-title">
             <a class="block collapsed" data-toggle="collapse" href="#panel__account__id_">
-                
-                    <span class="badge badge_get">get</span>
-                
-                    <span class="badge badge_put">put</span>
-                
-                    <span class="badge badge_delete">delete</span>
-                
+                <span class="methods">
+                    
+                        <span class="badge badge_get">get</span>
+                    
+                        <span class="badge badge_put">put</span>
+                    
+                        <span class="badge badge_delete">delete</span>
+                    
+                </span>
                 <span class="parent">/account</span>/{id}
             </a>
         </h4>
@@ -648,9 +655,11 @@ to do stuff. See also <a href="https://www.example.com">example.com</a>.</p>
     <div class="panel-heading">
         <h4 class="panel-title">
             <a class="block collapsed" data-toggle="collapse" href="#panel__account_login">
-                
-                    <span class="badge badge_post">post</span>
-                
+                <span class="methods">
+                    
+                        <span class="badge badge_post">post</span>
+                    
+                </span>
                 <span class="parent">/account</span>/login
             </a>
         </h4>
@@ -762,9 +771,11 @@ to do stuff. See also <a href="https://www.example.com">example.com</a>.</p>
     <div class="panel-heading">
         <h4 class="panel-title">
             <a class="block collapsed" data-toggle="collapse" href="#panel__account_forgot">
-                
-                    <span class="badge badge_post">post</span>
-                
+                <span class="methods">
+                    
+                        <span class="badge badge_post">post</span>
+                    
+                </span>
                 <span class="parent">/account</span>/forgot
             </a>
         </h4>
@@ -851,11 +862,13 @@ to do stuff. See also <a href="https://www.example.com">example.com</a>.</p>
     <div class="panel-heading">
         <h4 class="panel-title">
             <a class="block collapsed" data-toggle="collapse" href="#panel__account_session">
-                
-                    <span class="badge badge_get">get</span>
-                
-                    <span class="badge badge_delete">delete</span>
-                
+                <span class="methods">
+                    
+                        <span class="badge badge_get">get</span>
+                    
+                        <span class="badge badge_delete">delete</span>
+                    
+                </span>
                 <span class="parent">/account</span>/session
             </a>
         </h4>
@@ -997,11 +1010,13 @@ to do stuff. See also <a href="https://www.example.com">example.com</a>.</p>
     <div class="panel-heading">
         <h4 class="panel-title">
             <a class="block collapsed" data-toggle="collapse" href="#panel__conversations">
-                
-                    <span class="badge badge_get">get <span class="glyphicon glyphicon-lock" title="Authentication required"></span></span>
-                
-                    <span class="badge badge_post">post <span class="glyphicon glyphicon-lock" title="Authentication required"></span></span>
-                
+                <span class="methods">
+                    
+                        <span class="badge badge_get">get <span class="glyphicon glyphicon-lock" title="Authentication required"></span></span>
+                    
+                        <span class="badge badge_post">post <span class="glyphicon glyphicon-lock" title="Authentication required"></span></span>
+                    
+                </span>
                 <span class="parent"></span>/conversations
             </a>
         </h4>
@@ -1161,11 +1176,13 @@ to do stuff. See also <a href="https://www.example.com">example.com</a>.</p>
     <div class="panel-heading">
         <h4 class="panel-title">
             <a class="block collapsed" data-toggle="collapse" href="#panel__conversations__convId_">
-                
-                    <span class="badge badge_get">get</span>
-                
-                    <span class="badge badge_put">put</span>
-                
+                <span class="methods">
+                    
+                        <span class="badge badge_get">get</span>
+                    
+                        <span class="badge badge_put">put</span>
+                    
+                </span>
                 <span class="parent">/conversations</span>/{convId}
             </a>
         </h4>
@@ -1300,11 +1317,13 @@ to do stuff. See also <a href="https://www.example.com">example.com</a>.</p>
     <div class="panel-heading">
         <h4 class="panel-title">
             <a class="block collapsed" data-toggle="collapse" href="#panel__conversations__convId__messages">
-                
-                    <span class="badge badge_get">get</span>
-                
-                    <span class="badge badge_post">post</span>
-                
+                <span class="methods">
+                    
+                        <span class="badge badge_get">get</span>
+                    
+                        <span class="badge badge_post">post</span>
+                    
+                </span>
                 <span class="parent">/conversations/{convId}</span>/messages
             </a>
         </h4>
@@ -1474,11 +1493,13 @@ to do stuff. See also <a href="https://www.example.com">example.com</a>.</p>
     <div class="panel-heading">
         <h4 class="panel-title">
             <a class="block collapsed" data-toggle="collapse" href="#panel__conversations__convId__messages__messageId_">
-                
-                    <span class="badge badge_put">put</span>
-                
-                    <span class="badge badge_delete">delete</span>
-                
+                <span class="methods">
+                    
+                        <span class="badge badge_put">put</span>
+                    
+                        <span class="badge badge_delete">delete</span>
+                    
+                </span>
                 <span class="parent">/conversations/{convId}/messages</span>/{messageId}
             </a>
         </h4>
@@ -1637,11 +1658,13 @@ to do stuff. See also <a href="https://www.example.com">example.com</a>.</p>
     <div class="panel-heading">
         <h4 class="panel-title">
             <a class="block collapsed" data-toggle="collapse" href="#panel__users">
-                
-                    <span class="badge badge_get">get</span>
-                
-                    <span class="badge badge_post">post</span>
-                
+                <span class="methods">
+                    
+                        <span class="badge badge_get">get</span>
+                    
+                        <span class="badge badge_post">post</span>
+                    
+                </span>
                 <span class="parent"></span>/users
             </a>
         </h4>
@@ -1812,13 +1835,15 @@ to do stuff. See also <a href="https://www.example.com">example.com</a>.</p>
     <div class="panel-heading">
         <h4 class="panel-title">
             <a class="block collapsed" data-toggle="collapse" href="#panel__users__userId_">
-                
-                    <span class="badge badge_get">get</span>
-                
-                    <span class="badge badge_put">put</span>
-                
-                    <span class="badge badge_delete">delete</span>
-                
+                <span class="methods">
+                    
+                        <span class="badge badge_get">get</span>
+                    
+                        <span class="badge badge_put">put</span>
+                    
+                        <span class="badge badge_delete">delete</span>
+                    
+                </span>
                 <span class="parent">/users</span>/{userId}
             </a>
         </h4>
@@ -2026,11 +2051,13 @@ to do stuff. See also <a href="https://www.example.com">example.com</a>.</p>
     <div class="panel-heading">
         <h4 class="panel-title">
             <a class="block collapsed" data-toggle="collapse" href="#panel__groups">
-                
-                    <span class="badge badge_get">get</span>
-                
-                    <span class="badge badge_post">post</span>
-                
+                <span class="methods">
+                    
+                        <span class="badge badge_get">get</span>
+                    
+                        <span class="badge badge_post">post</span>
+                    
+                </span>
                 <span class="parent"></span>/groups
             </a>
         </h4>
@@ -2166,13 +2193,15 @@ to do stuff. See also <a href="https://www.example.com">example.com</a>.</p>
     <div class="panel-heading">
         <h4 class="panel-title">
             <a class="block collapsed" data-toggle="collapse" href="#panel__groups__groupId_">
-                
-                    <span class="badge badge_get">get</span>
-                
-                    <span class="badge badge_put">put</span>
-                
-                    <span class="badge badge_delete">delete</span>
-                
+                <span class="methods">
+                    
+                        <span class="badge badge_get">get</span>
+                    
+                        <span class="badge badge_put">put</span>
+                    
+                        <span class="badge badge_delete">delete</span>
+                    
+                </span>
                 <span class="parent">/groups</span>/{groupId}
             </a>
         </h4>
@@ -2379,9 +2408,11 @@ to do stuff. See also <a href="https://www.example.com">example.com</a>.</p>
     <div class="panel-heading">
         <h4 class="panel-title">
             <a class="block collapsed" data-toggle="collapse" href="#panel__groups__groupId__users">
-                
-                    <span class="badge badge_post">post</span>
-                
+                <span class="methods">
+                    
+                        <span class="badge badge_post">post</span>
+                    
+                </span>
                 <span class="parent">/groups/{groupId}</span>/users
             </a>
         </h4>
@@ -2473,9 +2504,11 @@ to do stuff. See also <a href="https://www.example.com">example.com</a>.</p>
     <div class="panel-heading">
         <h4 class="panel-title">
             <a class="block collapsed" data-toggle="collapse" href="#panel__groups__groupId__users__userId_">
-                
-                    <span class="badge badge_delete">delete</span>
-                
+                <span class="methods">
+                    
+                        <span class="badge badge_delete">delete</span>
+                    
+                </span>
                 <span class="parent">/groups/{groupId}/users</span>/{userId}
             </a>
         </h4>
