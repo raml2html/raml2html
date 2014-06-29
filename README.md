@@ -27,7 +27,9 @@ var raml2html = require('raml2html');
 raml2html.parse(source, onSuccess, onError);
 
 // Using your own templates:
-// config should be an object with at least an `template` property
+// - config should be an object with at least an `template` property
+// - config can also include `helpers` and `partials`
+// - the config object will be accessible from your handlebars templates
 raml2html.parseWithConfig(source, config, onSuccess, onError);
 ```
 
