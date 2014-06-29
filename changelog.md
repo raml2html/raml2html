@@ -1,3 +1,6 @@
+0.23.0 - June 29, 2014
+- Parse method descriptions in the main view with Markdown as well
+
 0.22.1 - June 21, 2014
 - Fixed error handling
 

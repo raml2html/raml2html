@@ -99,6 +99,15 @@
             padding: 15px 15px 0 15px;
             margin: -15px -15px 10px -15px;
         }
+        .list-group-item .badge {
+            float: left;
+        }
+        .method_description {
+            float: left;
+        }
+        .method_description p:last-child {
+            margin: 0;
+        }
     </style>
 </head>
 
@@ -159,8 +168,12 @@ to do stuff. See also <a href="https://www.example.com">example.com</a>.</p>
                 
                     <a href="#" data-toggle="modal" data-target="#_account_post" class="list-group-item">
                         <span class="badge badge_post">post</span>
-                        <p>Creates a new account. Some <strong>bold</strong> text here.</p>
+                        <div class="method_description">
+                            <p>Creates a new account. Some <strong>bold</strong> text here.<br>Line two</p>
+<p>Paragraph two</p>
 
+                        </div>
+                        <div class="clearfix"></div>
                     </a>
                 
             </div>
@@ -179,7 +192,8 @@ to do stuff. See also <a href="https://www.example.com">example.com</a>.</p>
                         </h4>
                     </div>
                     <div class="modal-body">
-                        <div class="alert alert-info"><p>Creates a new account. Some <strong>bold</strong> text here.</p>
+                        <div class="alert alert-info"><p>Creates a new account. Some <strong>bold</strong> text here.<br>Line two</p>
+<p>Paragraph two</p>
 </div>
 
                         <!-- Nav tabs -->
@@ -261,8 +275,11 @@ to do stuff. See also <a href="https://www.example.com">example.com</a>.</p>
                 
                     <a href="#" data-toggle="modal" data-target="#_account_find_get" class="list-group-item">
                         <span class="badge badge_get">get</span>
-                        <p>find an account</p>
+                        <div class="method_description">
+                            <p>find an account</p>
 
+                        </div>
+                        <div class="clearfix"></div>
                     </a>
                 
             </div>
@@ -394,19 +411,28 @@ to do stuff. See also <a href="https://www.example.com">example.com</a>.</p>
                 
                     <a href="#" data-toggle="modal" data-target="#_account__id__get" class="list-group-item">
                         <span class="badge badge_get">get</span>
-                        
+                        <div class="method_description">
+                            
+                        </div>
+                        <div class="clearfix"></div>
                     </a>
                 
                     <a href="#" data-toggle="modal" data-target="#_account__id__put" class="list-group-item">
                         <span class="badge badge_put">put</span>
-                        <p>Update the account</p>
+                        <div class="method_description">
+                            <p>Update the account</p>
 
+                        </div>
+                        <div class="clearfix"></div>
                     </a>
                 
                     <a href="#" data-toggle="modal" data-target="#_account__id__delete" class="list-group-item">
                         <span class="badge badge_delete">delete</span>
-                        <p>Delete the account</p>
+                        <div class="method_description">
+                            <p>Delete the account</p>
 
+                        </div>
+                        <div class="clearfix"></div>
                     </a>
                 
             </div>
@@ -635,8 +661,11 @@ to do stuff. See also <a href="https://www.example.com">example.com</a>.</p>
                 
                     <a href="#" data-toggle="modal" data-target="#_account_login_post" class="list-group-item">
                         <span class="badge badge_post">post</span>
-                        <p>Login with email and password</p>
+                        <div class="method_description">
+                            <p>Login with email and password</p>
 
+                        </div>
+                        <div class="clearfix"></div>
                     </a>
                 
             </div>
@@ -746,8 +775,11 @@ to do stuff. See also <a href="https://www.example.com">example.com</a>.</p>
                 
                     <a href="#" data-toggle="modal" data-target="#_account_forgot_post" class="list-group-item">
                         <span class="badge badge_post">post</span>
-                        <p>Sends an email to the user with a link to set a new password</p>
+                        <div class="method_description">
+                            <p>Sends an email to the user with a link to set a new password</p>
 
+                        </div>
+                        <div class="clearfix"></div>
                     </a>
                 
             </div>
@@ -834,14 +866,20 @@ to do stuff. See also <a href="https://www.example.com">example.com</a>.</p>
                 
                     <a href="#" data-toggle="modal" data-target="#_account_session_get" class="list-group-item">
                         <span class="badge badge_get">get</span>
-                        <p>Gets the sessions</p>
+                        <div class="method_description">
+                            <p>Gets the sessions</p>
 
+                        </div>
+                        <div class="clearfix"></div>
                     </a>
                 
                     <a href="#" data-toggle="modal" data-target="#_account_session_delete" class="list-group-item">
                         <span class="badge badge_delete">delete</span>
-                        <p>Deletes the session, logging out the user</p>
+                        <div class="method_description">
+                            <p>Deletes the session, logging out the user</p>
 
+                        </div>
+                        <div class="clearfix"></div>
                     </a>
                 
             </div>
@@ -974,14 +1012,20 @@ to do stuff. See also <a href="https://www.example.com">example.com</a>.</p>
                 
                     <a href="#" data-toggle="modal" data-target="#_conversations_get" class="list-group-item">
                         <span class="badge badge_get">get <span class="glyphicon glyphicon-lock" title="Authentication required"></span></span>
-                        <p>Get a list of conversation for the current user</p>
+                        <div class="method_description">
+                            <p>Get a list of conversation for the current user</p>
 
+                        </div>
+                        <div class="clearfix"></div>
                     </a>
                 
                     <a href="#" data-toggle="modal" data-target="#_conversations_post" class="list-group-item">
                         <span class="badge badge_post">post <span class="glyphicon glyphicon-lock" title="Authentication required"></span></span>
-                        <p>Create a new conversions. The currently logged in user doesn&#39;t need to be supplied in the members list, it&#39;s implied.</p>
+                        <div class="method_description">
+                            <p>Create a new conversions. The currently logged in user doesn&#39;t need to be supplied in the members list, it&#39;s implied.</p>
 
+                        </div>
+                        <div class="clearfix"></div>
                     </a>
                 
             </div>
@@ -1132,14 +1176,20 @@ to do stuff. See also <a href="https://www.example.com">example.com</a>.</p>
                 
                     <a href="#" data-toggle="modal" data-target="#_conversations__convId__get" class="list-group-item">
                         <span class="badge badge_get">get</span>
-                        <p>Get a single conversation including its messages</p>
+                        <div class="method_description">
+                            <p>Get a single conversation including its messages</p>
 
+                        </div>
+                        <div class="clearfix"></div>
                     </a>
                 
                     <a href="#" data-toggle="modal" data-target="#_conversations__convId__put" class="list-group-item">
                         <span class="badge badge_put">put</span>
-                        <p>Update a conversation (change members)</p>
+                        <div class="method_description">
+                            <p>Update a conversation (change members)</p>
 
+                        </div>
+                        <div class="clearfix"></div>
                     </a>
                 
             </div>
@@ -1265,14 +1315,20 @@ to do stuff. See also <a href="https://www.example.com">example.com</a>.</p>
                 
                     <a href="#" data-toggle="modal" data-target="#_conversations__convId__messages_get" class="list-group-item">
                         <span class="badge badge_get">get</span>
-                        <p>Get the messages for the conversation</p>
+                        <div class="method_description">
+                            <p>Get the messages for the conversation</p>
 
+                        </div>
+                        <div class="clearfix"></div>
                     </a>
                 
                     <a href="#" data-toggle="modal" data-target="#_conversations__convId__messages_post" class="list-group-item">
                         <span class="badge badge_post">post</span>
-                        <p>Add a new message to a conversation</p>
+                        <div class="method_description">
+                            <p>Add a new message to a conversation</p>
 
+                        </div>
+                        <div class="clearfix"></div>
                     </a>
                 
             </div>
@@ -1433,14 +1489,20 @@ to do stuff. See also <a href="https://www.example.com">example.com</a>.</p>
                 
                     <a href="#" data-toggle="modal" data-target="#_conversations__convId__messages__messageId__put" class="list-group-item">
                         <span class="badge badge_put">put</span>
-                        <p>Update the message</p>
+                        <div class="method_description">
+                            <p>Update the message</p>
 
+                        </div>
+                        <div class="clearfix"></div>
                     </a>
                 
                     <a href="#" data-toggle="modal" data-target="#_conversations__convId__messages__messageId__delete" class="list-group-item">
                         <span class="badge badge_delete">delete</span>
-                        <p>Delete the message</p>
+                        <div class="method_description">
+                            <p>Delete the message</p>
 
+                        </div>
+                        <div class="clearfix"></div>
                     </a>
                 
             </div>
@@ -1590,14 +1652,20 @@ to do stuff. See also <a href="https://www.example.com">example.com</a>.</p>
                 
                     <a href="#" data-toggle="modal" data-target="#_users_get" class="list-group-item">
                         <span class="badge badge_get">get</span>
-                        <p>Get a list of all users</p>
+                        <div class="method_description">
+                            <p>Get a list of all users</p>
 
+                        </div>
+                        <div class="clearfix"></div>
                     </a>
                 
                     <a href="#" data-toggle="modal" data-target="#_users_post" class="list-group-item">
                         <span class="badge badge_post">post</span>
-                        <p>Creates a new user</p>
+                        <div class="method_description">
+                            <p>Creates a new user</p>
 
+                        </div>
+                        <div class="clearfix"></div>
                     </a>
                 
             </div>
@@ -1761,20 +1829,29 @@ to do stuff. See also <a href="https://www.example.com">example.com</a>.</p>
                 
                     <a href="#" data-toggle="modal" data-target="#_users__userId__get" class="list-group-item">
                         <span class="badge badge_get">get</span>
-                        <p>Get the details of a user including a list of groups he belongs to</p>
+                        <div class="method_description">
+                            <p>Get the details of a user including a list of groups he belongs to</p>
 
+                        </div>
+                        <div class="clearfix"></div>
                     </a>
                 
                     <a href="#" data-toggle="modal" data-target="#_users__userId__put" class="list-group-item">
                         <span class="badge badge_put">put</span>
-                        <p>Update a user</p>
+                        <div class="method_description">
+                            <p>Update a user</p>
 
+                        </div>
+                        <div class="clearfix"></div>
                     </a>
                 
                     <a href="#" data-toggle="modal" data-target="#_users__userId__delete" class="list-group-item">
                         <span class="badge badge_delete">delete</span>
-                        <p>Deletes a user</p>
+                        <div class="method_description">
+                            <p>Deletes a user</p>
 
+                        </div>
+                        <div class="clearfix"></div>
                     </a>
                 
             </div>
@@ -1964,14 +2041,20 @@ to do stuff. See also <a href="https://www.example.com">example.com</a>.</p>
                 
                     <a href="#" data-toggle="modal" data-target="#_groups_get" class="list-group-item">
                         <span class="badge badge_get">get</span>
-                        <p>Get a list of all the groups</p>
+                        <div class="method_description">
+                            <p>Get a list of all the groups</p>
 
+                        </div>
+                        <div class="clearfix"></div>
                     </a>
                 
                     <a href="#" data-toggle="modal" data-target="#_groups_post" class="list-group-item">
                         <span class="badge badge_post">post</span>
-                        <p>Create a new group</p>
+                        <div class="method_description">
+                            <p>Create a new group</p>
 
+                        </div>
+                        <div class="clearfix"></div>
                     </a>
                 
             </div>
@@ -2100,20 +2183,29 @@ to do stuff. See also <a href="https://www.example.com">example.com</a>.</p>
                 
                     <a href="#" data-toggle="modal" data-target="#_groups__groupId__get" class="list-group-item">
                         <span class="badge badge_get">get</span>
-                        <p>Get the details of a group, including the member list</p>
+                        <div class="method_description">
+                            <p>Get the details of a group, including the member list</p>
 
+                        </div>
+                        <div class="clearfix"></div>
                     </a>
                 
                     <a href="#" data-toggle="modal" data-target="#_groups__groupId__put" class="list-group-item">
                         <span class="badge badge_put">put</span>
-                        <p>Update the group, <strong>optionally</strong> supplying the new list of members (overwrites current list)</p>
+                        <div class="method_description">
+                            <p>Update the group, <strong>optionally</strong> supplying the new list of members (overwrites current list)</p>
 
+                        </div>
+                        <div class="clearfix"></div>
                     </a>
                 
                     <a href="#" data-toggle="modal" data-target="#_groups__groupId__delete" class="list-group-item">
                         <span class="badge badge_delete">delete</span>
-                        <p>Removes the group</p>
+                        <div class="method_description">
+                            <p>Removes the group</p>
 
+                        </div>
+                        <div class="clearfix"></div>
                     </a>
                 
             </div>
@@ -2300,8 +2392,11 @@ to do stuff. See also <a href="https://www.example.com">example.com</a>.</p>
                 
                     <a href="#" data-toggle="modal" data-target="#_groups__groupId__users_post" class="list-group-item">
                         <span class="badge badge_post">post</span>
-                        <p>Adds a user to a group</p>
+                        <div class="method_description">
+                            <p>Adds a user to a group</p>
 
+                        </div>
+                        <div class="clearfix"></div>
                     </a>
                 
             </div>
@@ -2391,8 +2486,11 @@ to do stuff. See also <a href="https://www.example.com">example.com</a>.</p>
                 
                     <a href="#" data-toggle="modal" data-target="#_groups__groupId__users__userId__delete" class="list-group-item">
                         <span class="badge badge_delete">delete</span>
-                        <p>Removes a user from a group</p>
+                        <div class="method_description">
+                            <p>Removes a user from a group</p>
 
+                        </div>
+                        <div class="clearfix"></div>
                     </a>
                 
             </div>
