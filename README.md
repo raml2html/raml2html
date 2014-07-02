@@ -27,7 +27,9 @@ var raml2html = require('raml2html');
 raml2html.parse(source, onSuccess, onError);
 
 // Using your own templates:
-// config should be an object with at least an `template` property
+// - config should be an object with at least an `template` property
+// - config can also include `helpers` and `partials`
+// - the config object will be accessible from your handlebars templates
 raml2html.parseWithConfig(source, config, onSuccess, onError);
 ```
 
@@ -53,11 +55,11 @@ and everyone who took the time to report issues and give feedback.
 
 
 ## To do
-This project is still very much a work in progress, but the output is quite usable already.
+This project is still a work in progress, but the output is very usable already (and is in fact used by multiple 
+companies including Google). Still left to do, in no particular order:
 
 * Template options (for example to turn off side bar navigation)
-* Finish HTML output, currently there's still some stuff missing (like securedBy and headers)
-* Different templates (for example render to Markdown to create awesome README's)
+* Finish HTML output, currently there's still some stuff missing (like securedBy)
 
 
 ## License
