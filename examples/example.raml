@@ -69,6 +69,9 @@ traits:
         number:
           type: integer
   /{id}:
+    uriParameters:
+      id:
+        type: integer
     get:
       headers:
         Authorization:
@@ -146,6 +149,10 @@ traits:
         description: The conversation was created and the message added to it
 
   /{convId}:
+    uriParameters:
+      convId:
+        type: integer
+
     get:
       description: Get a single conversation including its messages
 
@@ -161,6 +168,10 @@ traits:
         description: Add a new message to a conversation
 
       /{messageId}:
+        uriParameters:
+          messageId:
+            type: integer
+
         put:
           description: Update the message
 
@@ -184,6 +195,10 @@ traits:
           }
 
   /{userId}:
+    uriParameters:
+      userId:
+        type: integer
+
     get:
       description: Get the details of a user including a list of groups he belongs to
 
@@ -209,6 +224,10 @@ traits:
           }
 
   /{groupId}:
+    uriParameters:
+      groupId:
+        type: integer
+
     get:
       description: Get the details of a group, including the member list
 
@@ -236,5 +255,9 @@ traits:
               }
 
       /{userId}:
+        uriParameters:
+          userId:
+            type: integer
+
         delete:
           description: Removes a user from a group

@@ -13,6 +13,15 @@
     </div>
     <div id="panel_{{uniqueId}}" class="panel-collapse collapse">
         <div class="panel-body">
+            {{#if uriParameters}}
+                <h3>URI Parameters</h3>
+                <ul>
+                    {{#each ../uriParameters}}
+                        <li><strong>{{this.displayName}}</strong>: {{this.type}}</li>
+                    {{/each}}
+                </ul>
+            {{/if}}
+
             <div class="list-group">
                 {{#methods}}
                     <a data-toggle="collapse" data-target="#{{../uniqueId}}_{{method}}" class="list-group-item">
@@ -45,15 +54,6 @@
                                         <ul>
                                             {{#each headers}}
                                                 <li><strong>{{@key}}</strong>: ({{this.type}}) {{#if this.required}} <em>required</em>{{/if}} {{this.description}}</li>
-                                            {{/each}}
-                                        </ul>
-                                    {{/if}}
-
-                                    {{#if ../allUriParameters}}
-                                        <h3>URI Parameters</h3>
-                                        <ul>
-                                            {{#each ../../allUriParameters}}
-                                                <li><strong>{{this.displayName}}</strong>: {{this.type}}</li>
                                             {{/each}}
                                         </ul>
                                     {{/if}}
