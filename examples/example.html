@@ -3,9 +3,16 @@
 <head>
     <title>Example API documentation</title>
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <link rel="stylesheet" href="http://netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css">
-    <script src="http://code.jquery.com/jquery-1.11.0.min.js"></script>
-    <script src="http://netdna.bootstrapcdn.com/bootstrap/3.1.1/js/bootstrap.min.js"></script>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <meta name="generator" content="https://github.com/kevinrenskers/raml2html 0.23.1">
+
+    <script type="text/javascript">
+        var protocol = ((document.location.protocol === 'https:') ? 'https:': 'http:');
+        document.write('<link rel="stylesheet" href="' + protocol + '//netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css">');
+        document.write('<link rel="stylesheet" href="' + protocol + '//yandex.st/highlightjs/8.0/styles/github.min.css">');
+        document.write('<script type="text/javascript" src="' + protocol + '//code.jquery.com/jquery-1.11.0.min.js"><\/sc' + 'ript>');
+        document.write('<script type="text/javascript" src="' + protocol + '//netdna.bootstrapcdn.com/bootstrap/3.1.1/js/bootstrap.min.js"><\/sc' + 'ript>');
+    </script>
 
     <style>
         .parent {
@@ -15,14 +22,13 @@
             float: none;
             margin-right: 6px;
         }
-        .panel-title > .block > .badge {
+        .panel-title > .block > .methods {
             float: right;
-            margin-left: 5px;
         }
         .badge {
             border-radius: 0;
             text-transform: uppercase;
-            width: 60px;
+            width: 70px;
             font-weight: normal;
             color: #f3f3f6;
             line-height: normal;
@@ -69,6 +75,14 @@
         .tab-pane ul {
             padding-left: 2em;
         }
+        .tab-pane h2 {
+            font-size: 1.2em;
+            padding-bottom: 4px;
+            border-bottom: 1px solid #ddd;
+        }
+        .tab-pane h3 {
+            font-size: 1.1em;
+        }
         .tab-content {
             border-left: 1px solid #ddd;
             border-right: 1px solid #ddd;
@@ -84,6 +98,15 @@
             padding: 15px 15px 0 15px;
             margin: -15px -15px 10px -15px;
         }
+        .list-group .badge {
+            float: left;
+        }
+        .method_description {
+            margin-left: 85px;
+        }
+        .method_description p:last-child {
+            margin: 0;
+        }
     </style>
 </head>
 
@@ -96,12 +119,12 @@
                     <p>http://example.com/1</p>
 
                     
-                        <h3>Welcome</h3>
+                        <h3 id="Welcome"><a href="#Welcome">Welcome</a></h3>
                         <p>Welcome to the Example Documentation. The Example API allows you
 to do stuff. See also <a href="https://www.example.com">example.com</a>.</p>
 
                     
-                        <h3>Chapter two</h3>
+                        <h3 id="Chapter-two"><a href="#Chapter-two">Chapter two</a></h3>
                         <p>More content here. Including <strong>bold</strong> text!</p>
 
                     
@@ -110,7 +133,7 @@ to do stuff. See also <a href="https://www.example.com">example.com</a>.</p>
                 
                     <div class="panel panel-default">
                         <div class="panel-heading">
-                            <h3 id="_account" class="panel-title">/account</h3>
+                            <h3 id="_account" class="panel-title">ACCOUNTS</h3>
                         </div>
 
                         <div class="panel-body">
@@ -131,9 +154,11 @@ to do stuff. See also <a href="https://www.example.com">example.com</a>.</p>
     <div class="panel-heading">
         <h4 class="panel-title">
             <a class="block collapsed" data-toggle="collapse" href="#panel__account">
-                
-                    <span class="badge badge_post">post</span>
-                
+                <span class="methods">
+                    
+                        <span class="badge badge_post">post</span>
+                    
+                </span>
                 <span class="parent"></span>/account
             </a>
         </h4>
@@ -144,7 +169,13 @@ to do stuff. See also <a href="https://www.example.com">example.com</a>.</p>
                 
                     <a href="#" data-toggle="modal" data-target="#_account_post" class="list-group-item">
                         <span class="badge badge_post">post</span>
-                        Creates a new account. Some **bold** text here.
+                        <div class="method_description">
+                            <p>Creates a new account. Some <strong>bold</strong> text here. More text. Need to fill the line, so make it longer still. Hooray!
+Line two</p>
+<p>Paragraph two</p>
+
+                        </div>
+                        <div class="clearfix"></div>
                     </a>
                 
             </div>
@@ -163,13 +194,21 @@ to do stuff. See also <a href="https://www.example.com">example.com</a>.</p>
                         </h4>
                     </div>
                     <div class="modal-body">
-                        <div class="alert alert-info"><p>Creates a new account. Some <strong>bold</strong> text here.</p>
+                        <div class="alert alert-info"><p>Creates a new account. Some <strong>bold</strong> text here. More text. Need to fill the line, so make it longer still. Hooray!
+Line two</p>
+<p>Paragraph two</p>
 </div>
 
                         <!-- Nav tabs -->
                         <ul class="nav nav-tabs">
-                            <li class="active"><a href="#_account_post_request" data-toggle="tab">Request</a></li>
-                            <li><a href="#_account_post_response" data-toggle="tab">Response</a></li>
+                            <li class="active">
+                                <a href="#_account_post_request" data-toggle="tab">Request</a>
+                            </li>
+                            
+                                <li>
+                                    <a href="#_account_post_response" data-toggle="tab">Response</a>
+                                </li>
+                            
                         </ul>
 
                         <!-- Tab panes -->
@@ -180,29 +219,39 @@ to do stuff. See also <a href="https://www.example.com">example.com</a>.</p>
                                 
 
                                 
-                                    <h4>Body</h4>
+
+                                
+                                    <h3>Body</h3>
                                     
                                         <p><strong>Type: application/json</strong></p>
-                                        <pre>{
-  &quot;email&quot;: &quot;john@example.com&quot;,
-  &quot;password&quot;: &quot;super_secret&quot;,
-  &quot;name&quot;: &quot;John Doe&quot;
-}
+                                        
+                                        
+                                        
+                                            <strong>Example:</strong>
+                                            <pre>{
+  "<span class="hljs-attribute">email</span>": <span class="hljs-value"><span class="hljs-string">"john@example.com"</span></span>,
+  "<span class="hljs-attribute">password</span>": <span class="hljs-value"><span class="hljs-string">"super_secret"</span></span>,
+  "<span class="hljs-attribute">name</span>": <span class="hljs-value"><span class="hljs-string">"John Doe"</span>
+</span>}
 </pre>
+                                        
                                     
                                 
                             </div>
 
-                            <div class="tab-pane" id="_account_post_response">
-                                
-                                    <h4>Responses</h4>
-                                    <ul>
+                            
+                                <div class="tab-pane" id="_account_post_response">
+                                    
+                                        <h2>HTTP status code <a href="http://httpstatus.es/200" target="_blank">200</a></h2>
+                                        <p>Account was created and user is now logged in</p>
+
+
                                         
-                                            <li><strong>200</strong>: Account was created and user is now logged in</li>
+
                                         
-                                    </ul>
-                                
-                            </div>
+                                    
+                                </div>
+                            
                         </div>
                     </div>
                 </div>
@@ -216,9 +265,11 @@ to do stuff. See also <a href="https://www.example.com">example.com</a>.</p>
     <div class="panel-heading">
         <h4 class="panel-title">
             <a class="block collapsed" data-toggle="collapse" href="#panel__account_find">
-                
-                    <span class="badge badge_get">get</span>
-                
+                <span class="methods">
+                    
+                        <span class="badge badge_get">get</span>
+                    
+                </span>
                 <span class="parent">/account</span>/find
             </a>
         </h4>
@@ -229,7 +280,11 @@ to do stuff. See also <a href="https://www.example.com">example.com</a>.</p>
                 
                     <a href="#" data-toggle="modal" data-target="#_account_find_get" class="list-group-item">
                         <span class="badge badge_get">get</span>
-                        find an account
+                        <div class="method_description">
+                            <p>find an account</p>
+
+                        </div>
+                        <div class="clearfix"></div>
                     </a>
                 
             </div>
@@ -253,8 +308,10 @@ to do stuff. See also <a href="https://www.example.com">example.com</a>.</p>
 
                         <!-- Nav tabs -->
                         <ul class="nav nav-tabs">
-                            <li class="active"><a href="#_account_find_get_request" data-toggle="tab">Request</a></li>
-                            <li><a href="#_account_find_get_response" data-toggle="tab">Response</a></li>
+                            <li class="active">
+                                <a href="#_account_find_get_request" data-toggle="tab">Request</a>
+                            </li>
+                            
                         </ul>
 
                         <!-- Tab panes -->
@@ -263,47 +320,61 @@ to do stuff. See also <a href="https://www.example.com">example.com</a>.</p>
                                 
 
                                 
-                                    <h4>Query Parameters</h4>
+
+                                
+                                    <h3>Query Parameters</h3>
                                     <ul>
                                         
                                             <li>
-                                              <strong>name</strong>
-                                              <em>
+                                                <strong>name</strong>
+                                                <em>
+                                                    
+                                                        required
+                                                    
+                                                    
+                                                        (string)
+                                                    
+                                                </em>
+
+                                                <p>name on account</p>
+
                                                 
-                                                  required
                                                 
+                                                    <p>
+                                                        <small>
+                                                            <strong>Example:</strong>
+                                                            <code>Naruto Uzumaki</code>
+                                                        </small>
+                                                    </p>
                                                 
-                                                  (string)
-                                                
-                                              </em> <br>name on account
-                                              
-                                              <br>
-                                              <small><strong>Example:</strong>
-                                                <code>Naruto Uzumaki</code>
-                                            </small>
-                                              
                                             </li>
                                         
                                             <li>
-                                              <strong>gender</strong>
-                                              <em>
+                                                <strong>gender</strong>
+                                                <em>
+                                                    
+                                                    
+                                                        one of (male,female)
+                                                    
+                                                </em>
+
                                                 
                                                 
-                                                  one of (male,female)
                                                 
-                                              </em> <br>
-                                              
                                             </li>
                                         
                                             <li>
-                                              <strong>number</strong>
-                                              <em>
+                                                <strong>number</strong>
+                                                <em>
+                                                    
+                                                    
+                                                        (integer)
+                                                    
+                                                </em>
+
                                                 
                                                 
-                                                  (integer)
                                                 
-                                              </em> <br>
-                                              
                                             </li>
                                         
                                     </ul>
@@ -312,9 +383,7 @@ to do stuff. See also <a href="https://www.example.com">example.com</a>.</p>
                                 
                             </div>
 
-                            <div class="tab-pane" id="_account_find_get_response">
-                                
-                            </div>
+                            
                         </div>
                     </div>
                 </div>
@@ -330,13 +399,15 @@ to do stuff. See also <a href="https://www.example.com">example.com</a>.</p>
     <div class="panel-heading">
         <h4 class="panel-title">
             <a class="block collapsed" data-toggle="collapse" href="#panel__account__id_">
-                
-                    <span class="badge badge_get">get</span>
-                
-                    <span class="badge badge_put">put</span>
-                
-                    <span class="badge badge_delete">delete</span>
-                
+                <span class="methods">
+                    
+                        <span class="badge badge_get">get</span>
+                    
+                        <span class="badge badge_put">put</span>
+                    
+                        <span class="badge badge_delete">delete</span>
+                    
+                </span>
                 <span class="parent">/account</span>/{id}
             </a>
         </h4>
@@ -347,17 +418,28 @@ to do stuff. See also <a href="https://www.example.com">example.com</a>.</p>
                 
                     <a href="#" data-toggle="modal" data-target="#_account__id__get" class="list-group-item">
                         <span class="badge badge_get">get</span>
-                        
+                        <div class="method_description">
+                            
+                        </div>
+                        <div class="clearfix"></div>
                     </a>
                 
                     <a href="#" data-toggle="modal" data-target="#_account__id__put" class="list-group-item">
                         <span class="badge badge_put">put</span>
-                        Update the account
+                        <div class="method_description">
+                            <p>Update the account</p>
+
+                        </div>
+                        <div class="clearfix"></div>
                     </a>
                 
                     <a href="#" data-toggle="modal" data-target="#_account__id__delete" class="list-group-item">
                         <span class="badge badge_delete">delete</span>
-                        Delete the account
+                        <div class="method_description">
+                            <p>Delete the account</p>
+
+                        </div>
+                        <div class="clearfix"></div>
                     </a>
                 
             </div>
@@ -380,18 +462,29 @@ to do stuff. See also <a href="https://www.example.com">example.com</a>.</p>
 
                         <!-- Nav tabs -->
                         <ul class="nav nav-tabs">
-                            <li class="active"><a href="#_account__id__get_request" data-toggle="tab">Request</a></li>
-                            <li><a href="#_account__id__get_response" data-toggle="tab">Response</a></li>
+                            <li class="active">
+                                <a href="#_account__id__get_request" data-toggle="tab">Request</a>
+                            </li>
+                            
                         </ul>
 
                         <!-- Tab panes -->
                         <div class="tab-content">
                             <div class="tab-pane active" id="_account__id__get_request">
                                 
-                                    <h4>URI Parameters</h4>
+                                    <h3>URI Parameters</h3>
                                     <ul>
                                         
                                             <li><strong>id</strong>: string</li>
+                                        
+                                    </ul>
+                                
+
+                                
+                                    <h3>Headers</h3>
+                                    <ul>
+                                        
+                                            <li><strong>Authorization</strong>: (string)  </li>
                                         
                                     </ul>
                                 
@@ -401,9 +494,7 @@ to do stuff. See also <a href="https://www.example.com">example.com</a>.</p>
                                 
                             </div>
 
-                            <div class="tab-pane" id="_account__id__get_response">
-                                
-                            </div>
+                            
                         </div>
                     </div>
                 </div>
@@ -426,15 +517,17 @@ to do stuff. See also <a href="https://www.example.com">example.com</a>.</p>
 
                         <!-- Nav tabs -->
                         <ul class="nav nav-tabs">
-                            <li class="active"><a href="#_account__id__put_request" data-toggle="tab">Request</a></li>
-                            <li><a href="#_account__id__put_response" data-toggle="tab">Response</a></li>
+                            <li class="active">
+                                <a href="#_account__id__put_request" data-toggle="tab">Request</a>
+                            </li>
+                            
                         </ul>
 
                         <!-- Tab panes -->
                         <div class="tab-content">
                             <div class="tab-pane active" id="_account__id__put_request">
                                 
-                                    <h4>URI Parameters</h4>
+                                    <h3>URI Parameters</h3>
                                     <ul>
                                         
                                             <li><strong>id</strong>: string</li>
@@ -445,11 +538,60 @@ to do stuff. See also <a href="https://www.example.com">example.com</a>.</p>
                                 
 
                                 
-                            </div>
 
-                            <div class="tab-pane" id="_account__id__put_response">
+                                
+                                    <h3>Body</h3>
+                                    
+                                        <p><strong>Type: application/x-www-form-urlencoded</strong></p>
+                                        
+                                            <strong>Form Parameters</strong>
+                                            <ul>
+                                                
+                                                    <li>
+                                                        <strong>name</strong>
+                                                        <em>
+                                                            
+                                                            
+                                                                (string)
+                                                            
+                                                        </em>
+
+                                                        <p>name on account</p>
+
+                                                        
+                                                        
+                                                            <p>
+                                                                <small>
+                                                                    <strong>Example:</strong>
+                                                                    <code>Naruto Uzumaki</code>
+                                                                </small>
+                                                            </p>
+                                                        
+                                                    </li>
+                                                
+                                                    <li>
+                                                        <strong>gender</strong>
+                                                        <em>
+                                                            
+                                                            
+                                                                one of (male,female)
+                                                            
+                                                        </em>
+
+                                                        
+                                                        
+                                                        
+                                                    </li>
+                                                
+                                            </ul>
+                                        
+                                        
+                                        
+                                    
                                 
                             </div>
+
+                            
                         </div>
                     </div>
                 </div>
@@ -472,15 +614,17 @@ to do stuff. See also <a href="https://www.example.com">example.com</a>.</p>
 
                         <!-- Nav tabs -->
                         <ul class="nav nav-tabs">
-                            <li class="active"><a href="#_account__id__delete_request" data-toggle="tab">Request</a></li>
-                            <li><a href="#_account__id__delete_response" data-toggle="tab">Response</a></li>
+                            <li class="active">
+                                <a href="#_account__id__delete_request" data-toggle="tab">Request</a>
+                            </li>
+                            
                         </ul>
 
                         <!-- Tab panes -->
                         <div class="tab-content">
                             <div class="tab-pane active" id="_account__id__delete_request">
                                 
-                                    <h4>URI Parameters</h4>
+                                    <h3>URI Parameters</h3>
                                     <ul>
                                         
                                             <li><strong>id</strong>: string</li>
@@ -491,11 +635,11 @@ to do stuff. See also <a href="https://www.example.com">example.com</a>.</p>
                                 
 
                                 
-                            </div>
 
-                            <div class="tab-pane" id="_account__id__delete_response">
                                 
                             </div>
+
+                            
                         </div>
                     </div>
                 </div>
@@ -511,9 +655,11 @@ to do stuff. See also <a href="https://www.example.com">example.com</a>.</p>
     <div class="panel-heading">
         <h4 class="panel-title">
             <a class="block collapsed" data-toggle="collapse" href="#panel__account_login">
-                
-                    <span class="badge badge_post">post</span>
-                
+                <span class="methods">
+                    
+                        <span class="badge badge_post">post</span>
+                    
+                </span>
                 <span class="parent">/account</span>/login
             </a>
         </h4>
@@ -524,7 +670,11 @@ to do stuff. See also <a href="https://www.example.com">example.com</a>.</p>
                 
                     <a href="#" data-toggle="modal" data-target="#_account_login_post" class="list-group-item">
                         <span class="badge badge_post">post</span>
-                        Login with email and password
+                        <div class="method_description">
+                            <p>Login with email and password</p>
+
+                        </div>
+                        <div class="clearfix"></div>
                     </a>
                 
             </div>
@@ -548,8 +698,14 @@ to do stuff. See also <a href="https://www.example.com">example.com</a>.</p>
 
                         <!-- Nav tabs -->
                         <ul class="nav nav-tabs">
-                            <li class="active"><a href="#_account_login_post_request" data-toggle="tab">Request</a></li>
-                            <li><a href="#_account_login_post_response" data-toggle="tab">Response</a></li>
+                            <li class="active">
+                                <a href="#_account_login_post_request" data-toggle="tab">Request</a>
+                            </li>
+                            
+                                <li>
+                                    <a href="#_account_login_post_response" data-toggle="tab">Response</a>
+                                </li>
+                            
                         </ul>
 
                         <!-- Tab panes -->
@@ -560,30 +716,46 @@ to do stuff. See also <a href="https://www.example.com">example.com</a>.</p>
                                 
 
                                 
-                                    <h4>Body</h4>
+
+                                
+                                    <h3>Body</h3>
                                     
                                         <p><strong>Type: application/json</strong></p>
-                                        <pre>{
-  &quot;email&quot;: &quot;john@example.com&quot;,
-  &quot;password&quot;: &quot;super_secret&quot;
-}
+                                        
+                                        
+                                        
+                                            <strong>Example:</strong>
+                                            <pre>{
+  "<span class="hljs-attribute">email</span>": <span class="hljs-value"><span class="hljs-string">"john@example.com"</span></span>,
+  "<span class="hljs-attribute">password</span>": <span class="hljs-value"><span class="hljs-string">"super_secret"</span>
+</span>}
 </pre>
+                                        
                                     
                                 
                             </div>
 
-                            <div class="tab-pane" id="_account_login_post_response">
-                                
-                                    <h4>Responses</h4>
-                                    <ul>
+                            
+                                <div class="tab-pane" id="_account_login_post_response">
+                                    
+                                        <h2>HTTP status code <a href="http://httpstatus.es/200" target="_blank">200</a></h2>
+                                        <p>Login was correct</p>
+
+
                                         
-                                            <li><strong>200</strong>: Login was correct</li>
+
                                         
-                                            <li><strong>400</strong>: Login was incorrect, please try again</li>
+                                    
+                                        <h2>HTTP status code <a href="http://httpstatus.es/400" target="_blank">400</a></h2>
+                                        <p>Login was incorrect, please try again</p>
+
+
                                         
-                                    </ul>
-                                
-                            </div>
+
+                                        
+                                    
+                                </div>
+                            
                         </div>
                     </div>
                 </div>
@@ -599,9 +771,11 @@ to do stuff. See also <a href="https://www.example.com">example.com</a>.</p>
     <div class="panel-heading">
         <h4 class="panel-title">
             <a class="block collapsed" data-toggle="collapse" href="#panel__account_forgot">
-                
-                    <span class="badge badge_post">post</span>
-                
+                <span class="methods">
+                    
+                        <span class="badge badge_post">post</span>
+                    
+                </span>
                 <span class="parent">/account</span>/forgot
             </a>
         </h4>
@@ -612,7 +786,11 @@ to do stuff. See also <a href="https://www.example.com">example.com</a>.</p>
                 
                     <a href="#" data-toggle="modal" data-target="#_account_forgot_post" class="list-group-item">
                         <span class="badge badge_post">post</span>
-                        Sends an email to the user with a link to set a new password
+                        <div class="method_description">
+                            <p>Sends an email to the user with a link to set a new password</p>
+
+                        </div>
+                        <div class="clearfix"></div>
                     </a>
                 
             </div>
@@ -636,8 +814,10 @@ to do stuff. See also <a href="https://www.example.com">example.com</a>.</p>
 
                         <!-- Nav tabs -->
                         <ul class="nav nav-tabs">
-                            <li class="active"><a href="#_account_forgot_post_request" data-toggle="tab">Request</a></li>
-                            <li><a href="#_account_forgot_post_response" data-toggle="tab">Response</a></li>
+                            <li class="active">
+                                <a href="#_account_forgot_post_request" data-toggle="tab">Request</a>
+                            </li>
+                            
                         </ul>
 
                         <!-- Tab panes -->
@@ -648,20 +828,25 @@ to do stuff. See also <a href="https://www.example.com">example.com</a>.</p>
                                 
 
                                 
-                                    <h4>Body</h4>
+
+                                
+                                    <h3>Body</h3>
                                     
                                         <p><strong>Type: application/json</strong></p>
-                                        <pre>{
-  &quot;email&quot;: &quot;john@example.com&quot;
-}
+                                        
+                                        
+                                        
+                                            <strong>Example:</strong>
+                                            <pre>{
+  "<span class="hljs-attribute">email</span>": <span class="hljs-value"><span class="hljs-string">"john@example.com"</span>
+</span>}
 </pre>
+                                        
                                     
                                 
                             </div>
 
-                            <div class="tab-pane" id="_account_forgot_post_response">
-                                
-                            </div>
+                            
                         </div>
                     </div>
                 </div>
@@ -677,11 +862,13 @@ to do stuff. See also <a href="https://www.example.com">example.com</a>.</p>
     <div class="panel-heading">
         <h4 class="panel-title">
             <a class="block collapsed" data-toggle="collapse" href="#panel__account_session">
-                
-                    <span class="badge badge_get">get</span>
-                
-                    <span class="badge badge_delete">delete</span>
-                
+                <span class="methods">
+                    
+                        <span class="badge badge_get">get</span>
+                    
+                        <span class="badge badge_delete">delete</span>
+                    
+                </span>
                 <span class="parent">/account</span>/session
             </a>
         </h4>
@@ -692,12 +879,20 @@ to do stuff. See also <a href="https://www.example.com">example.com</a>.</p>
                 
                     <a href="#" data-toggle="modal" data-target="#_account_session_get" class="list-group-item">
                         <span class="badge badge_get">get</span>
-                        Gets the sessions
+                        <div class="method_description">
+                            <p>Gets the sessions</p>
+
+                        </div>
+                        <div class="clearfix"></div>
                     </a>
                 
                     <a href="#" data-toggle="modal" data-target="#_account_session_delete" class="list-group-item">
                         <span class="badge badge_delete">delete</span>
-                        Deletes the session, logging out the user
+                        <div class="method_description">
+                            <p>Deletes the session, logging out the user</p>
+
+                        </div>
+                        <div class="clearfix"></div>
                     </a>
                 
             </div>
@@ -721,8 +916,10 @@ to do stuff. See also <a href="https://www.example.com">example.com</a>.</p>
 
                         <!-- Nav tabs -->
                         <ul class="nav nav-tabs">
-                            <li class="active"><a href="#_account_session_get_request" data-toggle="tab">Request</a></li>
-                            <li><a href="#_account_session_get_response" data-toggle="tab">Response</a></li>
+                            <li class="active">
+                                <a href="#_account_session_get_request" data-toggle="tab">Request</a>
+                            </li>
+                            
                         </ul>
 
                         <!-- Tab panes -->
@@ -733,11 +930,11 @@ to do stuff. See also <a href="https://www.example.com">example.com</a>.</p>
                                 
 
                                 
-                            </div>
 
-                            <div class="tab-pane" id="_account_session_get_response">
                                 
                             </div>
+
+                            
                         </div>
                     </div>
                 </div>
@@ -760,8 +957,10 @@ to do stuff. See also <a href="https://www.example.com">example.com</a>.</p>
 
                         <!-- Nav tabs -->
                         <ul class="nav nav-tabs">
-                            <li class="active"><a href="#_account_session_delete_request" data-toggle="tab">Request</a></li>
-                            <li><a href="#_account_session_delete_response" data-toggle="tab">Response</a></li>
+                            <li class="active">
+                                <a href="#_account_session_delete_request" data-toggle="tab">Request</a>
+                            </li>
+                            
                         </ul>
 
                         <!-- Tab panes -->
@@ -772,11 +971,11 @@ to do stuff. See also <a href="https://www.example.com">example.com</a>.</p>
                                 
 
                                 
-                            </div>
 
-                            <div class="tab-pane" id="_account_session_delete_response">
                                 
                             </div>
+
+                            
                         </div>
                     </div>
                 </div>
@@ -811,11 +1010,13 @@ to do stuff. See also <a href="https://www.example.com">example.com</a>.</p>
     <div class="panel-heading">
         <h4 class="panel-title">
             <a class="block collapsed" data-toggle="collapse" href="#panel__conversations">
-                
-                    <span class="badge badge_get">get</span>
-                
-                    <span class="badge badge_post">post</span>
-                
+                <span class="methods">
+                    
+                        <span class="badge badge_get">get <span class="glyphicon glyphicon-lock" title="Authentication required"></span></span>
+                    
+                        <span class="badge badge_post">post <span class="glyphicon glyphicon-lock" title="Authentication required"></span></span>
+                    
+                </span>
                 <span class="parent"></span>/conversations
             </a>
         </h4>
@@ -825,13 +1026,21 @@ to do stuff. See also <a href="https://www.example.com">example.com</a>.</p>
             <div class="list-group">
                 
                     <a href="#" data-toggle="modal" data-target="#_conversations_get" class="list-group-item">
-                        <span class="badge badge_get">get</span>
-                        Get a list of conversation for the current user
+                        <span class="badge badge_get">get <span class="glyphicon glyphicon-lock" title="Authentication required"></span></span>
+                        <div class="method_description">
+                            <p>Get a list of conversation for the current user</p>
+
+                        </div>
+                        <div class="clearfix"></div>
                     </a>
                 
                     <a href="#" data-toggle="modal" data-target="#_conversations_post" class="list-group-item">
-                        <span class="badge badge_post">post</span>
-                        Create a new conversions. The currently logged in user doesn&#x27;t need to be supplied in the members list, it&#x27;s implied.
+                        <span class="badge badge_post">post <span class="glyphicon glyphicon-lock" title="Authentication required"></span></span>
+                        <div class="method_description">
+                            <p>Create a new conversions. The currently logged in user doesn&#39;t need to be supplied in the members list, it&#39;s implied.</p>
+
+                        </div>
+                        <div class="clearfix"></div>
                     </a>
                 
             </div>
@@ -845,7 +1054,7 @@ to do stuff. See also <a href="https://www.example.com">example.com</a>.</p>
                     <div class="modal-header">
                         <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
                         <h4 class="modal-title" id="myModalLabel">
-                            <span class="badge badge_get">get</span>
+                            <span class="badge badge_get">get <span class="glyphicon glyphicon-lock" title="Authentication required"></span></span>
                             <span class="parent"></span>/conversations
                         </h4>
                     </div>
@@ -855,8 +1064,10 @@ to do stuff. See also <a href="https://www.example.com">example.com</a>.</p>
 
                         <!-- Nav tabs -->
                         <ul class="nav nav-tabs">
-                            <li class="active"><a href="#_conversations_get_request" data-toggle="tab">Request</a></li>
-                            <li><a href="#_conversations_get_response" data-toggle="tab">Response</a></li>
+                            <li class="active">
+                                <a href="#_conversations_get_request" data-toggle="tab">Request</a>
+                            </li>
+                            
                         </ul>
 
                         <!-- Tab panes -->
@@ -867,11 +1078,11 @@ to do stuff. See also <a href="https://www.example.com">example.com</a>.</p>
                                 
 
                                 
-                            </div>
 
-                            <div class="tab-pane" id="_conversations_get_response">
                                 
                             </div>
+
+                            
                         </div>
                     </div>
                 </div>
@@ -884,7 +1095,7 @@ to do stuff. See also <a href="https://www.example.com">example.com</a>.</p>
                     <div class="modal-header">
                         <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
                         <h4 class="modal-title" id="myModalLabel">
-                            <span class="badge badge_post">post</span>
+                            <span class="badge badge_post">post <span class="glyphicon glyphicon-lock" title="Authentication required"></span></span>
                             <span class="parent"></span>/conversations
                         </h4>
                     </div>
@@ -894,8 +1105,14 @@ to do stuff. See also <a href="https://www.example.com">example.com</a>.</p>
 
                         <!-- Nav tabs -->
                         <ul class="nav nav-tabs">
-                            <li class="active"><a href="#_conversations_post_request" data-toggle="tab">Request</a></li>
-                            <li><a href="#_conversations_post_response" data-toggle="tab">Response</a></li>
+                            <li class="active">
+                                <a href="#_conversations_post_request" data-toggle="tab">Request</a>
+                            </li>
+                            
+                                <li>
+                                    <a href="#_conversations_post_response" data-toggle="tab">Response</a>
+                                </li>
+                            
                         </ul>
 
                         <!-- Tab panes -->
@@ -906,30 +1123,46 @@ to do stuff. See also <a href="https://www.example.com">example.com</a>.</p>
                                 
 
                                 
-                                    <h4>Body</h4>
+
+                                
+                                    <h3>Body</h3>
                                     
                                         <p><strong>Type: application/json</strong></p>
-                                        <pre>{
-  &quot;content&quot;: &quot;My message!&quot;,
-  &quot;members&quot;: [1, 2, 3]
-}
+                                        
+                                        
+                                        
+                                            <strong>Example:</strong>
+                                            <pre>{
+  "<span class="hljs-attribute">content</span>": <span class="hljs-value"><span class="hljs-string">"My message!"</span></span>,
+  "<span class="hljs-attribute">members</span>": <span class="hljs-value">[<span class="hljs-number">1</span>, <span class="hljs-number">2</span>, <span class="hljs-number">3</span>]
+</span>}
 </pre>
+                                        
                                     
                                 
                             </div>
 
-                            <div class="tab-pane" id="_conversations_post_response">
-                                
-                                    <h4>Responses</h4>
-                                    <ul>
+                            
+                                <div class="tab-pane" id="_conversations_post_response">
+                                    
+                                        <h2>HTTP status code <a href="http://httpstatus.es/200" target="_blank">200</a></h2>
+                                        <p>A conversation with these members already existed, the message was added to that one</p>
+
+
                                         
-                                            <li><strong>200</strong>: A conversation with these members already existed, the message was added to that one</li>
+
                                         
-                                            <li><strong>201</strong>: The conversation was created and the message added to it</li>
+                                    
+                                        <h2>HTTP status code <a href="http://httpstatus.es/201" target="_blank">201</a></h2>
+                                        <p>The conversation was created and the message added to it</p>
+
+
                                         
-                                    </ul>
-                                
-                            </div>
+
+                                        
+                                    
+                                </div>
+                            
                         </div>
                     </div>
                 </div>
@@ -943,11 +1176,13 @@ to do stuff. See also <a href="https://www.example.com">example.com</a>.</p>
     <div class="panel-heading">
         <h4 class="panel-title">
             <a class="block collapsed" data-toggle="collapse" href="#panel__conversations__convId_">
-                
-                    <span class="badge badge_get">get</span>
-                
-                    <span class="badge badge_put">put</span>
-                
+                <span class="methods">
+                    
+                        <span class="badge badge_get">get</span>
+                    
+                        <span class="badge badge_put">put</span>
+                    
+                </span>
                 <span class="parent">/conversations</span>/{convId}
             </a>
         </h4>
@@ -958,12 +1193,20 @@ to do stuff. See also <a href="https://www.example.com">example.com</a>.</p>
                 
                     <a href="#" data-toggle="modal" data-target="#_conversations__convId__get" class="list-group-item">
                         <span class="badge badge_get">get</span>
-                        Get a single conversation including its messages
+                        <div class="method_description">
+                            <p>Get a single conversation including its messages</p>
+
+                        </div>
+                        <div class="clearfix"></div>
                     </a>
                 
                     <a href="#" data-toggle="modal" data-target="#_conversations__convId__put" class="list-group-item">
                         <span class="badge badge_put">put</span>
-                        Update a conversation (change members)
+                        <div class="method_description">
+                            <p>Update a conversation (change members)</p>
+
+                        </div>
+                        <div class="clearfix"></div>
                     </a>
                 
             </div>
@@ -987,15 +1230,17 @@ to do stuff. See also <a href="https://www.example.com">example.com</a>.</p>
 
                         <!-- Nav tabs -->
                         <ul class="nav nav-tabs">
-                            <li class="active"><a href="#_conversations__convId__get_request" data-toggle="tab">Request</a></li>
-                            <li><a href="#_conversations__convId__get_response" data-toggle="tab">Response</a></li>
+                            <li class="active">
+                                <a href="#_conversations__convId__get_request" data-toggle="tab">Request</a>
+                            </li>
+                            
                         </ul>
 
                         <!-- Tab panes -->
                         <div class="tab-content">
                             <div class="tab-pane active" id="_conversations__convId__get_request">
                                 
-                                    <h4>URI Parameters</h4>
+                                    <h3>URI Parameters</h3>
                                     <ul>
                                         
                                             <li><strong>convId</strong>: string</li>
@@ -1006,11 +1251,11 @@ to do stuff. See also <a href="https://www.example.com">example.com</a>.</p>
                                 
 
                                 
-                            </div>
 
-                            <div class="tab-pane" id="_conversations__convId__get_response">
                                 
                             </div>
+
+                            
                         </div>
                     </div>
                 </div>
@@ -1033,15 +1278,17 @@ to do stuff. See also <a href="https://www.example.com">example.com</a>.</p>
 
                         <!-- Nav tabs -->
                         <ul class="nav nav-tabs">
-                            <li class="active"><a href="#_conversations__convId__put_request" data-toggle="tab">Request</a></li>
-                            <li><a href="#_conversations__convId__put_response" data-toggle="tab">Response</a></li>
+                            <li class="active">
+                                <a href="#_conversations__convId__put_request" data-toggle="tab">Request</a>
+                            </li>
+                            
                         </ul>
 
                         <!-- Tab panes -->
                         <div class="tab-content">
                             <div class="tab-pane active" id="_conversations__convId__put_request">
                                 
-                                    <h4>URI Parameters</h4>
+                                    <h3>URI Parameters</h3>
                                     <ul>
                                         
                                             <li><strong>convId</strong>: string</li>
@@ -1052,11 +1299,11 @@ to do stuff. See also <a href="https://www.example.com">example.com</a>.</p>
                                 
 
                                 
-                            </div>
 
-                            <div class="tab-pane" id="_conversations__convId__put_response">
                                 
                             </div>
+
+                            
                         </div>
                     </div>
                 </div>
@@ -1070,11 +1317,13 @@ to do stuff. See also <a href="https://www.example.com">example.com</a>.</p>
     <div class="panel-heading">
         <h4 class="panel-title">
             <a class="block collapsed" data-toggle="collapse" href="#panel__conversations__convId__messages">
-                
-                    <span class="badge badge_get">get</span>
-                
-                    <span class="badge badge_post">post</span>
-                
+                <span class="methods">
+                    
+                        <span class="badge badge_get">get</span>
+                    
+                        <span class="badge badge_post">post</span>
+                    
+                </span>
                 <span class="parent">/conversations/{convId}</span>/messages
             </a>
         </h4>
@@ -1085,12 +1334,20 @@ to do stuff. See also <a href="https://www.example.com">example.com</a>.</p>
                 
                     <a href="#" data-toggle="modal" data-target="#_conversations__convId__messages_get" class="list-group-item">
                         <span class="badge badge_get">get</span>
-                        Get the messages for the conversation
+                        <div class="method_description">
+                            <p>Get the messages for the conversation</p>
+
+                        </div>
+                        <div class="clearfix"></div>
                     </a>
                 
                     <a href="#" data-toggle="modal" data-target="#_conversations__convId__messages_post" class="list-group-item">
                         <span class="badge badge_post">post</span>
-                        Add a new message to a conversation
+                        <div class="method_description">
+                            <p>Add a new message to a conversation</p>
+
+                        </div>
+                        <div class="clearfix"></div>
                     </a>
                 
             </div>
@@ -1114,15 +1371,17 @@ to do stuff. See also <a href="https://www.example.com">example.com</a>.</p>
 
                         <!-- Nav tabs -->
                         <ul class="nav nav-tabs">
-                            <li class="active"><a href="#_conversations__convId__messages_get_request" data-toggle="tab">Request</a></li>
-                            <li><a href="#_conversations__convId__messages_get_response" data-toggle="tab">Response</a></li>
+                            <li class="active">
+                                <a href="#_conversations__convId__messages_get_request" data-toggle="tab">Request</a>
+                            </li>
+                            
                         </ul>
 
                         <!-- Tab panes -->
                         <div class="tab-content">
                             <div class="tab-pane active" id="_conversations__convId__messages_get_request">
                                 
-                                    <h4>URI Parameters</h4>
+                                    <h3>URI Parameters</h3>
                                     <ul>
                                         
                                             <li><strong>convId</strong>: string</li>
@@ -1131,29 +1390,39 @@ to do stuff. See also <a href="https://www.example.com">example.com</a>.</p>
                                 
 
                                 
-                                    <h4>Query Parameters</h4>
+
+                                
+                                    <h3>Query Parameters</h3>
                                     <ul>
                                         
                                             <li>
-                                              <strong>page_size</strong>
-                                              <em>
+                                                <strong>page_size</strong>
+                                                <em>
+                                                    
+                                                    
+                                                        (number)
+                                                    
+                                                </em>
+
+                                                <p>The number of items per page</p>
+
                                                 
                                                 
-                                                  (number)
-                                                
-                                              </em> <br>The number of items per page
-                                              
                                             </li>
                                         
                                             <li>
-                                              <strong>page</strong>
-                                              <em>
+                                                <strong>page</strong>
+                                                <em>
+                                                    
+                                                    
+                                                        (number)
+                                                    
+                                                </em>
+
+                                                <p>The page to return</p>
+
                                                 
                                                 
-                                                  (number)
-                                                
-                                              </em> <br>The page to return
-                                              
                                             </li>
                                         
                                     </ul>
@@ -1162,9 +1431,7 @@ to do stuff. See also <a href="https://www.example.com">example.com</a>.</p>
                                 
                             </div>
 
-                            <div class="tab-pane" id="_conversations__convId__messages_get_response">
-                                
-                            </div>
+                            
                         </div>
                     </div>
                 </div>
@@ -1187,15 +1454,17 @@ to do stuff. See also <a href="https://www.example.com">example.com</a>.</p>
 
                         <!-- Nav tabs -->
                         <ul class="nav nav-tabs">
-                            <li class="active"><a href="#_conversations__convId__messages_post_request" data-toggle="tab">Request</a></li>
-                            <li><a href="#_conversations__convId__messages_post_response" data-toggle="tab">Response</a></li>
+                            <li class="active">
+                                <a href="#_conversations__convId__messages_post_request" data-toggle="tab">Request</a>
+                            </li>
+                            
                         </ul>
 
                         <!-- Tab panes -->
                         <div class="tab-content">
                             <div class="tab-pane active" id="_conversations__convId__messages_post_request">
                                 
-                                    <h4>URI Parameters</h4>
+                                    <h3>URI Parameters</h3>
                                     <ul>
                                         
                                             <li><strong>convId</strong>: string</li>
@@ -1206,11 +1475,11 @@ to do stuff. See also <a href="https://www.example.com">example.com</a>.</p>
                                 
 
                                 
-                            </div>
 
-                            <div class="tab-pane" id="_conversations__convId__messages_post_response">
                                 
                             </div>
+
+                            
                         </div>
                     </div>
                 </div>
@@ -1224,11 +1493,13 @@ to do stuff. See also <a href="https://www.example.com">example.com</a>.</p>
     <div class="panel-heading">
         <h4 class="panel-title">
             <a class="block collapsed" data-toggle="collapse" href="#panel__conversations__convId__messages__messageId_">
-                
-                    <span class="badge badge_put">put</span>
-                
-                    <span class="badge badge_delete">delete</span>
-                
+                <span class="methods">
+                    
+                        <span class="badge badge_put">put</span>
+                    
+                        <span class="badge badge_delete">delete</span>
+                    
+                </span>
                 <span class="parent">/conversations/{convId}/messages</span>/{messageId}
             </a>
         </h4>
@@ -1239,12 +1510,20 @@ to do stuff. See also <a href="https://www.example.com">example.com</a>.</p>
                 
                     <a href="#" data-toggle="modal" data-target="#_conversations__convId__messages__messageId__put" class="list-group-item">
                         <span class="badge badge_put">put</span>
-                        Update the message
+                        <div class="method_description">
+                            <p>Update the message</p>
+
+                        </div>
+                        <div class="clearfix"></div>
                     </a>
                 
                     <a href="#" data-toggle="modal" data-target="#_conversations__convId__messages__messageId__delete" class="list-group-item">
                         <span class="badge badge_delete">delete</span>
-                        Delete the message
+                        <div class="method_description">
+                            <p>Delete the message</p>
+
+                        </div>
+                        <div class="clearfix"></div>
                     </a>
                 
             </div>
@@ -1268,15 +1547,17 @@ to do stuff. See also <a href="https://www.example.com">example.com</a>.</p>
 
                         <!-- Nav tabs -->
                         <ul class="nav nav-tabs">
-                            <li class="active"><a href="#_conversations__convId__messages__messageId__put_request" data-toggle="tab">Request</a></li>
-                            <li><a href="#_conversations__convId__messages__messageId__put_response" data-toggle="tab">Response</a></li>
+                            <li class="active">
+                                <a href="#_conversations__convId__messages__messageId__put_request" data-toggle="tab">Request</a>
+                            </li>
+                            
                         </ul>
 
                         <!-- Tab panes -->
                         <div class="tab-content">
                             <div class="tab-pane active" id="_conversations__convId__messages__messageId__put_request">
                                 
-                                    <h4>URI Parameters</h4>
+                                    <h3>URI Parameters</h3>
                                     <ul>
                                         
                                             <li><strong>convId</strong>: string</li>
@@ -1289,11 +1570,11 @@ to do stuff. See also <a href="https://www.example.com">example.com</a>.</p>
                                 
 
                                 
-                            </div>
 
-                            <div class="tab-pane" id="_conversations__convId__messages__messageId__put_response">
                                 
                             </div>
+
+                            
                         </div>
                     </div>
                 </div>
@@ -1316,15 +1597,17 @@ to do stuff. See also <a href="https://www.example.com">example.com</a>.</p>
 
                         <!-- Nav tabs -->
                         <ul class="nav nav-tabs">
-                            <li class="active"><a href="#_conversations__convId__messages__messageId__delete_request" data-toggle="tab">Request</a></li>
-                            <li><a href="#_conversations__convId__messages__messageId__delete_response" data-toggle="tab">Response</a></li>
+                            <li class="active">
+                                <a href="#_conversations__convId__messages__messageId__delete_request" data-toggle="tab">Request</a>
+                            </li>
+                            
                         </ul>
 
                         <!-- Tab panes -->
                         <div class="tab-content">
                             <div class="tab-pane active" id="_conversations__convId__messages__messageId__delete_request">
                                 
-                                    <h4>URI Parameters</h4>
+                                    <h3>URI Parameters</h3>
                                     <ul>
                                         
                                             <li><strong>convId</strong>: string</li>
@@ -1337,11 +1620,11 @@ to do stuff. See also <a href="https://www.example.com">example.com</a>.</p>
                                 
 
                                 
-                            </div>
 
-                            <div class="tab-pane" id="_conversations__convId__messages__messageId__delete_response">
                                 
                             </div>
+
+                            
                         </div>
                     </div>
                 </div>
@@ -1375,11 +1658,13 @@ to do stuff. See also <a href="https://www.example.com">example.com</a>.</p>
     <div class="panel-heading">
         <h4 class="panel-title">
             <a class="block collapsed" data-toggle="collapse" href="#panel__users">
-                
-                    <span class="badge badge_get">get</span>
-                
-                    <span class="badge badge_post">post</span>
-                
+                <span class="methods">
+                    
+                        <span class="badge badge_get">get</span>
+                    
+                        <span class="badge badge_post">post</span>
+                    
+                </span>
                 <span class="parent"></span>/users
             </a>
         </h4>
@@ -1390,12 +1675,20 @@ to do stuff. See also <a href="https://www.example.com">example.com</a>.</p>
                 
                     <a href="#" data-toggle="modal" data-target="#_users_get" class="list-group-item">
                         <span class="badge badge_get">get</span>
-                        Get a list of all users
+                        <div class="method_description">
+                            <p>Get a list of all users</p>
+
+                        </div>
+                        <div class="clearfix"></div>
                     </a>
                 
                     <a href="#" data-toggle="modal" data-target="#_users_post" class="list-group-item">
                         <span class="badge badge_post">post</span>
-                        Creates a new user
+                        <div class="method_description">
+                            <p>Creates a new user</p>
+
+                        </div>
+                        <div class="clearfix"></div>
                     </a>
                 
             </div>
@@ -1419,8 +1712,10 @@ to do stuff. See also <a href="https://www.example.com">example.com</a>.</p>
 
                         <!-- Nav tabs -->
                         <ul class="nav nav-tabs">
-                            <li class="active"><a href="#_users_get_request" data-toggle="tab">Request</a></li>
-                            <li><a href="#_users_get_response" data-toggle="tab">Response</a></li>
+                            <li class="active">
+                                <a href="#_users_get_request" data-toggle="tab">Request</a>
+                            </li>
+                            
                         </ul>
 
                         <!-- Tab panes -->
@@ -1429,29 +1724,39 @@ to do stuff. See also <a href="https://www.example.com">example.com</a>.</p>
                                 
 
                                 
-                                    <h4>Query Parameters</h4>
+
+                                
+                                    <h3>Query Parameters</h3>
                                     <ul>
                                         
                                             <li>
-                                              <strong>page_size</strong>
-                                              <em>
+                                                <strong>page_size</strong>
+                                                <em>
+                                                    
+                                                    
+                                                        (number)
+                                                    
+                                                </em>
+
+                                                <p>The number of items per page</p>
+
                                                 
                                                 
-                                                  (number)
-                                                
-                                              </em> <br>The number of items per page
-                                              
                                             </li>
                                         
                                             <li>
-                                              <strong>page</strong>
-                                              <em>
+                                                <strong>page</strong>
+                                                <em>
+                                                    
+                                                    
+                                                        (number)
+                                                    
+                                                </em>
+
+                                                <p>The page to return</p>
+
                                                 
                                                 
-                                                  (number)
-                                                
-                                              </em> <br>The page to return
-                                              
                                             </li>
                                         
                                     </ul>
@@ -1460,9 +1765,7 @@ to do stuff. See also <a href="https://www.example.com">example.com</a>.</p>
                                 
                             </div>
 
-                            <div class="tab-pane" id="_users_get_response">
-                                
-                            </div>
+                            
                         </div>
                     </div>
                 </div>
@@ -1485,8 +1788,10 @@ to do stuff. See also <a href="https://www.example.com">example.com</a>.</p>
 
                         <!-- Nav tabs -->
                         <ul class="nav nav-tabs">
-                            <li class="active"><a href="#_users_post_request" data-toggle="tab">Request</a></li>
-                            <li><a href="#_users_post_response" data-toggle="tab">Response</a></li>
+                            <li class="active">
+                                <a href="#_users_post_request" data-toggle="tab">Request</a>
+                            </li>
+                            
                         </ul>
 
                         <!-- Tab panes -->
@@ -1497,21 +1802,26 @@ to do stuff. See also <a href="https://www.example.com">example.com</a>.</p>
                                 
 
                                 
-                                    <h4>Body</h4>
+
+                                
+                                    <h3>Body</h3>
                                     
                                         <p><strong>Type: application/json</strong></p>
-                                        <pre>{
-  &quot;email&quot;: &quot;john@example.com&quot;,
-  &quot;name&quot;: &quot;John Doe&quot;,
+                                        
+                                        
+                                        
+                                            <strong>Example:</strong>
+                                            <pre>{
+  "<span class="hljs-attribute">email</span>": <span class="hljs-value"><span class="hljs-string">"john@example.com"</span></span>,
+  "<span class="hljs-attribute">name</span>": <span class="hljs-value"><span class="hljs-string">"John Doe"</span></span>,
 }
 </pre>
+                                        
                                     
                                 
                             </div>
 
-                            <div class="tab-pane" id="_users_post_response">
-                                
-                            </div>
+                            
                         </div>
                     </div>
                 </div>
@@ -1525,13 +1835,15 @@ to do stuff. See also <a href="https://www.example.com">example.com</a>.</p>
     <div class="panel-heading">
         <h4 class="panel-title">
             <a class="block collapsed" data-toggle="collapse" href="#panel__users__userId_">
-                
-                    <span class="badge badge_get">get</span>
-                
-                    <span class="badge badge_put">put</span>
-                
-                    <span class="badge badge_delete">delete</span>
-                
+                <span class="methods">
+                    
+                        <span class="badge badge_get">get</span>
+                    
+                        <span class="badge badge_put">put</span>
+                    
+                        <span class="badge badge_delete">delete</span>
+                    
+                </span>
                 <span class="parent">/users</span>/{userId}
             </a>
         </h4>
@@ -1542,17 +1854,29 @@ to do stuff. See also <a href="https://www.example.com">example.com</a>.</p>
                 
                     <a href="#" data-toggle="modal" data-target="#_users__userId__get" class="list-group-item">
                         <span class="badge badge_get">get</span>
-                        Get the details of a user including a list of groups he belongs to
+                        <div class="method_description">
+                            <p>Get the details of a user including a list of groups he belongs to</p>
+
+                        </div>
+                        <div class="clearfix"></div>
                     </a>
                 
                     <a href="#" data-toggle="modal" data-target="#_users__userId__put" class="list-group-item">
                         <span class="badge badge_put">put</span>
-                        Update a user
+                        <div class="method_description">
+                            <p>Update a user</p>
+
+                        </div>
+                        <div class="clearfix"></div>
                     </a>
                 
                     <a href="#" data-toggle="modal" data-target="#_users__userId__delete" class="list-group-item">
                         <span class="badge badge_delete">delete</span>
-                        Deletes a user
+                        <div class="method_description">
+                            <p>Deletes a user</p>
+
+                        </div>
+                        <div class="clearfix"></div>
                     </a>
                 
             </div>
@@ -1576,15 +1900,17 @@ to do stuff. See also <a href="https://www.example.com">example.com</a>.</p>
 
                         <!-- Nav tabs -->
                         <ul class="nav nav-tabs">
-                            <li class="active"><a href="#_users__userId__get_request" data-toggle="tab">Request</a></li>
-                            <li><a href="#_users__userId__get_response" data-toggle="tab">Response</a></li>
+                            <li class="active">
+                                <a href="#_users__userId__get_request" data-toggle="tab">Request</a>
+                            </li>
+                            
                         </ul>
 
                         <!-- Tab panes -->
                         <div class="tab-content">
                             <div class="tab-pane active" id="_users__userId__get_request">
                                 
-                                    <h4>URI Parameters</h4>
+                                    <h3>URI Parameters</h3>
                                     <ul>
                                         
                                             <li><strong>userId</strong>: string</li>
@@ -1595,11 +1921,11 @@ to do stuff. See also <a href="https://www.example.com">example.com</a>.</p>
                                 
 
                                 
-                            </div>
 
-                            <div class="tab-pane" id="_users__userId__get_response">
                                 
                             </div>
+
+                            
                         </div>
                     </div>
                 </div>
@@ -1622,15 +1948,17 @@ to do stuff. See also <a href="https://www.example.com">example.com</a>.</p>
 
                         <!-- Nav tabs -->
                         <ul class="nav nav-tabs">
-                            <li class="active"><a href="#_users__userId__put_request" data-toggle="tab">Request</a></li>
-                            <li><a href="#_users__userId__put_response" data-toggle="tab">Response</a></li>
+                            <li class="active">
+                                <a href="#_users__userId__put_request" data-toggle="tab">Request</a>
+                            </li>
+                            
                         </ul>
 
                         <!-- Tab panes -->
                         <div class="tab-content">
                             <div class="tab-pane active" id="_users__userId__put_request">
                                 
-                                    <h4>URI Parameters</h4>
+                                    <h3>URI Parameters</h3>
                                     <ul>
                                         
                                             <li><strong>userId</strong>: string</li>
@@ -1641,11 +1969,11 @@ to do stuff. See also <a href="https://www.example.com">example.com</a>.</p>
                                 
 
                                 
-                            </div>
 
-                            <div class="tab-pane" id="_users__userId__put_response">
                                 
                             </div>
+
+                            
                         </div>
                     </div>
                 </div>
@@ -1668,15 +1996,17 @@ to do stuff. See also <a href="https://www.example.com">example.com</a>.</p>
 
                         <!-- Nav tabs -->
                         <ul class="nav nav-tabs">
-                            <li class="active"><a href="#_users__userId__delete_request" data-toggle="tab">Request</a></li>
-                            <li><a href="#_users__userId__delete_response" data-toggle="tab">Response</a></li>
+                            <li class="active">
+                                <a href="#_users__userId__delete_request" data-toggle="tab">Request</a>
+                            </li>
+                            
                         </ul>
 
                         <!-- Tab panes -->
                         <div class="tab-content">
                             <div class="tab-pane active" id="_users__userId__delete_request">
                                 
-                                    <h4>URI Parameters</h4>
+                                    <h3>URI Parameters</h3>
                                     <ul>
                                         
                                             <li><strong>userId</strong>: string</li>
@@ -1687,11 +2017,11 @@ to do stuff. See also <a href="https://www.example.com">example.com</a>.</p>
                                 
 
                                 
-                            </div>
 
-                            <div class="tab-pane" id="_users__userId__delete_response">
                                 
                             </div>
+
+                            
                         </div>
                     </div>
                 </div>
@@ -1721,11 +2051,13 @@ to do stuff. See also <a href="https://www.example.com">example.com</a>.</p>
     <div class="panel-heading">
         <h4 class="panel-title">
             <a class="block collapsed" data-toggle="collapse" href="#panel__groups">
-                
-                    <span class="badge badge_get">get</span>
-                
-                    <span class="badge badge_post">post</span>
-                
+                <span class="methods">
+                    
+                        <span class="badge badge_get">get</span>
+                    
+                        <span class="badge badge_post">post</span>
+                    
+                </span>
                 <span class="parent"></span>/groups
             </a>
         </h4>
@@ -1736,12 +2068,20 @@ to do stuff. See also <a href="https://www.example.com">example.com</a>.</p>
                 
                     <a href="#" data-toggle="modal" data-target="#_groups_get" class="list-group-item">
                         <span class="badge badge_get">get</span>
-                        Get a list of all the groups
+                        <div class="method_description">
+                            <p>Get a list of all the groups</p>
+
+                        </div>
+                        <div class="clearfix"></div>
                     </a>
                 
                     <a href="#" data-toggle="modal" data-target="#_groups_post" class="list-group-item">
                         <span class="badge badge_post">post</span>
-                        Create a new group
+                        <div class="method_description">
+                            <p>Create a new group</p>
+
+                        </div>
+                        <div class="clearfix"></div>
                     </a>
                 
             </div>
@@ -1765,8 +2105,10 @@ to do stuff. See also <a href="https://www.example.com">example.com</a>.</p>
 
                         <!-- Nav tabs -->
                         <ul class="nav nav-tabs">
-                            <li class="active"><a href="#_groups_get_request" data-toggle="tab">Request</a></li>
-                            <li><a href="#_groups_get_response" data-toggle="tab">Response</a></li>
+                            <li class="active">
+                                <a href="#_groups_get_request" data-toggle="tab">Request</a>
+                            </li>
+                            
                         </ul>
 
                         <!-- Tab panes -->
@@ -1777,11 +2119,11 @@ to do stuff. See also <a href="https://www.example.com">example.com</a>.</p>
                                 
 
                                 
-                            </div>
 
-                            <div class="tab-pane" id="_groups_get_response">
                                 
                             </div>
+
+                            
                         </div>
                     </div>
                 </div>
@@ -1804,8 +2146,10 @@ to do stuff. See also <a href="https://www.example.com">example.com</a>.</p>
 
                         <!-- Nav tabs -->
                         <ul class="nav nav-tabs">
-                            <li class="active"><a href="#_groups_post_request" data-toggle="tab">Request</a></li>
-                            <li><a href="#_groups_post_response" data-toggle="tab">Response</a></li>
+                            <li class="active">
+                                <a href="#_groups_post_request" data-toggle="tab">Request</a>
+                            </li>
+                            
                         </ul>
 
                         <!-- Tab panes -->
@@ -1816,21 +2160,26 @@ to do stuff. See also <a href="https://www.example.com">example.com</a>.</p>
                                 
 
                                 
-                                    <h4>Body</h4>
+
+                                
+                                    <h3>Body</h3>
                                     
                                         <p><strong>Type: application/json</strong></p>
-                                        <pre>{
-  &quot;name&quot;: &quot;Cool people&quot;,
-  &quot;members&quot;: [1, 2, 3]
-}
+                                        
+                                        
+                                        
+                                            <strong>Example:</strong>
+                                            <pre>{
+  "<span class="hljs-attribute">name</span>": <span class="hljs-value"><span class="hljs-string">"Cool people"</span></span>,
+  "<span class="hljs-attribute">members</span>": <span class="hljs-value">[<span class="hljs-number">1</span>, <span class="hljs-number">2</span>, <span class="hljs-number">3</span>]
+</span>}
 </pre>
+                                        
                                     
                                 
                             </div>
 
-                            <div class="tab-pane" id="_groups_post_response">
-                                
-                            </div>
+                            
                         </div>
                     </div>
                 </div>
@@ -1844,13 +2193,15 @@ to do stuff. See also <a href="https://www.example.com">example.com</a>.</p>
     <div class="panel-heading">
         <h4 class="panel-title">
             <a class="block collapsed" data-toggle="collapse" href="#panel__groups__groupId_">
-                
-                    <span class="badge badge_get">get</span>
-                
-                    <span class="badge badge_put">put</span>
-                
-                    <span class="badge badge_delete">delete</span>
-                
+                <span class="methods">
+                    
+                        <span class="badge badge_get">get</span>
+                    
+                        <span class="badge badge_put">put</span>
+                    
+                        <span class="badge badge_delete">delete</span>
+                    
+                </span>
                 <span class="parent">/groups</span>/{groupId}
             </a>
         </h4>
@@ -1861,17 +2212,29 @@ to do stuff. See also <a href="https://www.example.com">example.com</a>.</p>
                 
                     <a href="#" data-toggle="modal" data-target="#_groups__groupId__get" class="list-group-item">
                         <span class="badge badge_get">get</span>
-                        Get the details of a group, including the member list
+                        <div class="method_description">
+                            <p>Get the details of a group, including the member list</p>
+
+                        </div>
+                        <div class="clearfix"></div>
                     </a>
                 
                     <a href="#" data-toggle="modal" data-target="#_groups__groupId__put" class="list-group-item">
                         <span class="badge badge_put">put</span>
-                        Update the group, **optionally** supplying the new list of members (overwrites current list)
+                        <div class="method_description">
+                            <p>Update the group, <strong>optionally</strong> supplying the new list of members (overwrites current list)</p>
+
+                        </div>
+                        <div class="clearfix"></div>
                     </a>
                 
                     <a href="#" data-toggle="modal" data-target="#_groups__groupId__delete" class="list-group-item">
                         <span class="badge badge_delete">delete</span>
-                        Removes the group
+                        <div class="method_description">
+                            <p>Removes the group</p>
+
+                        </div>
+                        <div class="clearfix"></div>
                     </a>
                 
             </div>
@@ -1895,15 +2258,17 @@ to do stuff. See also <a href="https://www.example.com">example.com</a>.</p>
 
                         <!-- Nav tabs -->
                         <ul class="nav nav-tabs">
-                            <li class="active"><a href="#_groups__groupId__get_request" data-toggle="tab">Request</a></li>
-                            <li><a href="#_groups__groupId__get_response" data-toggle="tab">Response</a></li>
+                            <li class="active">
+                                <a href="#_groups__groupId__get_request" data-toggle="tab">Request</a>
+                            </li>
+                            
                         </ul>
 
                         <!-- Tab panes -->
                         <div class="tab-content">
                             <div class="tab-pane active" id="_groups__groupId__get_request">
                                 
-                                    <h4>URI Parameters</h4>
+                                    <h3>URI Parameters</h3>
                                     <ul>
                                         
                                             <li><strong>groupId</strong>: string</li>
@@ -1914,11 +2279,11 @@ to do stuff. See also <a href="https://www.example.com">example.com</a>.</p>
                                 
 
                                 
-                            </div>
 
-                            <div class="tab-pane" id="_groups__groupId__get_response">
                                 
                             </div>
+
+                            
                         </div>
                     </div>
                 </div>
@@ -1941,15 +2306,17 @@ to do stuff. See also <a href="https://www.example.com">example.com</a>.</p>
 
                         <!-- Nav tabs -->
                         <ul class="nav nav-tabs">
-                            <li class="active"><a href="#_groups__groupId__put_request" data-toggle="tab">Request</a></li>
-                            <li><a href="#_groups__groupId__put_response" data-toggle="tab">Response</a></li>
+                            <li class="active">
+                                <a href="#_groups__groupId__put_request" data-toggle="tab">Request</a>
+                            </li>
+                            
                         </ul>
 
                         <!-- Tab panes -->
                         <div class="tab-content">
                             <div class="tab-pane active" id="_groups__groupId__put_request">
                                 
-                                    <h4>URI Parameters</h4>
+                                    <h3>URI Parameters</h3>
                                     <ul>
                                         
                                             <li><strong>groupId</strong>: string</li>
@@ -1960,21 +2327,26 @@ to do stuff. See also <a href="https://www.example.com">example.com</a>.</p>
                                 
 
                                 
-                                    <h4>Body</h4>
+
+                                
+                                    <h3>Body</h3>
                                     
                                         <p><strong>Type: application/json</strong></p>
-                                        <pre>{
-  &quot;name&quot;: &quot;Cool people&quot;,
-  &quot;members&quot;: [1, 2, 3]
-}
+                                        
+                                        
+                                        
+                                            <strong>Example:</strong>
+                                            <pre>{
+  "<span class="hljs-attribute">name</span>": <span class="hljs-value"><span class="hljs-string">"Cool people"</span></span>,
+  "<span class="hljs-attribute">members</span>": <span class="hljs-value">[<span class="hljs-number">1</span>, <span class="hljs-number">2</span>, <span class="hljs-number">3</span>]
+</span>}
 </pre>
+                                        
                                     
                                 
                             </div>
 
-                            <div class="tab-pane" id="_groups__groupId__put_response">
-                                
-                            </div>
+                            
                         </div>
                     </div>
                 </div>
@@ -1997,15 +2369,17 @@ to do stuff. See also <a href="https://www.example.com">example.com</a>.</p>
 
                         <!-- Nav tabs -->
                         <ul class="nav nav-tabs">
-                            <li class="active"><a href="#_groups__groupId__delete_request" data-toggle="tab">Request</a></li>
-                            <li><a href="#_groups__groupId__delete_response" data-toggle="tab">Response</a></li>
+                            <li class="active">
+                                <a href="#_groups__groupId__delete_request" data-toggle="tab">Request</a>
+                            </li>
+                            
                         </ul>
 
                         <!-- Tab panes -->
                         <div class="tab-content">
                             <div class="tab-pane active" id="_groups__groupId__delete_request">
                                 
-                                    <h4>URI Parameters</h4>
+                                    <h3>URI Parameters</h3>
                                     <ul>
                                         
                                             <li><strong>groupId</strong>: string</li>
@@ -2016,11 +2390,11 @@ to do stuff. See also <a href="https://www.example.com">example.com</a>.</p>
                                 
 
                                 
-                            </div>
 
-                            <div class="tab-pane" id="_groups__groupId__delete_response">
                                 
                             </div>
+
+                            
                         </div>
                     </div>
                 </div>
@@ -2034,9 +2408,11 @@ to do stuff. See also <a href="https://www.example.com">example.com</a>.</p>
     <div class="panel-heading">
         <h4 class="panel-title">
             <a class="block collapsed" data-toggle="collapse" href="#panel__groups__groupId__users">
-                
-                    <span class="badge badge_post">post</span>
-                
+                <span class="methods">
+                    
+                        <span class="badge badge_post">post</span>
+                    
+                </span>
                 <span class="parent">/groups/{groupId}</span>/users
             </a>
         </h4>
@@ -2047,7 +2423,11 @@ to do stuff. See also <a href="https://www.example.com">example.com</a>.</p>
                 
                     <a href="#" data-toggle="modal" data-target="#_groups__groupId__users_post" class="list-group-item">
                         <span class="badge badge_post">post</span>
-                        Adds a user to a group
+                        <div class="method_description">
+                            <p>Adds a user to a group</p>
+
+                        </div>
+                        <div class="clearfix"></div>
                     </a>
                 
             </div>
@@ -2071,15 +2451,17 @@ to do stuff. See also <a href="https://www.example.com">example.com</a>.</p>
 
                         <!-- Nav tabs -->
                         <ul class="nav nav-tabs">
-                            <li class="active"><a href="#_groups__groupId__users_post_request" data-toggle="tab">Request</a></li>
-                            <li><a href="#_groups__groupId__users_post_response" data-toggle="tab">Response</a></li>
+                            <li class="active">
+                                <a href="#_groups__groupId__users_post_request" data-toggle="tab">Request</a>
+                            </li>
+                            
                         </ul>
 
                         <!-- Tab panes -->
                         <div class="tab-content">
                             <div class="tab-pane active" id="_groups__groupId__users_post_request">
                                 
-                                    <h4>URI Parameters</h4>
+                                    <h3>URI Parameters</h3>
                                     <ul>
                                         
                                             <li><strong>groupId</strong>: string</li>
@@ -2090,20 +2472,25 @@ to do stuff. See also <a href="https://www.example.com">example.com</a>.</p>
                                 
 
                                 
-                                    <h4>Body</h4>
+
+                                
+                                    <h3>Body</h3>
                                     
                                         <p><strong>Type: application/json</strong></p>
-                                        <pre>{
-  &quot;user_id&quot;: 4,
+                                        
+                                        
+                                        
+                                            <strong>Example:</strong>
+                                            <pre>{
+  "<span class="hljs-attribute">user_id</span>": <span class="hljs-value"><span class="hljs-number">4</span></span>,
 }
 </pre>
+                                        
                                     
                                 
                             </div>
 
-                            <div class="tab-pane" id="_groups__groupId__users_post_response">
-                                
-                            </div>
+                            
                         </div>
                     </div>
                 </div>
@@ -2117,9 +2504,11 @@ to do stuff. See also <a href="https://www.example.com">example.com</a>.</p>
     <div class="panel-heading">
         <h4 class="panel-title">
             <a class="block collapsed" data-toggle="collapse" href="#panel__groups__groupId__users__userId_">
-                
-                    <span class="badge badge_delete">delete</span>
-                
+                <span class="methods">
+                    
+                        <span class="badge badge_delete">delete</span>
+                    
+                </span>
                 <span class="parent">/groups/{groupId}/users</span>/{userId}
             </a>
         </h4>
@@ -2130,7 +2519,11 @@ to do stuff. See also <a href="https://www.example.com">example.com</a>.</p>
                 
                     <a href="#" data-toggle="modal" data-target="#_groups__groupId__users__userId__delete" class="list-group-item">
                         <span class="badge badge_delete">delete</span>
-                        Removes a user from a group
+                        <div class="method_description">
+                            <p>Removes a user from a group</p>
+
+                        </div>
+                        <div class="clearfix"></div>
                     </a>
                 
             </div>
@@ -2154,15 +2547,17 @@ to do stuff. See also <a href="https://www.example.com">example.com</a>.</p>
 
                         <!-- Nav tabs -->
                         <ul class="nav nav-tabs">
-                            <li class="active"><a href="#_groups__groupId__users__userId__delete_request" data-toggle="tab">Request</a></li>
-                            <li><a href="#_groups__groupId__users__userId__delete_response" data-toggle="tab">Response</a></li>
+                            <li class="active">
+                                <a href="#_groups__groupId__users__userId__delete_request" data-toggle="tab">Request</a>
+                            </li>
+                            
                         </ul>
 
                         <!-- Tab panes -->
                         <div class="tab-content">
                             <div class="tab-pane active" id="_groups__groupId__users__userId__delete_request">
                                 
-                                    <h4>URI Parameters</h4>
+                                    <h3>URI Parameters</h3>
                                     <ul>
                                         
                                             <li><strong>groupId</strong>: string</li>
@@ -2175,11 +2570,11 @@ to do stuff. See also <a href="https://www.example.com">example.com</a>.</p>
                                 
 
                                 
-                            </div>
 
-                            <div class="tab-pane" id="_groups__groupId__users__userId__delete_response">
                                 
                             </div>
+
+                            
                         </div>
                     </div>
                 </div>
@@ -2206,7 +2601,7 @@ to do stuff. See also <a href="https://www.example.com">example.com</a>.</p>
                 <div id="sidebar" class="hidden-print affix" role="complementary">
                     <ul class="nav nav-pills nav-stacked">
                         
-                            <li><a href="#_account">/account</a></li>
+                            <li><a href="#_account">ACCOUNTS</a></li>
                         
                             <li><a href="#_conversations">/conversations</a></li>
                         

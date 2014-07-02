@@ -3,13 +3,21 @@ title: Example
 version: 1
 baseUri: http://example.com/{version}
 documentation:
- - title: Welcome
-   content: |
-     Welcome to the Example Documentation. The Example API allows you
-     to do stuff. See also [example.com](https://www.example.com).
- - title: Chapter two
-   content: |
-     More content here. Including **bold** text!
+  - title: Welcome
+    content: |
+      Welcome to the Example Documentation. The Example API allows you
+      to do stuff. See also [example.com](https://www.example.com).
+  - title: Chapter two
+    content: More content here. Including **bold** text!
+
+securitySchemes:
+  - oauth_1_0:
+      description: OAuth 1.0 continues to be supported for all API requests, but OAuth 2.0 is now preferred.
+      type: OAuth 1.0
+      settings:
+        requestTokenUri: https://api.dropbox.com/1/oauth/request_token
+        authorizationUri: https://www.dropbox.com/1/oauth/authorize
+        tokenCredentialsUri: https://api.dropbox.com/1/oauth/access_token
 
 traits:
   - paged:
@@ -22,6 +30,8 @@ traits:
           type: number
 
 /account:
+  displayName: ACCOUNTS
+
   description: |
     This is the top level description for /account.
     * One
@@ -29,7 +39,11 @@ traits:
     * Three
 
   post:
-    description: Creates a new account. Some **bold** text here.
+    description: |
+      Creates a new account. Some **bold** text here. More text. Need to fill the line, so make it longer still. Hooray!
+      Line two
+
+      Paragraph two
     body:
       application/json:
         example: |
@@ -56,9 +70,21 @@ traits:
           type: integer
   /{id}:
     get:
+      headers:
+        Authorization:
+          type: string
 
     put:
       description: Update the account
+      body:
+        application/x-www-form-urlencoded:
+          formParameters:
+            name:
+              description: name on account
+              type: string
+              example: Naruto Uzumaki
+            gender:
+              enum: ["male", "female"]
 
     delete:
       description: Delete the account
@@ -99,6 +125,7 @@ traits:
 
 /conversations:
   description: This is the top level description for /conversations.
+  securedBy: [oauth_1_0]
 
   get:
     description: Get a list of conversation for the current user
