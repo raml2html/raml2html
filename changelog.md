@@ -1,3 +1,6 @@
+0.23.2 - July 7, 2014
+- Fixed escape key not closing the modal
+
 0.23.1 - June 29, 2014
 - Fixed Markdown output for long sentences
 - Added GitHub API example
