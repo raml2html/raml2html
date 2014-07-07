@@ -73,6 +73,9 @@ traits:
       headers:
         Authorization:
           type: string
+          description: Basic authentication header
+          example: |
+            Authorization: Basic QWxhZGRpbjpvcGVuIHNlc2FtZQ==
 
     put:
       description: Update the account
@@ -104,6 +107,14 @@ traits:
           description: Login was correct
         400:
           description: Login was incorrect, please try again
+        401:
+          description: Not authorized
+          headers:
+            WWW-Authenticate:
+              type: string
+              description: user was not authorized
+              example: |
+                WWW-Authenticate: Basic realm="raml2html"
 
   /forgot:
     post:
