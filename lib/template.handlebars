@@ -7,11 +7,17 @@
     <meta name="generator" content="https://github.com/kevinrenskers/raml2html {{config.raml2HtmlVersion}}">
 
     <script type="text/javascript">
+        function selectTabOnHover() {
+            $('.nav-tabs > li > a').hover(function(){
+                $(this).tab('show');
+            });
+        };
         var protocol = ((document.location.protocol === 'https:') ? 'https:': 'http:');
         document.write('<link rel="stylesheet" href="' + protocol + '//netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css">');
         document.write('<link rel="stylesheet" href="' + protocol + '//yandex.st/highlightjs/8.0/styles/github.min.css">');
         document.write('<script type="text/javascript" src="' + protocol + '//code.jquery.com/jquery-1.11.0.min.js"><\/sc' + 'ript>');
         document.write('<script type="text/javascript" src="' + protocol + '//netdna.bootstrapcdn.com/bootstrap/3.1.1/js/bootstrap.min.js"><\/sc' + 'ript>');
+        document.write('<script type="text/javascript">$(selectTabOnHover);<\/sc' + 'ript>');
     </script>
 
     <style>
