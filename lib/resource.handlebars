@@ -71,10 +71,10 @@
                                         {{#each headers}}
                                             <li>
                                                 <strong>{{@key}}</strong>: ({{this.type}}) {{#if this.required}} <em>required</em>{{/if}} {{this.description}}
-						{{#if this.example}}
-						    <small><p></p><p><strong>Example:</strong><code>{{this.example}}</code></p></small>
-					        {{/if}}
-					    </li>
+                                                {{#if this.example}}
+                                                    <small><p></p><p><strong>Example:</strong> <code>{{this.example}}</code></p></small>
+                                                {{/if}}
+                                            </li>
                                         {{/each}}
                                     </ul>
                                 {{/if}}
@@ -184,10 +184,10 @@
                                                 {{#each this.headers}}
                                                     <li>
                                                         <strong>{{@key}}</strong>: ({{this.type}}) {{#if this.required}} <em>required</em>{{/if}} {{this.description}}
-						        {{#if this.example}}
-						            <small><p></p><p><strong>Example:</strong><code>{{this.example}}</code></p></small>
-					                {{/if}}
-					            </li>
+                                                        {{#if this.example}}
+                                                            <small><p></p><p><strong>Example:</strong> <code>{{this.example}}</code></p></small>
+                                                        {{/if}}
+                                                    </li>
                                                 {{/each}}
                                             </ul>
                                         {{/if}}
