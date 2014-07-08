@@ -1,3 +1,6 @@
+0.24.0 - July 7, 2014
+- Added header examples
+
 0.23.2 - July 7, 2014
 - Fixed escape key not closing the modal
 

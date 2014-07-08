@@ -484,7 +484,13 @@ Line two</p>
                                     <h3>Headers</h3>
                                     <ul>
                                         
-                                            <li><strong>Authorization</strong>: (string)  </li>
+                                            <li>
+                                                <strong>Authorization</strong>: (string)  Basic authentication header
+                                                
+                                                    <small><p></p><p><strong>Example:</strong> <code>Authorization: Basic QWxhZGRpbjpvcGVuIHNlc2FtZQ==
+</code></p></small>
+                                                
+                                            </li>
                                         
                                     </ul>
                                 
@@ -750,6 +756,27 @@ Line two</p>
                                         <p>Login was incorrect, please try again</p>
 
 
+                                        
+
+                                        
+                                    
+                                        <h2>HTTP status code <a href="http://httpstatus.es/401" target="_blank">401</a></h2>
+                                        <p>Not authorized</p>
+
+
+                                        
+                                            <h3>Headers</h3>
+                                            <ul>
+                                                
+                                                    <li>
+                                                        <strong>WWW-Authenticate</strong>: (string)  user was not authorized
+                                                        
+                                                            <small><p></p><p><strong>Example:</strong> <code>WWW-Authenticate: Basic realm=&quot;raml2html&quot;
+</code></p></small>
+                                                        
+                                                    </li>
+                                                
+                                            </ul>
                                         
 
                                         
