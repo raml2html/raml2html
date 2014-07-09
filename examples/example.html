@@ -119,24 +119,24 @@
                     <p>http://example.com/1</p>
 
                     
-                        <h3 id=""><a href="#">Welcome</a></h3>
+                        <h3 id="Welcome"><a href="#Welcome">Welcome</a></h3>
                         <p>Welcome to the Example Documentation. The Example API allows you
 to do stuff. See also <a href="https://www.example.com">example.com</a>.</p>
-<pre><code class="lang-javascript"><span class="hljs-reserved">var</span> raml2html = <span class="hljs-built_in">require</span>(<span class="hljs-string">'raml2html'</span>);
+<pre><code class="lang-javascript"><span class="hljs-keyword">var</span> raml2html = require('raml2html');
 
-<span class="hljs-regexp">//</span> Using the <span class="hljs-reserved">default</span> <span class="hljs-attribute">templates</span>:
-<span class="hljs-regexp">//</span> source can either be a filename, file contents (string) <span class="hljs-keyword">or</span> parsed RAML object
+// <span class="hljs-type">Using</span> the default templates:
+// source can either be a filename, file contents (<span class="hljs-type">string</span>) <span class="hljs-keyword">or</span> parsed <span class="hljs-type">RAML</span> <span class="hljs-keyword">object</span>
 raml2html.parse(source, onSuccess, onError);
 
-<span class="hljs-regexp">//</span> Using your own <span class="hljs-attribute">templates</span>:
-<span class="hljs-regexp">//</span> - config should be an object <span class="hljs-reserved">with</span> at least an `<span class="javascript">template</span>` property
-<span class="hljs-regexp">//</span> - config can also include `<span class="javascript">helpers</span>` <span class="hljs-keyword">and</span> `<span class="javascript">partials</span>`
-<span class="hljs-regexp">//</span> - the config object will be accessible from your handlebars templates
+// <span class="hljs-type">Using</span> your own templates:
+// - config should be an <span class="hljs-keyword">object</span> <span class="hljs-keyword">with</span> at least an `<span class="hljs-keyword">template</span>` property
+// - config can also <span class="hljs-keyword">include</span> `helpers` <span class="hljs-keyword">and</span> `partials`
+// - the config <span class="hljs-keyword">object</span> will be accessible <span class="hljs-keyword">from</span> your handlebars templates
 raml2html.parseWithConfig(source, config, onSuccess, onError);
 </code></pre>
 
                     
-                        <h3 id=""><a href="#">Chapter two</a></h3>
+                        <h3 id="Chapter-two"><a href="#Chapter-two">Chapter two</a></h3>
                         <p>More content here. Including <strong>bold</strong> text!</p>
 
                     
