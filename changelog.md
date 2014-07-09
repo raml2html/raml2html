@@ -1,3 +1,6 @@
+0.25.0 - July 9, 2014
+- Added code highlighting to the Markdown parser
+
 0.24.0 - July 7, 2014
 - Added header examples
 
