@@ -83,6 +83,10 @@ traits:
         number:
           type: integer
   /{id}:
+    uriParameters:
+      id:
+        type: string
+        description: account identifier
     get:
       headers:
         Authorization:
