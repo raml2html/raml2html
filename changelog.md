@@ -1,3 +1,6 @@
+0.27.0 - July 10, 2014
+- Added a new public function getDefaultConfig
+
 0.26.0 - July 10, 2014
 - Render required and description of URI Parameters
 - Made the output of URI params, form params, request body and response body consistent with each other
