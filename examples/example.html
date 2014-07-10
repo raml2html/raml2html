@@ -4,7 +4,7 @@
     <title>Example API documentation</title>
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-    <meta name="generator" content="https://github.com/kevinrenskers/raml2html 0.25.0">
+    <meta name="generator" content="https://github.com/kevinrenskers/raml2html 0.26.0">
 
     <script type="text/javascript">
         var protocol = ((document.location.protocol === 'https:') ? 'https:': 'http:');
@@ -237,15 +237,21 @@ Line two</p>
                                     
                                         <p><strong>Type: application/json</strong></p>
                                         
+
                                         
+
                                         
-                                            <strong>Example:</strong>
-                                            <pre>{
+                                            <p>
+                                                <small>
+                                                    <strong>Example</strong>:
+                                                    <pre>{
   "<span class="hljs-attribute">email</span>": <span class="hljs-value"><span class="hljs-string">"john@example.com"</span></span>,
   "<span class="hljs-attribute">password</span>": <span class="hljs-value"><span class="hljs-string">"super_secret"</span></span>,
   "<span class="hljs-attribute">name</span>": <span class="hljs-value"><span class="hljs-string">"John Doe"</span>
 </span>}
 </pre>
+                                                </small>
+                                            </p>
                                         
                                     
                                 
@@ -350,12 +356,14 @@ Line two</p>
 
                                                 <p>name on account</p>
 
+
                                                 
+
                                                 
                                                     <p>
                                                         <small>
-                                                            <strong>Example:</strong>
-                                                            <code>Naruto Uzumaki</code>
+                                                            <strong>Example</strong>:
+                                                            <pre>Naruto Uzumaki</pre>
                                                         </small>
                                                     </p>
                                                 
@@ -371,7 +379,9 @@ Line two</p>
                                                 </em>
 
                                                 
+
                                                 
+
                                                 
                                             </li>
                                         
@@ -385,7 +395,9 @@ Line two</p>
                                                 </em>
 
                                                 
+
                                                 
+
                                                 
                                             </li>
                                         
@@ -487,7 +499,18 @@ Line two</p>
                                     <h3>URI Parameters</h3>
                                     <ul>
                                         
-                                            <li><strong>id</strong>: string</li>
+                                            <li>
+                                                <strong>id</strong>:
+                                                <em>
+                                                    
+                                                        required
+                                                    
+                                                    (string)
+                                                </em>
+
+                                                <p>account identifier</p>
+
+                                            </li>
                                         
                                     </ul>
                                 
@@ -497,10 +520,23 @@ Line two</p>
                                     <ul>
                                         
                                             <li>
-                                                <strong>Authorization</strong>: (string)  Basic authentication header
+                                                <strong>Authorization</strong>:
+                                                <em>
+                                                    
+                                                    (string)
+                                                </em>
+
+                                                <p>Basic authentication header</p>
+
+
                                                 
-                                                    <small><p></p><p><strong>Example:</strong> <code>Authorization: Basic QWxhZGRpbjpvcGVuIHNlc2FtZQ==
-</code></p></small>
+                                                    <p>
+                                                        <small>
+                                                            <strong>Example</strong>:
+                                                            <pre><span class="hljs-attribute">Authorization</span>: <span class="hljs-string">Basic QWxhZGRpbjpvcGVuIHNlc2FtZQ==</span>
+</pre>
+                                                        </small>
+                                                    </p>
                                                 
                                             </li>
                                         
@@ -548,7 +584,18 @@ Line two</p>
                                     <h3>URI Parameters</h3>
                                     <ul>
                                         
-                                            <li><strong>id</strong>: string</li>
+                                            <li>
+                                                <strong>id</strong>:
+                                                <em>
+                                                    
+                                                        required
+                                                    
+                                                    (string)
+                                                </em>
+
+                                                <p>account identifier</p>
+
+                                            </li>
                                         
                                     </ul>
                                 
@@ -566,7 +613,7 @@ Line two</p>
                                             <ul>
                                                 
                                                     <li>
-                                                        <strong>name</strong>
+                                                        <strong>name</strong>:
                                                         <em>
                                                             
                                                             
@@ -576,19 +623,21 @@ Line two</p>
 
                                                         <p>name on account</p>
 
+
                                                         
+
                                                         
                                                             <p>
                                                                 <small>
-                                                                    <strong>Example:</strong>
-                                                                    <code>Naruto Uzumaki</code>
+                                                                    <strong>Example</strong>:
+                                                                    <pre>Naruto Uzumaki</pre>
                                                                 </small>
                                                             </p>
                                                         
                                                     </li>
                                                 
                                                     <li>
-                                                        <strong>gender</strong>
+                                                        <strong>gender</strong>:
                                                         <em>
                                                             
                                                             
@@ -597,13 +646,17 @@ Line two</p>
                                                         </em>
 
                                                         
+
                                                         
+
                                                         
                                                     </li>
                                                 
                                             </ul>
                                         
+
                                         
+
                                         
                                     
                                 
@@ -645,7 +698,18 @@ Line two</p>
                                     <h3>URI Parameters</h3>
                                     <ul>
                                         
-                                            <li><strong>id</strong>: string</li>
+                                            <li>
+                                                <strong>id</strong>:
+                                                <em>
+                                                    
+                                                        required
+                                                    
+                                                    (string)
+                                                </em>
+
+                                                <p>account identifier</p>
+
+                                            </li>
                                         
                                     </ul>
                                 
@@ -740,14 +804,20 @@ Line two</p>
                                     
                                         <p><strong>Type: application/json</strong></p>
                                         
+
                                         
+
                                         
-                                            <strong>Example:</strong>
-                                            <pre>{
+                                            <p>
+                                                <small>
+                                                    <strong>Example</strong>:
+                                                    <pre>{
   "<span class="hljs-attribute">email</span>": <span class="hljs-value"><span class="hljs-string">"john@example.com"</span></span>,
   "<span class="hljs-attribute">password</span>": <span class="hljs-value"><span class="hljs-string">"super_secret"</span>
 </span>}
 </pre>
+                                                </small>
+                                            </p>
                                         
                                     
                                 
@@ -781,10 +851,23 @@ Line two</p>
                                             <ul>
                                                 
                                                     <li>
-                                                        <strong>WWW-Authenticate</strong>: (string)  user was not authorized
+                                                        <strong>WWW-Authenticate</strong>:
+                                                        <em>
+                                                            
+                                                            (string)
+                                                        </em>
+
+                                                        <p>user was not authorized</p>
+
+
                                                         
-                                                            <small><p></p><p><strong>Example:</strong> <code>WWW-Authenticate: Basic realm=&quot;raml2html&quot;
-</code></p></small>
+                                                            <p>
+                                                                <small>
+                                                                    <strong>Example</strong>:
+                                                                    <pre><span class="hljs-attribute">WWW-Authenticate</span>: <span class="hljs-string">Basic realm="raml2html"</span>
+</pre>
+                                                                </small>
+                                                            </p>
                                                         
                                                     </li>
                                                 
@@ -873,13 +956,19 @@ Line two</p>
                                     
                                         <p><strong>Type: application/json</strong></p>
                                         
+
                                         
+
                                         
-                                            <strong>Example:</strong>
-                                            <pre>{
+                                            <p>
+                                                <small>
+                                                    <strong>Example</strong>:
+                                                    <pre>{
   "<span class="hljs-attribute">email</span>": <span class="hljs-value"><span class="hljs-string">"john@example.com"</span>
 </span>}
 </pre>
+                                                </small>
+                                            </p>
                                         
                                     
                                 
@@ -1168,14 +1257,20 @@ Line two</p>
                                     
                                         <p><strong>Type: application/json</strong></p>
                                         
+
                                         
+
                                         
-                                            <strong>Example:</strong>
-                                            <pre>{
+                                            <p>
+                                                <small>
+                                                    <strong>Example</strong>:
+                                                    <pre>{
   "<span class="hljs-attribute">content</span>": <span class="hljs-value"><span class="hljs-string">"My message!"</span></span>,
   "<span class="hljs-attribute">members</span>": <span class="hljs-value">[<span class="hljs-number">1</span>, <span class="hljs-number">2</span>, <span class="hljs-number">3</span>]
 </span>}
 </pre>
+                                                </small>
+                                            </p>
                                         
                                     
                                 
@@ -1282,7 +1377,17 @@ Line two</p>
                                     <h3>URI Parameters</h3>
                                     <ul>
                                         
-                                            <li><strong>convId</strong>: string</li>
+                                            <li>
+                                                <strong>convId</strong>:
+                                                <em>
+                                                    
+                                                        required
+                                                    
+                                                    (string)
+                                                </em>
+
+                                                
+                                            </li>
                                         
                                     </ul>
                                 
@@ -1330,7 +1435,17 @@ Line two</p>
                                     <h3>URI Parameters</h3>
                                     <ul>
                                         
-                                            <li><strong>convId</strong>: string</li>
+                                            <li>
+                                                <strong>convId</strong>:
+                                                <em>
+                                                    
+                                                        required
+                                                    
+                                                    (string)
+                                                </em>
+
+                                                
+                                            </li>
                                         
                                     </ul>
                                 
@@ -1423,7 +1538,17 @@ Line two</p>
                                     <h3>URI Parameters</h3>
                                     <ul>
                                         
-                                            <li><strong>convId</strong>: string</li>
+                                            <li>
+                                                <strong>convId</strong>:
+                                                <em>
+                                                    
+                                                        required
+                                                    
+                                                    (string)
+                                                </em>
+
+                                                
+                                            </li>
                                         
                                     </ul>
                                 
@@ -1445,7 +1570,9 @@ Line two</p>
 
                                                 <p>The number of items per page</p>
 
+
                                                 
+
                                                 
                                             </li>
                                         
@@ -1460,7 +1587,9 @@ Line two</p>
 
                                                 <p>The page to return</p>
 
+
                                                 
+
                                                 
                                             </li>
                                         
@@ -1506,7 +1635,17 @@ Line two</p>
                                     <h3>URI Parameters</h3>
                                     <ul>
                                         
-                                            <li><strong>convId</strong>: string</li>
+                                            <li>
+                                                <strong>convId</strong>:
+                                                <em>
+                                                    
+                                                        required
+                                                    
+                                                    (string)
+                                                </em>
+
+                                                
+                                            </li>
                                         
                                     </ul>
                                 
@@ -1599,9 +1738,29 @@ Line two</p>
                                     <h3>URI Parameters</h3>
                                     <ul>
                                         
-                                            <li><strong>convId</strong>: string</li>
+                                            <li>
+                                                <strong>convId</strong>:
+                                                <em>
+                                                    
+                                                        required
+                                                    
+                                                    (string)
+                                                </em>
+
+                                                
+                                            </li>
                                         
-                                            <li><strong>messageId</strong>: string</li>
+                                            <li>
+                                                <strong>messageId</strong>:
+                                                <em>
+                                                    
+                                                        required
+                                                    
+                                                    (string)
+                                                </em>
+
+                                                
+                                            </li>
                                         
                                     </ul>
                                 
@@ -1649,9 +1808,29 @@ Line two</p>
                                     <h3>URI Parameters</h3>
                                     <ul>
                                         
-                                            <li><strong>convId</strong>: string</li>
+                                            <li>
+                                                <strong>convId</strong>:
+                                                <em>
+                                                    
+                                                        required
+                                                    
+                                                    (string)
+                                                </em>
+
+                                                
+                                            </li>
                                         
-                                            <li><strong>messageId</strong>: string</li>
+                                            <li>
+                                                <strong>messageId</strong>:
+                                                <em>
+                                                    
+                                                        required
+                                                    
+                                                    (string)
+                                                </em>
+
+                                                
+                                            </li>
                                         
                                     </ul>
                                 
@@ -1779,7 +1958,9 @@ Line two</p>
 
                                                 <p>The number of items per page</p>
 
+
                                                 
+
                                                 
                                             </li>
                                         
@@ -1794,7 +1975,9 @@ Line two</p>
 
                                                 <p>The page to return</p>
 
+
                                                 
+
                                                 
                                             </li>
                                         
@@ -1847,14 +2030,20 @@ Line two</p>
                                     
                                         <p><strong>Type: application/json</strong></p>
                                         
+
                                         
+
                                         
-                                            <strong>Example:</strong>
-                                            <pre>{
+                                            <p>
+                                                <small>
+                                                    <strong>Example</strong>:
+                                                    <pre>{
   "<span class="hljs-attribute">email</span>": <span class="hljs-value"><span class="hljs-string">"john@example.com"</span></span>,
   "<span class="hljs-attribute">name</span>": <span class="hljs-value"><span class="hljs-string">"John Doe"</span></span>,
 }
 </pre>
+                                                </small>
+                                            </p>
                                         
                                     
                                 
@@ -1952,7 +2141,17 @@ Line two</p>
                                     <h3>URI Parameters</h3>
                                     <ul>
                                         
-                                            <li><strong>userId</strong>: string</li>
+                                            <li>
+                                                <strong>userId</strong>:
+                                                <em>
+                                                    
+                                                        required
+                                                    
+                                                    (string)
+                                                </em>
+
+                                                
+                                            </li>
                                         
                                     </ul>
                                 
@@ -2000,7 +2199,17 @@ Line two</p>
                                     <h3>URI Parameters</h3>
                                     <ul>
                                         
-                                            <li><strong>userId</strong>: string</li>
+                                            <li>
+                                                <strong>userId</strong>:
+                                                <em>
+                                                    
+                                                        required
+                                                    
+                                                    (string)
+                                                </em>
+
+                                                
+                                            </li>
                                         
                                     </ul>
                                 
@@ -2048,7 +2257,17 @@ Line two</p>
                                     <h3>URI Parameters</h3>
                                     <ul>
                                         
-                                            <li><strong>userId</strong>: string</li>
+                                            <li>
+                                                <strong>userId</strong>:
+                                                <em>
+                                                    
+                                                        required
+                                                    
+                                                    (string)
+                                                </em>
+
+                                                
+                                            </li>
                                         
                                     </ul>
                                 
@@ -2205,14 +2424,20 @@ Line two</p>
                                     
                                         <p><strong>Type: application/json</strong></p>
                                         
+
                                         
+
                                         
-                                            <strong>Example:</strong>
-                                            <pre>{
+                                            <p>
+                                                <small>
+                                                    <strong>Example</strong>:
+                                                    <pre>{
   "<span class="hljs-attribute">name</span>": <span class="hljs-value"><span class="hljs-string">"Cool people"</span></span>,
   "<span class="hljs-attribute">members</span>": <span class="hljs-value">[<span class="hljs-number">1</span>, <span class="hljs-number">2</span>, <span class="hljs-number">3</span>]
 </span>}
 </pre>
+                                                </small>
+                                            </p>
                                         
                                     
                                 
@@ -2310,7 +2535,17 @@ Line two</p>
                                     <h3>URI Parameters</h3>
                                     <ul>
                                         
-                                            <li><strong>groupId</strong>: string</li>
+                                            <li>
+                                                <strong>groupId</strong>:
+                                                <em>
+                                                    
+                                                        required
+                                                    
+                                                    (string)
+                                                </em>
+
+                                                
+                                            </li>
                                         
                                     </ul>
                                 
@@ -2358,7 +2593,17 @@ Line two</p>
                                     <h3>URI Parameters</h3>
                                     <ul>
                                         
-                                            <li><strong>groupId</strong>: string</li>
+                                            <li>
+                                                <strong>groupId</strong>:
+                                                <em>
+                                                    
+                                                        required
+                                                    
+                                                    (string)
+                                                </em>
+
+                                                
+                                            </li>
                                         
                                     </ul>
                                 
@@ -2372,14 +2617,20 @@ Line two</p>
                                     
                                         <p><strong>Type: application/json</strong></p>
                                         
+
                                         
+
                                         
-                                            <strong>Example:</strong>
-                                            <pre>{
+                                            <p>
+                                                <small>
+                                                    <strong>Example</strong>:
+                                                    <pre>{
   "<span class="hljs-attribute">name</span>": <span class="hljs-value"><span class="hljs-string">"Cool people"</span></span>,
   "<span class="hljs-attribute">members</span>": <span class="hljs-value">[<span class="hljs-number">1</span>, <span class="hljs-number">2</span>, <span class="hljs-number">3</span>]
 </span>}
 </pre>
+                                                </small>
+                                            </p>
                                         
                                     
                                 
@@ -2421,7 +2672,17 @@ Line two</p>
                                     <h3>URI Parameters</h3>
                                     <ul>
                                         
-                                            <li><strong>groupId</strong>: string</li>
+                                            <li>
+                                                <strong>groupId</strong>:
+                                                <em>
+                                                    
+                                                        required
+                                                    
+                                                    (string)
+                                                </em>
+
+                                                
+                                            </li>
                                         
                                     </ul>
                                 
@@ -2503,7 +2764,17 @@ Line two</p>
                                     <h3>URI Parameters</h3>
                                     <ul>
                                         
-                                            <li><strong>groupId</strong>: string</li>
+                                            <li>
+                                                <strong>groupId</strong>:
+                                                <em>
+                                                    
+                                                        required
+                                                    
+                                                    (string)
+                                                </em>
+
+                                                
+                                            </li>
                                         
                                     </ul>
                                 
@@ -2517,13 +2788,19 @@ Line two</p>
                                     
                                         <p><strong>Type: application/json</strong></p>
                                         
+
                                         
+
                                         
-                                            <strong>Example:</strong>
-                                            <pre>{
+                                            <p>
+                                                <small>
+                                                    <strong>Example</strong>:
+                                                    <pre>{
   "<span class="hljs-attribute">user_id</span>": <span class="hljs-value"><span class="hljs-number">4</span></span>,
 }
 </pre>
+                                                </small>
+                                            </p>
                                         
                                     
                                 
@@ -2599,9 +2876,29 @@ Line two</p>
                                     <h3>URI Parameters</h3>
                                     <ul>
                                         
-                                            <li><strong>groupId</strong>: string</li>
+                                            <li>
+                                                <strong>groupId</strong>:
+                                                <em>
+                                                    
+                                                        required
+                                                    
+                                                    (string)
+                                                </em>
+
+                                                
+                                            </li>
                                         
-                                            <li><strong>userId</strong>: string</li>
+                                            <li>
+                                                <strong>userId</strong>:
+                                                <em>
+                                                    
+                                                        required
+                                                    
+                                                    (string)
+                                                </em>
+
+                                                
+                                            </li>
                                         
                                     </ul>
                                 
