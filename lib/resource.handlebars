@@ -68,6 +68,7 @@
                                                     {{/if}}
                                                     ({{this.type}})
                                                 </em>
+
                                                 {{md description}}
                                             </li>
                                         {{/each}}
@@ -79,9 +80,23 @@
                                     <ul>
                                         {{#each headers}}
                                             <li>
-                                                <strong>{{@key}}</strong>: ({{this.type}}) {{#if this.required}} <em>required</em>{{/if}} {{this.description}}
+                                                <strong>{{@key}}</strong>:
+                                                <em>
+                                                    {{#if this.required}}
+                                                        required
+                                                    {{/if}}
+                                                    ({{this.type}})
+                                                </em>
+
+                                                {{md this.description}}
+
                                                 {{#if this.example}}
-                                                    <small><p></p><p><strong>Example:</strong> <code>{{this.example}}</code></p></small>
+                                                    <p>
+                                                        <small>
+                                                            <strong>Example</strong>:
+                                                            <pre>{{highlight this.example}}</pre>
+                                                        </small>
+                                                    </p>
                                                 {{/if}}
                                             </li>
                                         {{/each}}
@@ -106,19 +121,21 @@
                                                 </em>
 
                                                 {{md description}}
+
                                                 {{#if this.schema}}
                                                     <p>
                                                         <small>
-                                                            <strong>Schema:</strong>
-                                                            <code>{{this.schema}}</code>
+                                                            <strong>Schema</strong>:
+                                                            <pre>{{this.schema}}</pre>
                                                         </small>
                                                     </p>
                                                 {{/if}}
+
                                                 {{#if this.example}}
                                                     <p>
                                                         <small>
-                                                            <strong>Example:</strong>
-                                                            <code>{{this.example}}</code>
+                                                            <strong>Example</strong>:
+                                                            <pre>{{highlight this.example}}</pre>
                                                         </small>
                                                     </p>
                                                 {{/if}}
@@ -136,7 +153,7 @@
                                             <ul>
                                                 {{#each formParameters}}
                                                     <li>
-                                                        <strong>{{@key}}</strong>
+                                                        <strong>{{@key}}</strong>:
                                                         <em>
                                                             {{#if this.required}}
                                                                 required
@@ -149,19 +166,21 @@
                                                         </em>
 
                                                         {{md description}}
+
                                                         {{#if this.schema}}
                                                             <p>
                                                                 <small>
-                                                                    <strong>Schema:</strong>
-                                                                    <code>{{this.schema}}</code>
+                                                                    <strong>Schema</strong>:
+                                                                    <pre>{{this.schema}}</pre>
                                                                 </small>
                                                             </p>
                                                         {{/if}}
+
                                                         {{#if this.example}}
                                                             <p>
                                                                 <small>
-                                                                    <strong>Example:</strong>
-                                                                    <code>{{this.example}}</code>
+                                                                    <strong>Example</strong>:
+                                                                    <pre>{{highlight this.example}}</pre>
                                                                 </small>
                                                             </p>
                                                         {{/if}}
@@ -169,13 +188,23 @@
                                                 {{/each}}
                                             </ul>
                                         {{/if}}
+
                                         {{#if this.schema}}
-                                            <strong>Schema:</strong>
-                                            <pre>{{highlight this.schema}}</pre>
+                                            <p>
+                                                <small>
+                                                    <strong>Schema</strong>:
+                                                    <pre>{{this.schema}}</pre>
+                                                </small>
+                                            </p>
                                         {{/if}}
+
                                         {{#if this.example}}
-                                            <strong>Example:</strong>
-                                            <pre>{{highlight this.example}}</pre>
+                                            <p>
+                                                <small>
+                                                    <strong>Example</strong>:
+                                                    <pre>{{highlight this.example}}</pre>
+                                                </small>
+                                            </p>
                                         {{/if}}
                                     {{/each}}
                                 {{/if}}
@@ -192,9 +221,23 @@
                                             <ul>
                                                 {{#each this.headers}}
                                                     <li>
-                                                        <strong>{{@key}}</strong>: ({{this.type}}) {{#if this.required}} <em>required</em>{{/if}} {{this.description}}
+                                                        <strong>{{@key}}</strong>:
+                                                        <em>
+                                                            {{#if this.required}}
+                                                                required
+                                                            {{/if}}
+                                                            ({{this.type}})
+                                                        </em>
+
+                                                        {{md this.description}}
+
                                                         {{#if this.example}}
-                                                            <small><p></p><p><strong>Example:</strong> <code>{{this.example}}</code></p></small>
+                                                            <p>
+                                                                <small>
+                                                                    <strong>Example</strong>:
+                                                                    <pre>{{highlight this.example}}</pre>
+                                                                </small>
+                                                            </p>
                                                         {{/if}}
                                                     </li>
                                                 {{/each}}
@@ -205,13 +248,23 @@
                                             <h3>Body</h3>
                                             {{#each this.body}}
                                                 <p><strong>Type: {{@key}}</strong></p>
+
                                                 {{#if this.schema}}
-                                                    <strong>Schema:</strong>
-                                                    <pre>{{highlight this.schema}}</pre>
+                                                    <p>
+                                                        <small>
+                                                            <strong>Schema</strong>:
+                                                            <pre>{{this.schema}}</pre>
+                                                        </small>
+                                                    </p>
                                                 {{/if}}
+
                                                 {{#if this.example}}
-                                                    <strong>Example:</strong>
-                                                    <pre>{{highlight this.example}}</pre>
+                                                    <p>
+                                                        <small>
+                                                            <strong>Example</strong>:
+                                                            <pre>{{highlight this.example}}</pre>
+                                                        </small>
+                                                    </p>
                                                 {{/if}}
                                             {{/each}}
                                         {{/if}}

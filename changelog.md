@@ -1,3 +1,7 @@
+0.26.0 - July 10, 2014
+- Render required and description of URI Parameters
+- Made the output of URI params, form params, request body and response body consistent with each other
+
 0.25.0 - July 9, 2014
 - Added code highlighting to the Markdown parser
 
