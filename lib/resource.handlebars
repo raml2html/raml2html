@@ -60,7 +60,16 @@
                                     <h3>URI Parameters</h3>
                                     <ul>
                                         {{#each ../../allUriParameters}}
-                                            <li><strong>{{this.displayName}}</strong>: {{this.type}}</li>
+                                            <li>
+                                                <strong>{{this.displayName}}</strong>:
+                                                <em>
+                                                    {{#if this.required}}
+                                                        required
+                                                    {{/if}}
+                                                    ({{this.type}})
+                                                </em>
+                                                {{md description}}
+                                            </li>
                                         {{/each}}
                                     </ul>
                                 {{/if}}
