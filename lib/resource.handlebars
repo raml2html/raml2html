@@ -13,6 +13,11 @@
     </div>
     <div id="panel_{{uniqueId}}" class="panel-collapse collapse">
         <div class="panel-body">
+            {{#if description}}
+                <div class="resource-description">
+                    {{md description}}
+                </div>
+            {{/if}}            
             <div class="list-group">
                 {{#methods}}
                     <a href="#" data-toggle="modal" data-target="#{{../uniqueId}}_{{method}}" class="list-group-item">
