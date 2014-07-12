@@ -93,7 +93,6 @@
             margin-top: 30px;
         }
         .resource-description {
-            border-bottom: 1px solid #ddd;
             background: #fcfcfc;
             padding: 15px 15px 0 15px;
             margin: -15px -15px 10px -15px;
@@ -131,12 +130,6 @@
                         </div>
 
                         <div class="panel-body">
-                            {{#if description}}
-                                <div class="resource-description">
-                                    {{md description}}
-                                </div>
-                            {{/if}}
-
                             <div class="panel-group">
                                 {{> resource}}
                             </div>
