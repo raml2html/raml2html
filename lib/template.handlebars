@@ -92,11 +92,20 @@
         #sidebar {
             margin-top: 30px;
         }
-        .resource-description {
+        .top-resource-description {
             border-bottom: 1px solid #ddd;
             background: #fcfcfc;
             padding: 15px 15px 0 15px;
             margin: -15px -15px 10px -15px;
+        }
+        .resource-description {
+            border-bottom: 1px solid #fcfcfc;
+            background: #fcfcfc;
+            padding: 15px 15px 0 15px;
+            margin: -15px -15px 10px -15px;
+        }
+        .panel > .panel-body > .panel-group > .panel:first-child .resource-description {
+            display: none;
         }
         .list-group .badge {
             float: left;
@@ -132,7 +141,7 @@
 
                         <div class="panel-body">
                             {{#if description}}
-                                <div class="resource-description">
+                                <div class="top-resource-description">
                                     {{md description}}
                                 </div>
                             {{/if}}

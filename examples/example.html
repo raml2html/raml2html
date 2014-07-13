@@ -4,7 +4,7 @@
     <title>Example API documentation</title>
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-    <meta name="generator" content="https://github.com/kevinrenskers/raml2html 0.26.0">
+    <meta name="generator" content="https://github.com/kevinrenskers/raml2html 0.27.0">
 
     <script type="text/javascript">
         var protocol = ((document.location.protocol === 'https:') ? 'https:': 'http:');
@@ -92,11 +92,20 @@
         #sidebar {
             margin-top: 30px;
         }
-        .resource-description {
+        .top-resource-description {
             border-bottom: 1px solid #ddd;
             background: #fcfcfc;
             padding: 15px 15px 0 15px;
             margin: -15px -15px 10px -15px;
+        }
+        .resource-description {
+            border-bottom: 1px solid #fcfcfc;
+            background: #fcfcfc;
+            padding: 15px 15px 0 15px;
+            margin: -15px -15px 10px -15px;
+        }
+        .panel > .panel-body > .panel-group > .panel:first-child .resource-description {
+            display: none;
         }
         .list-group .badge {
             float: left;
@@ -122,16 +131,16 @@
                         <h3 id="Welcome"><a href="#Welcome">Welcome</a></h3>
                         <p>Welcome to the Example Documentation. The Example API allows you
 to do stuff. See also <a href="https://www.example.com">example.com</a>.</p>
-<pre><code class="lang-javascript"><span class="hljs-keyword">var</span> raml2html = require('raml2html');
+<pre><code class="lang-javascript"><span class="hljs-reserved">var</span> raml2html = <span class="hljs-built_in">require</span>(<span class="hljs-string">'raml2html'</span>);
 
-// <span class="hljs-type">Using</span> the default templates:
-// source can either be a filename, file contents (<span class="hljs-type">string</span>) <span class="hljs-keyword">or</span> parsed <span class="hljs-type">RAML</span> <span class="hljs-keyword">object</span>
+<span class="hljs-regexp">//</span> Using the <span class="hljs-reserved">default</span> <span class="hljs-attribute">templates</span>:
+<span class="hljs-regexp">//</span> source can either be a filename, file contents (string) <span class="hljs-keyword">or</span> parsed RAML object
 raml2html.parse(source, onSuccess, onError);
 
-// <span class="hljs-type">Using</span> your own templates:
-// - config should be an <span class="hljs-keyword">object</span> <span class="hljs-keyword">with</span> at least an `<span class="hljs-keyword">template</span>` property
-// - config can also <span class="hljs-keyword">include</span> `helpers` <span class="hljs-keyword">and</span> `partials`
-// - the config <span class="hljs-keyword">object</span> will be accessible <span class="hljs-keyword">from</span> your handlebars templates
+<span class="hljs-regexp">//</span> Using your own <span class="hljs-attribute">templates</span>:
+<span class="hljs-regexp">//</span> - config should be an object <span class="hljs-reserved">with</span> at least an `<span class="javascript">template</span>` property
+<span class="hljs-regexp">//</span> - config can also include `<span class="javascript">helpers</span>` <span class="hljs-keyword">and</span> `<span class="javascript">partials</span>`
+<span class="hljs-regexp">//</span> - the config object will be accessible from your handlebars templates
 raml2html.parseWithConfig(source, config, onSuccess, onError);
 </code></pre>
 
@@ -150,7 +159,7 @@ raml2html.parseWithConfig(source, config, onSuccess, onError);
 
                         <div class="panel-body">
                             
-                                <div class="resource-description">
+                                <div class="top-resource-description">
                                     <p>This is the top level description for /account.</p>
 <ul>
 <li>One</li>
@@ -177,6 +186,18 @@ raml2html.parseWithConfig(source, config, onSuccess, onError);
     </div>
     <div id="panel__account" class="panel-collapse collapse">
         <div class="panel-body">
+            
+                <div class="resource-description">
+                    <p>This is the top level description for /account.</p>
+<ul>
+<li>One</li>
+<li>Two</li>
+<li>Three</li>
+</ul>
+
+                </div>
+            
+
             <div class="list-group">
                 
                     <a href="#" data-toggle="modal" data-target="#_account_post" class="list-group-item">
@@ -294,6 +315,8 @@ Line two</p>
     </div>
     <div id="panel__account_find" class="panel-collapse collapse">
         <div class="panel-body">
+            
+
             <div class="list-group">
                 
                     <a href="#" data-toggle="modal" data-target="#_account_find_get" class="list-group-item">
@@ -438,6 +461,8 @@ Line two</p>
     </div>
     <div id="panel__account__id_" class="panel-collapse collapse">
         <div class="panel-body">
+            
+
             <div class="list-group">
                 
                     <a href="#" data-toggle="modal" data-target="#_account__id__get" class="list-group-item">
@@ -748,6 +773,8 @@ Line two</p>
     </div>
     <div id="panel__account_login" class="panel-collapse collapse">
         <div class="panel-body">
+            
+
             <div class="list-group">
                 
                     <a href="#" data-toggle="modal" data-target="#_account_login_post" class="list-group-item">
@@ -904,6 +931,8 @@ Line two</p>
     </div>
     <div id="panel__account_forgot" class="panel-collapse collapse">
         <div class="panel-body">
+            
+
             <div class="list-group">
                 
                     <a href="#" data-toggle="modal" data-target="#_account_forgot_post" class="list-group-item">
@@ -1003,6 +1032,8 @@ Line two</p>
     </div>
     <div id="panel__account_session" class="panel-collapse collapse">
         <div class="panel-body">
+            
+
             <div class="list-group">
                 
                     <a href="#" data-toggle="modal" data-target="#_account_session_get" class="list-group-item">
@@ -1122,12 +1153,163 @@ Line two</p>
                 
                     <div class="panel panel-default">
                         <div class="panel-heading">
+                            <h3 id="_forecasts" class="panel-title">Forecasts</h3>
+                        </div>
+
+                        <div class="panel-body">
+                            
+                                <div class="top-resource-description">
+                                    <p>The very top resource - displays OK</p>
+
+                                </div>
+                            
+
+                            <div class="panel-group">
+                                <div class="panel panel-white">
+    <div class="panel-heading">
+        <h4 class="panel-title">
+            <a class="block collapsed" data-toggle="collapse" href="#panel__forecasts">
+                <span class="methods">
+                    
+                </span>
+                <span class="parent"></span>/forecasts
+            </a>
+        </h4>
+    </div>
+    <div id="panel__forecasts" class="panel-collapse collapse">
+        <div class="panel-body">
+            
+                <div class="resource-description">
+                    <p>The very top resource - displays OK</p>
+
+                </div>
+            
+
+            <div class="list-group">
+                
+            </div>
+        </div>
+    </div>
+
+    
+</div>
+
+
+    <div class="panel panel-white">
+    <div class="panel-heading">
+        <h4 class="panel-title">
+            <a class="block collapsed" data-toggle="collapse" href="#panel__forecasts__geoposition_">
+                <span class="methods">
+                    
+                        <span class="badge badge_get">get</span>
+                    
+                </span>
+                <span class="parent">/forecasts</span>/{geoposition}
+            </a>
+        </h4>
+    </div>
+    <div id="panel__forecasts__geoposition_" class="panel-collapse collapse">
+        <div class="panel-body">
+            
+                <div class="resource-description">
+                    <p>Overview endpoint to assemble and access forecast data in various timely resolutions - THIS IS NOT DISPLAYED ANYWHERE WITH RAML2HTML :/</p>
+
+                </div>
+            
+
+            <div class="list-group">
+                
+                    <a href="#" data-toggle="modal" data-target="#_forecasts__geoposition__get" class="list-group-item">
+                        <span class="badge badge_get">get</span>
+                        <div class="method_description">
+                            <p>Provides an overview of the available data - display OK</p>
+
+                        </div>
+                        <div class="clearfix"></div>
+                    </a>
+                
+            </div>
+        </div>
+    </div>
+
+    
+        <div class="modal fade" tabindex="0" id="_forecasts__geoposition__get">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                        <h4 class="modal-title" id="myModalLabel">
+                            <span class="badge badge_get">get</span>
+                            <span class="parent">/forecasts</span>/{geoposition}
+                        </h4>
+                    </div>
+                    <div class="modal-body">
+                        <div class="alert alert-info"><p>Provides an overview of the available data - display OK</p>
+</div>
+
+                        <!-- Nav tabs -->
+                        <ul class="nav nav-tabs">
+                            <li class="active">
+                                <a href="#_forecasts__geoposition__get_request" data-toggle="tab">Request</a>
+                            </li>
+                            
+                        </ul>
+
+                        <!-- Tab panes -->
+                        <div class="tab-content">
+                            <div class="tab-pane active" id="_forecasts__geoposition__get_request">
+                                
+                                    <h3>URI Parameters</h3>
+                                    <ul>
+                                        
+                                            <li>
+                                                <strong>geoposition</strong>:
+                                                <em>
+                                                    
+                                                        required
+                                                    
+                                                    (string)
+                                                </em>
+
+                                                <p>A geoposition aquired by calling /geoposition/search - displays OK</p>
+
+                                            </li>
+                                        
+                                    </ul>
+                                
+
+                                
+
+                                
+
+                                
+                            </div>
+
+                            
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    
+</div>
+
+
+
+
+
+                            </div>
+                        </div>
+                    </div>
+                
+                    <div class="panel panel-default">
+                        <div class="panel-heading">
                             <h3 id="_conversations" class="panel-title">/conversations</h3>
                         </div>
 
                         <div class="panel-body">
                             
-                                <div class="resource-description">
+                                <div class="top-resource-description">
                                     <p>This is the top level description for /conversations.</p>
 
                                 </div>
@@ -1151,6 +1333,13 @@ Line two</p>
     </div>
     <div id="panel__conversations" class="panel-collapse collapse">
         <div class="panel-body">
+            
+                <div class="resource-description">
+                    <p>This is the top level description for /conversations.</p>
+
+                </div>
+            
+
             <div class="list-group">
                 
                     <a href="#" data-toggle="modal" data-target="#_conversations_get" class="list-group-item">
@@ -1323,6 +1512,8 @@ Line two</p>
     </div>
     <div id="panel__conversations__convId_" class="panel-collapse collapse">
         <div class="panel-body">
+            
+
             <div class="list-group">
                 
                     <a href="#" data-toggle="modal" data-target="#_conversations__convId__get" class="list-group-item">
@@ -1484,6 +1675,8 @@ Line two</p>
     </div>
     <div id="panel__conversations__convId__messages" class="panel-collapse collapse">
         <div class="panel-body">
+            
+
             <div class="list-group">
                 
                     <a href="#" data-toggle="modal" data-target="#_conversations__convId__messages_get" class="list-group-item">
@@ -1684,6 +1877,8 @@ Line two</p>
     </div>
     <div id="panel__conversations__convId__messages__messageId_" class="panel-collapse collapse">
         <div class="panel-body">
+            
+
             <div class="list-group">
                 
                     <a href="#" data-toggle="modal" data-target="#_conversations__convId__messages__messageId__put" class="list-group-item">
@@ -1889,6 +2084,8 @@ Line two</p>
     </div>
     <div id="panel__users" class="panel-collapse collapse">
         <div class="panel-body">
+            
+
             <div class="list-group">
                 
                     <a href="#" data-toggle="modal" data-target="#_users_get" class="list-group-item">
@@ -2078,6 +2275,8 @@ Line two</p>
     </div>
     <div id="panel__users__userId_" class="panel-collapse collapse">
         <div class="panel-body">
+            
+
             <div class="list-group">
                 
                     <a href="#" data-toggle="modal" data-target="#_users__userId__get" class="list-group-item">
@@ -2322,6 +2521,8 @@ Line two</p>
     </div>
     <div id="panel__groups" class="panel-collapse collapse">
         <div class="panel-body">
+            
+
             <div class="list-group">
                 
                     <a href="#" data-toggle="modal" data-target="#_groups_get" class="list-group-item">
@@ -2472,6 +2673,8 @@ Line two</p>
     </div>
     <div id="panel__groups__groupId_" class="panel-collapse collapse">
         <div class="panel-body">
+            
+
             <div class="list-group">
                 
                     <a href="#" data-toggle="modal" data-target="#_groups__groupId__get" class="list-group-item">
@@ -2719,6 +2922,8 @@ Line two</p>
     </div>
     <div id="panel__groups__groupId__users" class="panel-collapse collapse">
         <div class="panel-body">
+            
+
             <div class="list-group">
                 
                     <a href="#" data-toggle="modal" data-target="#_groups__groupId__users_post" class="list-group-item">
@@ -2831,6 +3036,8 @@ Line two</p>
     </div>
     <div id="panel__groups__groupId__users__userId_" class="panel-collapse collapse">
         <div class="panel-body">
+            
+
             <div class="list-group">
                 
                     <a href="#" data-toggle="modal" data-target="#_groups__groupId__users__userId__delete" class="list-group-item">
@@ -2938,6 +3145,8 @@ Line two</p>
                     <ul class="nav nav-pills nav-stacked">
                         
                             <li><a href="#_account">ACCOUNTS</a></li>
+                        
+                            <li><a href="#_forecasts">Forecasts</a></li>
                         
                             <li><a href="#_conversations">/conversations</a></li>
                         

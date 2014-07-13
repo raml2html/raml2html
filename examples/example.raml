@@ -7,7 +7,7 @@ documentation:
     content: |
       Welcome to the Example Documentation. The Example API allows you
       to do stuff. See also [example.com](https://www.example.com).
-      
+
       ```javascript
       var raml2html = require('raml2html');
 
@@ -150,6 +150,19 @@ traits:
 
     delete:
       description: Deletes the session, logging out the user
+
+
+/forecasts:
+  displayName: Forecasts
+  description: The very top resource - displays OK
+  /{geoposition}:
+    description: Overview endpoint to assemble and access forecast data in various timely resolutions - THIS IS NOT DISPLAYED ANYWHERE WITH RAML2HTML :/
+    uriParameters:
+      geoposition:
+        description: A geoposition aquired by calling /geoposition/search - displays OK
+        type: string
+    get:
+      description: Provides an overview of the available data - display OK
 
 
 /conversations:
