@@ -1,3 +1,7 @@
+0.28.0 - July 14, 2014
+- Render descriptions for nested resources
+- Made the method badges clickable directly from the collapsed panel
+
 0.27.0 - July 10, 2014
 - Added a new public function getDefaultConfig
 

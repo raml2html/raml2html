@@ -4,7 +4,7 @@
     <title>Example API documentation</title>
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-    <meta name="generator" content="https://github.com/kevinrenskers/raml2html 0.27.0">
+    <meta name="generator" content="https://github.com/kevinrenskers/raml2html 0.28.0">
 
     <script type="text/javascript">
         var protocol = ((document.location.protocol === 'https:') ? 'https:': 'http:');
@@ -22,7 +22,7 @@
             float: none;
             margin-right: 6px;
         }
-        .panel-title > .block > .methods {
+        .panel-title > .methods {
             float: right;
         }
         .badge {
@@ -32,12 +32,6 @@
             font-weight: normal;
             color: #f3f3f6;
             line-height: normal;
-        }
-        .block .badge {
-            visibility: hidden;
-        }
-        .block.collapsed .badge {
-            visibility: visible;
         }
         .badge_get {
             background-color: #63a8e2;
@@ -50,9 +44,6 @@
         }
         .badge_delete {
             background-color: #d26460;
-        }
-        .block {
-            display: block;
         }
         .list-group, .panel-group {
             margin-bottom: 0;
@@ -174,14 +165,17 @@ raml2html.parseWithConfig(source, config, onSuccess, onError);
                                 <div class="panel panel-white">
     <div class="panel-heading">
         <h4 class="panel-title">
-            <a class="block collapsed" data-toggle="collapse" href="#panel__account">
-                <span class="methods">
-                    
-                        <span class="badge badge_post">post</span>
-                    
-                </span>
+             <a class="collapsed" data-toggle="collapse" href="#panel__account">
                 <span class="parent"></span>/account
             </a>
+
+            <span class="methods">
+                
+                    <a href="#" data-toggle="modal" data-target="#_account_post">
+                        <span class="badge badge_post">post</span>
+                    </a>
+                
+            </span>
         </h4>
     </div>
     <div id="panel__account" class="panel-collapse collapse">
@@ -303,14 +297,17 @@ Line two</p>
     <div class="panel panel-white">
     <div class="panel-heading">
         <h4 class="panel-title">
-            <a class="block collapsed" data-toggle="collapse" href="#panel__account_find">
-                <span class="methods">
-                    
-                        <span class="badge badge_get">get</span>
-                    
-                </span>
+             <a class="collapsed" data-toggle="collapse" href="#panel__account_find">
                 <span class="parent">/account</span>/find
             </a>
+
+            <span class="methods">
+                
+                    <a href="#" data-toggle="modal" data-target="#_account_find_get">
+                        <span class="badge badge_get">get</span>
+                    </a>
+                
+            </span>
         </h4>
     </div>
     <div id="panel__account_find" class="panel-collapse collapse">
@@ -445,18 +442,25 @@ Line two</p>
     <div class="panel panel-white">
     <div class="panel-heading">
         <h4 class="panel-title">
-            <a class="block collapsed" data-toggle="collapse" href="#panel__account__id_">
-                <span class="methods">
-                    
-                        <span class="badge badge_get">get</span>
-                    
-                        <span class="badge badge_put">put</span>
-                    
-                        <span class="badge badge_delete">delete</span>
-                    
-                </span>
+             <a class="collapsed" data-toggle="collapse" href="#panel__account__id_">
                 <span class="parent">/account</span>/{id}
             </a>
+
+            <span class="methods">
+                
+                    <a href="#" data-toggle="modal" data-target="#_account__id__get">
+                        <span class="badge badge_get">get</span>
+                    </a>
+                
+                    <a href="#" data-toggle="modal" data-target="#_account__id__put">
+                        <span class="badge badge_put">put</span>
+                    </a>
+                
+                    <a href="#" data-toggle="modal" data-target="#_account__id__delete">
+                        <span class="badge badge_delete">delete</span>
+                    </a>
+                
+            </span>
         </h4>
     </div>
     <div id="panel__account__id_" class="panel-collapse collapse">
@@ -761,14 +765,17 @@ Line two</p>
     <div class="panel panel-white">
     <div class="panel-heading">
         <h4 class="panel-title">
-            <a class="block collapsed" data-toggle="collapse" href="#panel__account_login">
-                <span class="methods">
-                    
-                        <span class="badge badge_post">post</span>
-                    
-                </span>
+             <a class="collapsed" data-toggle="collapse" href="#panel__account_login">
                 <span class="parent">/account</span>/login
             </a>
+
+            <span class="methods">
+                
+                    <a href="#" data-toggle="modal" data-target="#_account_login_post">
+                        <span class="badge badge_post">post</span>
+                    </a>
+                
+            </span>
         </h4>
     </div>
     <div id="panel__account_login" class="panel-collapse collapse">
@@ -919,14 +926,17 @@ Line two</p>
     <div class="panel panel-white">
     <div class="panel-heading">
         <h4 class="panel-title">
-            <a class="block collapsed" data-toggle="collapse" href="#panel__account_forgot">
-                <span class="methods">
-                    
-                        <span class="badge badge_post">post</span>
-                    
-                </span>
+             <a class="collapsed" data-toggle="collapse" href="#panel__account_forgot">
                 <span class="parent">/account</span>/forgot
             </a>
+
+            <span class="methods">
+                
+                    <a href="#" data-toggle="modal" data-target="#_account_forgot_post">
+                        <span class="badge badge_post">post</span>
+                    </a>
+                
+            </span>
         </h4>
     </div>
     <div id="panel__account_forgot" class="panel-collapse collapse">
@@ -1018,16 +1028,21 @@ Line two</p>
     <div class="panel panel-white">
     <div class="panel-heading">
         <h4 class="panel-title">
-            <a class="block collapsed" data-toggle="collapse" href="#panel__account_session">
-                <span class="methods">
-                    
-                        <span class="badge badge_get">get</span>
-                    
-                        <span class="badge badge_delete">delete</span>
-                    
-                </span>
+             <a class="collapsed" data-toggle="collapse" href="#panel__account_session">
                 <span class="parent">/account</span>/session
             </a>
+
+            <span class="methods">
+                
+                    <a href="#" data-toggle="modal" data-target="#_account_session_get">
+                        <span class="badge badge_get">get</span>
+                    </a>
+                
+                    <a href="#" data-toggle="modal" data-target="#_account_session_delete">
+                        <span class="badge badge_delete">delete</span>
+                    </a>
+                
+            </span>
         </h4>
     </div>
     <div id="panel__account_session" class="panel-collapse collapse">
@@ -1168,12 +1183,13 @@ Line two</p>
                                 <div class="panel panel-white">
     <div class="panel-heading">
         <h4 class="panel-title">
-            <a class="block collapsed" data-toggle="collapse" href="#panel__forecasts">
-                <span class="methods">
-                    
-                </span>
+             <a class="collapsed" data-toggle="collapse" href="#panel__forecasts">
                 <span class="parent"></span>/forecasts
             </a>
+
+            <span class="methods">
+                
+            </span>
         </h4>
     </div>
     <div id="panel__forecasts" class="panel-collapse collapse">
@@ -1198,14 +1214,17 @@ Line two</p>
     <div class="panel panel-white">
     <div class="panel-heading">
         <h4 class="panel-title">
-            <a class="block collapsed" data-toggle="collapse" href="#panel__forecasts__geoposition_">
-                <span class="methods">
-                    
-                        <span class="badge badge_get">get</span>
-                    
-                </span>
+             <a class="collapsed" data-toggle="collapse" href="#panel__forecasts__geoposition_">
                 <span class="parent">/forecasts</span>/{geoposition}
             </a>
+
+            <span class="methods">
+                
+                    <a href="#" data-toggle="modal" data-target="#_forecasts__geoposition__get">
+                        <span class="badge badge_get">get</span>
+                    </a>
+                
+            </span>
         </h4>
     </div>
     <div id="panel__forecasts__geoposition_" class="panel-collapse collapse">
@@ -1319,16 +1338,21 @@ Line two</p>
                                 <div class="panel panel-white">
     <div class="panel-heading">
         <h4 class="panel-title">
-            <a class="block collapsed" data-toggle="collapse" href="#panel__conversations">
-                <span class="methods">
-                    
-                        <span class="badge badge_get">get <span class="glyphicon glyphicon-lock" title="Authentication required"></span></span>
-                    
-                        <span class="badge badge_post">post <span class="glyphicon glyphicon-lock" title="Authentication required"></span></span>
-                    
-                </span>
+             <a class="collapsed" data-toggle="collapse" href="#panel__conversations">
                 <span class="parent"></span>/conversations
             </a>
+
+            <span class="methods">
+                
+                    <a href="#" data-toggle="modal" data-target="#_conversations_get">
+                        <span class="badge badge_get">get <span class="glyphicon glyphicon-lock" title="Authentication required"></span></span>
+                    </a>
+                
+                    <a href="#" data-toggle="modal" data-target="#_conversations_post">
+                        <span class="badge badge_post">post <span class="glyphicon glyphicon-lock" title="Authentication required"></span></span>
+                    </a>
+                
+            </span>
         </h4>
     </div>
     <div id="panel__conversations" class="panel-collapse collapse">
@@ -1498,16 +1522,21 @@ Line two</p>
     <div class="panel panel-white">
     <div class="panel-heading">
         <h4 class="panel-title">
-            <a class="block collapsed" data-toggle="collapse" href="#panel__conversations__convId_">
-                <span class="methods">
-                    
-                        <span class="badge badge_get">get</span>
-                    
-                        <span class="badge badge_put">put</span>
-                    
-                </span>
+             <a class="collapsed" data-toggle="collapse" href="#panel__conversations__convId_">
                 <span class="parent">/conversations</span>/{convId}
             </a>
+
+            <span class="methods">
+                
+                    <a href="#" data-toggle="modal" data-target="#_conversations__convId__get">
+                        <span class="badge badge_get">get</span>
+                    </a>
+                
+                    <a href="#" data-toggle="modal" data-target="#_conversations__convId__put">
+                        <span class="badge badge_put">put</span>
+                    </a>
+                
+            </span>
         </h4>
     </div>
     <div id="panel__conversations__convId_" class="panel-collapse collapse">
@@ -1661,16 +1690,21 @@ Line two</p>
     <div class="panel panel-white">
     <div class="panel-heading">
         <h4 class="panel-title">
-            <a class="block collapsed" data-toggle="collapse" href="#panel__conversations__convId__messages">
-                <span class="methods">
-                    
-                        <span class="badge badge_get">get</span>
-                    
-                        <span class="badge badge_post">post</span>
-                    
-                </span>
+             <a class="collapsed" data-toggle="collapse" href="#panel__conversations__convId__messages">
                 <span class="parent">/conversations/{convId}</span>/messages
             </a>
+
+            <span class="methods">
+                
+                    <a href="#" data-toggle="modal" data-target="#_conversations__convId__messages_get">
+                        <span class="badge badge_get">get</span>
+                    </a>
+                
+                    <a href="#" data-toggle="modal" data-target="#_conversations__convId__messages_post">
+                        <span class="badge badge_post">post</span>
+                    </a>
+                
+            </span>
         </h4>
     </div>
     <div id="panel__conversations__convId__messages" class="panel-collapse collapse">
@@ -1863,16 +1897,21 @@ Line two</p>
     <div class="panel panel-white">
     <div class="panel-heading">
         <h4 class="panel-title">
-            <a class="block collapsed" data-toggle="collapse" href="#panel__conversations__convId__messages__messageId_">
-                <span class="methods">
-                    
-                        <span class="badge badge_put">put</span>
-                    
-                        <span class="badge badge_delete">delete</span>
-                    
-                </span>
+             <a class="collapsed" data-toggle="collapse" href="#panel__conversations__convId__messages__messageId_">
                 <span class="parent">/conversations/{convId}/messages</span>/{messageId}
             </a>
+
+            <span class="methods">
+                
+                    <a href="#" data-toggle="modal" data-target="#_conversations__convId__messages__messageId__put">
+                        <span class="badge badge_put">put</span>
+                    </a>
+                
+                    <a href="#" data-toggle="modal" data-target="#_conversations__convId__messages__messageId__delete">
+                        <span class="badge badge_delete">delete</span>
+                    </a>
+                
+            </span>
         </h4>
     </div>
     <div id="panel__conversations__convId__messages__messageId_" class="panel-collapse collapse">
@@ -2070,16 +2109,21 @@ Line two</p>
                                 <div class="panel panel-white">
     <div class="panel-heading">
         <h4 class="panel-title">
-            <a class="block collapsed" data-toggle="collapse" href="#panel__users">
-                <span class="methods">
-                    
-                        <span class="badge badge_get">get</span>
-                    
-                        <span class="badge badge_post">post</span>
-                    
-                </span>
+             <a class="collapsed" data-toggle="collapse" href="#panel__users">
                 <span class="parent"></span>/users
             </a>
+
+            <span class="methods">
+                
+                    <a href="#" data-toggle="modal" data-target="#_users_get">
+                        <span class="badge badge_get">get</span>
+                    </a>
+                
+                    <a href="#" data-toggle="modal" data-target="#_users_post">
+                        <span class="badge badge_post">post</span>
+                    </a>
+                
+            </span>
         </h4>
     </div>
     <div id="panel__users" class="panel-collapse collapse">
@@ -2259,18 +2303,25 @@ Line two</p>
     <div class="panel panel-white">
     <div class="panel-heading">
         <h4 class="panel-title">
-            <a class="block collapsed" data-toggle="collapse" href="#panel__users__userId_">
-                <span class="methods">
-                    
-                        <span class="badge badge_get">get</span>
-                    
-                        <span class="badge badge_put">put</span>
-                    
-                        <span class="badge badge_delete">delete</span>
-                    
-                </span>
+             <a class="collapsed" data-toggle="collapse" href="#panel__users__userId_">
                 <span class="parent">/users</span>/{userId}
             </a>
+
+            <span class="methods">
+                
+                    <a href="#" data-toggle="modal" data-target="#_users__userId__get">
+                        <span class="badge badge_get">get</span>
+                    </a>
+                
+                    <a href="#" data-toggle="modal" data-target="#_users__userId__put">
+                        <span class="badge badge_put">put</span>
+                    </a>
+                
+                    <a href="#" data-toggle="modal" data-target="#_users__userId__delete">
+                        <span class="badge badge_delete">delete</span>
+                    </a>
+                
+            </span>
         </h4>
     </div>
     <div id="panel__users__userId_" class="panel-collapse collapse">
@@ -2507,16 +2558,21 @@ Line two</p>
                                 <div class="panel panel-white">
     <div class="panel-heading">
         <h4 class="panel-title">
-            <a class="block collapsed" data-toggle="collapse" href="#panel__groups">
-                <span class="methods">
-                    
-                        <span class="badge badge_get">get</span>
-                    
-                        <span class="badge badge_post">post</span>
-                    
-                </span>
+             <a class="collapsed" data-toggle="collapse" href="#panel__groups">
                 <span class="parent"></span>/groups
             </a>
+
+            <span class="methods">
+                
+                    <a href="#" data-toggle="modal" data-target="#_groups_get">
+                        <span class="badge badge_get">get</span>
+                    </a>
+                
+                    <a href="#" data-toggle="modal" data-target="#_groups_post">
+                        <span class="badge badge_post">post</span>
+                    </a>
+                
+            </span>
         </h4>
     </div>
     <div id="panel__groups" class="panel-collapse collapse">
@@ -2657,18 +2713,25 @@ Line two</p>
     <div class="panel panel-white">
     <div class="panel-heading">
         <h4 class="panel-title">
-            <a class="block collapsed" data-toggle="collapse" href="#panel__groups__groupId_">
-                <span class="methods">
-                    
-                        <span class="badge badge_get">get</span>
-                    
-                        <span class="badge badge_put">put</span>
-                    
-                        <span class="badge badge_delete">delete</span>
-                    
-                </span>
+             <a class="collapsed" data-toggle="collapse" href="#panel__groups__groupId_">
                 <span class="parent">/groups</span>/{groupId}
             </a>
+
+            <span class="methods">
+                
+                    <a href="#" data-toggle="modal" data-target="#_groups__groupId__get">
+                        <span class="badge badge_get">get</span>
+                    </a>
+                
+                    <a href="#" data-toggle="modal" data-target="#_groups__groupId__put">
+                        <span class="badge badge_put">put</span>
+                    </a>
+                
+                    <a href="#" data-toggle="modal" data-target="#_groups__groupId__delete">
+                        <span class="badge badge_delete">delete</span>
+                    </a>
+                
+            </span>
         </h4>
     </div>
     <div id="panel__groups__groupId_" class="panel-collapse collapse">
@@ -2910,14 +2973,17 @@ Line two</p>
     <div class="panel panel-white">
     <div class="panel-heading">
         <h4 class="panel-title">
-            <a class="block collapsed" data-toggle="collapse" href="#panel__groups__groupId__users">
-                <span class="methods">
-                    
-                        <span class="badge badge_post">post</span>
-                    
-                </span>
+             <a class="collapsed" data-toggle="collapse" href="#panel__groups__groupId__users">
                 <span class="parent">/groups/{groupId}</span>/users
             </a>
+
+            <span class="methods">
+                
+                    <a href="#" data-toggle="modal" data-target="#_groups__groupId__users_post">
+                        <span class="badge badge_post">post</span>
+                    </a>
+                
+            </span>
         </h4>
     </div>
     <div id="panel__groups__groupId__users" class="panel-collapse collapse">
@@ -3024,14 +3090,17 @@ Line two</p>
     <div class="panel panel-white">
     <div class="panel-heading">
         <h4 class="panel-title">
-            <a class="block collapsed" data-toggle="collapse" href="#panel__groups__groupId__users__userId_">
-                <span class="methods">
-                    
-                        <span class="badge badge_delete">delete</span>
-                    
-                </span>
+             <a class="collapsed" data-toggle="collapse" href="#panel__groups__groupId__users__userId_">
                 <span class="parent">/groups/{groupId}/users</span>/{userId}
             </a>
+
+            <span class="methods">
+                
+                    <a href="#" data-toggle="modal" data-target="#_groups__groupId__users__userId__delete">
+                        <span class="badge badge_delete">delete</span>
+                    </a>
+                
+            </span>
         </h4>
     </div>
     <div id="panel__groups__groupId__users__userId_" class="panel-collapse collapse">

@@ -1,14 +1,17 @@
 <div class="panel panel-white">
     <div class="panel-heading">
         <h4 class="panel-title">
-            <a class="block collapsed" data-toggle="collapse" href="#panel_{{uniqueId}}">
-                <span class="methods">
-                    {{#methods}}
-                        <span class="badge badge_{{method}}">{{method}}{{lock securedBy}}</span>
-                    {{/methods}}
-                </span>
+             <a class="collapsed" data-toggle="collapse" href="#panel_{{uniqueId}}">
                 <span class="parent">{{parentUrl}}</span>{{relativeUri}}
             </a>
+
+            <span class="methods">
+                {{#methods}}
+                    <a href="#" data-toggle="modal" data-target="#{{../uniqueId}}_{{method}}">
+                        <span class="badge badge_{{method}}">{{method}}{{lock securedBy}}</span>
+                    </a>
+                {{/methods}}
+            </span>
         </h4>
     </div>
     <div id="panel_{{uniqueId}}" class="panel-collapse collapse">
