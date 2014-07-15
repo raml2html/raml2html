@@ -17,18 +17,14 @@
     <div id="panel_{{uniqueId}}" class="panel-collapse collapse">
         <div class="panel-body">
             {{#if description}}
-                <div class="resource-description">
-                    {{md description}}
-                </div>
+                <div class="resource-description">{{md description}}</div>
             {{/if}}
 
             <div class="list-group">
                 {{#methods}}
                     <a href="#" data-toggle="modal" data-target="#{{../uniqueId}}_{{method}}" class="list-group-item">
                         <span class="badge badge_{{method}}">{{method}}{{lock securedBy}}</span>
-                        <div class="method_description">
-                            {{md description}}
-                        </div>
+                        <div class="method_description">{{md description}}</div>
                         <div class="clearfix"></div>
                     </a>
                 {{/methods}}
@@ -91,9 +87,7 @@
                                             <li>
                                                 <strong>{{@key}}</strong>:
                                                 <em>
-                                                    {{#if this.required}}
-                                                        required
-                                                    {{/if}}
+                                                    {{#if this.required}}required{{/if}}
                                                     ({{this.type}})
                                                 </em>
 
@@ -103,7 +97,7 @@
                                                     <p>
                                                         <small>
                                                             <strong>Example</strong>:
-                                                            <pre>{{highlight this.example}}</pre>
+                                                            <pre><code>{{this.example}}</code></pre>
                                                         </small>
                                                     </p>
                                                 {{/if}}
@@ -119,9 +113,7 @@
                                             <li>
                                                 <strong>{{@key}}</strong>
                                                 <em>
-                                                    {{#if this.required}}
-                                                        required
-                                                    {{/if}}
+                                                    {{#if this.required}}required{{/if}}
                                                     {{#if this.enum}}
                                                         one of ({{this.enum}})
                                                     {{else}}
@@ -135,7 +127,7 @@
                                                     <p>
                                                         <small>
                                                             <strong>Schema</strong>:
-                                                            <pre>{{this.schema}}</pre>
+                                                            <pre><code>{{this.schema}}</code></pre>
                                                         </small>
                                                     </p>
                                                 {{/if}}
@@ -144,7 +136,7 @@
                                                     <p>
                                                         <small>
                                                             <strong>Example</strong>:
-                                                            <pre>{{highlight this.example}}</pre>
+                                                            <pre><code>{{this.example}}</code></pre>
                                                         </small>
                                                     </p>
                                                 {{/if}}
@@ -164,9 +156,7 @@
                                                     <li>
                                                         <strong>{{@key}}</strong>:
                                                         <em>
-                                                            {{#if this.required}}
-                                                                required
-                                                            {{/if}}
+                                                            {{#if this.required}}required{{/if}}
                                                             {{#if this.enum}}
                                                                 one of ({{this.enum}})
                                                             {{else}}
@@ -180,7 +170,7 @@
                                                             <p>
                                                                 <small>
                                                                     <strong>Schema</strong>:
-                                                                    <pre>{{this.schema}}</pre>
+                                                                    <pre><code>{{this.schema}}</code></pre>
                                                                 </small>
                                                             </p>
                                                         {{/if}}
@@ -189,7 +179,7 @@
                                                             <p>
                                                                 <small>
                                                                     <strong>Example</strong>:
-                                                                    <pre>{{highlight this.example}}</pre>
+                                                                    <pre><code>{{this.example}}</code></pre>
                                                                 </small>
                                                             </p>
                                                         {{/if}}
@@ -202,7 +192,7 @@
                                             <p>
                                                 <small>
                                                     <strong>Schema</strong>:
-                                                    <pre>{{this.schema}}</pre>
+                                                    <pre><code>{{this.schema}}</code></pre>
                                                 </small>
                                             </p>
                                         {{/if}}
@@ -211,7 +201,7 @@
                                             <p>
                                                 <small>
                                                     <strong>Example</strong>:
-                                                    <pre>{{highlight this.example}}</pre>
+                                                    <pre><code>{{this.example}}</code></pre>
                                                 </small>
                                             </p>
                                         {{/if}}
@@ -232,9 +222,7 @@
                                                     <li>
                                                         <strong>{{@key}}</strong>:
                                                         <em>
-                                                            {{#if this.required}}
-                                                                required
-                                                            {{/if}}
+                                                            {{#if this.required}}required{{/if}}
                                                             ({{this.type}})
                                                         </em>
 
@@ -244,7 +232,7 @@
                                                             <p>
                                                                 <small>
                                                                     <strong>Example</strong>:
-                                                                    <pre>{{highlight this.example}}</pre>
+                                                                    <pre><code>{{this.example}}</code></pre>
                                                                 </small>
                                                             </p>
                                                         {{/if}}
@@ -262,7 +250,7 @@
                                                     <p>
                                                         <small>
                                                             <strong>Schema</strong>:
-                                                            <pre>{{this.schema}}</pre>
+                                                            <pre><code>{{this.schema}}</code></pre>
                                                         </small>
                                                     </p>
                                                 {{/if}}
@@ -271,7 +259,7 @@
                                                     <p>
                                                         <small>
                                                             <strong>Example</strong>:
-                                                            <pre>{{highlight this.example}}</pre>
+                                                            <pre><code>{{this.example}}</code></pre>
                                                         </small>
                                                     </p>
                                                 {{/if}}

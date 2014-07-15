@@ -9,12 +9,16 @@
     <script type="text/javascript">
         var protocol = ((document.location.protocol === 'https:') ? 'https:': 'http:');
         document.write('<link rel="stylesheet" href="' + protocol + '//netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css">');
-        document.write('<link rel="stylesheet" href="' + protocol + '//yandex.st/highlightjs/8.0/styles/github.min.css">');
+        document.write('<link rel="stylesheet" href="' + protocol + '//cdnjs.cloudflare.com/ajax/libs/highlight.js/8.1/styles/default.min.css">');
         document.write('<script type="text/javascript" src="' + protocol + '//code.jquery.com/jquery-1.11.0.min.js"><\/sc' + 'ript>');
         document.write('<script type="text/javascript" src="' + protocol + '//netdna.bootstrapcdn.com/bootstrap/3.1.1/js/bootstrap.min.js"><\/sc' + 'ript>');
+        document.write('<script type="text/javascript" src="' + protocol + '//cdnjs.cloudflare.com/ajax/libs/highlight.js/8.1/highlight.min.js"><\/sc' + 'ript><script>hljs.initHighlightingOnLoad();<\/sc' + 'ript>');
     </script>
 
     <style>
+        .hljs {
+            background: transparent;
+        }
         .parent {
             color: #999;
         }
@@ -137,9 +141,7 @@
                                 </div>
                             {{/if}}
 
-                            <div class="panel-group">
-                                {{> resource}}
-                            </div>
+                            <div class="panel-group">{{> resource}}</div>
                         </div>
                     </div>
                 {{/resources}}

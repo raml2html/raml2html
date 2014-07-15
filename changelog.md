@@ -1,3 +1,7 @@
+0.29.0 - July 15, 2014
+- Moved code highlighting to the client to generate smaller HTML output
+- Use a HTML minifier to generate MUCH smaller output: GitHub example used to be 3.2 MB, now down to 910 KB
+
 0.28.0 - July 14, 2014
 - Render descriptions for nested resources
 - Made the method badges clickable directly from the collapsed panel

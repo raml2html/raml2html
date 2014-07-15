@@ -1,7 +1,7 @@
 {
   "name": "raml2html",
   "description": "RAML to HTML documentation generator",
-  "version": "0.28.0",
+  "version": "0.29.0",
   "author": {
     "name": "Kevin Renskers",
     "email": "info@mixedcase.nl"
@@ -12,8 +12,8 @@
   "dependencies": {
     "commander": "^2.2.0",
     "handlebars": "~2.0.0-alpha.1",
-    "highlight.js": "^8.0.0",
     "marked": "^0.3.2",
+    "minimize": "^0.7.5",
     "raml2obj": "*"
   },
   "homepage": "https://github.com/kevinrenskers/raml2html",
