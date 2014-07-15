@@ -6,13 +6,25 @@
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
     <meta name="generator" content="https://github.com/kevinrenskers/raml2html {{config.raml2HtmlVersion}}">
 
+    <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css">
+    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/8.1/styles/default.min.css">
+    <script type="text/javascript" src="//code.jquery.com/jquery-1.11.0.min.js"></script>
+    <script type="text/javascript" src="//netdna.bootstrapcdn.com/bootstrap/3.1.1/js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/8.1/highlight.min.js"></script>
+
     <script type="text/javascript">
-        var protocol = ((document.location.protocol === 'https:') ? 'https:': 'http:');
-        document.write('<link rel="stylesheet" href="' + protocol + '//netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css">');
-        document.write('<link rel="stylesheet" href="' + protocol + '//cdnjs.cloudflare.com/ajax/libs/highlight.js/8.1/styles/default.min.css">');
-        document.write('<script type="text/javascript" src="' + protocol + '//code.jquery.com/jquery-1.11.0.min.js"><\/sc' + 'ript>');
-        document.write('<script type="text/javascript" src="' + protocol + '//netdna.bootstrapcdn.com/bootstrap/3.1.1/js/bootstrap.min.js"><\/sc' + 'ript>');
-        document.write('<script type="text/javascript" src="' + protocol + '//cdnjs.cloudflare.com/ajax/libs/highlight.js/8.1/highlight.min.js"><\/sc' + 'ript><script>hljs.initHighlightingOnLoad();<\/sc' + 'ript>');
+        $(document).ready(function() {
+            $('.page-header pre code, .top-resource-description pre code').each(function(i, block) {
+                hljs.highlightBlock(block);
+            });
+
+            $('[data-toggle]').click(function() {
+                var selector = $(this).data('target') + ' pre code';
+                $(selector).each(function(i, block) {
+                    hljs.highlightBlock(block);
+                });
+            });
+        });
     </script>
 
     <style>
