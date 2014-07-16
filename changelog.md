@@ -1,6 +1,8 @@
-0.29.0 - July 15, 2014
+0.29.0 - July 16, 2014
 - Moved code highlighting to the client to generate smaller HTML output
-- Use a HTML minifier to generate MUCH smaller output: GitHub example used to be 3.2 MB, now down to 910 KB
+- Use a HTML minifier to generate MUCH smaller output
+- Don't html-escape string in <pre><code> blocks
+- The GitHub example used to be 3.2 MB, after these changes it's down to 1.2 MB
 
 0.28.0 - July 14, 2014
 - Render descriptions for nested resources
