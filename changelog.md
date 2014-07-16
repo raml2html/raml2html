@@ -1,3 +1,7 @@
+0.30.0 - July 16, 2014
+- Adding -s command line parameter to use https links in the generated html file (it uses http by default)
+- Deprecated the parse function, use parseWithConfig instead (in combination with the getDefaultConfig function)
+
 0.29.0 - July 16, 2014
 - Moved code highlighting to the client to generate smaller HTML output
 - Use a HTML minifier to generate MUCH smaller output
