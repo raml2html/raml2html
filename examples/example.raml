@@ -123,6 +123,10 @@ traits:
       responses:
         200:
           description: Login was correct
+          body:
+            text/xml:
+              example: |
+                <test>This is a test</test>
         400:
           description: Login was incorrect, please try again
         401:
