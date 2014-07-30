@@ -17,10 +17,15 @@
             $('.page-header pre code, .top-resource-description pre code').each(function(i, block) {
                 hljs.highlightBlock(block);
             });
-
             $('[data-toggle]').click(function() {
                 var selector = $(this).data('target') + ' pre code';
                 $(selector).each(function(i, block) {
+                    var regexp = /\"\$ref\".*:.*\"(.*?)\"/g;
+                    var match;
+                    while (match = regexp.exec(block.innerHTML)) {
+                        var link = '<a href=\"schema/' + match[1] + '\">' + match[1] + '</a>';
+                        block.innerHTML = block.innerHTML.replace(match[1], link)
+                    }
                     hljs.highlightBlock(block);
                 });
             });
