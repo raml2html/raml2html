@@ -3,11 +3,34 @@
 <head>
     <title>{{title}} API documentation</title>
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css">
-    <script src="//code.jquery.com/jquery-1.11.0.min.js"></script>
-    <script src="//netdna.bootstrapcdn.com/bootstrap/3.1.1/js/bootstrap.min.js"></script>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <meta name="generator" content="https://github.com/kevinrenskers/raml2html {{config.raml2HtmlVersion}}">
+
+    <link rel="stylesheet" href="{{config.protocol}}//netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css">
+    <link rel="stylesheet" href="{{config.protocol}}//cdnjs.cloudflare.com/ajax/libs/highlight.js/8.1/styles/default.min.css">
+    <script type="text/javascript" src="{{config.protocol}}//code.jquery.com/jquery-1.11.0.min.js"></script>
+    <script type="text/javascript" src="{{config.protocol}}//netdna.bootstrapcdn.com/bootstrap/3.1.1/js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="{{config.protocol}}//cdnjs.cloudflare.com/ajax/libs/highlight.js/8.1/highlight.min.js"></script>
+
+    <script type="text/javascript">
+        $(document).ready(function() {
+            $('.page-header pre code, .top-resource-description pre code').each(function(i, block) {
+                hljs.highlightBlock(block);
+            });
+
+            $('[data-toggle]').click(function() {
+                var selector = $(this).data('target') + ' pre code';
+                $(selector).each(function(i, block) {
+                    hljs.highlightBlock(block);
+                });
+            });
+        });
+    </script>
 
     <style>
+        .hljs {
+            background: transparent;
+        }
         .parent {
             color: #999;
         }
@@ -15,23 +38,16 @@
             float: none;
             margin-right: 6px;
         }
-        .panel-title > .block > .badge {
+        .panel-title > .methods {
             float: right;
-            margin-left: 5px;
         }
         .badge {
             border-radius: 0;
             text-transform: uppercase;
-            width: 60px;
+            width: 70px;
             font-weight: normal;
             color: #f3f3f6;
             line-height: normal;
-        }
-        .block .badge {
-            visibility: hidden;
-        }
-        .block.collapsed .badge {
-            visibility: visible;
         }
         .badge_get {
             background-color: #63a8e2;
@@ -44,9 +60,6 @@
         }
         .badge_delete {
             background-color: #d26460;
-        }
-        .block {
-            display: block;
         }
         .list-group, .panel-group {
             margin-bottom: 0;
@@ -86,11 +99,29 @@
         #sidebar {
             margin-top: 30px;
         }
-        .resource-description {
+        .top-resource-description {
             border-bottom: 1px solid #ddd;
             background: #fcfcfc;
             padding: 15px 15px 0 15px;
             margin: -15px -15px 10px -15px;
+        }
+        .resource-description {
+            border-bottom: 1px solid #fcfcfc;
+            background: #fcfcfc;
+            padding: 15px 15px 0 15px;
+            margin: -15px -15px 10px -15px;
+        }
+        .panel > .panel-body > .panel-group > .panel:first-child .resource-description {
+            display: none;
+        }
+        .list-group .badge {
+            float: left;
+        }
+        .method_description {
+            margin-left: 85px;
+        }
+        .method_description p:last-child {
+            margin: 0;
         }
     </style>
 </head>
@@ -100,11 +131,11 @@
         <div class="row">
             <div class="col-md-9" role="main">
                 <div class="page-header">
-                    <h1>{{title}} API documentation <small>version {{version}}</small></h1>
+                    <h1>{{title}} API documentation{{#if version}} <small>version {{version}}</small>{{/if}}</h1>
                     <p>{{baseUri}}</p>
 
                     {{#documentation}}
-                        <h3>{{title}}</h3>
+                        <h3 id="{{uniqueId}}"><a href="#{{uniqueId}}">{{title}}</a></h3>
                         {{md content}}
                     {{/documentation}}
                 </div>
@@ -112,19 +143,17 @@
                 {{#resources}}
                     <div class="panel panel-default">
                         <div class="panel-heading">
-                            <h3 id="{{uniqueId}}" class="panel-title">{{relativeUri}}</h3>
+                            <h3 id="{{uniqueId}}" class="panel-title">{{#if displayName}}{{displayName}}{{/if}}{{#unless displayName}}{{relativeUri}}{{/unless}}</h3>
                         </div>
 
                         <div class="panel-body">
                             {{#if description}}
-                                <div class="resource-description">
+                                <div class="top-resource-description">
                                     {{md description}}
                                 </div>
                             {{/if}}
 
-                            <div class="panel-group">
-                                {{> resource}}
-                            </div>
+                            <div class="panel-group">{{> resource}}</div>
                         </div>
                     </div>
                 {{/resources}}
@@ -134,7 +163,7 @@
                 <div id="sidebar" class="hidden-print affix" role="complementary">
                     <ul class="nav nav-pills nav-stacked">
                         {{#resources}}
-                            <li><a href="#{{uniqueId}}">{{relativeUri}}</a></li>
+                            <li><a href="#{{uniqueId}}">{{#if displayName}}{{displayName}}{{/if}}{{#unless displayName}}{{relativeUri}}{{/unless}}</a></li>
                         {{/resources}}
                     </ul>
                 </div>
