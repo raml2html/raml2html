@@ -1,3 +1,6 @@
+0.31.0 - August 21, 2014
+- Improved rendering of tables within Markdown content
+
 0.30.0 - July 16, 2014
 - Adding -s command line parameter to use https links in the generated html file (it uses http by default)
 - Deprecated the parse function, use parseWithConfig instead (in combination with the getDefaultConfig function)
