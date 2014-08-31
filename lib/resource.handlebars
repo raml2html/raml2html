@@ -22,11 +22,11 @@
 
             <div class="list-group">
                 {{#methods}}
-                    <a href="#" data-toggle="modal" data-target="#{{../uniqueId}}_{{method}}" class="list-group-item">
+                    <div href="#" data-toggle="modal" data-target="#{{../uniqueId}}_{{method}}" class="list-group-item">
                         <span class="badge badge_{{method}}">{{method}}{{lock securedBy}}</span>
                         <div class="method_description">{{md description}}</div>
                         <div class="clearfix"></div>
-                    </a>
+                    </div>
                 {{/methods}}
             </div>
         </div>
