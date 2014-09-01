@@ -1,10 +1,14 @@
+0.31.1 - August 21, 2014
+- Fixed HTML validity (#61)
+- Fixed rendering of links within Markdown content (#63)
+
 0.31.0 - August 21, 2014
 - Improved rendering of tables within Markdown content
 
 0.30.0 - July 16, 2014
 - Adding -s command line parameter to use https links in the generated html file (it uses http by default)
 - Deprecated the parse function, use parseWithConfig instead (in combination with the getDefaultConfig function)
-- Bugfix: fixed html escaping for XML/HTML content
+- Bugfix: fixed html escaping for XML/HTML content (#53)
 
 0.29.0 - July 16, 2014
 - Moved code highlighting to the client to generate smaller HTML output
@@ -92,7 +96,7 @@
 - New parseWithConfig method allowing you to override the templates (#5)
 
 0.9.0 - April 8, 2014
-- Allow raml2html to be used pragmatically from another module
+- Allow raml2html to be used from another module
 
 0.8.2 - April 7, 2014
 - Showing all uri parameters, also those from parents
