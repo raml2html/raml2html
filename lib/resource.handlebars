@@ -68,10 +68,12 @@
                                             <li>
                                                 <strong>{{this.displayName}}</strong>:
                                                 <em>
-                                                    {{#if this.required}}
-                                                        required
+                                                    {{#if this.required}}required{{/if}}
+                                                    {{#if this.enum}}
+                                                        one of ({{this.enum}})
+                                                    {{else}}
+                                                        ({{this.type}})
                                                     {{/if}}
-                                                    ({{this.type}})
                                                 </em>
 
                                                 {{md description}}
@@ -88,7 +90,11 @@
                                                 <strong>{{@key}}</strong>:
                                                 <em>
                                                     {{#if this.required}}required{{/if}}
-                                                    ({{this.type}})
+                                                    {{#if this.enum}}
+                                                        one of ({{this.enum}})
+                                                    {{else}}
+                                                        ({{this.type}})
+                                                    {{/if}}
                                                 </em>
 
                                                 {{md this.description}}
@@ -195,7 +201,11 @@
                                                         <strong>{{@key}}</strong>:
                                                         <em>
                                                             {{#if this.required}}required{{/if}}
-                                                            ({{this.type}})
+                                                            {{#if this.enum}}
+                                                                one of ({{this.enum}})
+                                                            {{else}}
+                                                                ({{this.type}})
+                                                            {{/if}}
                                                         </em>
 
                                                         {{md this.description}}
