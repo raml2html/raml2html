@@ -1,5 +1,6 @@
 0.31.2 - September 6, 2014
 - Support enums for headers and URI parameters (#59)
+- Rendering URI parameter examples (#57)
 - Greatly simplified resource.handlebars by moving all the common code into a separate partial 
 
 0.31.1 - August 21, 2014
