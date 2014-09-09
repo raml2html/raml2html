@@ -1,3 +1,6 @@
+0.32.0 - September 9, 2014
+- Support for custom templates via command line parameters (#72)
+
 0.31.2 - September 6, 2014
 - Support enums for headers and URI parameters (#59)
 - Rendering URI parameter examples (#57)
