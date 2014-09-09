@@ -17,7 +17,11 @@ As a command line script:
 raml2html example.raml > example.html
 raml2html -i example.raml -o example.html
 raml2html -s -i example.raml -o example.html
+raml2html -t ~/.raml2html/custom-template.handlebars -i example.raml -o example.html
 ```
+
+Find the original *.handlebars files in the `lib` directory of the git repository
+or in your node_modules directory, for example `/usr/local/lib/node_modules/raml2html/lib/`
 
 As a library:
 
