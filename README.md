@@ -66,6 +66,10 @@ A big thank you goes out to everyone who helped with the project, the [contribut
 and everyone who took the time to report issues and give feedback.
 
 
+## Changelog
+See [changelog.md](https://github.com/kevinrenskers/raml2html/blob/master/changelog.md)
+
+
 ## To do
 This project is still a work in progress, but the output is very usable already (and is in fact used by multiple 
 companies including Google). Still left to do, in no particular order:

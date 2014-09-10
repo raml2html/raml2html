@@ -1,4 +1,4 @@
-1.0.1 - September 11, 2014
+1.0.1 - September 10, 2014
 - Solved problem with indentation of code examples (#66)
 - Added `--version` command line option (#75)
 
