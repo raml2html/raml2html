@@ -1,6 +1,6 @@
 1.0.1 - September 11, 2014
 - Solved problem with indentation of code examples (#66)
-- Added --version command line option (#75)
+- Added `--version` command line option (#75)
 
 1.0.0 - September 10, 2014
 - Finalized API, replaced `parse`/`parseWithConfig` with a single `render` method
@@ -12,7 +12,7 @@
 0.31.2 - September 6, 2014
 - Support enums for headers and URI parameters (#59)
 - Rendering URI parameter examples (#57)
-- Greatly simplified resource.handlebars by moving all the common code into a separate partial 
+- Greatly simplified `resource.handlebars` by moving all the common code into a separate partial 
 
 0.31.1 - August 21, 2014
 - Fixed HTML validity (#61)
@@ -37,7 +37,7 @@
 - Made the method badges clickable directly from the collapsed panel
 
 0.27.0 - July 10, 2014
-- Added a new public function getDefaultConfig
+- Added a new public function `getDefaultConfig`
 
 0.26.0 - July 10, 2014
 - Render required and description of URI Parameters
@@ -66,7 +66,7 @@
 - Added headers to request and response information
 
 0.21.0 - June 12, 2014
-- Split all the raml parsing logic into its own raml2obj project
+- Split all the raml parsing logic into its own [raml2obj project](https://github.com/kevinrenskers/raml2obj)
 
 0.20.0 - June 4, 2014
 - Fixed html output
@@ -109,7 +109,7 @@
 - Render the description of query params with Markdown
 
 0.10.0 - April 8, 2014
-- New parseWithConfig method allowing you to override the templates (#5)
+- New `parseWithConfig` method allowing you to override the templates (#5)
 
 0.9.0 - April 8, 2014
 - Allow raml2html to be used from another module
@@ -118,7 +118,7 @@
 - Showing all uri parameters, also those from parents
 
 0.8.1 - April 7, 2014
-- Code cleanup, added allUriParameters property to every resource
+- Code cleanup, added `allUriParameters` property to every resource
 
 0.8.0 - April 5, 2014
 - Improved rendering of query params: show required, enum and example
