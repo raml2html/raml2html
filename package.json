@@ -10,10 +10,10 @@
     "url": "https://github.com/kevinrenskers/raml2html/issues"
   },
   "dependencies": {
-    "commander": "^2.2.0",
-    "handlebars": "~2.0.0-alpha.1",
-    "marked": "^0.3.2",
-    "minimize": "^0.7.5",
+    "commander": "2.2.x",
+    "handlebars": "2.0.x",
+    "marked": "0.3.x",
+    "minimize": "0.8.x",
     "raml2obj": "*"
   },
   "homepage": "https://github.com/kevinrenskers/raml2html",

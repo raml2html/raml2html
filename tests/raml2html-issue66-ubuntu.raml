@@ -1,0 +1,53 @@
+#%RAML 0.8
+---
+title: Illustrating Indentation Bug
+baseUri: http://localhost:5000/api/{version}
+version: "1.0"
+
+documentation:
+ - title: Overview
+   content: |
+
+     Welcome to the _Blah_ Documentation. Ipsum lorem blah
+     blah. Foo bar baz wooga.
+
+/foo:
+  displayName: A Foo
+  post:
+    description: Creates a new foo.
+    body:
+     text/xml:
+       example: |
+        <e:example xmlns:e="http://example.com/api/example">
+         <id>c234324324</id>
+        </e:example>
+  /bar:
+    displayName: A Bar
+    post:
+      description: Creates a new bar.
+      body:
+        text/xml:
+          example: |
+            <e:example xmlns:e="http://example.com/api/example">
+              <id>c234324324</id>
+            </e:example>
+    /baz:
+      displayName: Baz
+      post:
+        description: Creates a new baz.
+        body:
+          text/xml:
+            example: |
+              <e:example xmlns:e="http://example.com/api/example">
+                <id>c234324324</id>
+              </e:example>
+      /wooga:
+        displayName: A Wooga
+        post:
+          description: Creates a new wooga.
+          body:
+            text/xml:
+              example: |
+                <e:example xmlns:e="http://example.com/api/example">
+                  <id>c234324324</id>
+                </e:example>
