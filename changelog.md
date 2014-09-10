@@ -18,14 +18,14 @@
 - Improved rendering of tables within Markdown content
 
 0.30.0 - July 16, 2014
-- Adding -s command line parameter to use https links in the generated html file (it uses http by default)
+- Adding `-s` command line parameter to use https links in the generated html file (it uses http by default)
 - Deprecated the `parse` function, use `parseWithConfig` instead (in combination with the `getDefaultConfig` function)
 - Bugfix: fixed html escaping for XML/HTML content (#53)
 
 0.29.0 - July 16, 2014
 - Moved code highlighting to the client to generate smaller HTML output
 - Use a HTML minifier to generate MUCH smaller output
-- Don't html-escape string in <pre><code> blocks
+- Don't html-escape string in `<pre><code>` blocks
 - The GitHub example used to be 3.2 MB, after these changes it's down to 1.2 MB
 
 0.28.0 - July 14, 2014
@@ -90,7 +90,7 @@
 
 0.15.0 - May 12, 2014
 - Show padlock for secured methods (#14)
-- Bugfix: Handle resource urls with periods (#15)
+- Bugfix: handle resource urls with periods (#15)
 
 0.14.0 - May 6, 2014
 - Better schema handling (#12)
