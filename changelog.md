@@ -1,3 +1,7 @@
+1.0.0 - September 10, 2014
+- Finalized API, replaced `parse`/`parseWithConfig` with a single `render` method
+- Added a way for users to specify their own output processing via a `processOutput` function in the config object
+
 0.32.0 - September 9, 2014
 - Support for custom templates via command line parameters (#72)
 
@@ -15,7 +19,7 @@
 
 0.30.0 - July 16, 2014
 - Adding -s command line parameter to use https links in the generated html file (it uses http by default)
-- Deprecated the parse function, use parseWithConfig instead (in combination with the getDefaultConfig function)
+- Deprecated the `parse` function, use `parseWithConfig` instead (in combination with the `getDefaultConfig` function)
 - Bugfix: fixed html escaping for XML/HTML content (#53)
 
 0.29.0 - July 16, 2014

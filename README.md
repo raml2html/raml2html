@@ -34,14 +34,15 @@ var raml2html = require('raml2html');
 // Using the default templates:
 // source can either be a filename, file contents (string) or parsed RAML object
 var config = raml2html.getDefaultConfig(https); // https is a boolean, true means https links will be used instead of http
-raml2html.parseWithConfig(source, config, onSuccess, onError);
+raml2html.render(source, config, onSuccess, onError);
 
 // Using your own templates:
 // - config should be an object with at least an `template` property
 // - config can also include `helpers` and `partials`
 // - config can also include a boolean `https` (default is false)
+// - config can also include a function `processOutput` which will receive the raw rendered HTML, onSuccess and onError callbacks
 // - the config object will be accessible from your handlebars templates
-raml2html.parseWithConfig(source, config, onSuccess, onError);
+raml2html.render(source, config, onSuccess, onError);
 ```
 
 ### Gulp
