@@ -1,3 +1,7 @@
+1.0.1 - September 11, 2014
+- Solved problem with indentation of code examples (#66)
+- Added --version command line option (#75)
+
 1.0.0 - September 10, 2014
 - Finalized API, replaced `parse`/`parseWithConfig` with a single `render` method
 - Added a way for users to specify their own output processing via a `processOutput` function in the config object
