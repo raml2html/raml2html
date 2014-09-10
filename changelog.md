@@ -3,7 +3,7 @@
 - Added `--version` command line option (#75)
 
 1.0.0 - September 10, 2014
-- Finalized API, replaced `parse`/`parseWithConfig` with a single `render` method
+- **Finalized API, replaced `parse`/`parseWithConfig` with a single `render` method**
 - Added a way for users to specify their own output processing via a `processOutput` function in the config object
 
 0.32.0 - September 9, 2014
