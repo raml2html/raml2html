@@ -1,4 +1,4 @@
-<!DOCTYPE HTML><html><head><title>Example API documentation</title><meta http-equiv=X-UA-Compatible content="IE=edge"><meta http-equiv=Content-Type content="text/html; charset=utf-8"><meta name=generator content="https://github.com/kevinrenskers/raml2html 1.0.2"><link rel=stylesheet href=http://netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css><link rel=stylesheet href=http://cdnjs.cloudflare.com/ajax/libs/highlight.js/8.1/styles/default.min.css><script type=text/javascript src=http://code.jquery.com/jquery-1.11.0.min.js></script><script type=text/javascript src=http://netdna.bootstrapcdn.com/bootstrap/3.1.1/js/bootstrap.min.js></script><script type=text/javascript src=http://cdnjs.cloudflare.com/ajax/libs/highlight.js/8.1/highlight.min.js></script><script type=text/javascript>
+<!DOCTYPE HTML><html><head><title>Example API documentation</title><meta http-equiv=X-UA-Compatible content="IE=edge"><meta http-equiv=Content-Type content="text/html; charset=utf-8"><meta name=generator content="https://github.com/kevinrenskers/raml2html 1.0.3"><link rel=stylesheet href=http://netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css><link rel=stylesheet href=http://cdnjs.cloudflare.com/ajax/libs/highlight.js/8.1/styles/default.min.css><script type=text/javascript src=http://code.jquery.com/jquery-1.11.0.min.js></script><script type=text/javascript src=http://netdna.bootstrapcdn.com/bootstrap/3.1.1/js/bootstrap.min.js></script><script type=text/javascript src=http://cdnjs.cloudflare.com/ajax/libs/highlight.js/8.1/highlight.min.js></script><script type=text/javascript>
         $(document).ready(function() {
             $('.page-header pre code, .top-resource-description pre code').each(function(i, block) {
                 hljs.highlightBlock(block);
@@ -103,6 +103,12 @@
         }
         .method_description p:last-child {
             margin: 0;
+        }
+        .list-group-item {
+            cursor: pointer;
+        }
+        .list-group-item:hover {
+            background-color: #f5f5f5;
         }
     </style></head><body data-spy=scroll data-target=#sidebar><div class=container><div class=row><div class=col-md-9 role=main><div class=page-header><h1>Example API documentation <small>version 1</small></h1><p>http://example.com/1</p><h3 id=Welcome><a href=#Welcome>Welcome</a></h3><p>Welcome to the Example Documentation. The Example API allows you to do stuff. See also <a href=https://www.example.com>example.com</a>.</p><pre><code class=lang-javascript>var raml2html = require(&#39;raml2html&#39;);
 

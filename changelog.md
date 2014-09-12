@@ -1,3 +1,6 @@
+1.0.3 - September 12, 2014
+- Fixed method :hover effect, which was broken after #63
+
 1.0.2 - September 12, 2014
 - Improved detection of empty resources
 
