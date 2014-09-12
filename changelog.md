@@ -1,3 +1,6 @@
+1.0.2 - September 12, 2014
+- Improved detection of empty resources
+
 1.0.1 - September 10, 2014
 - Solved problem with indentation of code examples (#66)
 - Added `--version` command line option (#75)

@@ -17,8 +17,10 @@
         </div>
         <div id="panel_{{uniqueId}}" class="panel-collapse collapse">
             <div class="panel-body">
-                {{#if description}}
-                    <div class="resource-description">{{md description}}</div>
+                {{#if parentUrl}}
+                    {{#if description}}
+                        <div class="resource-description">{{md description}}</div>
+                    {{/if}}
                 {{/if}}
 
                 <div class="list-group">
