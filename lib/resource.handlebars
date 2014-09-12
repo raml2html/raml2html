@@ -27,7 +27,9 @@
                     {{#methods}}
                         <div data-toggle="modal" data-target="#{{../uniqueId}}_{{method}}" class="list-group-item">
                             <span class="badge badge_{{method}}">{{method}}{{lock securedBy}}</span>
-                            <div class="method_description">{{md description}}</div>
+                            <div class="method_description">{{md description}}
+                                <p class="details"><a href="javascript: void(0)">Details</a>
+			    </div>
                             <div class="clearfix"></div>
                         </div>
                     {{/methods}}
