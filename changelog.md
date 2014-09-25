@@ -1,3 +1,6 @@
+1.0.4 - September 25, 2014
+- Updated readme and raml2obj version
+
 1.0.3 - September 12, 2014
 - Fixed method :hover effect, which was broken after #63
 

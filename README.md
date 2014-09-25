@@ -32,7 +32,7 @@ raml2html -t custom-template.handlebars -r custom-resource.handlebars -m custom-
 var raml2html = require('raml2html');
 
 // Using the default templates:
-// source can either be a filename, file contents (string) or parsed RAML object
+// source can either be a filename, url, file contents (string) or parsed RAML object
 var config = raml2html.getDefaultConfig(https); // https is a boolean, true means https links will be used instead of http
 raml2html.render(source, config, onSuccess, onError);
 
