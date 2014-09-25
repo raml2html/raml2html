@@ -15,6 +15,7 @@ npm i -g raml2html
 ### As a command line script
 
 ```
+raml2html --help
 raml2html example.raml > example.html
 raml2html -i example.raml -o example.html
 raml2html -s -i example.raml -o example.html
