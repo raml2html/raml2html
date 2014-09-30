@@ -48,6 +48,9 @@ raml2html.render(source, config, onSuccess, onError);
 ### Gulp
 There's a Gulp plugin at https://www.npmjs.org/package/gulp-raml2html.
 
+### Grunt
+There's a Grunt plugin at https://www.npmjs.org/package/grunt-raml2html.
+
 
 ## Example output
 ![Example output](https://raw.github.com/kevinrenskers/raml2html/master/examples/example.png)
@@ -76,7 +79,7 @@ See [changelog.md](https://github.com/kevinrenskers/raml2html/blob/master/change
 
 
 ## To do
-This project is still a work in progress, but the output is very usable already (and is in fact used by multiple 
+This project is still a work in progress, but the output is very usable already (and is in fact used by multiple
 companies including Google). Still left to do, in no particular order:
 
 * Template options (for example to turn off side bar navigation)
