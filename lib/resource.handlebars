@@ -8,9 +8,7 @@
 
                 <span class="methods">
                     {{#methods}}
-                        <a href="#" data-toggle="modal" data-target="#{{../uniqueId}}_{{method}}">
-                            <span class="badge badge_{{method}}">{{method}}{{lock securedBy}}</span>
-                        </a>
+                        <span class="badge badge_{{method}} clickable" data-method-detail="#{{../uniqueId}}_{{method}}">{{method}}{{lock securedBy}}</span>
                     {{/methods}}
                 </span>
             </h4>
@@ -36,11 +34,10 @@
         </div>
 
         {{#methods}}
-            <div class="modal fade" tabindex="0" id="{{../uniqueId}}_{{method}}">
-                <div class="modal-dialog">
-                    <div class="modal-content">
+            <div class="method-detail--closed" id="{{../uniqueId}}_{{method}}">
+                <div class="method-detail">
+                    <div>
                         <div class="modal-header">
-                            <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
                             <h4 class="modal-title" id="myModalLabel">
                                 <span class="badge badge_{{method}}">{{method}}{{lock securedBy}}</span>
                                 <span class="parent">{{../parentUrl}}</span>{{../relativeUri}}
