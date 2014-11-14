@@ -13,21 +13,59 @@
     <script type="text/javascript" src="{{config.protocol}}//cdnjs.cloudflare.com/ajax/libs/highlight.js/8.1/highlight.min.js"></script>
 
     <script type="text/javascript">
-        $(document).ready(function() {
-            $('.page-header pre code, .top-resource-description pre code').each(function(i, block) {
-                hljs.highlightBlock(block);
-            });
+    (function () {
+        var $doc;
+
+        function methodDetailToggle() {
+            var target;
+
+            target = $(this).data('method-detail');
+
+            $(target).toggleClass('method-detail--closed');
+        }
+
+        function highlighter(i, block) {
+            hljs.highlightBlock(block);
+        }
+
+        $doc = $(document);
+
+        $doc.ready(function () {
+            $('.page-header pre code, .top-resource-description pre code').each(highlighter);
 
             $('[data-toggle]').click(function() {
                 var selector = $(this).data('target') + ' pre code';
-                $(selector).each(function(i, block) {
-                    hljs.highlightBlock(block);
-                });
+                $(selector).each(highlighter);
             });
+
+            $doc.on('click', '[data-method-detail]', methodDetailToggle);
         });
+    }());
     </script>
 
     <style>
+        .clickable {
+          cursor: pointer;
+          -moz-user-select: none;
+          -webkit-user-select: none;
+          -ms-user-select: none;
+          user-select: none;
+        }
+        .method-detail {
+          background: -moz-linear-gradient(top, rgba(0,0,0,0.15) 0%, rgba(0,0,0,0) 50px, rgba(0,0,0,0) 80%, rgba(0,0,0,0.15) 100%); /* FF3.6+ */
+          background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,rgba(0,0,0,0.15)), color-stop(50px,rgba(0,0,0,0)), color-stop(75%,rgba(0,0,0,0)), color-stop(100%,rgba(0,0,0,0.15))); /* Chrome,Safari4+ */
+          background: -webkit-linear-gradient(top, rgba(0,0,0,0.15) 0%,rgba(0,0,0,0) 50px,rgba(0,0,0,0) 80%,rgba(0,0,0,0.15) 100%); /* Chrome10+,Safari5.1+ */
+          background: -o-linear-gradient(top, rgba(0,0,0,0.15) 0%,rgba(0,0,0,0) 50px,rgba(0,0,0,0) 80%,rgba(0,0,0,0.15) 100%); /* Opera 11.10+ */
+          background: -ms-linear-gradient(top, rgba(0,0,0,0.15) 0%,rgba(0,0,0,0) 50px,rgba(0,0,0,0) 80%,rgba(0,0,0,0.15) 100%); /* IE10+ */
+          background: linear-gradient(to bottom, rgba(0,0,0,0.15) 0%,rgba(0,0,0,0) 50px,rgba(0,0,0,0) 80%,rgba(0,0,0,0.15) 100%); /* W3C */
+          border: 1px solid gainsboro;
+        }
+        .method-detail--closed {
+          display: none;
+        }
+        .tab-content {
+          background: white;
+        }
         .hljs {
             background: transparent;
         }
