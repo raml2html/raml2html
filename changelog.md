@@ -1,3 +1,6 @@
+1.0.5 - December 3, 2014
+- Configured the html minifier to keep the quotes around html attributes
+
 1.0.4 - September 25, 2014
 - Updated readme and raml2obj version
 
