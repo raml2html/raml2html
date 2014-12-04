@@ -40,7 +40,6 @@ raml2html.render(source, config, onSuccess, onError);
 // Using your own templates:
 // - config should be an object with at least an `template` property
 // - config can also include `helpers` and `partials`
-// - config can also include a boolean `https` (default is false)
 // - config can also include a function `processOutput` which will receive the raw rendered HTML, onSuccess and onError callbacks
 // - the config object will be accessible from your handlebars templates
 raml2html.render(source, config, onSuccess, onError);
@@ -49,9 +48,17 @@ raml2html.render(source, config, onSuccess, onError);
 ### Gulp
 There's a Gulp plugin at https://www.npmjs.org/package/gulp-raml2html.
 
+### Grunt
+There's a Grunt plugin at https://www.npmjs.org/package/grunt-raml2html.
+
 
 ## Example output
 ![Example output](https://raw.github.com/kevinrenskers/raml2html/master/examples/example.png)
+
+
+## Before you report a bug
+If you get parsing errors, please do not report them to raml2html: it doesn't do the actual RAML parsing.
+Review the error and fix your RAML file, or open a new issue at [raml-js-parser](https://github.com/raml-org/raml-js-parser).
 
 
 ## Contributing
@@ -72,7 +79,7 @@ See [changelog.md](https://github.com/kevinrenskers/raml2html/blob/master/change
 
 
 ## To do
-This project is still a work in progress, but the output is very usable already (and is in fact used by multiple 
+This project is still a work in progress, but the output is very usable already (and is in fact used by multiple
 companies including Google). Still left to do, in no particular order:
 
 * Template options (for example to turn off side bar navigation)
