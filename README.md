@@ -40,7 +40,6 @@ raml2html.render(source, config, onSuccess, onError);
 // Using your own templates:
 // - config should be an object with at least an `template` property
 // - config can also include `helpers` and `partials`
-// - config can also include a boolean `https` (default is false)
 // - config can also include a function `processOutput` which will receive the raw rendered HTML, onSuccess and onError callbacks
 // - the config object will be accessible from your handlebars templates
 raml2html.render(source, config, onSuccess, onError);
