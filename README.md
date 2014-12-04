@@ -21,6 +21,8 @@ raml2html -i example.raml -o example.html
 raml2html -s -i example.raml -o example.html
 ```
 
+> **HTTPS** If the generated file will be hosted on a https domain, you will need to run raml2html with the `-s` option so external links will also use https links.
+
 Using your own templates:
 
 ```
