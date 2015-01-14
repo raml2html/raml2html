@@ -1,3 +1,6 @@
+1.0.6 - January 14, 2015
+- Use passed in template parameter when checking paths (#98)
+
 1.0.5 - December 3, 2014
 - Configured the html minifier to keep the quotes around html attributes
 
