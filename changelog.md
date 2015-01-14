@@ -1,3 +1,7 @@
+1.1.0 - January 14, 2015
+- Now using raml-parser's FileReader which makes it a lot easier to load custom templates
+  in other folders or even as remote urls
+
 1.0.6 - January 14, 2015
 - Use passed in template parameter when checking paths (#98)
 
@@ -27,7 +31,7 @@
 0.31.2 - September 6, 2014
 - Support enums for headers and URI parameters (#59)
 - Rendering URI parameter examples (#57)
-- Greatly simplified `resource.handlebars` by moving all the common code into a separate partial 
+- Greatly simplified `resource.handlebars` by moving all the common code into a separate partial
 
 0.31.1 - August 21, 2014
 - Fixed HTML validity (#61)

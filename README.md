@@ -36,7 +36,7 @@ var config = raml2html.getDefaultConfig(https); // https is a boolean, true mean
 raml2html.render(source, config, onSuccess, onError);
 
 // Using your own templates:
-// - config should be an object with at least an `template` property
+// - config should be an object with at least an `template` property (a string containing the main template)
 // - config can also include `helpers` and `partials`
 // - config can also include a boolean `https` (default is false)
 // - config can also include a function `processOutput` which will receive the raw rendered HTML, onSuccess and onError callbacks
