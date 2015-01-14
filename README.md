@@ -19,13 +19,11 @@ raml2html --help
 raml2html example.raml > example.html
 raml2html -i example.raml -o example.html
 raml2html -s -i example.raml -o example.html
-```
-
-Using your own templates:
-
-```
 raml2html -t custom-template.handlebars -r custom-resource.handlebars -m custom-item.handlebars -i example.raml -o example.html
 ```
+
+> **HTTPS** If the generated file will be hosted on a https domain, you will need to run raml2html with the `-s` option so the external dependancies will also use https links.
+
 
 ### As a library
 
@@ -38,7 +36,7 @@ var config = raml2html.getDefaultConfig(https); // https is a boolean, true mean
 raml2html.render(source, config, onSuccess, onError);
 
 // Using your own templates:
-// - config should be an object with at least an `template` property
+// - config should be an object with at least an `template` property (a string containing the main template)
 // - config can also include `helpers` and `partials`
 // - config can also include a boolean `https` (default is false)
 // - config can also include a function `processOutput` which will receive the raw rendered HTML, onSuccess and onError callbacks
@@ -49,9 +47,17 @@ raml2html.render(source, config, onSuccess, onError);
 ### Gulp
 There's a Gulp plugin at https://www.npmjs.org/package/gulp-raml2html.
 
+### Grunt
+There's a Grunt plugin at https://www.npmjs.org/package/grunt-raml2html.
+
 
 ## Example output
 ![Example output](https://raw.github.com/kevinrenskers/raml2html/master/examples/example.png)
+
+
+## Before you report a bug
+If you get parsing errors, please do not report them to raml2html: it doesn't do the actual RAML parsing.
+Review the error and fix your RAML file, or open a new issue at [raml-js-parser](https://github.com/raml-org/raml-js-parser).
 
 
 ## Contributing
@@ -72,7 +78,7 @@ See [changelog.md](https://github.com/kevinrenskers/raml2html/blob/master/change
 
 
 ## To do
-This project is still a work in progress, but the output is very usable already (and is in fact used by multiple 
+This project is still a work in progress, but the output is very usable already (and is in fact used by multiple
 companies including Google). Still left to do, in no particular order:
 
 * Template options (for example to turn off side bar navigation)
