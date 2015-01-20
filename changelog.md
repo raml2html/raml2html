@@ -1,5 +1,10 @@
+1.2.0 - January 20, 2015
+- Greatly simplified the loading of (custom) templates and the default behaviour of `getDefaultConfig`.
+  Sadly loading remote template files is no longer possible from the command line, but you can always create a simple
+  wrapper script if you need this functionality. Please let me know if this is a feature you absolutely need.
+
 1.1.1 - January 20, 2015
-- Fixed default behaviour of calling getDefaultConfig with no arguments, which should always use the default templates
+- Fixed default behaviour of calling `getDefaultConfig` with no arguments, which should always use the default templates
 
 1.1.0 - January 14, 2015
 - Now using raml-parser's FileReader which makes it a lot easier to load custom templates
