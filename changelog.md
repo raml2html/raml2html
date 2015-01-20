@@ -1,3 +1,6 @@
+1.1.1 - January 20, 2015
+- Fixed default behaviour of calling getDefaultConfig with no arguments, which should always use the default templates
+
 1.1.0 - January 14, 2015
 - Now using raml-parser's FileReader which makes it a lot easier to load custom templates
   in other folders or even as remote urls

@@ -44,6 +44,8 @@ raml2html.render(source, config, onSuccess, onError);
 raml2html.render(source, config, onSuccess, onError);
 ```
 
+See also `example/script.js` for an example of using raml2html as a library.
+
 ### Gulp
 There's a Gulp plugin at https://www.npmjs.org/package/gulp-raml2html.
 
