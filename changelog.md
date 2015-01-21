@@ -1,20 +1,24 @@
+1.3.0 - January 21, 2015
+- Now rendering default values for parameters (#100) and securedBy (#10)
+
 1.2.0 - January 20, 2015
 - Greatly simplified the loading of (custom) templates and the default behaviour of `getDefaultConfig`.
   Sadly loading remote template files is no longer possible from the command line, but you can always create a simple
   wrapper script if you need this functionality. Please let me know if this is a feature you absolutely need.
 
 1.1.1 - January 20, 2015
-- Fixed default behaviour of calling `getDefaultConfig` with no arguments, which should always use the default templates
+- Fixed default behaviour of calling `getDefaultConfig` with no arguments,
+  which should always use the default templates
 
 1.1.0 - January 14, 2015
 - Now using raml-parser's FileReader which makes it a lot easier to load custom templates
-  in other folders or even as remote urls
+  in other folders or even as remote urls (#96)
 
 1.0.6 - January 14, 2015
-- Use passed in template parameter when checking paths (#98)
+- Bugfix: use passed in template parameter when checking paths (#98)
 
 1.0.5 - December 3, 2014
-- Configured the html minifier to keep the quotes around html attributes
+- Configured the html minifier to keep the quotes around html attributes (#93)
 
 1.0.4 - September 25, 2014
 - Updated readme and raml2obj version
