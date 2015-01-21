@@ -39,9 +39,11 @@ traits:
         page_size:
           description: The number of items per page
           type: number
+          default: 20
         page:
           description: The page to return
           type: number
+          default: 0
 
 /account:
   displayName: ACCOUNTS
@@ -80,8 +82,10 @@ traits:
           example: Naruto Uzumaki
         gender:
           enum: ["male", "female"]
+          required: true
         number:
           type: integer
+          default: 42
   /{id}:
     uriParameters:
       id:

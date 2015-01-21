@@ -8,9 +8,9 @@
     <em>
         {{#if this.required}}required{{/if}}
         {{#if this.enum}}
-            one of ({{this.enum}})
+            (one of {{this.enum}}{{#if this.default}} - default: {{this.default}}{{/if}})
         {{else}}
-            ({{this.type}})
+            ({{this.type}}{{#if this.default}} - default: {{this.default}}{{/if}})
         {{/if}}
     </em>
 
