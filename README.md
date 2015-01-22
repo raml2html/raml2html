@@ -47,10 +47,10 @@ raml2html.render(source, config, onSuccess, onError);
 See also `example/script.js` for an example of using raml2html as a library.
 
 ### Gulp
-You can use the [latest raml2html directly from Gulp](https://gist.github.com/iki/784ddd5ab33c1e1b726b), or use the [gulp-raml2html plugin](https://www.npmjs.org/package/gulp-raml2html) (which uses an outdated version of raml2html).
+You can use the [latest raml2html directly from Gulp](https://gist.github.com/iki/784ddd5ab33c1e1b726b), or use the third party [gulp-raml2html plugin](https://www.npmjs.org/package/gulp-raml2html) (which uses an outdated version of raml2html).
 
 ### Grunt
-There's a Grunt plugin at https://www.npmjs.org/package/grunt-raml2html.
+There's a third party Grunt plugin at https://www.npmjs.org/package/grunt-raml2html.
 
 
 ## Example output
