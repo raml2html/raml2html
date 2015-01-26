@@ -27,9 +27,11 @@ raml2html.render('example.raml', config2, function(result) {
 });
 
 
-// If you want to customize everything, just create the config object yourself from scratch:
+// If you want to customize everything, just create the config object yourself from scratch.
+// Check raml2html.getDefaultConfig for the possible properties (https, helpers, partials, processOutput).
+// The template property should be a string containing the template or a Handlebars template object.
 var config3 = {
-    template: require('../lib/template.handlebars')
+    template: '<h1>Hello!</h1>'
 };
 
 raml2html.render('example.raml', config3, function(result) {
