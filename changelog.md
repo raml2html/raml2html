@@ -1,3 +1,6 @@
+1.3.1 - January 28, 2015
+- Fixed the id's of the tabs (#108)
+
 1.3.0 - January 21, 2015
 - Now rendering default values for parameters (#100) and securedBy (#10)
 
