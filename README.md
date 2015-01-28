@@ -1,6 +1,6 @@
 # RAML to HTML
 
-+[![NPM version](http://img.shields.io/npm/v/raml2html.svg)](https://www.npmjs.org/package/raml2html)
+[![NPM version](http://img.shields.io/npm/v/raml2html.svg)](https://www.npmjs.org/package/raml2html)
 
 A simple RAML to HTML documentation generator, written for Node.js.
 Check [raml2md](https://github.com/kevinrenskers/raml2md) for a RAML to Markdown generator.
