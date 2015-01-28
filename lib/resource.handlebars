@@ -61,7 +61,7 @@
                             <ul class="nav nav-tabs">
                                 {{#emptyRequestCheckHelper}}
                                     <li class="active">
-                                        <a href="#{{../uniqueId}}_{{method}}_request" data-toggle="tab">Request</a>
+                                        <a href="#{{../../uniqueId}}_{{method}}_request" data-toggle="tab">Request</a>
                                     </li>
                                 {{/emptyRequestCheckHelper}}
 
@@ -75,7 +75,7 @@
                             <!-- Tab panes -->
                             <div class="tab-content">
                                 {{#emptyRequestCheckHelper}}
-                                    <div class="tab-pane active" id="{{../uniqueId}}_{{method}}_request">
+                                    <div class="tab-pane active" id="{{../../uniqueId}}_{{method}}_request">
                                         {{#if ../allUriParameters}}
                                             <h3>URI Parameters</h3>
                                             <ul>
