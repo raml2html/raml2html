@@ -224,6 +224,12 @@ traits:
   get:
     is: [ paged ]
     description: Get a list of all users
+    queryParameters:
+      from:
+        description: Limit results to those created after from.
+        example: '2014-12-31T00:00:00.000Z'
+        type: string
+        required: false
 
   post:
     description: Creates a new user

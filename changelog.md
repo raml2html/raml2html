@@ -1,3 +1,6 @@
+1.4.0 - January 30, 2015
+- If an example's type is explicitly set to 'string' then don't syntax highlight it
+
 1.3.1 - January 28, 2015
 - Fixed the id's of the tabs (#108)
 

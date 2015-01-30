@@ -23,6 +23,10 @@
 
     {{#if this.example}}
         <p><strong>Example</strong>:</p>
-        <pre><code>{{this.example}}</code></pre>
+        {{#ifTypeIsString}}
+            <pre>{{this.example}}</pre>
+        {{else}}
+            <pre><code>{{this.example}}</code></pre>
+        {{/ifTypeIsString}}
     {{/if}}
 </li>
