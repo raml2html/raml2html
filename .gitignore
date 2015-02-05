@@ -8,6 +8,8 @@ lib-cov
 *.gz
 *.html
 *.raml
+*.iml
+.idea
 
 pids
 logs
