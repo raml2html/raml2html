@@ -6,6 +6,8 @@ lib-cov
 *.out
 *.pid
 *.gz
+*.html
+*.raml
 
 pids
 logs
