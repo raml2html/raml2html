@@ -6,8 +6,6 @@ lib-cov
 *.out
 *.pid
 *.gz
-*.html
-*.raml
 *.iml
 .idea
 
