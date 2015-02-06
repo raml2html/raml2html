@@ -1,0 +1,108 @@
+#%RAML 0.8
+---
+title: Checkers
+version: v1
+baseUri: /api/v1/checkers
+documentation:
+    - title: Overview
+      content: |
+           Draughts (/ˈdrɑːfts/, British English) or checkers (American English) is a group of strategy board games for 
+           two players which involve diagonal moves of uniform game pieces and mandatory captures by jumping over opponent 
+           pieces. Draughts developed from alquerque. The name derives from the verb to draw or to move.  - Wikipedia
+          
+
+/api/v1/checkers/games:
+    uriParameters:
+    get:
+        description: |
+             Retrieves a collection of existing games from the server.
+            
+  
+        is: []
+
+        queryParameters:
+            state:
+                description: |
+                    Filters the selection on state.
+                type: string
+
+                enum: [ STARTING, ACTIVE, PAUSED, ENDED ]
+
+        responses:
+            200:
+                body:
+                    application/json:
+                        schema: |
+                            {"type":"object","id":"urn:jsonschema:org:madpolicy:dto:GameCollection","properties":{"games":{"type":"array","items":{"type":"object","id":"urn:jsonschema:org:madpolicy:dto:Game","properties":{"gameboard":{"type":"array","required":true,"description":"The state of the gameboard.","items":{"type":"array","items":{"type":"string","enum":["RED","BLACK","FREE"]}}},"name":{"type":"string","description":"Name of the game."}}}}}}
+
+    post:
+        description: |
+             Create a new game.  Caller provides a name for the game.
+  
+        is: []
+
+        queryParameters:
+            name:
+                description: |
+                    The name to be assigned to the newly created game.
+                type: string
+
+
+            players:
+                description: |
+                    The number of players (2 = regular, 1 = against computer, 0 = computer plays against itself).
+                type: integer
+
+
+
+        responses:
+            200:
+
+    /{id}:
+        uriParameters:
+            id:
+                description: |
+                    Identifier of the game being requested. This will normally be an opaque GUID.
+                type: string
+
+
+        get:
+            description: |
+                 Get the game with the given id.
+  
+            is: []
+
+            queryParameters:
+
+            responses:
+                200:
+                    body:
+                        application/json:
+                            schema: |
+                                {"type":"object","id":"urn:jsonschema:org:madpolicy:dto:Game","properties":{"gameboard":{"type":"array","required":true,"description":"The state of the gameboard.","items":{"type":"array","items":{"type":"string","enum":["RED","BLACK","FREE"]}}},"name":{"type":"string","description":"Name of the game."}}}
+
+        /players:
+            uriParameters:
+            get:
+                description: |
+                     Return all players in the given game.
+                    
+  
+                is: []
+
+                queryParameters:
+
+                responses:
+                    200:
+                        body:
+                            application/json:
+                                schema: |
+                                    {"type":"object","id":"urn:jsonschema:org:madpolicy:dto:PlayerCollection","properties":{"players":{"type":"array","items":{"type":"object","id":"urn:jsonschema:org:madpolicy:dto:Player","properties":{"karma":{"type":"integer"},"substitute":{"type":"object","$ref":"urn:jsonschema:org:madpolicy:dto:Player"}}}}}}
+
+
+
+
+
+
+
+
