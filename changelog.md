@@ -1,3 +1,9 @@
+1.5.0 - March 10, 2014
+- Made the side menu a fixed height (#110)
+- Added a background color for PATCH (#117)
+- Response tab is set to active when request tab isn't shown (#120)
+- Added additional information in query parameter (#121)
+
 1.4.0 - January 30, 2015
 - If an example's type is explicitly set to 'string' then don't syntax highlight it
 

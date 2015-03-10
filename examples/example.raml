@@ -91,6 +91,8 @@ traits:
       id:
         type: string
         description: account identifier
+        minLength: 1
+        maxLength: 10
     get:
       headers:
         Authorization:
@@ -145,12 +147,13 @@ traits:
   /forgot:
     post:
       description: Sends an email to the user with a link to set a new password
-      body:
-        application/json:
-          example: |
-            {
-              "email": "john@example.com"
-            }
+      responses:
+        200:
+          description: Test
+          body:
+            text/xml:
+              example: |
+                <test>This is a test</test>
 
   /session:
     get:

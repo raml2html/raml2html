@@ -8,22 +8,22 @@
     <em>
         {{#if this.required}}required{{/if}}
         (
-            {{#if this.enum}}
+            {{~#if this.enum~}}
                 one of {{this.enum}}
-            {{else}}
+            {{~else~}}
                 {{this.type}}
-            {{/if}}
+            {{~/if~}}
 
-            {{#if this.default}} - default: {{this.default}}{{/if}}
-            {{#if this.repeat}} - repeat: {{this.repeat}}{{/if}}
-            {{#ifTypeIsString}}
+            {{~#if this.default~}} - default: {{this.default}}{{~/if~}}
+            {{~#if this.repeat~}} - repeat: {{this.repeat}}{{~/if~}}
+            {{~#ifTypeIsString~}}
                 {{#if this.minLength}} - minLength: {{this.minLength}}{{/if}}
                 {{#if this.maxLength}} - maxLength: {{this.maxLength}}{{/if}}
-            {{else}}
+            {{~else~}}
                 {{#if this.minimum}} - minimum: {{this.minimum}}{{/if}}
                 {{#if this.maximum}} - maximum: {{this.maximum}}{{/if}}
-            {{/ifTypeIsString}}
-            {{#if this.pattern}} - pattern: {{this.pattern}}{{/if}}
+            {{~/ifTypeIsString~}}
+            {{~#if this.pattern~}} - pattern: {{this.pattern}}{{~/if~}}
         )
     </em>
 
