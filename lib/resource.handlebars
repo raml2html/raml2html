@@ -66,7 +66,7 @@
                                 {{/emptyRequestCheckHelper}}
 
                                 {{#if responses}}
-                                    <li>
+                                    <li{{#missingRequestCheckHelper}} class="active"{{/missingRequestCheckHelper}}>
                                         <a href="#{{../../uniqueId}}_{{method}}_response" data-toggle="tab">Response</a>
                                     </li>
                                 {{/if}}
@@ -131,7 +131,7 @@
                                 {{/emptyRequestCheckHelper}}
 
                                 {{#if responses}}
-                                    <div class="tab-pane" id="{{../../uniqueId}}_{{method}}_response">
+                                    <div class="tab-pane{{#missingRequestCheckHelper}} active{{/missingRequestCheckHelper}}" id="{{../../uniqueId}}_{{method}}_response">
                                         {{#each responses}}
                                             <h2>HTTP status code <a href="http://httpstatus.es/{{@key}}" target="_blank">{{@key}}</a></h2>
                                             {{md this.description}}
