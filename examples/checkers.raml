@@ -1,0 +1,181 @@
+#%RAML 0.8
+---
+title: Checkers
+version: v1
+baseUri: /api/v1
+documentation:
+    - title: Overview
+      content: |
+           Draughts (/ˈdrɑːfts/, British English) or checkers (American English) is a group of strategy board games for 
+           two players which involve diagonal moves of uniform game pieces and mandatory captures by jumping over opponent 
+           pieces. Draughts developed from alquerque. The name derives from the verb to draw or to move.
+          
+           Variants:
+           <ul>
+            <li>National variant</li>
+            <li>International draughts (or Polish draughts)</li>
+            <li>Ghanaian draughts (damii)</li>
+            <li>Frisian draughts</li>
+            <li>Canadian Checkers</li>
+            <li>Brazilian draughts</li>
+            <li>Pool checkers</li>
+            <li>Russian draughts</li>
+           </ul> 
+           
+           (from Wikipedia)
+
+
+securitySchemes:
+    - oauth_2_0:
+        description: |
+            Dropbox supports OAuth 2.0 for authenticating all API requests.
+        type: OAuth 2.0
+        describedBy:
+            headers:
+                Authorization:
+                    description: |
+                       Used to send a valid OAuth 2 access token. Do not use
+                       with the "access_token" query string parameter.
+                    type: string
+            queryParameters:
+                access_token:
+                    description: |
+                       Used to send a valid OAuth 2 access token. Do not use together with
+                       the "Authorization" header
+                    type: string
+            responses:
+                401:
+                    description: |
+                        Bad or expired token. This can happen if the user or Dropbox
+                        revoked or expired an access token. To fix, you should re-
+                        authenticate the user.
+                403:
+                    description: |
+                        Bad OAuth request (wrong consumer key, bad nonce, expired
+                        timestamp...). Unfortunately, re-authenticating the user won't help here.
+        settings:
+          authorizationUri: https://www.dropbox.com/1/oauth2/authorize
+          accessTokenUri: https://api.dropbox.com/1/oauth2/token
+          authorizationGrants: [ code, token ]
+
+traits:
+    - experimental:
+        description: TBD
+    - stable:
+        description: TBD
+    - deprecated:
+        description: TBD
+
+
+/api/v1:
+    uriParameters:
+    /checkers/games:
+        uriParameters:
+        get:
+            description: |
+                 Retrieves a collection of existing games from the server.
+                
+  
+            is: [ experimental]
+
+            queryParameters:
+                state:
+                    description: |
+                        Filters the selection on state.
+                    type: string
+
+                    enum: [ STARTING, ACTIVE, PAUSED, ENDED ]
+
+            responses:
+                200:
+                    body:
+                        application/json:
+                            schema: |
+                                {"type":"object","id":"urn:jsonschema:org:madpolicy:dto:GameCollection","properties":{"games":{"type":"array","items":{"type":"object","id":"urn:jsonschema:org:madpolicy:dto:Game","properties":{"gameboard":{"type":"array","required":true,"description":"The state of the gameboard.","items":{"type":"array","items":{"type":"string","enum":["ToString:RED","ToString:BLACK","ToString:FREE"]}}},"name":{"type":"string","description":"Name of the game."}}}}}}
+                            example: |
+                                {"games": [{"name": "string","gameboard": "string one of [RED,BLACK,FREE]"}]}
+
+        post:
+            description: |
+                 Create a new game.  Caller provides a name for the game.
+  
+            is: [ stable]
+
+            queryParameters:
+                name:
+                    description: |
+                        The name to be assigned to the newly created game.
+                    type: string
+
+
+                players:
+                    description: |
+                        The number of players (2 = regular, 1 = against computer, 0 = computer plays against itself).
+                    type: integer
+
+
+
+            responses:
+                200:
+
+        /{id}:
+            uriParameters:
+                id:
+                    description: |
+                        Identifier of the game being requested. This will normally be an opaque GUID.
+                    type: string
+
+
+            get:
+                description: |
+                     Get the game with the given id..
+                     Example:
+                     <pre>
+                     {
+                         "foo": "bar"
+                     }
+                     </pre>
+                    
+  
+                is: [ stable]
+
+                queryParameters:
+
+                responses:
+                    200:
+                        body:
+                            application/json:
+                                schema: |
+                                    {"type":"object","id":"urn:jsonschema:org:madpolicy:dto:Game","properties":{"gameboard":{"type":"array","required":true,"description":"The state of the gameboard.","items":{"type":"array","items":{"type":"string","enum":["ToString:RED","ToString:BLACK","ToString:FREE"]}}},"name":{"type":"string","description":"Name of the game."}}}
+                                example: |
+                                    {"name": "string","gameboard": "string one of [RED,BLACK,FREE]"}
+
+            /players:
+                uriParameters:
+                get:
+                    description: |
+                         Return all players in the given game.
+                        
+  
+                    is: [ stable, deprecated]
+
+                    queryParameters:
+
+                    responses:
+                        200:
+                            body:
+                                application/json:
+                                    schema: |
+                                        {"type":"object","id":"urn:jsonschema:org:madpolicy:dto:PlayerCollection","properties":{"players":{"type":"array","items":{"type":"object","id":"urn:jsonschema:org:madpolicy:dto:Player","properties":{"karma":{"type":"integer"},"substitute":{"type":"object","$ref":"urn:jsonschema:org:madpolicy:dto:Player"}}}}}}
+                                    example: |
+                                        {"players": [{"substitute": {"substitute": "Player recursive","karma": "integer"},"karma": "integer"}]}
+
+
+
+
+
+
+
+
+
+
