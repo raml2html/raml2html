@@ -54,6 +54,11 @@
                             {{#if securedBy}}
                                 <div class="alert alert-warning">
                                     {{lock securedBy}} Secured by {{securedBy}}<br/>
+                                </div>
+                            {{/if}}
+
+                            {{#if is}}
+                                <div class="alert alert-warning">
                                     {{alert is}}
                                 </div>
                             {{/if}}
