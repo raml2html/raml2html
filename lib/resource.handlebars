@@ -9,7 +9,7 @@
                 <span class="methods">
                     {{#methods}}
                         <a href="#" data-toggle="modal" data-target="#{{../uniqueId}}_{{method}}">
-                            <span class="badge badge_{{method}}">{{method}}{{lock securedBy}}</span>
+                            <span class="badge badge_{{method}}">{{method}}{{lock securedBy}}{{trait is}}</span>
                         </a>
                     {{/methods}}
                 </span>
@@ -26,7 +26,7 @@
                 <div class="list-group">
                     {{#methods}}
                         <div data-toggle="modal" data-target="#{{../uniqueId}}_{{method}}" class="list-group-item">
-                            <span class="badge badge_{{method}}">{{method}}{{lock securedBy}}</span>
+                            <span class="badge badge_{{method}}">{{method}}{{lock securedBy}}{{trait is}}</span>
                             <div class="method_description">{{md description}}</div>
                             <div class="clearfix"></div>
                         </div>
@@ -42,7 +42,7 @@
                         <div class="modal-header">
                             <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
                             <h4 class="modal-title" id="myModalLabel">
-                                <span class="badge badge_{{method}}">{{method}}{{lock securedBy}}</span>
+                                <span class="badge badge_{{method}}">{{method}}{{lock securedBy}}{{trait is}}</span>
                                 <span class="parent">{{../parentUrl}}</span>{{../relativeUri}}
                             </h4>
                         </div>
@@ -53,7 +53,8 @@
 
                             {{#if securedBy}}
                                 <div class="alert alert-warning">
-                                    {{lock securedBy}} Secured by {{securedBy}}
+                                    {{lock securedBy}} Secured by {{securedBy}}<br/>
+                                    {{alert is}}
                                 </div>
                             {{/if}}
 
