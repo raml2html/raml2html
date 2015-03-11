@@ -57,6 +57,12 @@
                                 </div>
                             {{/if}}
 
+                            {{#if is}}
+                                <div class="alert alert-warning">
+                                    {{traitsHelper ../../../traits is}}
+                                </div>
+                            {{/if}}
+
                             <!-- Nav tabs -->
                             <ul class="nav nav-tabs">
                                 {{#emptyRequestCheckHelper}}
@@ -174,5 +180,5 @@
 {{/emptyResourceCheck}}
 
 {{#resources}}
-    {{> resource}}
+    {{> resource traits=traits}}
 {{/resources}}
