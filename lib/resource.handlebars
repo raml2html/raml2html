@@ -118,12 +118,12 @@
 
                                                 {{#if this.schema}}
                                                     <p><strong>Schema</strong>:</p>
-                                                    <pre><code>{{this.schema}}</code></pre>
+                                                    <pre><code>{{prettyPrint @key this.schema}}</code></pre>
                                                 {{/if}}
 
                                                 {{#if this.example}}
                                                     <p><strong>Example</strong>:</p>
-                                                    <pre><code>{{this.example}}</code></pre>
+                                                    <pre><code>{{prettyPrint @key this.schema}}</code></pre>
                                                 {{/if}}
                                             {{/each}}
                                         {{/if}}
@@ -152,12 +152,12 @@
 
                                                     {{#if this.schema}}
                                                         <p><strong>Schema</strong>:</p>
-                                                        <pre><code>{{this.schema}}</code></pre>
+                                                        <pre><code>{{prettyPrint @key this.schema}}</code></pre>
                                                     {{/if}}
 
                                                     {{#if this.example}}
                                                         <p><strong>Example</strong>:</p>
-                                                        <pre><code>{{this.example}}</code></pre>
+                                                        <pre><code>{{prettyPrint @key this.schema}}</code></pre>
                                                     {{/if}}
                                                 {{/each}}
                                             {{/if}}
