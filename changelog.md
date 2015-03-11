@@ -1,4 +1,4 @@
-1.5.0 - March 10, 2014
+1.5.0 - March 11, 2014
 - Made the side menu a fixed height (#110)
 - Added a background color for PATCH (#117)
 - Response tab is set to active when request tab isn't shown (#120)
