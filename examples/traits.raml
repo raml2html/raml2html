@@ -31,3 +31,15 @@ traits:
     patch:
         description: Modify a widget.
         is: [ experimental, hunger]
+
+    /{id}:
+        uriParameters:
+        get:
+            description: Retrieves a widget.
+            is: [ stable]
+
+        /colors:
+            uriParameters:
+            get:
+                description: Retrieves a widget's colors.
+                is: [ deprecated]
