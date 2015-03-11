@@ -14,6 +14,8 @@ traits:
         description: This endpoint is stable.
     - deprecated:
         description: This endpoint is deprecated.
+    - hunger:
+        description: This endpoint will end world hunger.
 
 
 /traits/widgets:
@@ -28,4 +30,4 @@ traits:
 
     patch:
         description: Modify a widget.
-        is: [ experimental]
+        is: [ experimental, hunger]
