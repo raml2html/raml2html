@@ -1,5 +1,5 @@
 {{#emptyResourceCheck}}
-    <div class="panel panel-white">
+   <div class="panel panel-white">
         <div class="panel-heading">
             <h4 class="panel-title">
                  <a class="collapsed" data-toggle="collapse" href="#panel_{{uniqueId}}">
@@ -54,6 +54,12 @@
                             {{#if securedBy}}
                                 <div class="alert alert-warning">
                                     {{lock securedBy}} Secured by {{securedBy}}
+                                </div>
+                            {{/if}}
+
+                            {{#if is}}
+                                <div class="alert alert-warning">
+                                    {{traitsHelper ../../../traits is}}
                                 </div>
                             {{/if}}
 
@@ -174,5 +180,5 @@
 {{/emptyResourceCheck}}
 
 {{#resources}}
-    {{> resource}}
+    {{> resource traits=traits}}
 {{/resources}}
