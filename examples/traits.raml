@@ -1,0 +1,33 @@
+#%RAML 0.8
+---
+title: Traits
+version: v1
+baseUri: /api/v1
+documentation:
+    - title: Overview
+      content: An API to illustrate documentation of traits.
+
+traits:
+    - experimental:
+        description: This endpoint is experimental.
+    - stable:
+        description: This endpoint is stable.
+    - deprecated:
+        description: This endpoint is deprecated.
+    - hunger:
+        description: This endpoint will end world hunger.
+
+
+/traits/widgets:
+    uriParameters:
+    get:
+        description: Retrieves a collection of widgets.
+        is: [ stable]
+
+    post:
+        description: Create a new widget.
+        is: [ deprecated]
+
+    patch:
+        description: Modify a widget.
+        is: [ experimental, hunger]
