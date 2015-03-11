@@ -1,0 +1,35 @@
+#%RAML 0.8
+---
+title: Checkers
+version: v1
+baseUri: /api/v1
+documentation:
+    - title: Overview
+      content: |
+           Draughts (/ˈdrɑːfts/, British English) or checkers (American English) is a group of strategy board games for 
+           two players which involve diagonal moves of uniform game pieces and mandatory captures by jumping over opponent 
+           pieces. Draughts developed from alquerque. The name derives from the verb to draw or to move.
+          
+/api/v1:
+    uriParameters:
+    /checkers/games:
+        uriParameters:
+        get:
+            description: |
+                 Retrieves a collection of existing games from the server.
+                
+            queryParameters:
+                state:
+                    description:  Filters the selection on state.
+                    type: string
+                    enum: [ STARTING, ACTIVE, PAUSED, ENDED ]
+
+            responses:
+                200:
+                    body:
+                        application/json:
+                            schema: |
+                                {"type":"object","id":"urn:jsonschema:org:madpolicy:dto:GameCollection","properties":{"games":{"type":"array","items":{"type":"object","id":"urn:jsonschema:org:madpolicy:dto:Game","properties":{"gameboard":{"type":"array","required":true,"description":"The state of the gameboard.","items":{"type":"array","items":{"type":"string","enum":["ToString:RED","ToString:BLACK","ToString:FREE"]}}},"name":{"type":"string","description":"Name of the game."}}}}}}
+                            example: |
+                                {"games": [{"name": "string","gameboard": "string one of [RED,BLACK,FREE]"}]}
+
