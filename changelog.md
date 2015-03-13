@@ -1,3 +1,7 @@
+2.0.0 - March 13, 2015
+- Using a promise based API, please see README for updated usage example
+- Using Nunjucks instead of Handlebars
+
 1.5.0 - March 11, 2014
 - Made the side menu a fixed height (#110)
 - Added a background color for PATCH (#117)

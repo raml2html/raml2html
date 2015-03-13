@@ -21,7 +21,7 @@ raml2html --help
 raml2html example.raml > example.html
 raml2html -i example.raml -o example.html
 raml2html -s -i example.raml -o example.html
-raml2html -t custom-template.handlebars -r custom-resource.handlebars -m custom-item.handlebars -i example.raml -o example.html
+raml2html -t custom-template.nunjucks -i example.raml -o example.html
 ```
 
 > **HTTPS** If the generated file will be hosted on a https domain, you will need to run raml2html with the `-s` option so the external dependancies will also use https links.
@@ -29,24 +29,35 @@ raml2html -t custom-template.handlebars -r custom-resource.handlebars -m custom-
 
 ### As a library
 
+### Using the default templates
+
 ```
 var raml2html = require('raml2html');
-
-// Using the default templates:
-// source can either be a filename, url, file contents (string) or parsed RAML object
 var config = raml2html.getDefaultConfig(https); // https is a boolean, true means https links will be used instead of http
-raml2html.render(source, config, onSuccess, onError);
 
-// Using your own templates:
-// - config should be an object with at least an `template` property (a string containing the main template)
-// - config can also include `helpers` and `partials`
+// source can either be a filename, url, file contents (string) or parsed RAML object
+raml2html.render(source, config).then(function(result) {
+    // Save the result to a file or do something else with the result
+}, function(error) {
+    // Output error
+});
+```
+
+#### Using your own templates
+// - config should be an object with at least an `template` property which is a url to your main template
 // - config can also include a boolean `https` (default is false)
-// - config can also include a function `processOutput` which will receive the raw rendered HTML, onSuccess and onError callbacks
-// - the config object will be accessible from your handlebars templates
-raml2html.render(source, config, onSuccess, onError);
+// - config can also include a function `processOutput` which will receive the raw rendered HTML and must return HTML
+// - the config object will be accessible from your Nunjucks templates
+raml2html.render(source, config).then(function(result) {
+    // Save the result to a file or do something else with the result
+}, function(error) {
+    // Output error
+});
 ```
 
 See also `example/script.js` for an example of using raml2html as a library.
+
+If you want to use a different template language, you're better off directly using [raml2obj](https://github.com/kevinrenskers/raml2obj).
 
 ### Gulp
 You can use the [latest raml2html directly from Gulp](https://gist.github.com/iki/784ddd5ab33c1e1b726b), or use the third party [gulp-raml2html plugin](https://www.npmjs.org/package/gulp-raml2html) (which uses an outdated version of raml2html).
