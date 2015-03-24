@@ -8,7 +8,7 @@
 
                 <span class="methods">
                     {% for method in resource.methods %}
-                        <a href="#" data-toggle="modal" data-target="#{{ resource.uniqueId }}_{{ method.method }}">
+                        <a href="#{{ resource.uniqueId }}_{{ method.method }}"><!-- modal shown by hashchange event -->
                             <span class="badge badge_{{ method.method }}">{{ method.method }}{% if method.securedBy.length %} <span class="glyphicon glyphicon-lock" title="Authentication required"></span>{% endif %}</span>
                         </a>
                     {% endfor %}
@@ -27,7 +27,7 @@
 
                 <div class="list-group">
                     {% for method in resource.methods %}
-                        <div data-toggle="modal" data-target="#{{ resource.uniqueId }}_{{ method.method }}" class="list-group-item">
+                        <div onclick="window.location.href = '#{{ resource.uniqueId }}_{{ method.method }}'" class="list-group-item">
                             <span class="badge badge_{{ method.method }}">{{ method.method }}{% if method.securedBy.length %} <span class="glyphicon glyphicon-lock" title="Authentication required"></span>{% endif %}</span>
                             <div class="method_description">
                                 {% markdown %}{{ method.description}}{% endmarkdown %}
