@@ -8,7 +8,7 @@
 
                 <span class="methods">
                     {{#methods}}
-                        <a href="#" data-toggle="modal" data-target="#{{../uniqueId}}_{{method}}">
+                        <a href="#{{../uniqueId}}_{{method}}"><!-- modal shown by hashchange event -->
                             <span class="badge badge_{{method}}">{{method}}{{lock securedBy}}</span>
                         </a>
                     {{/methods}}
@@ -25,7 +25,7 @@
 
                 <div class="list-group">
                     {{#methods}}
-                        <div data-toggle="modal" data-target="#{{../uniqueId}}_{{method}}" class="list-group-item">
+                        <div onclick="window.location.href = '#{{../uniqueId}}_{{method}}'" class="list-group-item">
                             <span class="badge badge_{{method}}">{{method}}{{lock securedBy}}</span>
                             <div class="method_description">{{md description}}</div>
                             <div class="clearfix"></div>
