@@ -1,4 +1,7 @@
-1.5.0 - March 11, 2014
+1.6.0 - March 24, 2015
+- Use hash tags for opening modals (#131)
+
+1.5.0 - March 11, 2015
 - Made the side menu a fixed height (#110)
 - Added a background color for PATCH (#117)
 - Response tab is set to active when request tab isn't shown (#120)
