@@ -11,7 +11,7 @@
   },
   "dependencies": {
     "commander": "2.2.x",
-    "handlebars": "1.3.x",
+    "handlebars": "2.0.x",
     "marked": "0.3.x",
     "minimize": "0.8.x",
     "raml2obj": "1.0.x"
