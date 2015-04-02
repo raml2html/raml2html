@@ -15,7 +15,6 @@ npm i -g raml2html
 ## Usage
 
 ### As a command line script
-
 ```
 raml2html --help
 raml2html example.raml > example.html
@@ -30,28 +29,28 @@ raml2html -t custom-template.nunjucks -i example.raml -o example.html
 ### As a library
 
 ### Using the default templates
-
 ```
 var raml2html = require('raml2html');
 var config = raml2html.getDefaultConfig(https); // https is a boolean, true means https links will be used instead of http
 
 // source can either be a filename, url, file contents (string) or parsed RAML object
 raml2html.render(source, config).then(function(result) {
-    // Save the result to a file or do something else with the result
+  // Save the result to a file or do something else with the result
 }, function(error) {
-    // Output error
+  // Output error
 });
 ```
 
 #### Using your own templates
+```
 // - config should be an object with at least an `template` property which is a url to your main template
 // - config can also include a boolean `https` (default is false)
 // - config can also include a function `processOutput` which will receive the raw rendered HTML and must return HTML
 // - the config object will be accessible from your Nunjucks templates
 raml2html.render(source, config).then(function(result) {
-    // Save the result to a file or do something else with the result
+  // Save the result to a file or do something else with the result
 }, function(error) {
-    // Output error
+  // Output error
 });
 ```
 
