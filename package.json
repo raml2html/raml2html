@@ -18,6 +18,10 @@
     "q": "1.2.x",
     "raml2obj": "2.0.x"
   },
+  "devDependencies": {
+    "jscs": "1.12.x",
+    "jshint": "2.6.x"
+  },
   "homepage": "https://github.com/kevinrenskers/raml2html",
   "keywords": [
     "RAML"
@@ -29,6 +33,9 @@
     "url": "git://github.com/kevinrenskers/raml2html.git"
   },
   "preferGlobal": "true",
+  "scripts": {
+    "lint": "jscs lib/raml2html.js && jshint lib/raml2html.js"
+  },
   "bin": {
     "raml2html": "lib/raml2html.js"
   }
