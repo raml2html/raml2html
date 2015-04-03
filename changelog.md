@@ -1,6 +1,9 @@
-2.0.0 - March 24, 2015
+2.0.0 - WIP
 - Using a promise based API, please see README for updated usage example
-- Using Nunjucks instead of Handlebars
+- Using Nunjucks by default, instead of Handlebars
+- Made it a lot easier to completely customize the entire rendering process, allowing you for example to use not only 
+  custom templates but even a different template engine
+- Got rid of the -s / https option, all external sources are simply always loaded via https
 
 1.6.0 - March 24, 2015
 - Use hash tags for opening modals (#131)

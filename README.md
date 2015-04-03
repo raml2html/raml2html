@@ -19,34 +19,32 @@ npm i -g raml2html
 raml2html --help
 raml2html example.raml > example.html
 raml2html -i example.raml -o example.html
-raml2html -s -i example.raml -o example.html
+raml2html -i example.raml -o example.html
 raml2html -t custom-template.nunjucks -i example.raml -o example.html
 ```
 
-> **HTTPS** If the generated file will be hosted on a https domain, you will need to run raml2html with the `-s` option so the external dependancies will also use https links.
-
-
 ### As a library
 
-### Using the default templates
+#### Using the default templates or your own Nunjucks templates
 ```
 var raml2html = require('raml2html');
-var config = raml2html.getDefaultConfig(https); // https is a boolean, true means https links will be used instead of http
+var configWithDefaultTemplates = raml2html.getDefaultConfig();
+var configWithCustomTemplates = raml2html.getDefaultConfig('mytemplate.html', './templates');
 
 // source can either be a filename, url, file contents (string) or parsed RAML object
-raml2html.render(source, config).then(function(result) {
+raml2html.render(source, configWithDefaultTemplates).then(function(result) {
   // Save the result to a file or do something else with the result
 }, function(error) {
   // Output error
 });
 ```
 
-#### Using your own templates
+#### Using your processing function, for when you want to use another template language
 ```
-// - config should be an object with at least an `template` property which is a url to your main template
-// - config can also include a boolean `https` (default is false)
-// - config can also include a function `processOutput` which will receive the raw rendered HTML and must return HTML
-// - the config object will be accessible from your Nunjucks templates
+/**
+ * config should be an object with at least an `processRamlObj` property which is a function that receives the raw RAML 
+ * object and must return a promise with the result. You can do whatever you want in this function.
+ */
 raml2html.render(source, config).then(function(result) {
   // Save the result to a file or do something else with the result
 }, function(error) {
