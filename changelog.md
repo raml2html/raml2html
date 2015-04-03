@@ -4,6 +4,8 @@
 - Made it a lot easier to completely customize the entire rendering process, allowing you for example to use not only 
   custom templates but even a different template engine
 - Got rid of the -s / https option, all external sources are simply always loaded via https
+- Got rid of the -r and -m template options, as the resource- and item templates are now simply loaded from within
+  the main template
 
 1.6.0 - March 24, 2015
 - Use hash tags for opening modals (#131)
