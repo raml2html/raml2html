@@ -1,0 +1,10 @@
+<h1>{{ ::ctrl.resource.parentUrl }}{{ ::ctrl.resource.relativeUri }}</h1>
+<div markdown="::ctrl.resource.description"></div>
+
+<ul class="stylelesslist inlinelist" ng-show="::ctrl.resource.methods">
+  <li ng-repeat="method in ::ctrl.resource.methods">
+    <a ui-sref-active="active" ui-sref=".method({method: method.method})">{{ ::method.method }}</a>
+  </li>
+</ul>
+
+<div ui-view></div>

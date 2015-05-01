@@ -1,0 +1,13 @@
+<nav class="subnav">
+  <ul class="stylelesslist">
+    <li ng-repeat="resource in ::ctrl.resources">
+      <a ui-sref-active="active" ui-sref="{{ ::ctrl.sref(resource) }}">{{ ::resource.parentUrl }}{{ ::resource.relativeUri }}
+        <div>
+          <span ng-repeat="method in ::resource.methods">{{ ::method.method | limitTo:1 }}</span>
+        </div>
+      </a>
+    </li>
+  </ul>
+</nav>
+
+<article ui-view></article>

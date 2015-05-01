@@ -1,0 +1,7 @@
+<article>
+  <div ng-repeat="documentation in ::ctrl.documentation" id="c{{ ::$index }}">
+    <h1>{{ ::documentation.title }}</h1>
+    <div markdown="::documentation.content"></div>
+    <p><a ui-sref="root.documentation({'#': 'c0'})" ui-sref-opts="{reload: true}">back to top</a></p>
+  </div>
+</article>

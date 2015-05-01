@@ -1,0 +1,39 @@
+nav {
+  background: #E8E8E8;
+  border-right: 1px solid #1E2829;
+  padding: 10px;
+
+  ul {
+    margin: 0 0 40px 10px;
+  }
+
+  li {
+    margin-bottom: 10px;
+  }
+
+  h3 {
+    font-weight: 400;
+    margin: 0 0 10px 0;
+  }
+}
+
+.mainnav {
+  padding: 20px 20px 20px 55px;
+
+  a {
+    display: inline-block;
+  }
+}
+
+.subnav {
+  background: #F3F3F4;
+  padding: 20px;
+
+  a {
+    display: block;
+
+    div {
+      float: right;
+    }
+  }
+}

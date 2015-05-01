@@ -1,0 +1,13 @@
+header {
+  background: var(--primary-color);
+  color: white;
+  padding: 10px 0 10px 55px;
+
+  h1 {
+    font-size: 1.2rem;
+  }
+
+  h2 {
+    font-size: 1rem;
+  }
+}

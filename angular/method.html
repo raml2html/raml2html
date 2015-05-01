@@ -1,0 +1,53 @@
+<div markdown="::ctrl.method.description"></div>
+
+<div ng-show="::ctrl.method.allUriParameters.length">
+  <h2>URI Parameters</h2>
+
+  <table>
+    <thead>
+      <tr>
+        <th class="c0">Parameter</th>
+        <th class="c1">Type</th>
+        <th class="c2">Required</th>
+        <th class="c3">Comment</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr ng-repeat="item in ::ctrl.method.allUriParameters">
+        <td>{{ ::item.displayName }}</td>
+        <td>{{ ::item.type }}</td>
+        <td>{{ ::item.required }}</td>
+        <td>
+          <div markdown="::item.description"></div>
+          {{ ::item.example }}
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
+<div ng-show="::ctrl.method.queryParameters">
+  <h2>Query Parameters</h2>
+
+  <table>
+    <thead>
+      <tr>
+        <th class="c0">Parameter</th>
+        <th class="c1">Type</th>
+        <th class="c2">Required</th>
+        <th class="c3">Comment</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr ng-repeat="item in ::ctrl.method.allUriParameters">
+        <td>{{ ::item.displayName }}</td>
+        <td>{{ ::item.type }}</td>
+        <td>{{ ::item.required }}</td>
+        <td>
+          <div markdown="::item.description"></div>
+          {{ ::item.example }}
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>

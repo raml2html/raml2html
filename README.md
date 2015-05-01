@@ -17,8 +17,7 @@ npm i -g raml2html
 ### As a command line script
 ```
 raml2html --help
-raml2html example.raml > example.html
-raml2html -i example.raml -o example.html
+raml2html -o build example.raml
 raml2html -t custom-template.nunjucks -p ./templates/ -i example.raml -o example.html
 ```
 
@@ -83,17 +82,16 @@ raml2html is an open source project and your contribution is very much appreciat
 A big thank you goes out to everyone who helped with the project, the [contributors](https://github.com/kevinrenskers/raml2html/graphs/contributors)
 and everyone who took the time to report issues and give feedback.
 
+### Working on raml2html
+If you want to change the css, please change the source files in the `css` folder and run `gulp css`. You can also run
+`gulp watch` to watch the css files for changes and automatically recompile the source css into `lib/style.css`.
+Personally I combine it with [live-server](https://github.com/tapio/live-server) when working on the templates.
+
+Do not manually edit the generated css file `lib/main.css`.
+
 
 ## Changelog
 See [changelog.md](https://github.com/kevinrenskers/raml2html/blob/master/changelog.md)
-
-
-## To do
-This project is still a work in progress, but the output is very usable already (and is in fact used by multiple
-companies including Google). Still left to do, in no particular order:
-
-* Template options (for example to turn off side bar navigation)
-* Finish HTML output, currently there's still some stuff missing (like securedBy)
 
 
 ## License

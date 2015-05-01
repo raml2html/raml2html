@@ -1,0 +1,44 @@
+article {
+  padding: 20px;
+
+  h1 {
+    font-weight: 400;
+    margin: 0 0 10px 0;
+    word-break: break-all;
+  }
+
+  table {
+    width: 100%;
+  }
+
+  thead {
+    border-bottom: 1px solid var(--text-color);
+  }
+
+  th, td {
+    text-align: left;
+    padding-right: 10px;
+    vertical-align: top;
+  }
+
+  th.c0 {
+    width: 100px;
+  }
+
+  th.c1 {
+    width: 80px;
+  }
+
+  th.c2 {
+    width: 90px;
+  }
+
+  ul.inlinelist {
+    background: var(--text-color);
+    padding: 10px;
+
+    a {
+      color: white;
+    }
+  }
+}
