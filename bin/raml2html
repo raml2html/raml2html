@@ -5,6 +5,7 @@
 var program = require('commander');
 var fs = require('fs');
 var raml2html = require('..');
+var pjson = require('../package.json');
 
 program
   .version(pjson.version)
