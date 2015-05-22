@@ -25,19 +25,23 @@ function render(source, config) {
     ramlObj.config = config;
 
     if (config.processRamlObj) {
-      return config.processRamlObj(ramlObj);
+      return config.processRamlObj(ramlObj).then(function(html) {
+        if (config.postProcessHtml) {
+          return config.postProcessHtml(html);
+        }
+
+        return html;
+      });
     }
 
-    return Q.fcall(function() {
-      return ramlObj;
-    });
+    return ramlObj;
   });
 }
 
 /**
  * @param {String} [mainTemplate] - The filename of the main template, leave empty to use default templates
  * @param {String} [templatesPath] - Optional, by default it uses the current working directory
- * @returns {{processRamlObj: Function}}
+ * @returns {{processRamlObj: Function, postProcessHtml: Function}}
  */
 function getDefaultConfig(mainTemplate, templatesPath) {
   if (!mainTemplate) {
@@ -65,6 +69,13 @@ function getDefaultConfig(mainTemplate, templatesPath) {
       var html = nunjucks.render(mainTemplate, ramlObj);
       html = html.replace(/&quot;/g, '"');
 
+      // Return the promise with the html
+      return Q.fcall(function() {
+        return html;
+      });
+    },
+
+    postProcessHtml: function(html) {
       // Minimize the generated html and return the promise with the result
       var Minimize = require('minimize');
       var minimize = new Minimize({quotes: true});

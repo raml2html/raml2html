@@ -39,13 +39,49 @@ var config3 = {
   processRamlObj: function(ramlObj) {
     var Q = require('q');
     return Q.fcall(function() {
-      return JSON.stringify(ramlObj);
+      return '<h1>\n\n\n<!--This is a test-->Hi!</h1>';
     });
-  }
+  },
+
+  postProcessHtml: config1.postProcessHtml
 };
 
 raml2html.render('example.raml', config3).then(function(result) {
   console.log('3: ', result.length);
+}, function(error) {
+  console.log('error! ', error);
+});
+
+/**
+ * You can also customize the postProcessHtml function
+ */
+var config4 = {
+  processRamlObj: function(ramlObj) {
+    var Q = require('q');
+    return Q.fcall(function() {
+      return '<h1>Hi!</h1>';
+    });
+  },
+
+  postProcessHtml: function(html) {
+    var Q = require('q');
+    return Q.fcall(function() {
+      return 'ABC';
+    });
+  }
+};
+
+raml2html.render('example.raml', config4).then(function(result) {
+  console.log('4: ', result.length);
+}, function(error) {
+  console.log('error! ', error);
+});
+
+/*
+ * Testing if it works with no config at all
+ */
+raml2html.render('example.raml', {}).then(function(result) {
+  console.log('5: ', Object.keys(result).length);
 }, function(error) {
   console.log('error! ', error);
 });

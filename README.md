@@ -42,6 +42,8 @@ raml2html.render(source, configWithDefaultTemplates).then(function(result) {
 /**
  * config should be an object with at least an `processRamlObj` property which is a function that receives the raw RAML 
  * object and must return a promise with the result. You can do whatever you want in this function.
+ *
+ * You can also supply a postProcessHtml function that can for example minify the generated HTML.
  */
 raml2html.render(source, config).then(function(result) {
   // Save the result to a file or do something else with the result
@@ -54,6 +56,13 @@ See also `example/script.js` for an example of using raml2html as a library.
 
 Please note that if you want to use a different template language, you're probably better off directly using
 [raml2obj](https://github.com/kevinrenskers/raml2obj).
+
+### Gulp
+You can use the [latest raml2html directly from Gulp](https://gist.github.com/iki/784ddd5ab33c1e1b726b), or use the third party 
+[gulp-raml2html plugin](https://www.npmjs.org/package/gulp-raml2html) (which uses an outdated version of raml2html).
+ 
+### Grunt
+There's a third party Grunt plugin at https://www.npmjs.org/package/grunt-raml2html.
 
 
 ## Example output
