@@ -17,7 +17,7 @@ npm i -g raml2html
 ### As a command line script
 ```
 raml2html --help
-raml2html -o build example.raml
+raml2html example.raml > example.html
 raml2html -t custom-template.nunjucks -p ./templates/ -i example.raml -o example.html
 ```
 
