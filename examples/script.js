@@ -2,9 +2,7 @@
 
 'use strict';
 
-process.chdir(__dirname);
-var raml2html = require('../lib/raml2html');
-
+var raml2html = require('..');
 
 /**
  * Using the default templates
@@ -20,7 +18,6 @@ raml2html.render('example.raml', config1).then(function(result) {
   console.log('error! ', error);
 });
 
-
 /**
  * Using your own templates using the default processRamlObj function
  */
@@ -31,7 +28,6 @@ raml2html.render('example.raml', config2).then(function(result) {
 }, function(error) {
   console.log('error! ', error);
 });
-
 
 /**
  * If you want to customize everything, just create the config object yourself from scratch.
