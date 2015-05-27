@@ -96,7 +96,7 @@
                     {% if method.headers %}
                       <h3>Headers</h3>
                       <ul>
-                        {% for key, item in headers %}
+                        {% for key, item in method.headers %}
                           {% include "item.nunjucks" %}
                         {% endfor %}
                       </ul>
