@@ -19,7 +19,7 @@
     "raml2obj": "2.1.x"
   },
   "devDependencies": {
-    "eslint": "^0.21.2"
+    "eslint": "0.21.x"
   },
   "homepage": "https://github.com/kevinrenskers/raml2html",
   "keywords": [
