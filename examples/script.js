@@ -36,7 +36,7 @@ raml2html.render('example.raml', config2).then(function(result) {
  * a promise with the finished output
  */
 var config3 = {
-  processRamlObj: function(ramlObj) {
+  processRamlObj: function() {
     var Q = require('q');
     return Q.fcall(function() {
       return '<h1>\n\n\n<!--This is a test-->Hi!</h1>';
@@ -56,14 +56,14 @@ raml2html.render('example.raml', config3).then(function(result) {
  * You can also customize the postProcessHtml function
  */
 var config4 = {
-  processRamlObj: function(ramlObj) {
+  processRamlObj: function() {
     var Q = require('q');
     return Q.fcall(function() {
       return '<h1>Hi!</h1>';
     });
   },
 
-  postProcessHtml: function(html) {
+  postProcessHtml: function() {
     var Q = require('q');
     return Q.fcall(function() {
       return 'ABC';

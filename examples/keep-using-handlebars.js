@@ -13,6 +13,7 @@ var renderer = new marked.Renderer();
 var Q = require('q');
 var fs = require('fs');
 var pjson = require('../package.json');
+var path = require('path');
 
 renderer.table = function(thead, tbody) {
   return '<table class="table"><thead>' + thead + '</thead><tbody>' + tbody + '</tbody></table>';
@@ -25,9 +26,9 @@ function responseExists(context) {
 function _markDownHelper(text) {
   if (text && text.length) {
     return new handlebars.SafeString(marked(text, { renderer: renderer }));
-  } else {
-    return '';
   }
+
+  return '';
 }
 
 function _lockIconHelper(securedBy) {
@@ -53,22 +54,22 @@ function _emptyResourceCheckHelper(options) {
 
 function _emptyRequestCheckHelper(options) {
   if (responseExists(this)) {
-    return options.fn(this)
+    return options.fn(this);
   }
 }
 
 function _missingRequestCheckHelper(options) {
   if (!responseExists(this)) {
-    return options.fn(this)
+    return options.fn(this);
   }
 }
 
 function _ifTypeIsString(options) {
   if (this.type && this.type === 'string') {
-    return options.fn(this)
-  } else {
-    return options.inverse(this);
+    return options.fn(this);
   }
+
+  return options.inverse(this);
 }
 
 var helpers = {
@@ -81,24 +82,24 @@ var helpers = {
 };
 
 var partials = {
-  resource: fs.readFileSync(__dirname + '/resource.handlebars', 'utf8'),
-  item: fs.readFileSync(__dirname + '/item.handlebars', 'utf8')
+  resource: fs.readFileSync(path.join(__dirname, 'resource.handlebars'), 'utf8'),
+  item: fs.readFileSync(path.join(__dirname, 'item.handlebars'), 'utf8')
 };
 
 // Register handlebar helpers
-for (var helperName in helpers) {
+helpers.forEac(function(helperName) {
   handlebars.registerHelper(helperName, helpers[helperName]);
-}
+});
 
 // Register handlebar partials
-for (var partialName in partials) {
+partials.forEach(function(partialName) {
   handlebars.registerPartial(partialName, partials[partialName]);
-}
+});
 
 var config = raml2html.getDefaultConfig();
 
 config.processRamlObj = function(ramlObj) {
-  var template = fs.readFileSync(__dirname + '/template.handlebars', 'utf8');
+  var template = fs.readFileSync(path.join(__dirname, 'template.handlebars'), 'utf8');
 
   ramlObj.config = {
     protocol: 'https:',

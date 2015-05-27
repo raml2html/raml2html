@@ -19,8 +19,7 @@
     "raml2obj": "2.1.x"
   },
   "devDependencies": {
-    "jscs": "1.12.x",
-    "jshint": "2.6.x"
+    "eslint": "^0.21.2"
   },
   "homepage": "https://github.com/kevinrenskers/raml2html",
   "keywords": [
@@ -34,7 +33,7 @@
   },
   "preferGlobal": "true",
   "scripts": {
-    "lint": "jscs index.js && jshint bin/raml2html"
+    "lint": "eslint ./"
   },
   "bin": {
     "raml2html": "./bin/raml2html"
