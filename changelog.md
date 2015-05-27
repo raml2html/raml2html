@@ -1,3 +1,6 @@
+2.0.1 - May 27, 2015
+- Fixed rendering of header
+
 2.0.0 - May 22, 2015
 - Using a promise based API, please see README for updated usage example
 - Using Nunjucks by default, instead of Handlebars
