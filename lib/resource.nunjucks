@@ -126,12 +126,12 @@
 
                         {% if b.schema %}
                           <p><strong>Schema</strong>:</p>
-                          <pre><code>{{ b.schema }}</code></pre>
+                          <pre><code>{{ b.schema | escape }}</code></pre>
                         {% endif %}
 
                         {% if b.example %}
                           <p><strong>Example</strong>:</p>
-                          <pre><code>{{ b.example }}</code></pre>
+                          <pre><code>{{ b.example | escape }}</code></pre>
                         {% endif %}
                       {% endfor %}
                     {% endif %}
@@ -160,12 +160,12 @@
 
                           {% if b.schema %}
                             <p><strong>Schema</strong>:</p>
-                            <pre><code>{{ b.schema }}</code></pre>
+                            <pre><code>{{ b.schema | escape }}</code></pre>
                           {% endif %}
 
                           {% if b.example %}
                             <p><strong>Example</strong>:</p>
-                            <pre><code>{{ b.example }}</code></pre>
+                            <pre><code>{{ b.example | escape }}</code></pre>
                           {% endif %}
                         {% endfor %}
                       {% endif %}
