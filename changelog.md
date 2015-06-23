@@ -1,3 +1,6 @@
+2.0.2 - June 23, 2015
+- Fixed rendering of XML/HTML examples and schemes by properly escaping these variables (#140)
+
 2.0.1 - May 27, 2015
 - Fixed rendering of header
 

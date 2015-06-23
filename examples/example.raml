@@ -238,12 +238,9 @@ traits:
   post:
     description: Creates a new user
     body:
-      application/json:
+      application/xml:
         example: |
-          {
-            "email": "john@example.com",
-            "name": "John Doe",
-          }
+          <h1>Hello!</h1>
 
   /{userId}:
     get:

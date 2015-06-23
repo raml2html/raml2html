@@ -31,15 +31,15 @@
 
   {% if item.schema %}
     <p><strong>Schema</strong>:</p>
-    <pre><code>{{ item.schema }}</code></pre>
+    <pre><code>{{ item.schema | escape }}</code></pre>
   {% endif %}
 
   {% if item.example %}
     <p><strong>Example</strong>:</p>
     {% if item.type == 'string' %}
-      <pre>{{ item.example }}</pre>
+      <pre>{{ item.example| escape }}</pre>
     {% else %}
-      <pre><code>{{ item.example }}</code></pre>
+      <pre><code>{{ item.example | escape }}</code></pre>
     {% endif %}
   {% endif %}
 </li>
