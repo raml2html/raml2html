@@ -1,3 +1,18 @@
+2.0.2 - June 23, 2015
+- Fixed rendering of XML/HTML examples and schemes by properly escaping these variables (#140)
+
+2.0.1 - May 27, 2015
+- Fixed rendering of header
+
+2.0.0 - May 22, 2015
+- Using a promise based API, please see README for updated usage example
+- Using Nunjucks by default, instead of Handlebars
+- Made it a lot easier to completely customize the entire rendering process, allowing you for example to use not only 
+  custom templates but even a different template engine
+- Got rid of the -s / https option, all external sources are simply always loaded via https
+- Got rid of the -r and -m template options, as the resource- and item templates are now simply loaded from within
+  the main template
+
 1.6.0 - March 24, 2015
 - Use hash tags for opening modals (#131)
 
