@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<projectDescription>
+	<name>raml2html</name>
+	<comment></comment>
+	<projects>
+	</projects>
+	<buildSpec>
+		<buildCommand>
+			<name>com.palantir.typescript.typeScriptBuilder</name>
+			<arguments>
+			</arguments>
+		</buildCommand>
+		<buildCommand>
+			<name>com.axmor.eclipse.typescript.builder.typescriptBuilder</name>
+			<arguments>
+			</arguments>
+		</buildCommand>
+	</buildSpec>
+	<natures>
+		<nature>com.palantir.typescript.typeScriptNature</nature>
+		<nature>com.axmor.eclipse.typescript.builder.typescriptNature</nature>
+	</natures>
+	<linkedResources>
+		<link>
+			<name>std-lib</name>
+			<type>2</type>
+			<locationURI>virtual:/virtual</locationURI>
+		</link>
+		<link>
+			<name>std-lib/lib.d.ts</name>
+			<type>1</type>
+			<location>Z:/tools/jbdevstudio/studio/plugins/com.axmor.eclipse.typescript.core_3.1.0.201502192009/lib/bridge/ts/lib.d.ts</location>
+		</link>
+	</linkedResources>
+</projectDescription>
