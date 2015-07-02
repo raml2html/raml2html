@@ -95,5 +95,7 @@ function getDefaultConfig(mainTemplate, templatesPath) {
   };
 }
 
-module.exports.getDefaultConfig = getDefaultConfig;
-module.exports.render = render;
+module.exports = {
+  getDefaultConfig: getDefaultConfig,
+  render: render
+};
