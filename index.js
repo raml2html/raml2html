@@ -5,6 +5,11 @@ var pjson = require('./package.json');
 var Q = require('q');
 var path = require('path');
 
+exports = module.exports = {
+  getDefaultConfig: getDefaultConfig,
+  render: render
+};
+
 /**
  * Render the source RAML object using the config's processOutput function
  *
@@ -95,7 +100,7 @@ function getDefaultConfig(mainTemplate, templatesPath) {
   };
 }
 
-module.exports = {
-  getDefaultConfig: getDefaultConfig,
-  render: render
-};
+if (require.main === module) {
+  console.log('This script is meant to be used as a library. You probably want to run bin/raml2html if you\'re looking for a CLI.');
+  process.exit(1);
+}
