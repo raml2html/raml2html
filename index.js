@@ -50,7 +50,7 @@ function render(source, config) {
  */
 function getDefaultConfig(mainTemplate, templatesPath) {
   if (!mainTemplate) {
-    // When using the default templates, using raml2html's lib folder as the templates path
+    // When using the default templates, use raml2html's lib folder as the templates path
     mainTemplate = 'template.nunjucks';
     templatesPath = path.join(__dirname, 'lib');
   }
