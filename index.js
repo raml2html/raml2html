@@ -3,9 +3,8 @@
 var raml2obj = require('raml2obj');
 var pjson = require('./package.json');
 var Q = require('q');
-var path = require('path');
 
-exports = module.exports = {
+module.exports = {
   getDefaultConfig: getDefaultConfig,
   render: render
 };
@@ -50,9 +49,11 @@ function render(source, config) {
  */
 function getDefaultConfig(mainTemplate, templatesPath) {
   if (!mainTemplate) {
-    // When using the default templates, use raml2html's lib folder as the templates path
-    mainTemplate = 'template.nunjucks';
-    templatesPath = path.join(__dirname, 'lib');
+    mainTemplate = './lib/template.nunjucks';
+
+    // When using the default template, make sure that Nunjucks isn't
+    // using the working directory since that might be anything
+    templatesPath = __dirname;
   }
 
   return {
@@ -71,7 +72,7 @@ function getDefaultConfig(mainTemplate, templatesPath) {
       markdown.register(env, marked);
 
       // Render the main template using the raml object and fix the double quotes
-      var html = nunjucks.render(mainTemplate, ramlObj);
+      var html = env.render(mainTemplate, ramlObj);
       html = html.replace(/&quot;/g, '"');
 
       // Return the promise with the html

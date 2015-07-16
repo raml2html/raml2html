@@ -1,7 +1,7 @@
 {
   "name": "raml2html",
   "description": "RAML to HTML documentation generator",
-  "version": "2.0.2",
+  "version": "2.1.0",
   "author": {
     "name": "Kevin Renskers",
     "email": "info@mixedcase.nl"
@@ -10,16 +10,16 @@
     "url": "https://github.com/kevinrenskers/raml2html/issues"
   },
   "dependencies": {
-    "commander": "2.7.x",
+    "commander": "2.8.x",
     "marked": "0.3.x",
-    "minimize": "1.4.x",
-    "nunjucks": "1.2.x",
-    "nunjucks-markdown": "1.0.x",
-    "q": "1.2.x",
-    "raml2obj": "2.1.x"
+    "minimize": "1.5.x",
+    "nunjucks": "1.3.x",
+    "nunjucks-markdown": "1.1.x",
+    "q": "1.4.x",
+    "raml2obj": "2.2.x"
   },
   "devDependencies": {
-    "eslint": "0.21.x"
+    "eslint": "0.24.x"
   },
   "homepage": "https://github.com/kevinrenskers/raml2html",
   "keywords": [
