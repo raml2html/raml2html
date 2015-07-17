@@ -71,6 +71,11 @@ function getDefaultConfig(mainTemplate, templatesPath) {
       var env = nunjucks.configure(templatesPath, {watch: false});
       markdown.register(env, marked);
 
+      // Add extra function for finding a security scheme by name
+      ramlObj.securitySchemeWithName = function(name) {
+        return ramlObj.securitySchemes[0][name];
+      };
+
       // Render the main template using the raml object and fix the double quotes
       var html = env.render(mainTemplate, ramlObj);
       html = html.replace(/&quot;/g, '"');

@@ -25,6 +25,7 @@ documentation:
     content: More content here. Including **bold** text!
 
 securitySchemes:
+  - Unauthenticated: !include unauthenticated.raml
   - oauth_1_0:
       description: OAuth 1.0 continues to be supported for all API requests, but OAuth 2.0 is now preferred.
       type: OAuth 1.0
@@ -50,6 +51,7 @@ traits:
           description: does a trait render its headers?
 
 /account:
+  securedBy: [Unauthenticated]
   displayName: ACCOUNTS
 
   description: |
