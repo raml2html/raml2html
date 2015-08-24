@@ -69,7 +69,9 @@ function getDefaultConfig(mainTemplate, templatesPath) {
 
       // Setup the Nunjucks environment with the markdown parser
       var env = nunjucks.configure(templatesPath, {watch: false});
-      markdown.register(env, marked);
+      markdown.register(env, function(md) {
+        return marked(md, {renderer: renderer});
+      });
 
       // Add extra function for finding a security scheme by name
       ramlObj.securitySchemeWithName = function(name) {
