@@ -1,9 +1,6 @@
-'use strict';
-
 var raml2obj = require('raml2obj');
 var pjson = require('./package.json');
 var Q = require('q');
-var path = require('path');
 
 /**
  * Render the source RAML object using the config's processOutput function
@@ -45,9 +42,11 @@ function render(source, config) {
  */
 function getDefaultConfig(mainTemplate, templatesPath) {
   if (!mainTemplate) {
-    // When using the default templates, using raml2html's lib folder as the templates path
-    mainTemplate = 'template.nunjucks';
-    templatesPath = path.join(__dirname, 'lib');
+    mainTemplate = './lib/template.nunjucks';
+
+    // When using the default template, make sure that Nunjucks isn't
+    // using the working directory since that might be anything
+    templatesPath = __dirname;
   }
 
   return {
@@ -63,10 +62,17 @@ function getDefaultConfig(mainTemplate, templatesPath) {
 
       // Setup the Nunjucks environment with the markdown parser
       var env = nunjucks.configure(templatesPath, {watch: false});
-      markdown.register(env, marked);
+      markdown.register(env, function(md) {
+        return marked(md, {renderer: renderer});
+      });
+
+      // Add extra function for finding a security scheme by name
+      ramlObj.securitySchemeWithName = function(name) {
+        return ramlObj.securitySchemes[0][name];
+      };
 
       // Render the main template using the raml object and fix the double quotes
-      var html = nunjucks.render(mainTemplate, ramlObj);
+      var html = env.render(mainTemplate, ramlObj);
       html = html.replace(/&quot;/g, '"');
 
       // Return the promise with the html
@@ -95,5 +101,12 @@ function getDefaultConfig(mainTemplate, templatesPath) {
   };
 }
 
-module.exports.getDefaultConfig = getDefaultConfig;
-module.exports.render = render;
+module.exports = {
+  getDefaultConfig: getDefaultConfig,
+  render: render
+};
+
+if (require.main === module) {
+  console.log('This script is meant to be used as a library. You probably want to run bin/raml2html if you\'re looking for a CLI.');
+  process.exit(1);
+}

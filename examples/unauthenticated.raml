@@ -1,0 +1,17 @@
+type: x-{other}
+description: API Key only
+describedBy:
+  headers:
+    X-Inmar-REST-API-Key:
+      type: string
+      description: Application API Key
+  responses:
+    471:
+      body:
+        application/json:
+          schema: Error
+          example: |
+            {
+              "code": "471",
+              "message": "invalid api key"
+            }

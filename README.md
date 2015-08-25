@@ -19,7 +19,7 @@ npm i -g raml2html
 ```
 raml2html --help
 raml2html example.raml > example.html
-raml2html -t custom-template.nunjucks -p ./templates/ -i example.raml -o example.html
+raml2html -t examples/custom-template-test/template.nunjucks -i example.raml -o example.html
 ```
 
 ### As a library
@@ -28,7 +28,7 @@ raml2html -t custom-template.nunjucks -p ./templates/ -i example.raml -o example
 ```
 var raml2html = require('raml2html');
 var configWithDefaultTemplates = raml2html.getDefaultConfig();
-var configWithCustomTemplates = raml2html.getDefaultConfig('mytemplate.html', './templates');
+var configWithCustomTemplates = raml2html.getDefaultConfig('my-custom-template.nunjucks', __dirname);
 
 // source can either be a filename, url, file contents (string) or parsed RAML object
 raml2html.render(source, configWithDefaultTemplates).then(function(result) {

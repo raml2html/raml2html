@@ -60,9 +60,15 @@
               {% endif %}
 
               {% if method.securedBy.length %}
-                <div class="alert alert-warning">
-                  <span class="glyphicon glyphicon-lock" title="Authentication required"></span> Secured by {{ method.securedBy }}
-                </div>
+                {% for securedBy in method.securedBy %}
+                  <div class="alert alert-warning">
+                    <span class="glyphicon glyphicon-lock" title="Authentication required"></span> Secured by {{ securedBy }}
+                    {% set securityScheme = securitySchemeWithName(securedBy) %}
+                    {% if securityScheme.description %}
+                      {% markdown %}{{ securityScheme.description }}{% endmarkdown %}
+                    {% endif %}
+                  </div>
+                {% endfor %}
               {% endif %}
 
               <!-- Nav tabs -->
@@ -88,7 +94,7 @@
                       <h3>URI Parameters</h3>
                       <ul>
                         {% for item in resource.allUriParameters %}
-                          {% include "item.nunjucks" %}
+                          {% include "./item.nunjucks" %}
                         {% endfor %}
                       </ul>
                     {% endif %}
@@ -97,7 +103,7 @@
                       <h3>Headers</h3>
                       <ul>
                         {% for key, item in method.headers %}
-                          {% include "item.nunjucks" %}
+                          {% include "./item.nunjucks" %}
                         {% endfor %}
                       </ul>
                     {% endif %}
@@ -106,7 +112,7 @@
                       <h3>Query Parameters</h3>
                       <ul>
                         {% for key, item in method.queryParameters %}
-                          {% include "item.nunjucks" %}
+                          {% include "./item.nunjucks" %}
                         {% endfor %}
                       </ul>
                     {% endif %}
@@ -119,7 +125,7 @@
                           <strong>Form Parameters</strong>
                           <ul>
                             {% for key, item in b.formParameters %}
-                              {% include "item.nunjucks" %}
+                              {% include "./item.nunjucks" %}
                             {% endfor %}
                           </ul>
                         {% endif %}
@@ -148,7 +154,7 @@
                         <h3>Headers</h3>
                         <ul>
                           {% for key, item in response.headers %}
-                            {% include "item.nunjucks" %}
+                            {% include "./item.nunjucks" %}
                           {% endfor %}
                         </ul>
                       {% endif %}
@@ -182,5 +188,5 @@
 {% endif %}
 
 {% for resource in resource.resources %}
-  {% include "resource.nunjucks" %}
+  {% include "./resource.nunjucks" %}
 {% endfor %}

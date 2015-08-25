@@ -22,9 +22,19 @@ documentation:
       raml2html.parseWithConfig(source, config, onSuccess, onError);
       ```
   - title: Chapter two
-    content: More content here. Including **bold** text!
+    content: |
+      More content here. Including **bold** text!
+
+      Small table:
+
+      | A | B | C |
+      |---|---|---|
+      | 1 | 2 | 3 |
+
+      Done
 
 securitySchemes:
+  - Unauthenticated: !include unauthenticated.raml
   - oauth_1_0:
       description: OAuth 1.0 continues to be supported for all API requests, but OAuth 2.0 is now preferred.
       type: OAuth 1.0
@@ -44,8 +54,13 @@ traits:
           description: The page to return
           type: number
           default: 0
+      headers:
+        TESTING:
+          type: string
+          description: does a trait render its headers?
 
 /account:
+  securedBy: [Unauthenticated]
   displayName: ACCOUNTS
 
   description: |
