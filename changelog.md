@@ -1,14 +1,12 @@
-2.1.1 - August 25, 2015
-- Fixed table formatting
-- Updated ESLint & rules
-
-2.1.0 - July 16, 2015
-- Update third party dependencies
+2.1.0 - August 25, 2015
+- Update third party dependencies and ESLint rules
 - Nunjucks 1.3.0 makes working with relative template includes a lot easier, use like this:
   {% include "./resource.nunjucks" %}
 - Fixed bug where multiple instances of raml2html would share the Nunjucks config,
   even if one of them needed to use a different templatePath
 - Removed the templatePath option from the CLI since relative templates now work as expected
+- Render description for securityScheme
+- Fixed table formatting
 
 2.0.2 - June 23, 2015
 - Fixed rendering of XML/HTML examples and schemes by properly escaping these variables (#140)
