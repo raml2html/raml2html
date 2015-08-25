@@ -1,13 +1,6 @@
-'use strict';
-
 var raml2obj = require('raml2obj');
 var pjson = require('./package.json');
 var Q = require('q');
-
-module.exports = {
-  getDefaultConfig: getDefaultConfig,
-  render: render
-};
 
 /**
  * Render the source RAML object using the config's processOutput function
@@ -69,7 +62,9 @@ function getDefaultConfig(mainTemplate, templatesPath) {
 
       // Setup the Nunjucks environment with the markdown parser
       var env = nunjucks.configure(templatesPath, {watch: false});
-      markdown.register(env, marked);
+      markdown.register(env, function(md) {
+        return marked(md, {renderer: renderer});
+      });
 
       // Add extra function for finding a security scheme by name
       ramlObj.securitySchemeWithName = function(name) {
@@ -105,6 +100,11 @@ function getDefaultConfig(mainTemplate, templatesPath) {
     }
   };
 }
+
+module.exports = {
+  getDefaultConfig: getDefaultConfig,
+  render: render
+};
 
 if (require.main === module) {
   console.log('This script is meant to be used as a library. You probably want to run bin/raml2html if you\'re looking for a CLI.');

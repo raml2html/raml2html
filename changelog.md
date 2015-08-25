@@ -1,3 +1,7 @@
+2.1.1 - August 25, 2015
+- Fixed table formatting
+- Updated ESLint & rules
+
 2.1.0 - July 16, 2015
 - Update third party dependencies
 - Nunjucks 1.3.0 makes working with relative template includes a lot easier, use like this:

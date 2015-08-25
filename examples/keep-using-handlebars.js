@@ -1,7 +1,5 @@
 #!/usr/bin/env node
 
-'use strict';
-
 /*
  * An example for if you want to keep using your raml2html v1.x handlebars templates
  */

@@ -1,13 +1,9 @@
 #!/usr/bin/env node
 
-'use strict';
-
 /*
  Example of using raml2html as a script.
  Run this as `node script.js`
  */
-
-'use strict';
 
 var raml2html = require('..');
 var path = require('path');
