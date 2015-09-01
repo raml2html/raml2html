@@ -35,6 +35,46 @@ function render(source, config) {
   });
 }
 
+function _traverse(ramlObj) {
+    for (var index in ramlObj.resources) {
+  	  if (ramlObj.resources.hasOwnProperty(index)) {
+  	      var resource = ramlObj.resources[index];
+	      // indicate if the resource was marked as vision
+  	      if (resource.is) {
+  	    	  for (var iskey in resource.is) {
+  	    		  if (resource.is[iskey].hasOwnProperty("VISION")) {
+  	    			  resource.vision = true;
+  	    		  }
+  	    	  }
+  	      }
+  	      if (resource.methods) {
+  	    	// mark methods as vision
+  	        for (var methodkey in resource.methods) {
+  	  	      if (resource.methods[methodkey].is) {
+  	  	    	  for (var iskey in resource.methods[methodkey].is) {
+  	  	    		  if (resource.methods[methodkey].is[iskey].hasOwnProperty("VISION")) {
+  	  	    			  resource.methods[methodkey].vision = true;
+  	  	    		  }
+  	  	    	  }
+  	  	      }
+  	        }
+
+  	    	// mark resource as vision if all methods are vision AND resource was not marked as vision
+  	        if (!resource.vision) {
+  	        	resource.vision = true; // set resource.vision to true
+	  	        for (var methodkey in resource.methods) {
+	  	        	if (!resource.methods[methodkey].vision){
+	  	    		  resource.vision = false; // set resource.vision to false if we find at least one method, which is not vision
+	  	        	}
+	  	        }
+  	        }
+  	      }
+  	      _traverse(resource);
+  	  }
+    }
+}
+
+
 /**
  * @param {String} [mainTemplate] - The filename of the main template, leave empty to use default templates
  * @param {String} [templatesPath] - Optional, by default it uses the current working directory
@@ -71,6 +111,8 @@ function getDefaultConfig(mainTemplate, templatesPath) {
         return ramlObj.securitySchemes[0][name];
       };
 
+      _traverse(ramlObj);
+      
       // Render the main template using the raml object and fix the double quotes
       var html = env.render(mainTemplate, ramlObj);
       html = html.replace(/&quot;/g, '"');

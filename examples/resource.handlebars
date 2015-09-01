@@ -2,10 +2,9 @@
     <div class="panel panel-white">
         <div class="panel-heading">
             <h4 class="panel-title">
-                 <a class="collapsed" data-toggle="collapse" href="#panel_{{uniqueId}}">
+                <a class="collapsed" data-toggle="collapse" href="#panel_{{uniqueId}}">
                     <span class="parent">{{parentUrl}}</span>{{relativeUri}}
                 </a>
-
                 <span class="methods">
                     {{#methods}}
                         <a href="#{{../uniqueId}}_{{method}}"><!-- modal shown by hashchange event -->
@@ -50,7 +49,6 @@
                             {{#if description}}
                                 <div class="alert alert-info">{{md description}}</div>
                             {{/if}}
-
                             {{#if securedBy}}
                                 <div class="alert alert-warning">
                                     {{lock securedBy}} Secured by {{securedBy}}
