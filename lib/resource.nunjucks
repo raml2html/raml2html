@@ -63,25 +63,28 @@
                 <div class="alert alert-warning">
                   <span class="glyphicon glyphicon-lock" title="Authentication required"></span> Secured by 
 
-                  {% if method.securedBy=='[object Object]' %}
-                      {% for securedBy in method.securedBy %}
-                        {% if securedBy.oauth_2_0 %}
-                            OAuth 2.0.
-                            {% if securedBy.oauth_2_0.authorizationGrants %}
-                                <b>Grant types:</b> {{ securedBy.oauth_2_0.authorizationGrants | join(',') | replace('credentials','client_credentials',1) | replace('code','authorization_code',1) | replace('token','implicit',1) }}.
-                            {% endif %}
-                            {% if securedBy.oauth_2_0.scopes %}
-                                <b>Scopes:</b> {{ securedBy.oauth_2_0.scopes | join(',')}}.
-                            {% endif %}
+                  {% if getTypeOf(method.securedBy)=='object' %}
+                    {% set i=0 %}
+                    {% for securedByItem in method.securedBy %}
+                      {% for secureByName, securedByValue in method.securedBy[i] %}
+                        {% if securitySchemeWithName(secureByName).type == "OAuth 2.0" %}
+                          OAuth 2.0.
+                          {% if securedByValue.authorizationGrants %}
+                            <b>Grant types:</b> {{ securedByValue.authorizationGrants | join(',') | replace('credentials','client_credentials',1) | replace('code','authorization_code',1) | replace('token','implicit',1) }}.
+                          {% endif %}
+                          {% if securedByValue.scopes %}
+                            <b>Scopes:</b> {{ securedByValue.scopes | join(',')}}.
+                          {% endif %}
                         {% endif %}
                       {% endfor %}
+                      {% set i=i+1 %}
+                    {% endfor %}
                   {% else %}    
-                      {{ method.securedBy }}
+                    {{ method.securedBy }}
                   {% endif %}
-
                 </div>
               {% endif %}
-
+              
               <!-- Nav tabs -->
               <ul class="nav nav-tabs">
                 {% if method.allUriParameters.length or method.queryParameters or method.headers or method.body %}
