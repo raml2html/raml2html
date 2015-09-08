@@ -67,11 +67,11 @@
                       {% for securedBy in method.securedBy %}
                         {% if securedBy.oauth_2_0 %}
                             OAuth 2.0.
-                            {% if securedBy.oauth_2_0.scopes %}
-                                Grant types: {{ securedBy.oauth_2_0.authorizationGrants | join(',') | replace('credentials','client_credentials',1) | replace('code','authorization_code',1) | replace('token','implicit',1) }}.
+                            {% if securedBy.oauth_2_0.authorizationGrants %}
+                                <b>Grant types:</b> {{ securedBy.oauth_2_0.authorizationGrants | join(',') | replace('credentials','client_credentials',1) | replace('code','authorization_code',1) | replace('token','implicit',1) }}.
                             {% endif %}
                             {% if securedBy.oauth_2_0.scopes %}
-                                Scopes: {{ securedBy.oauth_2_0.scopes | join(',')}}.
+                                <b>Scopes:</b> {{ securedBy.oauth_2_0.scopes | join(',')}}.
                             {% endif %}
                         {% endif %}
                       {% endfor %}
