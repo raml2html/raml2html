@@ -41,8 +41,12 @@
 
         // remove url fragment on modal hide
         $('.modal').on('hidden.bs.modal', function() {
-          if(history && history.replaceState) {
-            history.replaceState({}, '', '#');
+          try{
+            if (history && history.replaceState) {
+                history.replaceState({}, '', '#');
+            }
+          } catch(e){
+            window.location.hash = '';
           }
         });
       });
