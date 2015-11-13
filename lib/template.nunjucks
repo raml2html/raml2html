@@ -41,13 +41,11 @@
 
         // remove url fragment on modal hide
         $('.modal').on('hidden.bs.modal', function() {
-          try{
+          try {
             if (history && history.replaceState) {
                 history.replaceState({}, '', '#');
             }
-          } catch(e){
-            window.location.hash = '';
-          }
+          } catch(e) {}
         });
       });
     </script>
