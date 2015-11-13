@@ -14,6 +14,8 @@
 
     <script type="text/javascript">
       $(document).ready(function() {
+        var scrollYPos = 0;
+
         $('.page-header pre code, .top-resource-description pre code').each(function(i, block) {
           hljs.highlightBlock(block);
         });
@@ -33,6 +35,7 @@
           // do we have such element + is it a modal?  --> show it
           if (element.length && element.hasClass('modal')) {
             element.modal('show');
+            scrollYPos = $(window).scrollTop();
           }
         });
 
@@ -47,6 +50,8 @@
             }
           } catch(e){
             window.location.hash = '';
+          } finally {
+            window.scroll(0,scrollYPos);
           }
         });
       });
