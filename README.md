@@ -67,7 +67,7 @@ There's a third party Grunt plugin at https://www.npmjs.org/package/grunt-raml2h
 
 
 ## Example output
-![Example output](https://raw.github.com/kevinrenskers/raml2html/master/examples/example.png)
+Please see https://rawgit.com/kevinrenskers/raml2html/master/examples/example.html for a live example.
 
 
 ## Before you report a bug
