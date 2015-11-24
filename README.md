@@ -4,7 +4,7 @@
 [![js-standard-style](https://img.shields.io/badge/code%20style-airbnb-blue.svg?style=flat)](https://github.com/airbnb/javascript)
 
 A simple RAML to HTML documentation generator, written for Node.js.
-Check [raml2md](https://github.com/kevinrenskers/raml2md) for a RAML to Markdown generator.
+Check [raml2md](https://github.com/raml2html/raml2md) for a RAML to Markdown generator.
 
 
 ## Install
@@ -56,7 +56,7 @@ raml2html.render(source, config).then(function(result) {
 See also `example/script.js` for an example of using raml2html as a library.
 
 Please note that if you want to use a different template language, you're probably better off directly using
-[raml2obj](https://github.com/kevinrenskers/raml2obj).
+[raml2obj](https://github.com/raml2html/raml2obj).
 
 ### Gulp
 You can use the [latest raml2html directly from Gulp](https://gist.github.com/iki/784ddd5ab33c1e1b726b), or use the third party 
@@ -67,7 +67,7 @@ There's a third party Grunt plugin at https://www.npmjs.org/package/grunt-raml2h
 
 
 ## Example output
-Please see https://rawgit.com/kevinrenskers/raml2html/master/examples/example.html for a live example.
+Please see https://rawgit.com/raml2html/raml2html/master/examples/example.html for a live example.
 
 
 ## Before you report a bug
@@ -84,12 +84,12 @@ raml2html is an open source project and your contribution is very much appreciat
 3. Add an example of the new feature to example.raml (if applicable)
 4. Send a pull request (with the **develop** branch as the target).
 
-A big thank you goes out to everyone who helped with the project, the [contributors](https://github.com/kevinrenskers/raml2html/graphs/contributors)
+A big thank you goes out to everyone who helped with the project, the [contributors](https://github.com/raml2html/raml2html/graphs/contributors)
 and everyone who took the time to report issues and give feedback.
 
 
 ## Changelog
-See [changelog.md](https://github.com/kevinrenskers/raml2html/blob/master/changelog.md)
+See [changelog.md](https://github.com/raml2html/raml2html/blob/master/changelog.md)
 
 
 ## License
