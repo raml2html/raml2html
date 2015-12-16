@@ -1,5 +1,6 @@
 # RAML to HTML
 
+[![Downloads](https://img.shields.io/npm/dm/raml2html.svg)](https://www.npmjs.com/package/raml2html)
 [![NPM version](http://img.shields.io/npm/v/raml2html.svg)](https://www.npmjs.org/package/raml2html)
 [![js-standard-style](https://img.shields.io/badge/code%20style-airbnb-blue.svg?style=flat)](https://github.com/airbnb/javascript)
 
