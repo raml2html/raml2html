@@ -86,7 +86,7 @@
                 {% endif %}
 
                 {% if method.securedBy.length %}
-                  <li class="active">
+                  <li>
                     <a href="#{{ resource.uniqueId }}_{{ method.method }}_securedby" data-toggle="tab">Security</a>
                   </li>
                 {% endif %}
