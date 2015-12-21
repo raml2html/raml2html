@@ -190,6 +190,15 @@
                     {% set securityScheme = securitySchemeWithName(securedBy) %}
                     Secured by {{ method.securedBy }}
 
+                    {% if securityScheme.describedBy.headers %}
+                      <h3>Headers</h3>
+                      <ul>
+                        {% for key, item in securityScheme.describedBy.headers %}
+                          {% include "./item.nunjucks" %}
+                        {% endfor %}
+                      </ul>
+                    {% endif %}
+
                     {% for key, response in securityScheme.describedBy.responses %}
                       <h2>HTTP status code <a href="http://httpstatus.es/{{ key }}" target="_blank">{{ key }}</a></h2>
                       {% markdown %}{{ response.description}}{% endmarkdown %}
@@ -201,23 +210,6 @@
                             {% include "./item.nunjucks" %}
                           {% endfor %}
                         </ul>
-                      {% endif %}
-
-                      {% if response.body %}
-                        <h3>Body</h3>
-                        {% for key, b in response.body %}
-                          <p><strong>Type: {{ key }}</strong></p>
-
-                          {% if b.schema %}
-                            <p><strong>Schema</strong>:</p>
-                            <pre><code>{{ b.schema | escape }}</code></pre>
-                          {% endif %}
-
-                          {% if b.example %}
-                            <p><strong>Example</strong>:</p>
-                            <pre><code>{{ b.example | escape }}</code></pre>
-                          {% endif %}
-                        {% endfor %}
                       {% endif %}
                     {% endfor %}
 
