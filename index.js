@@ -22,7 +22,7 @@ function render(source, config) {
     ramlObj.config = config;
 
     if (config.processRamlObj) {
-      return config.processRamlObj(ramlObj, source).then(function(html) {
+      return config.processRamlObj(ramlObj).then(function(html) {
         if (config.postProcessHtml) {
           return config.postProcessHtml(html);
         }
@@ -49,7 +49,7 @@ function getDefaultConfig(mainTemplate, templatesPath) {
   }
 
   return {
-    processRamlObj: function(ramlObj, source) {
+    processRamlObj: function(ramlObj) {
       var nunjucks = require('nunjucks');
       var markdown = require('nunjucks-markdown');
       var marked = require('marked');
