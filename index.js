@@ -72,7 +72,7 @@ function getDefaultConfig(mainTemplate, templatesPath) {
       };
 
       // Find and replace the $ref parameters.
-      ramlObj = ramljsonexpander.expandJsonSchemas(ramlObj, source);
+      ramlObj = ramljsonexpander.expandJsonSchemas(ramlObj);
 
       // Render the main template using the raml object and fix the double quotes
       var html = env.render(mainTemplate, ramlObj);
