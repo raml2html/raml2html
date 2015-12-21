@@ -22,11 +22,10 @@ function render(source, config) {
     ramlObj.config = config;
 
     if (config.processRamlObj) {
-      return config.processRamlObj(ramlObj).then(function(html) {
+      return config.processRamlObj(ramlObj, source).then(function(html) {
         if (config.postProcessHtml) {
           return config.postProcessHtml(html);
         }
-
         return html;
       });
     }
@@ -50,10 +49,11 @@ function getDefaultConfig(mainTemplate, templatesPath) {
   }
 
   return {
-    processRamlObj: function(ramlObj) {
+    processRamlObj: function(ramlObj, source) {
       var nunjucks = require('nunjucks');
       var markdown = require('nunjucks-markdown');
       var marked = require('marked');
+      var ramljsonexpander = require('raml-jsonschema-expander');
       var renderer = new marked.Renderer();
       renderer.table = function(thead, tbody) {
         // Render Bootstrap style tables
@@ -70,6 +70,9 @@ function getDefaultConfig(mainTemplate, templatesPath) {
       ramlObj.securitySchemeWithName = function(name) {
         return ramlObj.securitySchemes[0][name];
       };
+
+      // Find and replace the $ref parameters.
+      ramlObj = ramljsonexpander.expandJsonSchemas(ramlObj, source);
 
       // Render the main template using the raml object and fix the double quotes
       var html = env.render(mainTemplate, ramlObj);
