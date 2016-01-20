@@ -37,6 +37,6 @@ raml2html.render(input, raml2html.getDefaultConfig(program.template)).then(funct
     process.exit(0);
   }
 }, function(error) {
-  console.log('Error parsing: ' + error);
+  console.error(error);
   process.exit(1);
 });
