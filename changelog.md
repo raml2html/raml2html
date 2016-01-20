@@ -1,3 +1,6 @@
+2.2.0 - January 20, 2016
+- Now writing parse errors to STDERR
+
 2.1.2 - November 13, 2015
 - Better fix for #152 (#157)
 
