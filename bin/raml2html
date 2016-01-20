@@ -36,7 +36,7 @@ raml2html.render(input, raml2html.getDefaultConfig(program.template)).then(funct
     process.stdout.write(result);
     process.exit(0);
   }
-}, function(error) {
-  console.error(error);
+}).catch(function(error) {
+  console.error(new Error(error));
   process.exit(1);
 });
