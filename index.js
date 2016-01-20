@@ -26,7 +26,6 @@ function render(source, config) {
         if (config.postProcessHtml) {
           return config.postProcessHtml(html);
         }
-
         return html;
       });
     }
@@ -54,6 +53,7 @@ function getDefaultConfig(mainTemplate, templatesPath) {
       var nunjucks = require('nunjucks');
       var markdown = require('nunjucks-markdown');
       var marked = require('marked');
+      var ramljsonexpander = require('raml-jsonschema-expander');
       var renderer = new marked.Renderer();
       renderer.table = function(thead, tbody) {
         // Render Bootstrap style tables
@@ -70,6 +70,9 @@ function getDefaultConfig(mainTemplate, templatesPath) {
       ramlObj.securitySchemeWithName = function(name) {
         return ramlObj.securitySchemes[0][name];
       };
+
+      // Find and replace the $ref parameters.
+      ramlObj = ramljsonexpander.expandJsonSchemas(ramlObj);
 
       // Render the main template using the raml object and fix the double quotes
       var html = env.render(mainTemplate, ramlObj);
