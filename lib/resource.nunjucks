@@ -84,6 +84,12 @@
                     <a href="#{{ resource.uniqueId }}_{{ method.method }}_response" data-toggle="tab">Response</a>
                   </li>
                 {% endif %}
+
+                {% if method.securedBy.length %}
+                  <li>
+                    <a href="#{{ resource.uniqueId }}_{{ method.method }}_securedby" data-toggle="tab">Security</a>
+                  </li>
+                {% endif %}
               </ul>
 
               <!-- Tab panes -->
@@ -176,6 +182,37 @@
                         {% endfor %}
                       {% endif %}
                     {% endfor %}
+                  </div>
+                {% endif %}
+
+                {% if method.securedBy.length %}
+                  <div class="tab-pane" id="{{ resource.uniqueId }}_{{ method.method }}_securedby">
+                    {% set securityScheme = securitySchemeWithName(method.securedBy) %}
+                    Secured by {{ method.securedBy }}
+
+                    {% if securityScheme.describedBy.headers %}
+                      <h3>Headers</h3>
+                      <ul>
+                        {% for key, item in securityScheme.describedBy.headers %}
+                          {% include "./item.nunjucks" %}
+                        {% endfor %}
+                      </ul>
+                    {% endif %}
+
+                    {% for key, response in securityScheme.describedBy.responses %}
+                      <h2>HTTP status code <a href="http://httpstatus.es/{{ key }}" target="_blank">{{ key }}</a></h2>
+                      {% markdown %}{{ response.description}}{% endmarkdown %}
+
+                      {% if response.headers %}
+                        <h3>Headers</h3>
+                        <ul>
+                          {% for key, item in response.headers %}
+                            {% include "./item.nunjucks" %}
+                          {% endfor %}
+                        </ul>
+                      {% endif %}
+                    {% endfor %}
+
                   </div>
                 {% endif %}
               </div>
