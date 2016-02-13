@@ -80,7 +80,12 @@
                 {% endif %}
 
                 {% if method.responses %}
-                  <li>
+                  <li{%
+                    if not method.allUriParameters.length and not method.queryParameters
+                    and not method.headers and not method.body
+                    %} class="active"{%
+                    endif
+                    %}>
                     <a href="#{{ resource.uniqueId }}_{{ method.method }}_response" data-toggle="tab">Response</a>
                   </li>
                 {% endif %}
@@ -145,7 +150,12 @@
                 {% endif %}
 
                 {% if method.responses %}
-                  <div class="tab-pane" id="{{ resource.uniqueId }}_{{ method.method }}_response">
+                  <div class="tab-pane{%
+                    if not method.allUriParameters.length and not method.queryParameters
+                    and not method.headers and not method.body
+                    %} active{%
+                    endif
+                    %}" id="{{ resource.uniqueId }}_{{ method.method }}_response">
                     {% for key, response in method.responses %}
                       <h2>HTTP status code <a href="http://httpstatus.es/{{ key }}" target="_blank">{{ key }}</a></h2>
                       {% markdown %}{{ response.description}}{% endmarkdown %}
