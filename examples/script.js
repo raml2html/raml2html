@@ -1,5 +1,7 @@
 #!/usr/bin/env node
 
+'use strict';
+
 /*
  Example of using raml2html as a script.
  Run this as `node script.js`
@@ -17,9 +19,9 @@ var ramlFile = path.join(__dirname, 'example.raml');
  */
 var config1 = raml2html.getDefaultConfig();
 
-raml2html.render(ramlFile, config1).then(function(result) {
+raml2html.render(ramlFile, config1).then(function (result) {
   console.log('1: ', result.length);
-}, function(error) {
+}, function (error) {
   console.log('error! ', error);
 });
 
@@ -28,9 +30,9 @@ raml2html.render(ramlFile, config1).then(function(result) {
  */
 var config2 = raml2html.getDefaultConfig('./custom-template-test/template.nunjucks', __dirname);
 
-raml2html.render(ramlFile, config2).then(function(result) {
+raml2html.render(ramlFile, config2).then(function (result) {
   console.log('2: ', result.trim().length);
-}, function(error) {
+}, function (error) {
   console.log('error! ', error);
 });
 
@@ -41,9 +43,9 @@ raml2html.render(ramlFile, config2).then(function(result) {
  * a promise with the finished output
  */
 var config3 = {
-  processRamlObj: function() {
+  processRamlObj: function () {
     var Q = require('q');
-    return Q.fcall(function() {
+    return Q.fcall(function () {
       return '<h1>\n\n\n<!--This is a test-->Hi!</h1>';
     });
   },
@@ -51,9 +53,9 @@ var config3 = {
   postProcessHtml: config1.postProcessHtml
 };
 
-raml2html.render(ramlFile, config3).then(function(result) {
+raml2html.render(ramlFile, config3).then(function (result) {
   console.log('3: ', result.length);
-}, function(error) {
+}, function (error) {
   console.log('error! ', error);
 });
 
@@ -61,32 +63,32 @@ raml2html.render(ramlFile, config3).then(function(result) {
  * You can also customize the postProcessHtml function
  */
 var config4 = {
-  processRamlObj: function() {
+  processRamlObj: function () {
     var Q = require('q');
-    return Q.fcall(function() {
+    return Q.fcall(function () {
       return '<h1>Hi!</h1>';
     });
   },
 
-  postProcessHtml: function() {
+  postProcessHtml: function () {
     var Q = require('q');
-    return Q.fcall(function() {
+    return Q.fcall(function () {
       return 'ABC';
     });
   }
 };
 
-raml2html.render(ramlFile, config4).then(function(result) {
+raml2html.render(ramlFile, config4).then(function (result) {
   console.log('4: ', result.length);
-}, function(error) {
+}, function (error) {
   console.log('error! ', error);
 });
 
 /*
  * Testing if it works with no config at all
  */
-raml2html.render(ramlFile, {}).then(function(result) {
+raml2html.render(ramlFile, {}).then(function (result) {
   console.log('5: ', Object.keys(result).length);
-}, function(error) {
+}, function (error) {
   console.log('error! ', error);
 });

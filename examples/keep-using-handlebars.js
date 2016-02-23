@@ -1,5 +1,7 @@
 #!/usr/bin/env node
 
+'use strict';
+
 /*
  * An example for if you want to keep using your raml2html v1.x handlebars templates
  */
@@ -13,7 +15,7 @@ var fs = require('fs');
 var pjson = require('../package.json');
 var path = require('path');
 
-renderer.table = function(thead, tbody) {
+renderer.table = function (thead, tbody) {
   return '<table class="table"><thead>' + thead + '</thead><tbody>' + tbody + '</tbody></table>';
 };
 
@@ -85,18 +87,18 @@ var partials = {
 };
 
 // Register handlebar helpers
-helpers.forEac(function(helperName) {
+helpers.forEac(function (helperName) {
   handlebars.registerHelper(helperName, helpers[helperName]);
 });
 
 // Register handlebar partials
-partials.forEach(function(partialName) {
+partials.forEach(function (partialName) {
   handlebars.registerPartial(partialName, partials[partialName]);
 });
 
 var config = raml2html.getDefaultConfig();
 
-config.processRamlObj = function(ramlObj) {
+config.processRamlObj = function (ramlObj) {
   var template = fs.readFileSync(path.join(__dirname, 'template.handlebars'), 'utf8');
 
   ramlObj.config = {
@@ -104,13 +106,13 @@ config.processRamlObj = function(ramlObj) {
     raml2HtmlVersion: pjson.version
   };
 
-  return Q.fcall(function() {
+  return Q.fcall(function () {
     return handlebars.compile(template)(ramlObj);
   });
 };
 
-raml2html.render('example.raml', config).then(function(result) {
+raml2html.render('example.raml', config).then(function (result) {
   console.log(result);
-}, function(error) {
+}, function (error) {
   console.log('error! ', error);
 });

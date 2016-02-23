@@ -21,8 +21,8 @@
   },
   "devDependencies": {
     "eslint": "1.10.x",
-    "eslint-config-defaults": "4.2.x",
-    "eslint-plugin-react": "3.2.x"
+    "eslint-config-defaults": "9.0.x",
+    "eslint-plugin-react": "4.0.x"
   },
   "homepage": "https://github.com/raml2html/raml2html",
   "keywords": [
@@ -36,7 +36,8 @@
   },
   "preferGlobal": "true",
   "scripts": {
-    "lint": "eslint ./"
+    "lint": "eslint ./",
+    "lintfix": "eslint ./ --fix"
   },
   "bin": {
     "raml2html": "./bin/raml2html"
