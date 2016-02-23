@@ -1,3 +1,9 @@
+2.3.0 - February 23, 2016
+- Updated all 3rd party dependancies
+- Fix default tab selection
+- Improved security schema rendering
+- Expand $ref properties by using raml-json-expander
+
 2.2.0 - January 20, 2016
 - Now writing parse errors to STDERR
 

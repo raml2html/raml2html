@@ -63,7 +63,7 @@ function getDefaultConfig(mainTemplate, templatesPath) {
       };
 
       // Setup the Nunjucks environment with the markdown parser
-      var env = nunjucks.configure(templatesPath, { watch: false });
+      var env = nunjucks.configure(templatesPath, { autoescape: false });
       markdown.register(env, function (md) {
         return marked(md, { renderer: renderer });
       });
