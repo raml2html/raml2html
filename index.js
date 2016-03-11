@@ -1,3 +1,5 @@
+'use strict';
+
 var raml2obj = require('raml2obj');
 var pjson = require('./package.json');
 var Q = require('q');
@@ -18,15 +20,14 @@ function render(source, config) {
   config = config || {};
   config.raml2HtmlVersion = pjson.version;
 
-  return raml2obj.parse(source).then(function(ramlObj) {
+  return raml2obj.parse(source).then(function (ramlObj) {
     ramlObj.config = config;
 
     if (config.processRamlObj) {
-      return config.processRamlObj(ramlObj).then(function(html) {
+      return config.processRamlObj(ramlObj).then(function (html) {
         if (config.postProcessHtml) {
           return config.postProcessHtml(html);
         }
-
         return html;
       });
     }
@@ -50,45 +51,53 @@ function getDefaultConfig(mainTemplate, templatesPath) {
   }
 
   return {
-    processRamlObj: function(ramlObj) {
+    processRamlObj: function (ramlObj) {
       var nunjucks = require('nunjucks');
       var markdown = require('nunjucks-markdown');
       var marked = require('marked');
+      var ramljsonexpander = require('raml-jsonschema-expander');
       var renderer = new marked.Renderer();
-      renderer.table = function(thead, tbody) {
+      renderer.table = function (thead, tbody) {
         // Render Bootstrap style tables
         return '<table class="table"><thead>' + thead + '</thead><tbody>' + tbody + '</tbody></table>';
       };
 
       // Setup the Nunjucks environment with the markdown parser
-      var env = nunjucks.configure(templatesPath, {watch: false});
-      markdown.register(env, function(md) {
-        return marked(md, {renderer: renderer});
+      var env = nunjucks.configure(templatesPath, { autoescape: false });
+      markdown.register(env, function (md) {
+        return marked(md, { renderer: renderer });
       });
 
       // Add extra function for finding a security scheme by name
-      ramlObj.securitySchemeWithName = function(name) {
-        return ramlObj.securitySchemes[0][name];
+      ramlObj.securitySchemeWithName = function (name) {
+        for (var index = 0; index < ramlObj.securitySchemes.length; ++index) {
+          if (ramlObj.securitySchemes[index][name] !== null) {
+            return ramlObj.securitySchemes[index][name];
+          }
+        }
       };
+
+      // Find and replace the $ref parameters.
+      ramlObj = ramljsonexpander.expandJsonSchemas(ramlObj);
 
       // Render the main template using the raml object and fix the double quotes
       var html = env.render(mainTemplate, ramlObj);
       html = html.replace(/&quot;/g, '"');
 
       // Return the promise with the html
-      return Q.fcall(function() {
+      return Q.fcall(function () {
         return html;
       });
     },
 
-    postProcessHtml: function(html) {
+    postProcessHtml: function (html) {
       // Minimize the generated html and return the promise with the result
       var Minimize = require('minimize');
-      var minimize = new Minimize({quotes: true});
+      var minimize = new Minimize({ quotes: true });
 
       var deferred = Q.defer();
 
-      minimize.parse(html, function(error, result) {
+      minimize.parse(html, function (error, result) {
         if (error) {
           deferred.reject(new Error(error));
         } else {
