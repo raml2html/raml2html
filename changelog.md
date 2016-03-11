@@ -1,3 +1,7 @@
+2.4.0 - March 12, 2016
+- Downgraded Nunjucks back to 1.3.0 due to peer conflicts with nunjucks-markdown
+  (which can't be upgraded because the newest version is broken)
+
 2.3.0 - February 23, 2016
 - Updated all 3rd party dependancies
 - Fix default tab selection
