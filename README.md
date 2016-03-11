@@ -85,6 +85,10 @@ raml2html is an open source project and your contribution is very much appreciat
 3. Add an example of the new feature to example.raml (if applicable)
 4. Send a pull request (with the **develop** branch as the target).
 
+If your pull request is merged feel free to ask for push access. We want to get more maintainers! If you do
+have push access, please still work on feature branches and create pull requests, which then get reviewed.
+You can also review other people's pull requests and be involved in that way.
+
 A big thank you goes out to everyone who helped with the project, the [contributors](https://github.com/raml2html/raml2html/graphs/contributors)
 and everyone who took the time to report issues and give feedback.
 
