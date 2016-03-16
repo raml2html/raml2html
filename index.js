@@ -77,6 +77,26 @@ function getDefaultConfig(mainTemplate, templatesPath) {
         }
       };
 
+      // Parse securedBy and use scopes if they are defined
+      ramlObj.renderSecuredBy = function (securedBy) {
+        if(typeof securedBy === 'object'){
+          var out = "";
+          for (key in securedBy){
+            out += "<b>" + key + "</b>";
+            if(securedBy[key].scopes){
+              out += " with scopes:<ul>";
+              for (var i = securedBy[key].scopes.length - 1; i >= 0; i--) {
+                out += "<li>" + securedBy[key].scopes[i] + "</li>";
+              };
+              out += "</ul>";
+            }
+          }
+          return out;
+        } else {
+          return securedBy;
+        } 
+      };
+
       // Find and replace the $ref parameters.
       ramlObj = ramljsonexpander.expandJsonSchemas(ramlObj);
 
