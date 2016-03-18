@@ -94,7 +94,7 @@ function getDefaultConfig(mainTemplate, templatesPath) {
             }
           }
         } else {
-          out = securedBy;
+          out = '<b>' + securedBy + '</b>';
         }
         return out;
       };
