@@ -79,22 +79,24 @@ function getDefaultConfig(mainTemplate, templatesPath) {
 
       // Parse securedBy and use scopes if they are defined
       ramlObj.renderSecuredBy = function (securedBy) {
+        var out = '';
         if (typeof securedBy === 'object') {
-          var out = '';
-          for (key in securedBy) {
-            out += '<b>' + key + '</b>';
-            if (securedBy[key].scopes) {
-              out += ' with scopes:<ul>';
-              for (var index = 0; index < securedBy[key].scopes.length; ++index) {
-                out += '<li>' + securedBy[key].scopes[index] + '</li>';
+          for (var key in securedBy) {
+            if (securedBy.hasOwnProperty(key)) {
+              out += '<b>' + key + '</b>';
+              if (securedBy[key].scopes.length) {
+                out += ' with scopes:<ul>';
+                for (var index = 0; index < securedBy[key].scopes.length; ++index) {
+                  out += '<li>' + securedBy[key].scopes[index] + '</li>';
+                }
+                out += '</ul>';
               }
-              out += '</ul>';
             }
           }
-          return out;
         } else {
-          return securedBy;
-        } 
+          out = securedBy;
+        }
+        return out;
       };
 
       // Find and replace the $ref parameters.
