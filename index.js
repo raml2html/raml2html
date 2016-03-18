@@ -79,7 +79,7 @@ function getDefaultConfig(mainTemplate, templatesPath) {
 
       // Parse securedBy and use scopes if they are defined
       ramlObj.renderSecuredBy = function (securedBy) {
-        if (typeof securedBy === 'object'){
+        if (typeof securedBy === 'object') {
           var out = "";
           for (key in securedBy) {
             out += "<b>" + key + "</b>";
