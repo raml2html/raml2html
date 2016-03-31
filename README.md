@@ -1,4 +1,6 @@
-# RAML to HTML
+# RAML to HTML - Updated for RAML 1.0
+
+**IMPORTANT: This is a development branch and should be considered experimental/ pre-alpha**
 
 [![Downloads](https://img.shields.io/npm/dm/raml2html.svg)](https://www.npmjs.com/package/raml2html)
 [![NPM version](http://img.shields.io/npm/v/raml2html.svg)](https://www.npmjs.org/package/raml2html)
