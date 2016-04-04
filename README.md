@@ -71,6 +71,10 @@ There's a third party Grunt plugin at https://www.npmjs.org/package/grunt-raml2h
 Please see https://rawgit.com/raml2html/raml2html/master/examples/example.html for a live example.
 
 
+## RAML version support
+Currently `RAML 0.8` version is fully supported. If you want to use `RAML 1.0`, you might use a temporary overcome (see [#156](https://github.com/raml2html/raml2html/issues/156)) or help to implement [this feature](https://github.com/raml-org/raml-js-parser-2/issues/11).
+
+
 ## Before you report a bug
 If you get parsing errors, please do not report them to raml2html: it doesn't do the actual RAML parsing.
 Review the error and fix your RAML file, or open a new issue at [raml-js-parser](https://github.com/raml-org/raml-js-parser).
