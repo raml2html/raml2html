@@ -4,7 +4,7 @@ The current RAML 1.0 support is experimental. Although the templates are working
 
 | Type Declaration | Rendered |
 |:-----------------|:---------|
-| Inline Types | Rendered |
+| Inline Types | Rendered; limitation: nested object structure |
 | Type References | Only the name, eg: `PasswordProtectedAccount` |
 | Union Types | Only the names, eg: `Dog | Cat` |
 | Multiple Inheritance | Only the names, eg: `[ Dog, Cat ]` |
