@@ -3,7 +3,7 @@
 The current RAML 1.0 support is experimental. Although the templates are working perfectly fine, the missing feature of RAML 1.0 is the new type system. At the moment the following gets rendered using the type system:
 
 | Type Declaration | Rendered |
-|:----------------:|:---------|
+|:-----------------|:---------|
 | Inline Types | Rendered |
 | Type References | Only the name, eg: `PasswordProtectedAccount` |
 | Union Types | Only the names, eg: `Dog | Cat` |

@@ -78,7 +78,7 @@ Please see https://rawgit.com/raml2html/raml2html/master/examples/example.html f
 raml2html currently supports the following RAML versions:
 
 | RAML Version | Support |
-|:------------:|:-------:|
+|:------------:|:--------|
 | `0.8` | Fully supported |
 | `1.0` | RC1 - partially supported; see [SPEC_SUPPORT.md](SPEC_SUPPORT.md) for more information. |
 
