@@ -131,7 +131,7 @@
                     {% if method.body %}
                       <h3>Body</h3>
                       {% for key, b in method.body %}
-                        <p><strong>Type: {{ key }}</strong></p>
+                        <p><strong>Media Type: {{ key }}</strong></p>
                         {% if b.formParameters %}
                           <strong>Form Parameters</strong>
                           <ul>
@@ -139,6 +139,19 @@
                               {% include "./item.nunjucks" %}
                             {% endfor %}
                           </ul>
+                        {% endif %}
+
+                        {% if b.type and not b.schema %}
+                          <p><strong>Type</strong>:</p>
+                          {% if b.properties %}
+                            <ul>
+                              {% for key, item in b.properties %}
+                                {% include "./item.nunjucks" %}
+                              {% endfor %}
+                            </ul>
+                          {% else %}
+                            <pre><code>{{ b.type | escape }}</code></pre>
+                          {% endif %}
                         {% endif %}
 
                         {% if b.schema %}
@@ -178,7 +191,20 @@
                       {% if response.body %}
                         <h3>Body</h3>
                         {% for key, b in response.body %}
-                          <p><strong>Type: {{ key }}</strong></p>
+                          <p><strong>Media Type: {{ key }}</strong></p>
+
+                          {% if b.type and not b.schema %}
+                            <p><strong>Type</strong>:</p>
+                            {% if b.properties %}
+                              <ul>
+                                {% for key, item in b.properties %}
+                                  {% include "./item.nunjucks" %}
+                                {% endfor %}
+                              </ul>
+                            {% else %}
+                              <pre><code>{{ b.type | escape }}</code></pre>
+                            {% endif %}
+                          {% endif %}
 
                           {% if b.schema %}
                             <p><strong>Schema</strong>:</p>
