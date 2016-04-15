@@ -132,26 +132,40 @@
                       <h3>Body</h3>
                       {% for key, b in method.body %}
                         <p><strong>Media Type: {{ key }}</strong></p>
-                        {% if b.formParameters %}
+                        {% if b.formParameters or b.type and not b.schema %}
                           <strong>Form Parameters</strong>
                           <ul>
                             {% for key, item in b.formParameters %}
                               {% include "./item.nunjucks" %}
                             {% endfor %}
+
+                            {% if b.properties %}
+                              <ul>
+                                {% for key, item in b.properties %}
+                                  {% include "./item.nunjucks" %}
+                                {% endfor %}
+                              </ul>
+                            {% endif %}
+                            {% for typeName in b.type %}
+                              {% set type = typeWithName(typeName) %}
+                              {% if type %}
+                                {% if type.rootType == 'object' %}
+                                    {% for key, item in propertiesOfType(type.type) %}
+                                      {% include "./item.nunjucks" %}
+                                    {% endfor %}
+                                {% endif %}
+                              {% endif %}
+                            {% endfor %}
+
                           </ul>
                         {% endif %}
 
                         {% if b.type and not b.schema %}
-                          <p><strong>Type</strong>:</p>
-                          {% if b.properties %}
-                            <ul>
-                              {% for key, item in b.properties %}
-                                {% include "./item.nunjucks" %}
-                              {% endfor %}
-                            </ul>
-                          {% else %}
-                            <pre><code>{{ b.type | escape }}</code></pre>
-                          {% endif %}
+                          <p><strong>Type</strong>: {{ typeName }}
+                            {% for typeName in b.type %}
+                              {{ typeName }}{% if loop.last == false %},{% endif %}
+                            {% endfor %}
+                          </p>
                         {% endif %}
 
                         {% if b.schema %}

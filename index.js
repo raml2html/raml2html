@@ -77,6 +77,56 @@ function getDefaultConfig(mainTemplate, templatesPath) {
         }
       };
 
+      // Get the root type of a type.
+      var getRootType = function (type) {
+        if (type.type.length > 1) {
+          return 'object';
+        }
+        var parent = type.type[0];
+        for (var index = 0; index < ramlObj.types.length; ++index) {
+          if (typeof ramlObj.types[index][parent] !== 'undefined') {
+            return getRootType(ramlObj.types[index][parent]);
+          }
+        }
+        return type.type[0];
+      };
+
+      // Add extra function for finding a type by name
+      ramlObj.typeWithName = function (name) {
+        for (var index = 0; index < ramlObj.types.length; ++index) {
+          if (typeof ramlObj.types[index][name] !== 'undefined') {
+            var type = ramlObj.types[index][name];
+            return {
+              type: type,
+              rootType: getRootType(type),
+            };
+          }
+        }
+      };
+
+      // Add extra function for finding the properties of a type recursively
+      ramlObj.propertiesOfType = function (type) {
+        var properties = {};
+        for (var property in type.properties) {
+          if (type.properties.hasOwnProperty(property)) {
+            properties[property] = type.properties[property];
+          }
+        }
+
+        for (var index = 0; index < type.type.length; ++index) {
+          var parent = ramlObj.typeWithName(type.type[index]);
+          if (typeof parent !== 'undefined') {
+            var parentProperties = ramlObj.propertiesOfType(parent.type);
+            for (var parentProperty in parentProperties) {
+              if (parentProperties.hasOwnProperty(parentProperty)) {
+                properties[parentProperty] = parentProperties[parentProperty];
+              }
+            }
+          }
+        }
+        return properties;
+      };
+
       // Find and replace the $ref parameters.
       ramlObj = ramljsonexpander.expandJsonSchemas(ramlObj);
 
