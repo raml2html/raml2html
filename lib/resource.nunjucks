@@ -132,7 +132,7 @@
                       <h3>Body</h3>
                       {% for key, b in method.body %}
                         <p><strong>Media Type: {{ key }}</strong></p>
-                        {% if b.formParameters or b.type and not b.schema %}
+                        {% if b.formParameters %}
                           <strong>Form Parameters</strong>
                           <ul>
                             {% for key, item in b.formParameters %}
@@ -146,24 +146,27 @@
                                 {% endfor %}
                               </ul>
                             {% endif %}
-                            {% for typeName in b.type %}
-                              {% set type = typeWithName(typeName) %}
-                              {% if type %}
-                                {% if type.rootType == 'object' %}
-                                    {% for key, item in propertiesOfType(type.type) %}
-                                      {% include "./item.nunjucks" %}
-                                    {% endfor %}
-                                {% endif %}
-                              {% endif %}
-                            {% endfor %}
 
                           </ul>
                         {% endif %}
 
                         {% if b.type and not b.schema %}
-                          <p><strong>Type</strong>: {{ typeName }}
+                          <p><strong>Type:</strong> 
                             {% for typeName in b.type %}
-                              {{ typeName }}{% if loop.last == false %},{% endif %}
+                              {{ typeName }}{% if loop.last == false %},{% endif %}</p>
+                              {% for typeName in b.type %}
+                                {% set type = typeWithName(typeName) %}
+                                {% if type %}
+                                  {% if type.rootType == 'object' %}
+                                    <strong>Properties</strong>
+                                    <ul>
+                                      {% for key, item in propertiesOfType(type.type) %}
+                                        {% include "./item.nunjucks" %}
+                                      {% endfor %}
+                                    </ul>
+                                  {% endif %}
+                                {% endif %}
+                              {% endfor %}
                             {% endfor %}
                           </p>
                         {% endif %}
