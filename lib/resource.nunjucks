@@ -151,23 +151,12 @@
                         {% endif %}
 
                         {% if b.type and not b.schema %}
-                          <p><strong>Type:</strong> 
-                            {% for typeName in b.type %}
-                              {{ typeName }}{% if loop.last == false %},{% endif %}</p>
+                          <p><strong>Type:</strong></p>
+                            <div class='list-group'>
                               {% for typeName in b.type %}
-                                {% set type = typeWithName(typeName) %}
-                                {% if type %}
-                                  {% if type.rootType == 'object' %}
-                                    <strong>Properties</strong>
-                                    <ul>
-                                      {% for key, item in propertiesOfType(type.type) %}
-                                        {% include "./item.nunjucks" %}
-                                      {% endfor %}
-                                    </ul>
-                                  {% endif %}
-                                {% endif %}
+                                {% include "./type.nunjucks" %}
                               {% endfor %}
-                            {% endfor %}
+                            </div>
                           </p>
                         {% endif %}
 
@@ -211,16 +200,13 @@
                           <p><strong>Media Type: {{ key }}</strong></p>
 
                           {% if b.type and not b.schema %}
-                            <p><strong>Type</strong>:</p>
-                            {% if b.properties %}
-                              <ul>
-                                {% for key, item in b.properties %}
-                                  {% include "./item.nunjucks" %}
+                            <p><strong>Type:</strong></p>
+                              <div class='list-group'>
+                                {% for typeName in b.type %}
+                                  {% include "./type.nunjucks" %}
                                 {% endfor %}
-                              </ul>
-                            {% else %}
-                              <pre><code>{{ b.type | escape }}</code></pre>
-                            {% endif %}
+                              </div>
+                            </p>
                           {% endif %}
 
                           {% if b.schema %}

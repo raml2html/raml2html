@@ -75,6 +75,17 @@ types:
     type: Account
     properties:
       password: string
+    example: |
+      {
+        "email": "john@example.com",
+        "password": "super_secret",
+        "name": "John Doe"
+      }
+  AdminAccount:
+    type: Account
+    displayName: Administrator Account
+    description: |
+      A special account with administration access.
 
 /account:
   displayName: ACCOUNTS
@@ -132,6 +143,12 @@ types:
           description: Basic authentication header
           example: |
             Authorization: Basic QWxhZGRpbjpvcGVuIHNlc2FtZQ==
+      responses:
+        200:
+          description: Returns an account
+          body:
+            application/json:
+              type: Account
 
     put:
       description: Update the account
@@ -213,6 +230,16 @@ types:
 
     delete:
       description: Deletes the session, logging out the user
+  /admin:
+    post:
+      description: |
+        Creates a new administrator account.
+      body:
+        application/json:
+          type: AdminAccount
+      responses:
+        200:
+          description: Account was created and user is now logged in
 
 
 /forecasts:
