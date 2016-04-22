@@ -39,15 +39,19 @@ function render(source, config) {
 /**
  * @param {String} [mainTemplate] - The filename of the main template, leave empty to use default templates
  * @param {String} [templatesPath] - Optional, by default it uses the current working directory
+ * @param {String} [fakeRoot] - Optional, a fake root directory to append to the json schema files.
  * @returns {{processRamlObj: Function, postProcessHtml: Function}}
  */
-function getDefaultConfig(mainTemplate, templatesPath) {
+function getDefaultConfig(mainTemplate, templatesPath, fakeRoot) {
   if (!mainTemplate) {
     mainTemplate = './lib/template.nunjucks';
 
     // When using the default template, make sure that Nunjucks isn't
     // using the working directory since that might be anything
     templatesPath = __dirname;
+  }
+  if (!fakeRoot) {
+    fakeRoot = ""
   }
 
   return {
@@ -100,7 +104,7 @@ function getDefaultConfig(mainTemplate, templatesPath) {
       };
 
       // Find and replace the $ref parameters.
-      ramlObj = ramljsonexpander.expandJsonSchemas(ramlObj);
+      ramlObj = ramljsonexpander.expandJsonSchemas(ramlObj, fakeRoot);
 
       // Render the main template using the raml object and fix the double quotes
       var html = env.render(mainTemplate, ramlObj);
