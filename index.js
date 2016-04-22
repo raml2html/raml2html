@@ -39,15 +39,19 @@ function render(source, config) {
 /**
  * @param {String} [mainTemplate] - The filename of the main template, leave empty to use default templates
  * @param {String} [templatesPath] - Optional, by default it uses the current working directory
+ * @param {String} [fakeRoot] - Optional, a fake root directory to append to the json schema files.
  * @returns {{processRamlObj: Function, postProcessHtml: Function}}
  */
-function getDefaultConfig(mainTemplate, templatesPath) {
+function getDefaultConfig(mainTemplate, templatesPath, fakeRoot) {
   if (!mainTemplate) {
     mainTemplate = './lib/template.nunjucks';
 
     // When using the default template, make sure that Nunjucks isn't
     // using the working directory since that might be anything
     templatesPath = __dirname;
+  }
+  if (!fakeRoot) {
+    fakeRoot = ""
   }
 
   return {
@@ -77,8 +81,30 @@ function getDefaultConfig(mainTemplate, templatesPath) {
         }
       };
 
+      // Parse securedBy and use scopes if they are defined
+      ramlObj.renderSecuredBy = function (securedBy) {
+        var out = '';
+        if (typeof securedBy === 'object') {
+          for (var key in securedBy) {
+            if (securedBy.hasOwnProperty(key)) {
+              out += '<b>' + key + '</b>';
+              if (securedBy[key].scopes.length) {
+                out += ' with scopes:<ul>';
+                for (var index = 0; index < securedBy[key].scopes.length; ++index) {
+                  out += '<li>' + securedBy[key].scopes[index] + '</li>';
+                }
+                out += '</ul>';
+              }
+            }
+          }
+        } else {
+          out = '<b>' + securedBy + '</b>';
+        }
+        return out;
+      };
+
       // Find and replace the $ref parameters.
-      ramlObj = ramljsonexpander.expandJsonSchemas(ramlObj);
+      ramlObj = ramljsonexpander.expandJsonSchemas(ramlObj, fakeRoot);
 
       // Render the main template using the raml object and fix the double quotes
       var html = env.render(mainTemplate, ramlObj);
