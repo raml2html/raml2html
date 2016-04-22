@@ -1,4 +1,10 @@
-{% if typeName == 'object' %}
+{% if typeName == 'object'
+    or typeName == 'string'
+    or typeName == 'number'
+    or typeName == 'integer'
+    or typeName == 'boolean'
+    or typeName == 'date'
+    or typeName == 'file' %}
   {{ typeName }}
 {% else %}
   {% set typeOptions = typeWithName(typeName) %}
@@ -26,7 +32,7 @@
       {% if typeOptions.rootType == 'object' %}
         <strong>Properties</strong>
         <ul>
-          {% for key, item in propertiesOfType(type) %}
+          {% for key, item in propertiesOfType(type).properties %}
             {% include "./item.nunjucks" %}
           {% endfor %}
         </ul>

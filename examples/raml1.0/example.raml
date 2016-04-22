@@ -86,6 +86,10 @@ types:
     displayName: Administrator Account
     description: |
       A special account with administration access.
+  UserName:
+    type: string
+    minLength: 3
+    maxLength: 50
 
 /account:
   displayName: ACCOUNTS
@@ -330,6 +334,14 @@ types:
 
     delete:
       description: Deletes a user
+  /name_{userName}:
+    uriParameters:
+      userName:
+        description: The name of a user
+        type: UserName
+    get:
+      description: Get all the users with a specific name
+
 
 
 /groups:

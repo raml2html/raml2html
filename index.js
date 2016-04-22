@@ -104,12 +104,32 @@ function getDefaultConfig(mainTemplate, templatesPath) {
         }
       };
 
-      // Add extra function for finding the properties of a type recursively
-      ramlObj.propertiesOfType = function (type) {
-        var properties = {};
+      /**
+       * Add extra function for finding the properties of a type recursively.
+       *
+       * @param {Object} [type] - The type object with all it's properties.
+       * @param {String} [rootType] - Optional, type that will overwrite the type of the returned object.
+       * @returns {{ properties: {}, ...}} A type representation with all its properties.
+       */
+      ramlObj.propertiesOfType = function (type, rootType) {
+        var properties = {
+          properties: {},
+        };
+
         for (var property in type.properties) {
           if (type.properties.hasOwnProperty(property)) {
-            properties[property] = type.properties[property];
+            properties.properties[property] = type.properties[property];
+          }
+        }
+
+        var availableProperties = [
+          'pattern', 'minLength', 'maxLength', 'minimum', 'maximum',
+          'format', 'multipleOf', 'fileTypes',
+        ];
+
+        for (var index = 0; index < availableProperties.length; ++index) {
+          if (typeof type[availableProperties[index]] !== 'undefined') {
+            properties[availableProperties[index]] = type[availableProperties[index]];
           }
         }
 
@@ -117,13 +137,26 @@ function getDefaultConfig(mainTemplate, templatesPath) {
           var parent = ramlObj.typeWithName(type.type[index]);
           if (typeof parent !== 'undefined') {
             var parentProperties = ramlObj.propertiesOfType(parent.type);
-            for (var parentProperty in parentProperties) {
-              if (parentProperties.hasOwnProperty(parentProperty)) {
-                properties[parentProperty] = parentProperties[parentProperty];
+            for (var parentProperty in parentProperties.properties) {
+              if (parentProperties.properties.hasOwnProperty(parentProperty)) {
+                properties.properties[parentProperty] = parentProperties.properties[parentProperty];
+              }
+            }
+
+            for (var index2 = 0; index2 < availableProperties.length; ++index2) {
+              if (typeof parentProperties[availableProperties[index2]] !== 'undefined') {
+                if (typeof properties[availableProperties[index2]] === 'undefined') {
+                  properties[availableProperties[index2]] = parentProperties[availableProperties[index2]];
+                }
               }
             }
           }
         }
+
+        if (typeof rootType !== 'undefined') {
+          properties.type = rootType;
+        }
+
         return properties;
       };
 

@@ -5,25 +5,34 @@
     <strong>{{ key }}</strong>:
   {% endif %}
 
+  {# Create a local copy of the item. #}
+  {# This local copy could be overwritten if the item has a parent type #}
+  {# The new item will hold the properties of the parent type #}
+  {% set localItem = item %}
+
   <em>
     {%- if item.required -%}required {% endif -%}
     (
     {%- if item.enum -%}
       one of {{ item.enum.join(', ') }}
     {%- else -%}
-      {{ item.type }}
+      {%- set typeOptions = typeWithName(item.type) -%}
+      {%- if typeOptions -%}
+        {%- set localItem = propertiesOfType(typeOptions.type, typeOptions.rootType) -%}
+      {%- endif -%}
+      {{ localItem.type }}
     {%- endif -%}
 
-    {%- if item.default %} - default: {{ item.default }}{%- endif -%}
-    {%- if item.repeat %} - repeat: {{ item.repeat }}{%- endif -%}
-    {%- if item.type == 'string' -%}
-      {%- if item.minLength %} - minLength: {{ item.minLength }}{%- endif -%}
-      {%- if item.maxLength %} - maxLength: {{ item.maxLength }}{%- endif -%}
+    {%- if localItem.default %} - default: {{ localItem.default }}{%- endif -%}
+    {%- if localItem.repeat %} - repeat: {{ localItem.repeat }}{%- endif -%}
+    {%- if localItem.type == 'string' -%}
+      {%- if localItem.minLength %} - minLength: {{ localItem.minLength }}{%- endif -%}
+      {%- if localItem.maxLength %} - maxLength: {{ localItem.maxLength }}{%- endif -%}
     {%- else -%}
-      {%- if item.minimum %} - minimum: {{ item.minimum }}{%- endif -%}
-      {%- if item.maximum %} - maximum: {{ item.maximum }}{%- endif -%}
+      {%- if localItem.minimum %} - minimum: {{ localItem.minimum }}{%- endif -%}
+      {%- if localItem.maximum %} - maximum: {{ localItem.maximum }}{%- endif -%}
     {%- endif -%}
-    {%- if item.pattern %} - pattern: {{ item.pattern }}{%- endif -%}
+    {%- if localItem.pattern %} - pattern: {{ localItem.pattern }}{%- endif -%}
     )
   </em>
 
