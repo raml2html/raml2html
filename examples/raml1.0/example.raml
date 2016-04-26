@@ -92,7 +92,7 @@ types:
     maxLength: 50
 
 /account:
-  displayName: ACCOUNTS
+  displayName: ACCOUNT
 
   description: |
     This is the top level description for /account.
@@ -245,6 +245,20 @@ types:
         200:
           description: Account was created and user is now logged in
 
+/accounts:
+  displayName: ACCOUNTS
+
+  post:
+    description: |
+      Creates multiple accounts.
+    body:
+      application/json:
+        properties:
+          count: number
+          accounts: PasswordProtectedAccount
+    responses:
+      200:
+        description: Accounts were created
 
 /forecasts:
   displayName: Forecasts

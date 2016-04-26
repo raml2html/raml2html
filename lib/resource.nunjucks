@@ -139,14 +139,15 @@
                               {% include "./item.nunjucks" %}
                             {% endfor %}
 
-                            {% if b.properties %}
-                              <ul>
-                                {% for key, item in b.properties %}
-                                  {% include "./item.nunjucks" %}
-                                {% endfor %}
-                              </ul>
-                            {% endif %}
+                          </ul>
+                        {% endif %}
 
+                        {% if b.properties %}
+                          <strong>Properties</strong>
+                          <ul>
+                            {% for key, item in b.properties %}
+                              {% include "./item.nunjucks" %}
+                            {% endfor %}
                           </ul>
                         {% endif %}
 

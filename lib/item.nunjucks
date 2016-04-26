@@ -12,28 +12,35 @@
 
   <em>
     {%- if item.required -%}required {% endif -%}
-    (
-    {%- if item.enum -%}
-      one of {{ item.enum.join(', ') }}
-    {%- else -%}
-      {%- set typeOptions = typeWithName(item.type) -%}
-      {%- if typeOptions -%}
-        {%- set localItem = propertiesOfType(typeOptions.type, typeOptions.rootType) -%}
-      {%- endif -%}
-      {{ localItem.type }}
+
+    {%- set typeOptions = typeWithName(item.type) -%}
+    {%- if typeOptions -%}
+      {%- set localItem = propertiesOfType(typeOptions.type, typeOptions.rootType) -%}
     {%- endif -%}
 
-    {%- if localItem.default %} - default: {{ localItem.default }}{%- endif -%}
-    {%- if localItem.repeat %} - repeat: {{ localItem.repeat }}{%- endif -%}
-    {%- if localItem.type == 'string' -%}
-      {%- if localItem.minLength %} - minLength: {{ localItem.minLength }}{%- endif -%}
-      {%- if localItem.maxLength %} - maxLength: {{ localItem.maxLength }}{%- endif -%}
-    {%- else -%}
-      {%- if localItem.minimum %} - minimum: {{ localItem.minimum }}{%- endif -%}
-      {%- if localItem.maximum %} - maximum: {{ localItem.maximum }}{%- endif -%}
-    {%- endif -%}
-    {%- if localItem.pattern %} - pattern: {{ localItem.pattern }}{%- endif -%}
-    )
+    {% if localItem.type == 'object' %}
+      {% set typeName = item.type %}
+      {% include "./type.nunjucks" %}
+    {% else %}
+      (
+      {%- if item.enum -%}
+        one of {{ item.enum.join(', ') }}
+      {%- endif -%}
+
+
+      {{ localItem.type }}
+      {%- if localItem.default %} - default: {{ localItem.default }}{%- endif -%}
+      {%- if localItem.repeat %} - repeat: {{ localItem.repeat }}{%- endif -%}
+      {%- if localItem.type == 'string' -%}
+        {%- if localItem.minLength %} - minLength: {{ localItem.minLength }}{%- endif -%}
+        {%- if localItem.maxLength %} - maxLength: {{ localItem.maxLength }}{%- endif -%}
+      {%- else -%}
+        {%- if localItem.minimum %} - minimum: {{ localItem.minimum }}{%- endif -%}
+        {%- if localItem.maximum %} - maximum: {{ localItem.maximum }}{%- endif -%}
+      {%- endif -%}
+      {%- if localItem.pattern %} - pattern: {{ localItem.pattern }}{%- endif -%}
+      )
+    {% endif %}
   </em>
 
   {% markdown %}{{ item.description }}{% endmarkdown %}
