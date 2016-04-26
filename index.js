@@ -127,9 +127,9 @@ function getDefaultConfig(mainTemplate, templatesPath) {
           'format', 'multipleOf', 'fileTypes',
         ];
 
-        for (var index = 0; index < availableProperties.length; ++index) {
-          if (typeof type[availableProperties[index]] !== 'undefined') {
-            properties[availableProperties[index]] = type[availableProperties[index]];
+        for (var i = 0; i < availableProperties.length; ++i) {
+          if (typeof type[availableProperties[i]] !== 'undefined') {
+            properties[availableProperties[i]] = type[availableProperties[i]];
           }
         }
 
