@@ -90,6 +90,15 @@ types:
     type: string
     minLength: 3
     maxLength: 50
+  User:
+    properties:
+      name:
+        type: string
+        maxLength: 30
+      phone:
+        type: string
+        minLength: 10
+        maxLength: 10
 
 /account:
   displayName: ACCOUNT
@@ -244,6 +253,12 @@ types:
       responses:
         200:
           description: Account was created and user is now logged in
+  /user:
+    post:
+      description: Test for multiple inheritence.
+      body:
+        application/json:
+          type: [ Account, User ]
 
 /accounts:
   displayName: ACCOUNTS
