@@ -77,29 +77,51 @@ function getDefaultConfig(mainTemplate, templatesPath) {
         }
       };
 
-      // Get the root type of a type.
-      var getRootType = function (type) {
+      /**
+       * Get the root type of a type.
+       * This is one of the types:
+       * Object: 'Object'
+       * Scalars: 'string', 'number', 'integer', 'boolean', 'date', 'file', 'scalar'
+       */
+      ramlObj.getRootType = function (type) {
         if (type.type.length > 1) {
+          // Multiple inheritence is only supported for object types.
           return 'object';
         }
         var parent = type.type[0];
         for (var index = 0; index < ramlObj.types.length; ++index) {
           if (typeof ramlObj.types[index][parent] !== 'undefined') {
-            return getRootType(ramlObj.types[index][parent]);
+            return ramlObj.getRootType(ramlObj.types[index][parent]);
           }
         }
         return type.type[0];
       };
 
+      /**
+       * Check if a type has a parent to inherit from.
+       *
+       * @param {string[]} [type] - The type name.
+       * @return {boolean} - false if the type name is a build-in scalar type, true otherwise.
+       */
+      ramlObj.isChildType = function (type) {
+        var buildinTypes = ['string', 'number', 'integer', 'boolean', 'date', 'file', 'scalar'];
+        for (var i = 0; i < type.length; i++) {
+          if (buildinTypes.indexOf(type[i]) < 0) {
+            return true;
+          }
+        }
+        return false;
+      };
+
       // Add extra function for finding a type by name
-      ramlObj.typeWithName = function (name) {
+      var typeWithName = function (name) {
+        var nameStr = String(name);
+        if (nameStr.endsWith('[]')) {
+          name = nameStr.slice(0, -2);
+        }
         for (var index = 0; index < ramlObj.types.length; ++index) {
           if (typeof ramlObj.types[index][name] !== 'undefined') {
-            var type = ramlObj.types[index][name];
-            return {
-              type: type,
-              rootType: getRootType(type),
-            };
+            return ramlObj.types[index][name];
           }
         }
       };
@@ -112,9 +134,8 @@ function getDefaultConfig(mainTemplate, templatesPath) {
        * @returns {{ properties: {}, ...}} A type representation with all its properties.
        */
       ramlObj.propertiesOfType = function (type, rootType) {
-        var properties = {
-          properties: {},
-        };
+        var properties = JSON.parse(JSON.stringify(type));
+        properties.properties = {};
 
         for (var property in type.properties) {
           if (type.properties.hasOwnProperty(property)) {
@@ -134,9 +155,9 @@ function getDefaultConfig(mainTemplate, templatesPath) {
         }
 
         for (var index = 0; index < type.type.length; ++index) {
-          var parent = ramlObj.typeWithName(type.type[index]);
+          var parent = typeWithName(type.type[index]);
           if (typeof parent !== 'undefined') {
-            var parentProperties = ramlObj.propertiesOfType(parent.type);
+            var parentProperties = ramlObj.propertiesOfType(parent);
             for (var parentProperty in parentProperties.properties) {
               if (parentProperties.properties.hasOwnProperty(parentProperty)) {
                 properties.properties[parentProperty] = parentProperties.properties[parentProperty];
@@ -158,6 +179,10 @@ function getDefaultConfig(mainTemplate, templatesPath) {
         }
 
         return properties;
+      };
+
+      ramlObj.isArray = function (value) {
+        return Array.isArray(value);
       };
 
       // Find and replace the $ref parameters.

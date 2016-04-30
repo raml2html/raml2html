@@ -1,61 +1,82 @@
-<li>
-  {% if item.displayName %}
-    <strong>{{ item.displayName }}</strong>:
-  {% else %}
-    <strong>{{ key }}</strong>:
-  {% endif %}
+{% set rootType = getRootType(item) %}
 
-  {# Create a local copy of the item. #}
-  {# This local copy could be overwritten if the item has a parent type #}
-  {# The new item will hold the properties of the parent type #}
-  {% set localItem = item %}
+{% if isChildType(item.type) %}
+  {% set item = propertiesOfType(item, rootType) %}
+{% endif %}
 
-  <em>
-    {%- if item.required -%}required {% endif -%}
+{% if rootType != 'object' %}
 
-    {%- set typeOptions = typeWithName(item.type) -%}
-    {%- if typeOptions -%}
-      {%- set localItem = propertiesOfType(typeOptions.type, typeOptions.rootType) -%}
-    {%- endif -%}
+  {# Render 0.8 item or 1.0 scalar type #}
 
-    {% if localItem.type == 'object' %}
-      {% set typeName = item.type %}
-      {% include "./type.nunjucks" %}
+  <li>
+    {% if item.displayName %}
+      <strong>{{ item.displayName }}</strong>:
     {% else %}
+      <strong>{{ key }}</strong>:
+    {% endif %}
+
+    <em>
+      {%- if item.required -%}required {% endif -%}
       (
       {%- if item.enum -%}
         one of {{ item.enum.join(', ') }}
-      {%- endif -%}
-
-
-      {{ localItem.type }}
-      {%- if localItem.default %} - default: {{ localItem.default }}{%- endif -%}
-      {%- if localItem.repeat %} - repeat: {{ localItem.repeat }}{%- endif -%}
-      {%- if localItem.type == 'string' -%}
-        {%- if localItem.minLength %} - minLength: {{ localItem.minLength }}{%- endif -%}
-        {%- if localItem.maxLength %} - maxLength: {{ localItem.maxLength }}{%- endif -%}
       {%- else -%}
-        {%- if localItem.minimum %} - minimum: {{ localItem.minimum }}{%- endif -%}
-        {%- if localItem.maximum %} - maximum: {{ localItem.maximum }}{%- endif -%}
+        {{ item.type }}
       {%- endif -%}
-      {%- if localItem.pattern %} - pattern: {{ localItem.pattern }}{%- endif -%}
+
+      {%- if item.default %} - default: {{ item.default }}{%- endif -%}
+      {%- if item.repeat %} - repeat: {{ item.repeat }}{%- endif -%}
+      {%- if item.type == 'string' -%}
+        {%- if item.minLength %} - minLength: {{ item.minLength }}{%- endif -%}
+        {%- if item.maxLength %} - maxLength: {{ item.maxLength }}{%- endif -%}
+      {%- else -%}
+        {%- if item.minimum %} - minimum: {{ item.minimum }}{%- endif -%}
+        {%- if item.maximum %} - maximum: {{ item.maximum }}{%- endif -%}
+      {%- endif -%}
+      {%- if item.pattern %} - pattern: {{ item.pattern }}{%- endif -%}
       )
+    </em>
+
+    {% markdown %}{{ item.description }}{% endmarkdown %}
+
+    {% if item.schema %}
+      <p><strong>Schema</strong>:</p>
+      <pre><code>{{ item.schema | escape }}</code></pre>
     {% endif %}
-  </em>
 
-  {% markdown %}{{ item.description }}{% endmarkdown %}
+    {% if item.example %}
+      <p><strong>Example</strong>:</p>
+      {% if item.type == 'string' %}
+        <pre>{{ item.example| escape }}</pre>
+      {% else %}
+        <pre><code>{{ item.example | escape }}</code></pre>
+      {% endif %}
+    {% endif %}
+  </li>
+{% else %}
+  {# Render 1.0 object type #}
 
-  {% if item.schema %}
-    <p><strong>Schema</strong>:</p>
-    <pre><code>{{ item.schema | escape }}</code></pre>
-  {% endif %}
+  <div class='list-group-item'>
 
-  {% if item.example %}
-    <p><strong>Example</strong>:</p>
-    {% if item.type == 'string' %}
-      <pre>{{ item.example| escape }}</pre>
-    {% else %}
+    <p>{{ item.displayName }}</p>
+
+    {% if item.description %}
+      <div class='alert alert-info'>
+        {{ item.description }}
+      </div>
+    {% endif %}
+
+    <strong>Properties</strong>
+    <ul>
+      {% for key, item in propertiesOfType(item).properties %}
+        {% include "./item.nunjucks" %}
+      {% endfor %}
+    </ul>
+
+    {% if item.example %}
+      <p><strong>Example</strong>:</p>
       <pre><code>{{ item.example | escape }}</code></pre>
     {% endif %}
-  {% endif %}
-</li>
+
+  </div>
+{% endif %}

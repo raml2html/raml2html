@@ -348,11 +348,14 @@ types:
 
     delete:
       description: Deletes a user
-  /name_{userName}:
+  /name_{userName}_{account}:
     uriParameters:
       userName:
         description: The name of a user
         type: UserName
+      account:
+        description: The account
+        type: Account
     get:
       description: Get all the users with a specific name
 
