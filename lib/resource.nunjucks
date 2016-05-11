@@ -204,6 +204,11 @@
                       {% set securityScheme = securitySchemeWithName(securitySchemeName) %}
 
                       Secured by {{ securedByScopes }}
+                      
+                      {% if securityScheme.description %}
+                        <h3>Description</h3>
+                        {% markdown %}{{ securityScheme.description }}{% endmarkdown %}
+                      {% endif %}
 
                       {% if securityScheme.describedBy.headers %}
                         <h3>Headers</h3>
