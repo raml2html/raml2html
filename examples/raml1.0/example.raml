@@ -34,30 +34,30 @@ documentation:
       Done
 
 securitySchemes:
-  - Unauthenticated: !include unauthenticated.raml
-  - oauth_1_0:
-      description: OAuth 1.0 continues to be supported for all API requests, but OAuth 2.0 is now preferred.
-      type: OAuth 1.0
-      settings:
-        requestTokenUri: https://api.dropbox.com/1/oauth/request_token
-        authorizationUri: https://www.dropbox.com/1/oauth/authorize
-        tokenCredentialsUri: https://api.dropbox.com/1/oauth/access_token
+  Unauthenticated: !include unauthenticated.raml
+  oauth_1_0:
+    description: OAuth 1.0 continues to be supported for all API requests, but OAuth 2.0 is now preferred.
+    type: OAuth 1.0
+    settings:
+      requestTokenUri: https://api.dropbox.com/1/oauth/request_token
+      authorizationUri: https://www.dropbox.com/1/oauth/authorize
+      tokenCredentialsUri: https://api.dropbox.com/1/oauth/access_token
 
 traits:
-  - paged:
-      queryParameters:
-        page_size:
-          description: The number of items per page
-          type: number
-          default: 20
-        page:
-          description: The page to return
-          type: number
-          default: 0
-      headers:
-        TESTING:
-          type: string
-          description: does a trait render its headers?
+  paged:
+    queryParameters:
+      page_size:
+        description: The number of items per page
+        type: number
+        default: 20
+      page:
+        description: The page to return
+        type: number
+        default: 0
+    headers:
+      TESTING:
+        type: string
+        description: does a trait render its headers?
 
 types:
   Email:
@@ -345,7 +345,6 @@ types:
         example: '2014-12-31T00:00:00.000Z'
         type: string
         required: false
-        pattern: ^[a-zA-Z].+$
 
   post:
     description: Creates a new user
