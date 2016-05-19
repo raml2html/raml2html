@@ -28,7 +28,7 @@ raml2html.render(ramlFile, config1).then(function (result) {
 /**
  * Using your own templates using the default processRamlObj function
  */
-var config2 = raml2html.getDefaultConfig('./custom-template-test/template.nunjucks', __dirname);
+var config2 = raml2html.getDefaultConfig('../custom-template-test/template.nunjucks', __dirname);
 
 raml2html.render(ramlFile, config2).then(function (result) {
   console.log('2: ', result.trim().length);
