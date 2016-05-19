@@ -7,7 +7,7 @@
  Run this as `node script.js`
  */
 
-var raml2html = require('..');
+var raml2html = require('../..');
 var path = require('path');
 var ramlFile = path.join(__dirname, 'example.raml');
 
