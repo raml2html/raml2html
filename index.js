@@ -84,16 +84,25 @@ function getDefaultConfig(mainTemplate, templatesPath) {
        * Scalars: 'string', 'number', 'integer', 'boolean', 'date', 'file', 'scalar'
        */
       ramlObj.getRootType = function (type) {
+        // in 0.8 the type node was not an array, that changed in 1.0
+        if( typeof type.type === 'string' ) {
+          type.type = [ type.type ];
+        }
+
         if (type.type.length > 1) {
           // Multiple inheritence is only supported for object types.
           return 'object';
         }
-        var parent = type.type[0];
-        for (var index = 0; index < ramlObj.types.length; ++index) {
-          if (typeof ramlObj.types[index][parent] !== 'undefined') {
-            return ramlObj.getRootType(ramlObj.types[index][parent]);
+
+        if(ramlObj.types) {
+          var parent = type.type[0];
+          for (var index = 0; index < ramlObj.types.length; ++index) {
+            if (typeof ramlObj.types[index][parent] !== 'undefined') {
+              return ramlObj.getRootType(ramlObj.types[index][parent]);
+            }
           }
         }
+        
         return type.type[0];
       };
 
