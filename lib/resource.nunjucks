@@ -131,6 +131,10 @@
                     {% if method.body %}
                       <h3>Body</h3>
                       {% for key, b in method.body %}
+                        {% if b.type and isChildType(b.type) %}
+                          {% set b = propertiesOfType(b) %}
+                        {% endif %}
+
                         <p><strong>Media Type: {{ key }}</strong></p>
                         {% if b.formParameters %}
                           <strong>Form Parameters</strong>
@@ -138,6 +142,7 @@
                             {% for key, item in b.formParameters %}
                               {% include "./item.nunjucks" %}
                             {% endfor %}
+
                           </ul>
                         {% endif %}
 
@@ -182,15 +187,26 @@
                       {% if response.headers %}
                         <h3>Headers</h3>
                         <ul>
-                          {% for key, item in response.headers %}
-                            {% include "./item.nunjucks" %}
-                          {% endfor %}
+                          {% if isArray(response.headers) %}
+                            {% for item in response.headers %}
+                              {% include "./item.nunjucks" %}
+                            {% endfor %}
+                          {% else %}
+                            {% for key, item in response.headers %}
+                              {% include "./item.nunjucks" %}
+                            {% endfor %}
+                          {% endif %}
                         </ul>
                       {% endif %}
 
                       {% if response.body %}
                         <h3>Body</h3>
                         {% for key, b in response.body %}
+
+                          {% if b.type and isChildType(b.type) %}
+                            {% set b = propertiesOfType(b) %}
+                          {% endif %}
+
                           <p><strong>Media Type: {{ key }}</strong></p>
 
                           {% if b.type and not b.schema %}

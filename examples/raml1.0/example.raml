@@ -75,9 +75,33 @@ types:
     type: Account
     properties:
       password: string
+    example: |
+      {
+        "email": "john@example.com",
+        "password": "super_secret",
+        "name": "John Doe"
+      }
+  AdminAccount:
+    type: Account
+    displayName: Administrator Account
+    description: |
+      A special account with administration access.
+  UserName:
+    type: string
+    minLength: 3
+    maxLength: 50
+  User:
+    properties:
+      name:
+        type: string
+        maxLength: 30
+      phone:
+        type: string
+        minLength: 10
+        maxLength: 10
 
 /account:
-  displayName: ACCOUNTS
+  displayName: ACCOUNT
 
   description: |
     This is the top level description for /account.
@@ -132,6 +156,12 @@ types:
           description: Basic authentication header
           example: |
             Authorization: Basic QWxhZGRpbjpvcGVuIHNlc2FtZQ==
+      responses:
+        200:
+          description: Returns an account
+          body:
+            application/json:
+              type: Account
 
     put:
       description: Update the account
@@ -213,7 +243,37 @@ types:
 
     delete:
       description: Deletes the session, logging out the user
+  /admin:
+    post:
+      description: |
+        Creates a new administrator account.
+      body:
+        application/json:
+          type: AdminAccount
+      responses:
+        200:
+          description: Account was created and user is now logged in
+  /user:
+    post:
+      description: Test for multiple inheritence.
+      body:
+        application/json:
+          type: [ Account, User ]
 
+/accounts:
+  displayName: ACCOUNTS
+
+  post:
+    description: |
+      Creates multiple accounts.
+    body:
+      application/json:
+        properties:
+          count: number
+          accounts: PasswordProtectedAccount
+    responses:
+      200:
+        description: Accounts were created
 
 /forecasts:
   displayName: Forecasts
@@ -303,6 +363,17 @@ types:
 
     delete:
       description: Deletes a user
+  /name_{userName}_{account}:
+    uriParameters:
+      userName:
+        description: The name of a user
+        type: UserName
+      account:
+        description: The account
+        type: Account
+    get:
+      description: Get all the users with a specific name
+
 
 
 /groups:
