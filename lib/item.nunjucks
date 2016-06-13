@@ -14,14 +14,14 @@
       {{ item.type }}
     {%- endif -%}
 
-    {%- if item.default %} - default: {{ item.default }}{%- endif -%}
+    {%- if item.default or item.default == 0 or item.default == false %} - default: {{ item.default }}{%- endif -%}
     {%- if item.repeat %} - repeat: {{ item.repeat }}{%- endif -%}
     {%- if item.type == 'string' -%}
-      {%- if item.minLength %} - minLength: {{ item.minLength }}{%- endif -%}
-      {%- if item.maxLength %} - maxLength: {{ item.maxLength }}{%- endif -%}
+      {%- if item.minLength or item.minLength == 0 %} - minLength: {{ item.minLength }}{%- endif -%}
+      {%- if item.maxLength or item.maxLength == 0 %} - maxLength: {{ item.maxLength }}{%- endif -%}
     {%- else -%}
-      {%- if item.minimum %} - minimum: {{ item.minimum }}{%- endif -%}
-      {%- if item.maximum %} - maximum: {{ item.maximum }}{%- endif -%}
+      {%- if item.minimum or item.minimum == 0 %} - minimum: {{ item.minimum }}{%- endif -%}
+      {%- if item.maximum or item.maximum == 0 %} - maximum: {{ item.maximum }}{%- endif -%}
     {%- endif -%}
     {%- if item.pattern %} - pattern: {{ item.pattern }}{%- endif -%}
     )
