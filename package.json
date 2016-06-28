@@ -11,13 +11,14 @@
   },
   "dependencies": {
     "commander": "2.9.x",
+    "eslint": "^1.10.3",
     "marked": "0.3.x",
     "minimize": "1.8.x",
     "nunjucks": "1.3.x",
     "nunjucks-markdown": "1.0.x",
     "q": "1.4.x",
-    "raml2obj": "git://github.com/raml2html/raml2obj.git#raml1.0",
-    "raml-jsonschema-expander": "1.1.x"
+    "raml-jsonschema-expander": "1.1.x",
+    "raml2obj": "git+https://github.com/raml2html/raml2obj.git#raml1.0"
   },
   "devDependencies": {
     "eslint": "1.10.x",
