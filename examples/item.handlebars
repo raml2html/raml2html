@@ -1,0 +1,45 @@
+<li>
+    {{#if this.displayName}}
+        <strong>{{this.displayName}}</strong>:
+    {{else}}
+        <strong>{{@key}}</strong>:
+    {{/if}}
+
+    <em>
+        {{#if this.required}}required{{/if}}
+        (
+            {{~#if this.enum~}}
+                one of {{this.enum}}
+            {{~else~}}
+                {{this.type}}
+            {{~/if~}}
+
+            {{~#if this.default~}} - default: {{this.default}}{{~/if~}}
+            {{~#if this.repeat~}} - repeat: {{this.repeat}}{{~/if~}}
+            {{~#ifTypeIsString~}}
+                {{#if this.minLength}} - minLength: {{this.minLength}}{{/if}}
+                {{#if this.maxLength}} - maxLength: {{this.maxLength}}{{/if}}
+            {{~else~}}
+                {{#if this.minimum}} - minimum: {{this.minimum}}{{/if}}
+                {{#if this.maximum}} - maximum: {{this.maximum}}{{/if}}
+            {{~/ifTypeIsString~}}
+            {{~#if this.pattern~}} - pattern: {{this.pattern}}{{~/if~}}
+        )
+    </em>
+
+    {{md description}}
+
+    {{#if this.schema}}
+        <p><strong>Schema</strong>:</p>
+        <pre><code>{{this.schema}}</code></pre>
+    {{/if}}
+
+    {{#if this.example}}
+        <p><strong>Example</strong>:</p>
+        {{#ifTypeIsString}}
+            <pre>{{this.example}}</pre>
+        {{else}}
+            <pre><code>{{this.example}}</code></pre>
+        {{/ifTypeIsString}}
+    {{/if}}
+</li>

@@ -1,5 +1,83 @@
+2.4.0 - March 12, 2016
+- Downgraded Nunjucks back to 1.3.0 due to peer conflicts with nunjucks-markdown
+  (which can't be upgraded because the newest version is broken)
+
+2.3.0 - February 23, 2016
+- Updated all 3rd party dependancies
+- Fix default tab selection
+- Improved security schema rendering
+- Expand $ref properties by using raml-json-expander
+
+2.2.0 - January 20, 2016
+- Now writing parse errors to STDERR
+
+2.1.2 - November 13, 2015
+- Better fix for #152 (#157)
+
+2.1.1 - November 5, 2015
+- Fix JS error in Chrome when opening the html file from the local file system and then closing a modal (#152)
+
+2.1.0 - August 25, 2015
+- Update third party dependencies and ESLint rules
+- Nunjucks 1.3.0 makes working with relative template includes a lot easier, use like this:
+  {% include "./resource.nunjucks" %}
+- Fixed bug where multiple instances of raml2html would share the Nunjucks config,
+  even if one of them needed to use a different templatePath
+- Removed the templatePath option from the CLI since relative templates now work as expected
+- Render description for securityScheme
+- Fixed table formatting
+
+2.0.2 - June 23, 2015
+- Fixed rendering of XML/HTML examples and schemes by properly escaping these variables (#140)
+
+2.0.1 - May 27, 2015
+- Fixed rendering of header
+
+2.0.0 - May 22, 2015
+- Using a promise based API, please see README for updated usage example
+- Using Nunjucks by default, instead of Handlebars
+- Made it a lot easier to completely customize the entire rendering process, allowing you for example to use not only 
+  custom templates but even a different template engine
+- Got rid of the -s / https option, all external sources are simply always loaded via https
+- Got rid of the -r and -m template options, as the resource- and item templates are now simply loaded from within
+  the main template
+
+1.6.0 - March 24, 2015
+- Use hash tags for opening modals (#131)
+
+1.5.0 - March 11, 2015
+- Made the side menu a fixed height (#110)
+- Added a background color for PATCH (#117)
+- Response tab is set to active when request tab isn't shown (#120)
+- Added additional information in query parameter (#121)
+
+1.4.0 - January 30, 2015
+- If an example's type is explicitly set to 'string' then don't syntax highlight it
+
+1.3.1 - January 28, 2015
+- Fixed the id's of the tabs (#108)
+
+1.3.0 - January 21, 2015
+- Now rendering default values for parameters (#100) and securedBy (#10)
+
+1.2.0 - January 20, 2015
+- Greatly simplified the loading of (custom) templates and the default behaviour of `getDefaultConfig`.
+  Sadly loading remote template files is no longer possible from the command line, but you can always create a simple
+  wrapper script if you need this functionality. Please let me know if this is a feature you absolutely need.
+
+1.1.1 - January 20, 2015
+- Fixed default behaviour of calling `getDefaultConfig` with no arguments,
+  which should always use the default templates
+
+1.1.0 - January 14, 2015
+- Now using raml-parser's FileReader which makes it a lot easier to load custom templates
+  in other folders or even as remote urls (#96)
+
+1.0.6 - January 14, 2015
+- Bugfix: use passed in template parameter when checking paths (#98)
+
 1.0.5 - December 3, 2014
-- Configured the html minifier to keep the quotes around html attributes
+- Configured the html minifier to keep the quotes around html attributes (#93)
 
 1.0.4 - September 25, 2014
 - Updated readme and raml2obj version
@@ -24,7 +102,7 @@
 0.31.2 - September 6, 2014
 - Support enums for headers and URI parameters (#59)
 - Rendering URI parameter examples (#57)
-- Greatly simplified `resource.handlebars` by moving all the common code into a separate partial 
+- Greatly simplified `resource.handlebars` by moving all the common code into a separate partial
 
 0.31.1 - August 21, 2014
 - Fixed HTML validity (#61)

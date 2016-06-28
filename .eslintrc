@@ -1,0 +1,20 @@
+{
+  "extends": "defaults/configurations/airbnb/es5",
+  "parser": "espree",
+  "env": {
+    "browser": false
+  },
+  "ecmaFeatures": {
+    "jsx": false
+  },
+  "rules": {
+    "no-var": 0,
+    "no-console": 0,
+    "comma-dangle": 0,
+    "no-param-reassign": 0,
+    "strict": [2, "global"],
+    "func-names": 0,
+    "vars-on-top": 0,
+    "max-len": 0
+  }
+}

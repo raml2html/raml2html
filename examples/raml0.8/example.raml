@@ -22,9 +22,19 @@ documentation:
       raml2html.parseWithConfig(source, config, onSuccess, onError);
       ```
   - title: Chapter two
-    content: More content here. Including **bold** text!
+    content: |
+      More content here. Including **bold** text!
+
+      Small table:
+
+      | A | B | C |
+      |---|---|---|
+      | 1 | 2 | 3 |
+
+      Done
 
 securitySchemes:
+  - Unauthenticated: !include unauthenticated.raml
   - oauth_1_0:
       description: OAuth 1.0 continues to be supported for all API requests, but OAuth 2.0 is now preferred.
       type: OAuth 1.0
@@ -39,11 +49,18 @@ traits:
         page_size:
           description: The number of items per page
           type: number
+          default: 20
         page:
           description: The page to return
           type: number
+          default: 0
+      headers:
+        TESTING:
+          type: string
+          description: does a trait render its headers?
 
 /account:
+  securedBy: [Unauthenticated]
   displayName: ACCOUNTS
 
   description: |
@@ -80,13 +97,17 @@ traits:
           example: Naruto Uzumaki
         gender:
           enum: ["male", "female"]
+          required: true
         number:
           type: integer
+          default: 42
   /{id}:
     uriParameters:
       id:
         type: string
         description: account identifier
+        minLength: 1
+        maxLength: 10
     get:
       headers:
         Authorization:
@@ -141,12 +162,13 @@ traits:
   /forgot:
     post:
       description: Sends an email to the user with a link to set a new password
-      body:
-        application/json:
-          example: |
-            {
-              "email": "john@example.com"
-            }
+      responses:
+        200:
+          description: Test
+          body:
+            text/xml:
+              example: |
+                <test>This is a test</test>
 
   /session:
     get:
@@ -220,16 +242,20 @@ traits:
   get:
     is: [ paged ]
     description: Get a list of all users
+    queryParameters:
+      from:
+        description: Limit results to those created after from.
+        example: '2014-12-31T00:00:00.000Z'
+        type: string
+        required: false
+        pattern: ^[a-zA-Z].+$
 
   post:
     description: Creates a new user
     body:
-      application/json:
+      application/xml:
         example: |
-          {
-            "email": "john@example.com",
-            "name": "John Doe",
-          }
+          <h1>Hello!</h1>
 
   /{userId}:
     get:
@@ -280,7 +306,7 @@ traits:
           application/json:
             example: |
               {
-                "user_id": 4,
+                "user_id": 4
               }
 
       /{userId}:
