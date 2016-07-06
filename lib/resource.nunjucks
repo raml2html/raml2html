@@ -21,7 +21,9 @@
         {% if resource.parentUrl %}
           {% if resource.description %}
             <div class="resource-description">
-              {% markdown %}{{ resource.description }}{% endmarkdown %}
+{% markdown %}
+{{ resource.description }}
+{% endmarkdown %}
             </div>
           {% endif %}
         {% endif %}
@@ -31,7 +33,9 @@
             <div onclick="window.location.href = '#{{ resource.uniqueId }}_{{ method.method }}'" class="list-group-item">
               <span class="badge badge_{{ method.method }}">{{ method.method }}{% if method.securedBy.length %} <span class="glyphicon glyphicon-lock" title="Authentication required"></span>{% endif %}</span>
               <div class="method_description">
-                {% markdown %}{{ method.description}}{% endmarkdown %}
+{% markdown %}
+{{ method.description}}
+{% endmarkdown %}
               </div>
               <div class="clearfix"></div>
             </div>
@@ -55,7 +59,9 @@
             <div class="modal-body">
               {% if method.description %}
                 <div class="alert alert-info">
-                  {% markdown %}{{ method.description}}{% endmarkdown %}
+{% markdown %}
+{{ method.description}}
+{% endmarkdown %}
                 </div>
               {% endif %}
 
@@ -66,7 +72,9 @@
                     <span class="glyphicon glyphicon-lock" title="Authentication required"></span> Secured by {{ securedByScopes }}
                     {% set securityScheme = securitySchemeWithName(securedBy) %}
                     {% if securityScheme.description %}
-                      {% markdown %}{{ securityScheme.description }}{% endmarkdown %}
+{% markdown %}
+{{ securityScheme.description }}
+{% endmarkdown %}
                     {% endif %}
                   </div>
                 {% endfor %}
@@ -165,7 +173,9 @@
                     %}" id="{{ resource.uniqueId }}_{{ method.method }}_response">
                     {% for key, response in method.responses %}
                       <h2>HTTP status code <a href="http://httpstatus.es/{{ key }}" target="_blank">{{ key }}</a></h2>
-                      {% markdown %}{{ response.description}}{% endmarkdown %}
+{% markdown %}
+{{ response.description}}
+{% endmarkdown %}
 
                       {% if response.headers %}
                         <h3>Headers</h3>
@@ -212,7 +222,9 @@
 
                     {% for key, response in securityScheme.describedBy.responses %}
                       <h2>HTTP status code <a href="http://httpstatus.es/{{ key }}" target="_blank">{{ key }}</a></h2>
-                      {% markdown %}{{ response.description}}{% endmarkdown %}
+{% markdown %}
+{{ response.description}}
+{% endmarkdown %}
 
                       {% if response.headers %}
                         <h3>Headers</h3>
