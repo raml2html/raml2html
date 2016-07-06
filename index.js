@@ -62,7 +62,7 @@ function getDefaultConfig(mainTemplate, templatesPath) {
       };
 
       // Setup the Nunjucks environment with the markdown parser
-      const env = nunjucks.configure(templatesPath, { watch: false });
+      const env = nunjucks.configure(templatesPath, { autoescape: false });
       markdown.register(env, (md) => marked(md, { renderer }));
 
       // Add extra function for finding a security scheme by name
