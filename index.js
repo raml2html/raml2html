@@ -3,6 +3,7 @@
 var raml2obj = require('raml2obj');
 var pjson = require('./package.json');
 var Q = require('q');
+var yaml = require('js-yaml');
 
 /**
  * Render the source RAML object using the config's processOutput function
@@ -102,7 +103,7 @@ function getDefaultConfig(mainTemplate, templatesPath) {
             }
           }
         }
-        
+
         return type.type[0];
       };
 
@@ -192,6 +193,10 @@ function getDefaultConfig(mainTemplate, templatesPath) {
 
       ramlObj.isArray = function (value) {
         return Array.isArray(value);
+      };
+
+      ramlObj.stringify = function (value) {
+        return typeof value === 'object' ? yaml.dump(value) : value;
       };
 
       // Find and replace the $ref parameters.

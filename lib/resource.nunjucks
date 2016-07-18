@@ -166,9 +166,17 @@
 
                         {% if b.example %}
                           <p><strong>Example</strong>:</p>
-                          <pre><code>{{ b.example | escape }}</code></pre>
+                          <pre><code>{{ stringify(b.example) | escape }}</code></pre>
+                        {% else %}
+                          {% if b.examples %}
+                            <pre><code>{{ stringify(b.examples) | escape }}</code></pre>
+                            {% for example in b.examples %}
+                              <p><strong>Example: {{ example.name }}</strong>:</p>
+                              <pre><code>{{ stringify(example.value) | escape }}</code></pre>
+                            {% endfor %}
+                          {% endif %}
                         {% endif %}
-                      {% endfor %}
+                    {% endfor %}
                     {% endif %}
                   </div>
                 {% endif %}
@@ -229,7 +237,15 @@
 
                           {% if b.example %}
                             <p><strong>Example</strong>:</p>
-                            <pre><code>{{ b.example | escape }}</code></pre>
+                            <pre><code>{{ stringify(b.example) | escape }}</code></pre>
+                          {% else %}
+                            {% if b.examples %}
+                              <pre><code>{{ stringify(b.examples) | escape }}</code></pre>
+                              {% for example in b.examples %}
+                                <p><strong>Example: {{ example.name }}</strong>:</p>
+                                <pre><code>{{ stringify(example.value) | escape }}</code></pre>
+                              {% endfor %}
+                            {% endif %}
                           {% endif %}
                         {% endfor %}
                       {% endif %}
