@@ -195,7 +195,10 @@ function getDefaultConfig(mainTemplate, templatesPath) {
         return Array.isArray(value);
       };
 
-      ramlObj.stringify = function (value) {
+      ramlObj.stringify = function (value, mediaType) {
+        if (mediaType === 'application/json') {
+          return typeof value === 'object' ? JSON.stringify(value, null, 2) : value;
+        }
         return typeof value === 'object' ? yaml.dump(value) : value;
       };
 
