@@ -108,6 +108,9 @@
       .tab-pane ul {
         padding-left: 2em;
       }
+      .tab-pane h1 {
+        font-size: 1.3em;
+      }
       .tab-pane h2 {
         font-size: 1.2em;
         padding-bottom: 4px;
