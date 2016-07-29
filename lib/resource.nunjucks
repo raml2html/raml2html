@@ -173,7 +173,6 @@
                           <p><strong>Examples</strong>:</p>
                           <ul class="nav nav-tabs">
                             {% for example in b.examples %}
-                              <li>
                               <li{%
                                 if loop.first
                                 %} class="active"{%
@@ -265,7 +264,6 @@
                             <p><strong>Examples</strong>:</p>
                             <ul class="nav nav-tabs">
                               {% for example in b.examples %}
-                                <li>
                                 <li{%
                                   if loop.first
                                   %} class="active"{%
