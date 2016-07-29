@@ -103,7 +103,7 @@ function getDefaultConfig(mainTemplate, templatesPath) {
             }
           }
         }
-        
+
         return type.type[0];
       };
 
@@ -129,9 +129,11 @@ function getDefaultConfig(mainTemplate, templatesPath) {
         if (nameStr.endsWith('[]')) {
           name = nameStr.slice(0, -2);
         }
-        for (var index = 0; index < ramlObj.types.length; ++index) {
-          if (typeof ramlObj.types[index][name] !== 'undefined') {
-            return ramlObj.types[index][name];
+        if(ramlObj.types) {
+          for (var index = 0; index < ramlObj.types.length; ++index) {
+            if (typeof ramlObj.types[index][name] !== 'undefined') {
+              return ramlObj.types[index][name];
+            }
           }
         }
       };
