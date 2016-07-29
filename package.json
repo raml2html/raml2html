@@ -13,7 +13,6 @@
     "commander": "2.9.x",
     "js-yaml": "^3.6.1",
     "marked": "0.3.x",
-    "js-yaml": "^3.6.1",
     "minimize": "1.8.x",
     "nunjucks": "1.3.x",
     "nunjucks-markdown": "1.0.x",
