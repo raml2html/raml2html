@@ -166,7 +166,7 @@
 
                         {% if b.example %}
                           <p><strong>Example</strong>:</p>
-                          <pre><code>{{ b.example | escape }}</code></pre>
+                          <pre><code>{{ stringify(b.example, b.name) | escape }}</code></pre>
                         {% endif %}
                       {% endfor %}
                     {% endif %}
@@ -229,7 +229,7 @@
 
                           {% if b.example %}
                             <p><strong>Example</strong>:</p>
-                            <pre><code>{{ b.example | escape }}</code></pre>
+                            <pre><code>{{ stringify(b.example, b.name) | escape }}</code></pre>
                           {% endif %}
                         {% endfor %}
                       {% endif %}

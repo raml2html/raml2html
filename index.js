@@ -194,6 +194,19 @@ function getDefaultConfig(mainTemplate, templatesPath) {
         return Array.isArray(value);
       };
 
+      ramlObj.stringify = function (value, mediaType) {
+        if (typeof value === 'object') {
+          switch (mediaType) {
+            case 'application/json':
+              return JSON.stringify(value, null, 2);
+            default:
+              return value;
+          }
+        }
+
+        return value;
+      };
+
       // Find and replace the $ref parameters.
       ramlObj = ramljsonexpander.expandJsonSchemas(ramlObj);
 
