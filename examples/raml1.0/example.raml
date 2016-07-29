@@ -124,6 +124,12 @@ types:
             "password": "super_secret",
             "name": "John Doe"
           }
+      application/x-yaml:
+        type: PasswordProtectedAccount
+        example:
+          email: john@example.com
+          password: super_secret
+          name: John Doe
     responses:
       200:
         description: Account was created and user is now logged in
