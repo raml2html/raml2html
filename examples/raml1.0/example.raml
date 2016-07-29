@@ -137,7 +137,6 @@ types:
               This shows another password protected account.
               - Passwords are case-sensitive
               - Passwords *must* have a non-alpha-numeric character
-
     responses:
       200:
         description: Account was created and user is now logged in
@@ -222,6 +221,17 @@ types:
               "email": "john@example.com",
               "password": "super_secret"
             }
+          examples:
+            first: |
+              {
+                "email": "john@example.com",
+                "password": "super_secret"
+              }
+            second: |
+              {
+                "email": "david@example.com",
+                "password": "super_secret"
+              }
       responses:
         200:
           description: Login was correct
@@ -229,6 +239,11 @@ types:
             text/xml:
               example: |
                 <test>This is a test</test>
+              examples:
+                first: |
+                  <test>This is first test</test>
+                second: |
+                  <test>This is second test</test>
         400:
           description: Login was incorrect, please try again
         401:

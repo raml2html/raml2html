@@ -129,9 +129,11 @@ function getDefaultConfig(mainTemplate, templatesPath) {
         if (nameStr.endsWith('[]')) {
           name = nameStr.slice(0, -2);
         }
-        for (var index = 0; index < ramlObj.types.length; ++index) {
-          if (typeof ramlObj.types[index][name] !== 'undefined') {
-            return ramlObj.types[index][name];
+        if(ramlObj.types) {
+          for (var index = 0; index < ramlObj.types.length; ++index) {
+            if (typeof ramlObj.types[index][name] !== 'undefined') {
+              return ramlObj.types[index][name];
+            }
           }
         }
       };
@@ -196,10 +198,17 @@ function getDefaultConfig(mainTemplate, templatesPath) {
       };
 
       ramlObj.stringify = function (value, mediaType) {
-        if (mediaType === 'application/json') {
-          return typeof value === 'object' ? JSON.stringify(value, null, 2) : value;
+        if (typeof value === 'object') {
+          switch (mediaType) {
+            case 'application/json':
+              return JSON.stringify(value, null, 2);
+            case 'application/x-yaml':
+            default:
+              return yaml.dump(value);
+          }
         }
-        return typeof value === 'object' ? yaml.dump(value) : value;
+
+        return value;
       };
 
       // Find and replace the $ref parameters.
