@@ -179,7 +179,7 @@
                                 endif
                                 %}>
                                 <a href="#{{ resource.uniqueId }}_{{ method.method }}_body_examples_{{ loop.index }}" data-toggle="tab">
-                                  {{ example.name | escape }}
+                                  {{ example.displayName if example.displayName else example.name | escape }}
                                 </a>
                               </li>
                             {% endfor %}
@@ -191,6 +191,9 @@
                                 %} active{%
                                 endif
                                 %}" id="{{ resource.uniqueId }}_{{ method.method }}_body_examples_{{ loop.index }}">
+                                {% if example.description %}
+                                  {% markdown %}{{ example.description }}{% endmarkdown %}
+                                {% endif %}
                                 <pre><code>{{ stringify(example.value, b.name) | escape }}</code></pre>
                               </div>
                             {% endfor %}
@@ -270,7 +273,7 @@
                                   endif
                                   %}>
                                   <a href="#{{ resource.uniqueId }}_{{ method.method }}_responses_{{ response.code }}_body_examples_{{ loop.index }}" data-toggle="tab">
-                                    {{ example.name | escape }}
+                                    {{ example.displayName if example.displayName else example.name | escape }}
                                   </a>
                                 </li>
                               {% endfor %}
@@ -282,6 +285,9 @@
                                   %} active{%
                                   endif
                                   %}" id="{{ resource.uniqueId }}_{{ method.method }}_responses_{{ response.code }}_body_examples_{{ loop.index }}">
+											 {% if example.description %}
+												{% markdown %}{{ example.description }}{% endmarkdown %}
+											 {% endif %}
                                   <pre><code>{{ stringify(example.value, b.name) | escape }}</code></pre>
                                 </div>
                               {% endfor %}

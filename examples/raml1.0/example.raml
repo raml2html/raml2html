@@ -118,12 +118,25 @@ types:
     body:
       application/json:
         type: PasswordProtectedAccount
-        example: |
-          {
-            "email": "john@example.com",
-            "password": "super_secret",
-            "name": "John Doe"
-          }
+        examples:
+          One: |
+            {
+              "email": "john@example.com",
+              "password": "super_secret",
+              "name": "John Doe"
+            }
+          Two:
+            value:
+              {
+                "email": "john2@example.com",
+                "password": "super_secret",
+                "name": "John Doe II"
+              }
+            displayName: "Another Account"
+            description: |
+              This shows another password protected account.
+              - Passwords are case-sensitive
+              - Passwords *must* have a non-alpha-numeric character
       application/x-yaml:
         type: PasswordProtectedAccount
         example:
