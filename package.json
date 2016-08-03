@@ -1,7 +1,7 @@
 {
   "name": "raml2html",
   "description": "RAML to HTML documentation generator",
-  "version": "2.4.0",
+  "version": "2.5.0",
   "author": {
     "name": "Kevin Renskers",
     "email": "info@mixedcase.nl"
@@ -20,9 +20,8 @@
     "raml-jsonschema-expander": "1.1.x"
   },
   "devDependencies": {
-    "eslint": "1.10.x",
-    "eslint-config-defaults": "9.0.x",
-    "eslint-plugin-react": "4.0.x"
+    "eslint": "3.2.x",
+    "eslint-config-loopwerk": "4.1.x"
   },
   "homepage": "https://github.com/raml2html/raml2html",
   "keywords": [
@@ -36,10 +35,13 @@
   },
   "preferGlobal": "true",
   "scripts": {
-    "lint": "eslint ./",
-    "lintfix": "eslint ./ --fix"
+    "lint": "eslint index.js",
+    "lintfix": "eslint index.js --fix"
   },
   "bin": {
     "raml2html": "./bin/raml2html"
+  },
+  "engines": {
+    "node": ">=4"
   }
 }
