@@ -2,7 +2,6 @@
 
 const raml2obj = require('raml2obj');
 const pjson = require('./package.json');
-const Q = require('q');
 
 /**
  * Render the source RAML object using the config's processOutput function
@@ -102,7 +101,9 @@ function getDefaultConfig(mainTemplate, templatesPath) {
       html = html.replace(/&quot;/g, '"');
 
       // Return the promise with the html
-      return Q.fcall(() => html);
+      return new Promise((resolve) => {
+        resolve(html);
+      });
     },
 
     postProcessHtml(html) {
@@ -110,17 +111,15 @@ function getDefaultConfig(mainTemplate, templatesPath) {
       const Minimize = require('minimize');
       const minimize = new Minimize({ quotes: true });
 
-      const deferred = Q.defer();
-
-      minimize.parse(html, (error, result) => {
-        if (error) {
-          deferred.reject(new Error(error));
-        } else {
-          deferred.resolve(result);
-        }
+      return new Promise((resolve, reject) => {
+        minimize.parse(html, (error, result) => {
+          if (error) {
+            reject(new Error(error));
+          } else {
+            resolve(result);
+          }
+        });
       });
-
-      return deferred.promise;
     },
   };
 }
