@@ -158,6 +158,12 @@
       .list-group-item:hover {
         background-color: #f5f5f5;
       }
+
+      pre code {
+        overflow: auto;
+        word-wrap: normal;
+        white-space: pre;
+      }
     </style>
   </head>
 
