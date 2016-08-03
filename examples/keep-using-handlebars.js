@@ -10,7 +10,6 @@ const raml2html = require('..');
 const handlebars = require('handlebars');
 const marked = require('marked');
 const renderer = new marked.Renderer();
-const Q = require('q');
 const fs = require('fs');
 const pjson = require('../package.json');
 const path = require('path');
@@ -106,8 +105,8 @@ config.processRamlObj = function (ramlObj) {
     raml2HtmlVersion: pjson.version,
   };
 
-  return Q.fcall(function () {
-    return handlebars.compile(template)(ramlObj);
+  return new Promise((resolve) => {
+    resolve(handlebars.compile(template)(ramlObj));
   });
 };
 

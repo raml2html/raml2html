@@ -44,9 +44,8 @@ raml2html.render(ramlFile, config2).then(function (result) {
  */
 const config3 = {
   processRamlObj() {
-    const Q = require('q');
-    return Q.fcall(function () {
-      return '<h1>\n\n\n<!--This is a test-->Hi!</h1>';
+    return new Promise((resolve) => {
+      resolve('<h1>\n\n\n<!--This is a test-->Hi!</h1>');
     });
   },
 
@@ -64,16 +63,14 @@ raml2html.render(ramlFile, config3).then(function (result) {
  */
 const config4 = {
   processRamlObj() {
-    const Q = require('q');
-    return Q.fcall(function () {
-      return '<h1>Hi!</h1>';
+    return new Promise((resolve) => {
+      resolve('<h1>Hi!</h1>');
     });
   },
 
   postProcessHtml() {
-    const Q = require('q');
-    return Q.fcall(function () {
-      return 'ABC';
+    return new Promise((resolve) => {
+      resolve('ABC');
     });
   },
 };
