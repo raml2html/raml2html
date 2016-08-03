@@ -10,21 +10,34 @@ var pjson = require('../package.json');
 program
   .version(pjson.version)
   .usage('[options] [RAML input file]')
+  .option('-s, --stdin', 'Read RAML content from stdin')
   .option('-i, --input [input]', 'RAML input file')
   .option('-t, --template [template]', 'Filename of the custom Nunjucks template')
   .option('-o, --output [output]', 'HTML output file')
   .parse(process.argv);
 
 var input = program.input;
+var stdin = program.stdin;
+
+if (input && stdin) {
+  console.error('Error: You need to use either of input or stdin param');
+  program.help();
+  process.exit(1);
+}
 
 if (!input) {
-  if (program.args.length !== 1) {
-    console.error('Error: You need to specify the RAML input file');
+  if (!stdin && program.args.length !== 1) {
+    console.error('Error: You need to specify the RAML input file or use stdin param');
     program.help();
     process.exit(1);
   }
 
-  input = program.args[0];
+  if (stdin) {
+    var size = fs.fstatSync(process.stdin.fd).size;
+    input = size > 0 ? fs.readSync(process.stdin.fd, size)[0] : '';
+  } else {
+    input = program.args[0];
+  }
 }
 
 // Start the rendering process
