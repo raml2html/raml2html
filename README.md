@@ -26,7 +26,7 @@ raml2html -t examples/custom-template-test/template.nunjucks -i example.raml -o 
 ### As a library
 
 #### Using the default templates or your own Nunjucks templates
-```
+```javascript
 var raml2html = require('raml2html');
 var configWithDefaultTemplates = raml2html.getDefaultConfig();
 var configWithCustomTemplates = raml2html.getDefaultConfig('my-custom-template.nunjucks', __dirname);
@@ -40,7 +40,7 @@ raml2html.render(source, configWithDefaultTemplates).then(function(result) {
 ```
 
 #### Using your own processing function, for when you want to use another template language
-```
+```javascript
 /**
  * config should be an object with at least an `processRamlObj` property which is a function that receives the raw RAML 
  * object and must return a promise with the result. You can do whatever you want in this function.
@@ -69,6 +69,10 @@ There's a third party Grunt plugin at https://www.npmjs.org/package/grunt-raml2h
 
 ## Example output
 Please see https://rawgit.com/raml2html/raml2html/master/examples/example.html for a live example.
+
+
+## RAML version support
+Currently `RAML 0.8` version is fully supported. If you want to use `RAML 1.0`, you might use a temporary overcome (see [#156](https://github.com/raml2html/raml2html/issues/156)) or help to implement [this feature](https://github.com/raml-org/raml-js-parser-2/issues/11).
 
 
 ## Before you report a bug
