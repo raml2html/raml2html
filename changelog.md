@@ -3,8 +3,8 @@
 - Added support for securedBy scopes
 - Added syntax highlighting within modals
 - Improved item display of values false and 0
+- Improved multiple security schemes handling
 - Horizontally scroll overflowing code snippets
-- Fixed showing of multiple security schemes
 
 2.4.0 - March 12, 2016
 - Downgraded Nunjucks back to 1.3.0 due to peer conflicts with nunjucks-markdown
