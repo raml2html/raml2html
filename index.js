@@ -77,6 +77,17 @@ function getDefaultConfig(mainTemplate, templatesPath) {
         }
       };
 
+      // Add extra function for finding a security scheme name
+      ramlObj.securitySchemeName = function (name) {
+        for (var index = 0; index < ramlObj.securitySchemes.length; ++index) {
+          if (ramlObj.securitySchemes[index][name] !== null) {
+            var keys = Object.keys(ramlObj.securitySchemes[index]);
+            return keys[0];
+          }
+        }
+        return name;
+      };
+
       // Parse securedBy and use scopes if they are defined
       ramlObj.renderSecuredBy = function (securedBy) {
         var out = '';
