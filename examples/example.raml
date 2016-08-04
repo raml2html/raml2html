@@ -42,6 +42,17 @@ securitySchemes:
         requestTokenUri: https://api.dropbox.com/1/oauth/request_token
         authorizationUri: https://www.dropbox.com/1/oauth/authorize
         tokenCredentialsUri: https://api.dropbox.com/1/oauth/access_token
+  - x-something:
+      description: The proprietary x-something header.
+      type: x-{other}
+      describedBy:
+        headers:
+          X-SOMETHING:
+            type: string
+            description: For sending an additional token.
+        responses:
+          401:
+            description: Bad token.
 
 traits:
   - paged:
@@ -195,7 +206,7 @@ traits:
 
 /conversations:
   description: This is the top level description for /conversations.
-  securedBy: [oauth_1_0]
+  securedBy: [oauth_1_0, x-something]
 
   get:
     description: Get a list of conversation for the current user
