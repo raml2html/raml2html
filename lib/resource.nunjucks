@@ -132,7 +132,11 @@
                     {% if method.body %}
                       <h3>Body</h3>
                       {% for key, b in method.body %}
-                        <p><strong>Type: {{ key }}</strong></p>
+                        {% if b.type and isChildType(b.type) %}
+                          {% set b = propertiesOfType(b) %}
+                        {% endif %}
+
+                        <p><strong>Media Type: {{ key }}</strong></p>
                         {% if b.formParameters %}
                           <strong>Form Parameters</strong>
                           <ul>
@@ -142,6 +146,19 @@
                           </ul>
                         {% endif %}
 
+                        {% if b.type and not b.schema %}
+                          <p><strong>Type</strong>:</p>
+                          {% if b.properties %}
+                            <ul>
+                              {% for key, item in b.properties %}
+                                {% include "./item.nunjucks" %}
+                              {% endfor %}
+                            </ul>
+                          {% else %}
+                            <pre><code>{{ b.type | escape }}</code></pre>
+                          {% endif %}
+                        {% endif %}
+
                         {% if b.schema %}
                           <p><strong>Schema</strong>:</p>
                           <pre><code>{{ b.schema | escape }}</code></pre>
@@ -149,7 +166,38 @@
 
                         {% if b.example %}
                           <p><strong>Example</strong>:</p>
-                          <pre><code>{{ b.example | escape }}</code></pre>
+                          <pre><code>{{ stringify(b.example, b.name) | escape }}</code></pre>
+                        {% endif %}
+
+                        {% if b.examples %}
+                          <p><strong>Examples</strong>:</p>
+                          <ul class="nav nav-tabs">
+                            {% for example in b.examples %}
+                              <li{%
+                                if loop.first
+                                %} class="active"{%
+                                endif
+                                %}>
+                                <a href="#{{ resource.uniqueId }}_{{ method.method }}_body_examples_{{ loop.index }}" data-toggle="tab">
+                                  {{ example.displayName if example.displayName else example.name | escape }}
+                                </a>
+                              </li>
+                            {% endfor %}
+                          </ul>
+                          <div class="tab-content">
+                            {% for example in b.examples %}
+                              <div class="tab-pane{%
+                                if loop.first
+                                %} active{%
+                                endif
+                                %}" id="{{ resource.uniqueId }}_{{ method.method }}_body_examples_{{ loop.index }}">
+                                {% if example.description %}
+                                  {% markdown %}{{ example.description }}{% endmarkdown %}
+                                {% endif %}
+                                <pre><code>{{ stringify(example.value, b.name) | escape }}</code></pre>
+                              </div>
+                            {% endfor %}
+                          </div>
                         {% endif %}
                       {% endfor %}
                     {% endif %}
@@ -170,16 +218,39 @@
                       {% if response.headers %}
                         <h3>Headers</h3>
                         <ul>
-                          {% for key, item in response.headers %}
-                            {% include "./item.nunjucks" %}
-                          {% endfor %}
+                          {% if isArray(response.headers) %}
+                            {% for item in response.headers %}
+                              {% include "./item.nunjucks" %}
+                            {% endfor %}
+                          {% else %}
+                            {% for key, item in response.headers %}
+                              {% include "./item.nunjucks" %}
+                            {% endfor %}
+                          {% endif %}
                         </ul>
                       {% endif %}
 
                       {% if response.body %}
                         <h3>Body</h3>
                         {% for key, b in response.body %}
-                          <p><strong>Type: {{ key }}</strong></p>
+                          {% if b.type and isChildType(b.type) %}
+                            {% set b = propertiesOfType(b) %}
+                          {% endif %}
+
+                          <p><strong>Media Type: {{ key }}</strong></p>
+
+                          {% if b.type and not b.schema %}
+                            <p><strong>Type</strong>:</p>
+                            {% if b.properties %}
+                              <ul>
+                                {% for key, item in b.properties %}
+                                  {% include "./item.nunjucks" %}
+                                {% endfor %}
+                              </ul>
+                            {% else %}
+                              <pre><code>{{ b.type | escape }}</code></pre>
+                            {% endif %}
+                          {% endif %}
 
                           {% if b.schema %}
                             <p><strong>Schema</strong>:</p>
@@ -188,7 +259,38 @@
 
                           {% if b.example %}
                             <p><strong>Example</strong>:</p>
-                            <pre><code>{{ b.example | escape }}</code></pre>
+                            <pre><code>{{ stringify(b.example, b.name) | escape }}</code></pre>
+                          {% endif %}
+
+                          {% if b.examples %}
+                            <p><strong>Examples</strong>:</p>
+                            <ul class="nav nav-tabs">
+                              {% for example in b.examples %}
+                                <li{%
+                                  if loop.first
+                                  %} class="active"{%
+                                  endif
+                                  %}>
+                                  <a href="#{{ resource.uniqueId }}_{{ method.method }}_responses_{{ response.code }}_body_examples_{{ loop.index }}" data-toggle="tab">
+                                    {{ example.displayName if example.displayName else example.name | escape }}
+                                  </a>
+                                </li>
+                              {% endfor %}
+                            </ul>
+                            <div class="tab-content">
+                              {% for example in b.examples %}
+                                <div class="tab-pane{%
+                                  if loop.first
+                                  %} active{%
+                                  endif
+                                  %}" id="{{ resource.uniqueId }}_{{ method.method }}_responses_{{ response.code }}_body_examples_{{ loop.index }}">
+											 {% if example.description %}
+												{% markdown %}{{ example.description }}{% endmarkdown %}
+											 {% endif %}
+                                  <pre><code>{{ stringify(example.value, b.name) | escape }}</code></pre>
+                                </div>
+                              {% endfor %}
+                            </div>
                           {% endif %}
                         {% endfor %}
                       {% endif %}

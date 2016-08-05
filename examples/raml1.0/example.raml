@@ -1,5 +1,5 @@
-#%RAML 0.8
-title: Example
+#%RAML 1.0
+title: Example RAML 1.0
 version: 1
 baseUri: http://example.com/{version}
 documentation:
@@ -34,15 +34,15 @@ documentation:
       Done
 
 securitySchemes:
-  - Unauthenticated: !include unauthenticated.raml
-  - oauth_1_0:
-      description: OAuth 1.0 continues to be supported for all API requests, but OAuth 2.0 is now preferred.
-      type: OAuth 1.0
-      settings:
-        requestTokenUri: https://api.dropbox.com/1/oauth/request_token
-        authorizationUri: https://www.dropbox.com/1/oauth/authorize
-        tokenCredentialsUri: https://api.dropbox.com/1/oauth/access_token
-  - x-something:
+  Unauthenticated: !include unauthenticated.raml
+  oauth_1_0:
+    description: OAuth 1.0 continues to be supported for all API requests, but OAuth 2.0 is now preferred.
+    type: OAuth 1.0
+    settings:
+      requestTokenUri: https://api.dropbox.com/1/oauth/request_token
+      authorizationUri: https://www.dropbox.com/1/oauth/authorize
+      tokenCredentialsUri: https://api.dropbox.com/1/oauth/access_token
+  x-something:
       description: The proprietary x-something header.
       type: x-{other}
       describedBy:
@@ -55,24 +55,64 @@ securitySchemes:
             description: Bad token.
 
 traits:
-  - paged:
-      queryParameters:
-        page_size:
-          description: The number of items per page
-          type: number
-          default: 20
-        page:
-          description: The page to return
-          type: number
-          default: 0
-      headers:
-        TESTING:
-          type: string
-          description: does a trait render its headers?
+  paged:
+    queryParameters:
+      page_size:
+        description: The number of items per page
+        type: number
+        default: 20
+      page:
+        description: The page to return
+        type: number
+        default: 0
+    headers:
+      TESTING:
+        type: string
+        description: does a trait render its headers?
+
+types:
+  Email:
+    type: string
+    pattern: ^.+@.+\..+$
+  Account:
+    properties:
+      name: string
+      email: Email
+      gender:
+        type: string
+        enum: [ "male", "female" ]
+        required: false
+  PasswordProtectedAccount:
+    type: Account
+    properties:
+      password: string
+    example: |
+      {
+        "email": "john@example.com",
+        "password": "super_secret",
+        "name": "John Doe"
+      }
+  AdminAccount:
+    type: Account
+    displayName: Administrator Account
+    description: |
+      A special account with administration access.
+  UserName:
+    type: string
+    minLength: 3
+    maxLength: 50
+  User:
+    properties:
+      name:
+        type: string
+        maxLength: 30
+      phone:
+        type: string
+        minLength: 10
+        maxLength: 10
 
 /account:
-  securedBy: [Unauthenticated]
-  displayName: ACCOUNTS
+  displayName: ACCOUNT
 
   description: |
     This is the top level description for /account.
@@ -88,12 +128,32 @@ traits:
       Paragraph two
     body:
       application/json:
-        example: |
-          {
-            "email": "john@example.com",
-            "password": "super_secret",
-            "name": "John Doe"
-          }
+        type: PasswordProtectedAccount
+        examples:
+          One: |
+            {
+              "email": "john@example.com",
+              "password": "super_secret",
+              "name": "John Doe"
+            }
+          Two:
+            value:
+              {
+                "email": "john2@example.com",
+                "password": "super_secret",
+                "name": "John Doe II"
+              }
+            displayName: "Another Account"
+            description: |
+              This shows another password protected account.
+              - Passwords are case-sensitive
+              - Passwords *must* have a non-alpha-numeric character
+      application/x-yaml:
+        type: PasswordProtectedAccount
+        example:
+          email: john@example.com
+          password: super_secret
+          name: John Doe
     responses:
       200:
         description: Account was created and user is now logged in
@@ -126,16 +186,42 @@ traits:
           description: Basic authentication header
           example: |
             Authorization: Basic QWxhZGRpbjpvcGVuIHNlc2FtZQ==
+      responses:
+        200:
+          description: Returns an account
+          body:
+            application/json:
+              type: Account
 
     put:
       description: Update the account
       body:
+        application/json:
+          schema: |
+            {
+              "title": "Example Schema",
+              "type": "object",
+              "properties": {
+                "firstName": {
+                  "type": "string"
+                },
+                "lastName": {
+                  "type": "string"
+                },
+                "age": {
+                  "description": "Age in years",
+                  "type": "integer",
+                  "minimum": 0
+                }
+              },
+              "required": ["firstName", "lastName"]
+            }
         application/x-www-form-urlencoded:
-          formParameters:
+          type: object
+          properties:
             name:
               description: name on account
               type: string
-              example: Naruto Uzumaki
             gender:
               enum: ["male", "female"]
 
@@ -152,6 +238,17 @@ traits:
               "email": "john@example.com",
               "password": "super_secret"
             }
+          examples:
+            first: |
+              {
+                "email": "john@example.com",
+                "password": "super_secret"
+              }
+            second: |
+              {
+                "email": "david@example.com",
+                "password": "super_secret"
+              }
       responses:
         200:
           description: Login was correct
@@ -159,6 +256,11 @@ traits:
             text/xml:
               example: |
                 <test>This is a test</test>
+              examples:
+                first: |
+                  <test>This is first test</test>
+                second: |
+                  <test>This is second test</test>
         400:
           description: Login was incorrect, please try again
         401:
@@ -187,7 +289,37 @@ traits:
 
     delete:
       description: Deletes the session, logging out the user
+  /admin:
+    post:
+      description: |
+        Creates a new administrator account.
+      body:
+        application/json:
+          type: AdminAccount
+      responses:
+        200:
+          description: Account was created and user is now logged in
+  /user:
+    post:
+      description: Test for multiple inheritence.
+      body:
+        application/json:
+          type: [ Account, User ]
 
+/accounts:
+  displayName: ACCOUNTS
+
+  post:
+    description: |
+      Creates multiple accounts.
+    body:
+      application/json:
+        properties:
+          count: number
+          accounts: PasswordProtectedAccount
+    responses:
+      200:
+        description: Accounts were created
 
 /forecasts:
   displayName: Forecasts
@@ -259,7 +391,6 @@ traits:
         example: '2014-12-31T00:00:00.000Z'
         type: string
         required: false
-        pattern: ^[a-zA-Z].+$
 
   post:
     description: Creates a new user
@@ -277,6 +408,17 @@ traits:
 
     delete:
       description: Deletes a user
+  /name_{userName}_{account}:
+    uriParameters:
+      userName:
+        description: The name of a user
+        type: UserName
+      account:
+        description: The account
+        type: Account
+    get:
+      description: Get all the users with a specific name
+
 
 
 /groups:
@@ -317,7 +459,7 @@ traits:
           application/json:
             example: |
               {
-                "user_id": 4,
+                "user_id": 4
               }
 
       /{userId}:
