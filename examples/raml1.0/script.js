@@ -7,9 +7,10 @@
  Run this as `node script.js`
  */
 
-const raml2html = require('..');
+const raml2html = require('../..');
 const path = require('path');
 const ramlFile = path.join(__dirname, 'example.raml');
+const fs = require('fs');
 
 /**
  * Using the default templates
@@ -21,6 +22,7 @@ const config1 = raml2html.getDefaultConfig();
 
 raml2html.render(ramlFile, config1).then(function (result) {
   console.log('1: ', result.length);
+  fs.writeFileSync('example.html', result);
 }, function (error) {
   console.log('error! ', error);
 });
@@ -28,7 +30,7 @@ raml2html.render(ramlFile, config1).then(function (result) {
 /**
  * Using your own templates using the default processRamlObj function
  */
-const config2 = raml2html.getDefaultConfig('./custom-template-test/template.nunjucks', __dirname);
+const config2 = raml2html.getDefaultConfig('../custom-template-test/template.nunjucks', __dirname);
 
 raml2html.render(ramlFile, config2).then(function (result) {
   console.log('2: ', result.trim().length);
