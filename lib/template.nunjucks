@@ -180,7 +180,9 @@
 
             {% for chapter in documentation %}
               <h3 id="{{ chapter.uniqueId }}"><a href="#{{ chapter.uniqueId }}">{{ chapter.title }}</a></h3>
-              {% markdown %}{{ chapter.content }}{% endmarkdown %}
+{% markdown %}
+{{ chapter.content }}
+{% endmarkdown %}
             {% endfor %}
           </div>
 
@@ -193,7 +195,9 @@
               <div class="panel-body">
                 {% if resource.description %}
                   <div class="top-resource-description">
-                    {% markdown %}{{ resource.description }}{% endmarkdown %}
+{% markdown %}
+{{ resource.description }}
+{% endmarkdown %}
                   </div>
                 {% endif %}
 
