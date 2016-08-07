@@ -8,5 +8,6 @@ module.exports = {
     'func-names': 0,
     'no-param-reassign': 0,
     'max-len': 0,
+    'prefer-spread': 0,
   }
 };

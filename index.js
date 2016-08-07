@@ -65,15 +65,6 @@ function getDefaultConfig(mainTemplate, templatesPath) {
       const env = nunjucks.configure(templatesPath, { watch: false });
       markdown.register(env, (md) => marked(md, { renderer }));
 
-      // Add extra function for finding a security scheme by name
-      ramlObj.securitySchemeWithName = function (name) {
-        const result = ramlObj.securitySchemes.find(s => s[name]);
-        if (result) {
-          return result[name];
-        }
-        return {};
-      };
-
       // Parse securedBy and use scopes if they are defined
       ramlObj.renderSecuredBy = function (securedBy) {
         let out = '';
