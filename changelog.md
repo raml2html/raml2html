@@ -1,4 +1,11 @@
-2.5.0 - August 3, 2016
+3.0.0-beta1 - August 7, 2016
+- Updated code to use ES6 syntax
+- Updated all dependencies
+- Breaking change: Node 4 or higher is now required
+- Breaking change: nunjucks-markdown 2.0.0 is a bit fuzzy with whitespace, please check
+  https://github.com/raml2html/raml2html/pull/231 for help with updating your custom templates.
+
+2.5.0 - August 4, 2016
 - Updated highlight.js to 9.3.0
 - Added support for securedBy scopes
 - Added syntax highlighting within modals
@@ -44,7 +51,7 @@
 2.0.0 - May 22, 2015
 - Using a promise based API, please see README for updated usage example
 - Using Nunjucks by default, instead of Handlebars
-- Made it a lot easier to completely customize the entire rendering process, allowing you for example to use not only 
+- Made it a lot easier to completely customize the entire rendering process, allowing you for example to use not only
   custom templates but even a different template engine
 - Got rid of the -s / https option, all external sources are simply always loaded via https
 - Got rid of the -r and -m template options, as the resource- and item templates are now simply loaded from within
