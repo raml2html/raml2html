@@ -67,7 +67,11 @@ function getDefaultConfig(mainTemplate, templatesPath) {
 
       // Add extra function for finding a security scheme by name
       ramlObj.securitySchemeWithName = function (name) {
-        return ramlObj.securitySchemes.find((scheme) => scheme[name]);
+        const result = ramlObj.securitySchemes.find(s => s[name]);
+        if (result) {
+          return result[name];
+        }
+        return {};
       };
 
       // Parse securedBy and use scopes if they are defined
