@@ -67,16 +67,18 @@
 
               {% if method.securedBy.length %}
                 {% for securedBy in method.securedBy %}
-                  <div class="alert alert-warning">
-                    {% set securedByScopes = renderSecuredBy(securedBy) %}
-                    <span class="glyphicon glyphicon-lock" title="Authentication required"></span> Secured by {{ securedByScopes }}
-                    {% set securityScheme = securitySchemeWithName(securedBy) %}
-                    {% if securityScheme.description %}
+                  {% if securedBy %}
+                    <div class="alert alert-warning">
+                      {% set securedByScopes = renderSecuredBy(securedBy) %}
+                      <span class="glyphicon glyphicon-lock" title="Authentication required"></span> Secured by {{ securedByScopes }}
+                      {% set securityScheme = securitySchemeWithName(securedBy) %}
+                      {% if securityScheme.description %}
 {% markdown %}
 {{ securityScheme.description }}
 {% endmarkdown %}
-                    {% endif %}
-                  </div>
+                      {% endif %}
+                    </div>
+                  {% endif %}
                 {% endfor %}
               {% endif %}
 

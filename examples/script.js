@@ -19,9 +19,9 @@ const ramlFile = path.join(__dirname, 'example.raml');
  */
 const config1 = raml2html.getDefaultConfig();
 
-raml2html.render(ramlFile, config1).then(function (result) {
+raml2html.render(ramlFile, config1).then((result) => {
   console.log('1: ', result.length);
-}, function (error) {
+}, (error) => {
   console.log('error! ', error);
 });
 
@@ -30,9 +30,9 @@ raml2html.render(ramlFile, config1).then(function (result) {
  */
 const config2 = raml2html.getDefaultConfig('./custom-template-test/template.nunjucks', __dirname);
 
-raml2html.render(ramlFile, config2).then(function (result) {
+raml2html.render(ramlFile, config2).then((result) => {
   console.log('2: ', result.trim().length);
-}, function (error) {
+}, (error) => {
   console.log('error! ', error);
 });
 
@@ -52,9 +52,9 @@ const config3 = {
   postProcessHtml: config1.postProcessHtml,
 };
 
-raml2html.render(ramlFile, config3).then(function (result) {
+raml2html.render(ramlFile, config3).then((result) => {
   console.log('3: ', result.length);
-}, function (error) {
+}, (error) => {
   console.log('error! ', error);
 });
 
@@ -75,17 +75,17 @@ const config4 = {
   },
 };
 
-raml2html.render(ramlFile, config4).then(function (result) {
+raml2html.render(ramlFile, config4).then((result) => {
   console.log('4: ', result.length);
-}, function (error) {
+}, (error) => {
   console.log('error! ', error);
 });
 
 /*
  * Testing if it works with no config at all
  */
-raml2html.render(ramlFile, {}).then(function (result) {
+raml2html.render(ramlFile, {}).then((result) => {
   console.log('5: ', Object.keys(result).length);
-}, function (error) {
+}, (error) => {
   console.log('error! ', error);
 });

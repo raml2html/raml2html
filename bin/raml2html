@@ -2,10 +2,10 @@
 
 'use strict';
 
-var program = require('commander');
-var fs = require('fs');
-var raml2html = require('..');
-var pjson = require('../package.json');
+const program = require('commander');
+const fs = require('fs');
+const raml2html = require('..');
+const pjson = require('../package.json');
 
 program
   .version(pjson.version)
@@ -15,7 +15,7 @@ program
   .option('-o, --output [output]', 'HTML output file')
   .parse(process.argv);
 
-var input = program.input;
+let input = program.input;
 
 if (!input) {
   if (program.args.length !== 1) {
@@ -28,7 +28,7 @@ if (!input) {
 }
 
 // Start the rendering process
-raml2html.render(input, raml2html.getDefaultConfig(program.template)).then(function(result) {
+raml2html.render(input, raml2html.getDefaultConfig(program.template)).then((result) => {
   if (program.output) {
     fs.writeFileSync(program.output, result);
   } else {
@@ -36,7 +36,7 @@ raml2html.render(input, raml2html.getDefaultConfig(program.template)).then(funct
     process.stdout.write(result);
     process.exit(0);
   }
-}).catch(function(error) {
+}).catch((error) => {
   console.error(new Error(error));
   process.exit(1);
 });

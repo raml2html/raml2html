@@ -15,7 +15,7 @@ const pjson = require('../package.json');
 const path = require('path');
 
 renderer.table = function (thead, tbody) {
-  return '<table class="table"><thead>' + thead + '</thead><tbody>' + tbody + '</tbody></table>';
+  return `<table class="table"><thead>${thead}</thead><tbody>${tbody}</tbody></table>`;
 };
 
 function responseExists(context) {
@@ -49,18 +49,21 @@ function _emptyResourceCheckHelper(options) {
   if (this.methods || (this.description && this.parentUrl)) {
     return options.fn(this);
   }
+  return false;
 }
 
 function _emptyRequestCheckHelper(options) {
   if (responseExists(this)) {
     return options.fn(this);
   }
+  return false;
 }
 
 function _missingRequestCheckHelper(options) {
   if (!responseExists(this)) {
     return options.fn(this);
   }
+  return false;
 }
 
 function _ifTypeIsString(options) {
@@ -86,12 +89,12 @@ const partials = {
 };
 
 // Register handlebar helpers
-helpers.forEac(function (helperName) {
+helpers.forEach((helperName) => {
   handlebars.registerHelper(helperName, helpers[helperName]);
 });
 
 // Register handlebar partials
-partials.forEach(function (partialName) {
+partials.forEach((partialName) => {
   handlebars.registerPartial(partialName, partials[partialName]);
 });
 
@@ -110,8 +113,8 @@ config.processRamlObj = function (ramlObj) {
   });
 };
 
-raml2html.render('example.raml', config).then(function (result) {
+raml2html.render('example.raml', config).then((result) => {
   console.log(result);
-}, function (error) {
+}, (error) => {
   console.log('error! ', error);
 });
