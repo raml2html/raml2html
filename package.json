@@ -6,6 +6,7 @@
     "name": "Kevin Renskers",
     "email": "info@mixedcase.nl"
   },
+  "engines" : { "node" : ">=4.0.0" },
   "bugs": {
     "url": "https://github.com/raml2html/raml2html/issues"
   },
