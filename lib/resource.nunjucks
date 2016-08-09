@@ -143,13 +143,17 @@
                         {% endif %}
 
                         {% if b.schema %}
-                          <p><strong>Schema</strong>:</p>
-                          <pre><code>{{ b.schema | escape }}</code></pre>
+                          <div>
+                            <p><strong>Schema</strong>: <a href="#" class="btn btn-xs btn-default toggle-schema-or-example">Show</a></p>
+                            <pre style="display: none"><code>{{ b.schema | escape }}</code></pre>
+                          </div>
                         {% endif %}
 
                         {% if b.example %}
-                          <p><strong>Example</strong>:</p>
-                          <pre><code>{{ b.example | escape }}</code></pre>
+                          <div>
+                            <p><strong>Example</strong>: <a href="#" class="btn btn-xs btn-default toggle-schema-or-example">Show</a></p>
+                            <pre style="display: none"><code>{{ b.example | escape }}</code></pre>
+                          </div>
                         {% endif %}
                       {% endfor %}
                     {% endif %}
@@ -182,13 +186,17 @@
                           <p><strong>Type: {{ key }}</strong></p>
 
                           {% if b.schema %}
-                            <p><strong>Schema</strong>:</p>
-                            <pre><code>{{ b.schema | escape }}</code></pre>
+                            <div>
+                              <p><strong>Schema</strong>: <a href="#" class="btn btn-xs btn-default toggle-schema-or-example">Show</a></p>
+                              <pre style="display: none"><code>{{ b.schema | escape }}</code></pre>
+                            </div>
                           {% endif %}
 
                           {% if b.example %}
-                            <p><strong>Example</strong>:</p>
-                            <pre><code>{{ b.example | escape }}</code></pre>
+                            <div>
+                              <p><strong>Example</strong>: <a href="#" class="btn btn-xs btn-default toggle-schema-or-example">Show</a></p>
+                              <pre style="display: none"><code>{{ b.example | escape }}</code></pre>
+                            </div>
                           {% endif %}
                         {% endfor %}
                       {% endif %}

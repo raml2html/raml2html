@@ -30,16 +30,20 @@
   {% markdown %}{{ item.description }}{% endmarkdown %}
 
   {% if item.schema %}
-    <p><strong>Schema</strong>:</p>
-    <pre><code>{{ item.schema | escape }}</code></pre>
+    <div>
+      <p><strong>Schema</strong>: <a href="#" class="btn btn-xs btn-default toggle-schema-or-example">Show</a></p>
+      <pre style="display: none"><code>{{ item.schema | escape }}</code></pre>
+    </div>
   {% endif %}
 
   {% if item.example %}
-    <p><strong>Example</strong>:</p>
-    {% if item.type == 'string' %}
-      <pre>{{ item.example| escape }}</pre>
-    {% else %}
-      <pre><code>{{ item.example | escape }}</code></pre>
-    {% endif %}
+    <div>
+      <p><strong>Example</strong>: <a href="#" class="btn btn-xs btn-default toggle-schema-or-example">Show</a></p>
+      {% if item.type == 'string' %}
+        <pre style="display: none">{{ item.example| escape }}</pre>
+      {% else %}
+        <pre style="display: none"><code>{{ item.example | escape }}</code></pre>
+      {% endif %}
+    </div>
   {% endif %}
 </li>
