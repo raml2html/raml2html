@@ -166,7 +166,38 @@
 
                         {% if b.example %}
                           <p><strong>Example</strong>:</p>
-                          <pre><code>{{ b.example | escape }}</code></pre>
+                          <pre><code>{{ stringify(b.example, b.name) | escape }}</code></pre>
+                        {% endif %}
+
+                        {% if b.examples %}
+                          <p><strong>Examples</strong>:</p>
+                          <ul class="nav nav-tabs">
+                            {% for example in b.examples %}
+                              <li{%
+                                if loop.first
+                                %} class="active"{%
+                                endif
+                                %}>
+                                <a href="#{{ resource.uniqueId }}_{{ method.method }}_body_examples_{{ loop.index }}" data-toggle="tab">
+                                  {{ example.displayName if example.displayName else example.name | escape }}
+                                </a>
+                              </li>
+                            {% endfor %}
+                          </ul>
+                          <div class="tab-content">
+                            {% for example in b.examples %}
+                              <div class="tab-pane{%
+                                if loop.first
+                                %} active{%
+                                endif
+                                %}" id="{{ resource.uniqueId }}_{{ method.method }}_body_examples_{{ loop.index }}">
+                                {% if example.description %}
+                                  {% markdown %}{{ example.description }}{% endmarkdown %}
+                                {% endif %}
+                                <pre><code>{{ stringify(example.value, b.name) | escape }}</code></pre>
+                              </div>
+                            {% endfor %}
+                          </div>
                         {% endif %}
                       {% endfor %}
                     {% endif %}
@@ -229,7 +260,38 @@
 
                           {% if b.example %}
                             <p><strong>Example</strong>:</p>
-                            <pre><code>{{ b.example | escape }}</code></pre>
+                            <pre><code>{{ stringify(b.example, b.name) | escape }}</code></pre>
+                          {% endif %}
+
+                          {% if b.examples %}
+                            <p><strong>Examples</strong>:</p>
+                            <ul class="nav nav-tabs">
+                              {% for example in b.examples %}
+                                <li{%
+                                  if loop.first
+                                  %} class="active"{%
+                                  endif
+                                  %}>
+                                  <a href="#{{ resource.uniqueId }}_{{ method.method }}_responses_{{ response.code }}_body_examples_{{ loop.index }}" data-toggle="tab">
+                                    {{ example.displayName if example.displayName else example.name | escape }}
+                                  </a>
+                                </li>
+                              {% endfor %}
+                            </ul>
+                            <div class="tab-content">
+                              {% for example in b.examples %}
+                                <div class="tab-pane{%
+                                  if loop.first
+                                  %} active{%
+                                  endif
+                                  %}" id="{{ resource.uniqueId }}_{{ method.method }}_responses_{{ response.code }}_body_examples_{{ loop.index }}">
+											 {% if example.description %}
+												{% markdown %}{{ example.description }}{% endmarkdown %}
+											 {% endif %}
+                                  <pre><code>{{ stringify(example.value, b.name) | escape }}</code></pre>
+                                </div>
+                              {% endfor %}
+                            </div>
                           {% endif %}
                         {% endfor %}
                       {% endif %}
