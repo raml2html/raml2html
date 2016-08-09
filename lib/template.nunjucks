@@ -50,20 +50,20 @@
 
         // allow to show/hide JSON shemas or examples
         $('.toggle-schema-or-example').on('click', function(e) {
-            e.preventDefault();
+          e.preventDefault();
 
-            var self = $(this);
+          var self = $(this);
 
-            self.parent().siblings('pre').slideToggle({
-                easing: 'linear',
-                complete: function() {
-                    if ($(this).is(':visible')) {
-                        self.text('Hide');
-                    } else {
-                        self.text('Show');
-                    }
-                }
-            });
+          self.parent().siblings('pre').slideToggle({
+            easing: 'linear',
+            complete: function() {
+              if ($(this).is(':visible')) {
+                self.text('Hide');
+              } else {
+                self.text('Show');
+              }
+            }
+          });
         });
       });
     </script>
