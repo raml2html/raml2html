@@ -1,3 +1,6 @@
+3.0.0 - August 10, 2016
+- Released without further changes
+
 3.0.0-beta2 - August 8, 2016
 - Updated to raml2obj 3.0.0-beta2
 - Fixed rendering of the github.raml example file (#249)
