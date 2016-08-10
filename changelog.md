@@ -1,3 +1,7 @@
+4.0.0-beta1 - August 10, 2016
+- Using raml2obj 4.0.0-beta1, which adds support for RAML 1.0
+  (even though raml2html's template doesn't support that yet)
+
 3.0.0 - August 10, 2016
 - Released without further changes
 

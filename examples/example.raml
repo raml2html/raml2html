@@ -259,7 +259,6 @@ traits:
         example: '2014-12-31T00:00:00.000Z'
         type: string
         required: false
-        pattern: ^[a-zA-Z].+$
 
   post:
     description: Creates a new user
@@ -317,7 +316,7 @@ traits:
           application/json:
             example: |
               {
-                "user_id": 4,
+                "user_id": 4
               }
 
       /{userId}:
