@@ -24,8 +24,7 @@
                     hljs.highlightBlock(block);
                 });
             });
-            
-            
+
             // open modal on hashes like #_action_get
             $(window).bind('hashchange', function(e) {
                 var anchor_id = document.location.hash.substr(1); //strip #
@@ -39,10 +38,10 @@
 
             // execute hashchange on first page load
             $(window).trigger('hashchange');
-            
+
             // remove url fragment on modal hide
             $('.modal').on('hidden.bs.modal', function() {
-                if(history && history.replaceState) { 
+                if(history && history.replaceState) {
                     history.replaceState({}, '', '#');
                 }
             });

@@ -6,6 +6,7 @@
     "name": "Kevin Renskers",
     "email": "info@mixedcase.nl"
   },
+  "engines" : { "node" : ">=4.0.0" },
   "bugs": {
     "url": "https://github.com/raml2html/raml2html/issues"
   },
@@ -17,8 +18,8 @@
     "nunjucks": "1.3.x",
     "nunjucks-markdown": "1.0.x",
     "q": "1.4.x",
-    "raml2obj": "git://github.com/raml2html/raml2obj.git#raml1.0",
-    "raml-jsonschema-expander": "1.1.x"
+    "raml-jsonschema-expander": "1.1.x",
+    "raml2obj": "git+https://github.com/raml2html/raml2obj.git#raml1.0"
   },
   "devDependencies": {
     "eslint": "1.10.x",

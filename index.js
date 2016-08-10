@@ -86,8 +86,8 @@ function getDefaultConfig(mainTemplate, templatesPath) {
        */
       ramlObj.getRootType = function (type) {
         // in 0.8 the type node was not an array, that changed in 1.0
-        if( typeof type.type === 'string' ) {
-          type.type = [ type.type ];
+        if (typeof type.type === 'string') {
+          type.type = [type.type];
         }
 
         if (type.type.length > 1) {
@@ -95,7 +95,7 @@ function getDefaultConfig(mainTemplate, templatesPath) {
           return 'object';
         }
 
-        if(ramlObj.types) {
+        if (ramlObj.types) {
           var parent = type.type[0];
           for (var index = 0; index < ramlObj.types.length; ++index) {
             if (typeof ramlObj.types[index][parent] !== 'undefined') {
