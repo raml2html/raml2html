@@ -41,7 +41,7 @@
     {% if item.type == 'string' %}
       <pre>{{ item.example| escape }}</pre>
     {% else %}
-      <pre><code>{{ item.example | escape }}</code></pre>
+      <pre><code>{{ item.structuredExample.value | escape }}</code></pre>
     {% endif %}
   {% endif %}
 </li>
