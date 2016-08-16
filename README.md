@@ -23,6 +23,13 @@ raml2html example.raml > example.html
 raml2html -t examples/custom-template-test/template.nunjucks -i example.raml -o example.html
 ```
 
+### As a Docker container
+```
+docker run --rm -v "$PWD":/data raml2html/raml2html --help
+docker run --rm -v "$PWD":/data raml2html/raml2html example.raml > example.html
+docker run --rm -v "$PWD":/data raml2html/raml2html -t examples/custom-template-test/template.nunjucks -i example.raml -o example.html
+```
+
 ### As a library
 
 #### Using the default templates or your own Nunjucks templates
