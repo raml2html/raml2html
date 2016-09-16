@@ -1,3 +1,6 @@
+3.0.1 - September 16, 2016
+- Fixed a problem where the output would be truncated after 65536 characters (#259)
+
 3.0.0 - August 10, 2016
 - Released without further changes
 
