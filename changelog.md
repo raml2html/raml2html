@@ -1,3 +1,6 @@
+3.0.1 - September 16, 2016
+- Fixed a problem where the output would be truncated after 65536 characters (#259)
+
 4.0.0-beta1 - August 10, 2016
 - Using raml2obj 4.0.0-beta1, which adds support for RAML 1.0
   (even though raml2html's template doesn't support that yet)

@@ -19,8 +19,8 @@
     "raml-jsonschema-expander": "1.1.x"
   },
   "devDependencies": {
-    "eslint": "3.2.x",
-    "eslint-config-loopwerk": "4.1.x"
+    "eslint": "3.4.x",
+    "eslint-config-loopwerk": "4.2.x"
   },
   "homepage": "https://github.com/raml2html/raml2html",
   "keywords": [

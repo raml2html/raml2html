@@ -33,8 +33,9 @@ raml2html.render(input, raml2html.getDefaultConfig(program.template)).then((resu
     fs.writeFileSync(program.output, result);
   } else {
     // Simply output to console
-    process.stdout.write(result);
-    process.exit(0);
+    process.stdout.write(result, () => {
+      process.exit(0);
+    });
   }
 }).catch((error) => {
   console.error(error);
