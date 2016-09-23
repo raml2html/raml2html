@@ -50,7 +50,7 @@ function getDefaultConfig(mainTemplate, templatesPath) {
   }
 
   return {
-    processRamlObj(ramlObj) {
+    processRamlObj(ramlObj, config) {
       const nunjucks = require('nunjucks');
       const markdown = require('nunjucks-markdown');
       const marked = require('marked');
