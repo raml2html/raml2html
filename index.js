@@ -23,7 +23,7 @@ function render(source, config) {
     ramlObj.config = config;
 
     if (config.processRamlObj) {
-      return config.processRamlObj(ramlObj).then((html) => {
+      return config.processRamlObj(ramlObj, config).then((html) => {
         if (config.postProcessHtml) {
           return config.postProcessHtml(html);
         }
@@ -56,6 +56,7 @@ function getDefaultConfig(mainTemplate, templatesPath) {
       const marked = require('marked');
       const ramljsonexpander = require('raml-jsonschema-expander');
       const renderer = new marked.Renderer();
+      
       renderer.table = function (thead, tbody) {
         // Render Bootstrap style tables
         return `<table class="table"><thead>${thead}</thead><tbody>${tbody}</tbody></table>`;
@@ -63,6 +64,10 @@ function getDefaultConfig(mainTemplate, templatesPath) {
 
       // Setup the Nunjucks environment with the markdown parser
       const env = nunjucks.configure(templatesPath, { autoescape: false });
+      
+      if(config.setupNunjucks)
+        config.setupNunjucks(env);
+      
       markdown.register(env, (md) => marked(md, { renderer }));
 
       // Parse securedBy and use scopes if they are defined
