@@ -1,3 +1,6 @@
+4.0.0-beta3 - ?
+- Allow Nunjucks config via `toconfig.setupNunjucks` (#261)
+
 4.0.0-beta2 - September 26, 2016
 - Using raml2obj 4.0.0-beta3
 - Fixed templates to use the changed output from raml2obj
