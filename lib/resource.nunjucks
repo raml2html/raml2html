@@ -121,19 +121,19 @@
                       </ul>
                     {% endif %}
 
-                    {% if method.headers %}
+                    {% if method.headers.length %}
                       <h3>Headers</h3>
                       <ul>
-                        {% for key, item in method.headers %}
+                        {% for item in method.headers %}
                           {% include "./item.nunjucks" %}
                         {% endfor %}
                       </ul>
                     {% endif %}
 
-                    {% if method.queryParameters %}
+                    {% if method.queryParameters.length %}
                       <h3>Query Parameters</h3>
                       <ul>
-                        {% for key, item in method.queryParameters %}
+                        {% for item in method.queryParameters %}
                           {% include "./item.nunjucks" %}
                         {% endfor %}
                       </ul>
@@ -141,25 +141,24 @@
 
                     {% if method.body %}
                       <h3>Body</h3>
-                      {% for key, b in method.body %}
-                        <p><strong>Type: {{ key }}</strong></p>
-                        {% if b.formParameters %}
+                      {% for b in method.body %}
+                        {% if b.type %}
+                          <p><strong>Type</strong>:</p>
+                          <pre><code>{{ b.type | escape }}</code></pre>
+                        {% endif %}
+
+                        {% if b.formParameters.length %}
                           <strong>Form Parameters</strong>
                           <ul>
-                            {% for key, item in b.formParameters %}
+                            {% for item in b.formParameters %}
                               {% include "./item.nunjucks" %}
                             {% endfor %}
                           </ul>
                         {% endif %}
 
-                        {% if b.schema %}
-                          <p><strong>Schema</strong>:</p>
-                          <pre><code>{{ b.schema | escape }}</code></pre>
-                        {% endif %}
-
                         {% if b.example %}
                           <p><strong>Example</strong>:</p>
-                          <pre><code>{{ b.example | escape }}</code></pre>
+                          <pre><code>{{ b.structuredExample.value | escape }}</code></pre>
                         {% endif %}
                       {% endfor %}
                     {% endif %}
@@ -168,39 +167,37 @@
 
                 {% if method.responses %}
                   <div class="tab-pane{%
-                    if not method.allUriParameters.length and not method.queryParameters
-                    and not method.headers and not method.body
+                    if not method.allUriParameters.length and not method.queryParameters.length
+                    and not method.headers.length and not method.body.length
                     %} active{%
                     endif
                     %}" id="{{ resource.uniqueId }}_{{ method.method }}_response">
-                    {% for key, response in method.responses %}
-                      <h2>HTTP status code <a href="http://httpstatus.es/{{ key }}" target="_blank">{{ key }}</a></h2>
+                    {% for response in method.responses %}
+                      <h2>HTTP status code <a href="http://httpstatus.es/{{ response.code }}" target="_blank">{{ response.code }}</a></h2>
 {% markdown %}
 {{ response.description}}
 {% endmarkdown %}
 
-                      {% if response.headers %}
+                      {% if response.headers.length %}
                         <h3>Headers</h3>
                         <ul>
-                          {% for key, item in response.headers %}
+                          {% for item in response.headers %}
                             {% include "./item.nunjucks" %}
                           {% endfor %}
                         </ul>
                       {% endif %}
 
-                      {% if response.body %}
+                      {% if response.body.length %}
                         <h3>Body</h3>
-                        {% for key, b in response.body %}
-                          <p><strong>Type: {{ key }}</strong></p>
-
-                          {% if b.schema %}
-                            <p><strong>Schema</strong>:</p>
-                            <pre><code>{{ b.schema | escape }}</code></pre>
+                        {% for b in response.body %}
+                          {% if b.type %}
+                            <p><strong>Type</strong>:</p>
+                            <pre><code>{{ b.type | escape }}</code></pre>
                           {% endif %}
 
                           {% if b.example %}
                             <p><strong>Example</strong>:</p>
-                            <pre><code>{{ b.example | escape }}</code></pre>
+                            <pre><code>{{ b.structuredExample.value | escape }}</code></pre>
                           {% endif %}
                         {% endfor %}
                       {% endif %}
@@ -214,24 +211,24 @@
                       {% set securityScheme = securitySchemeWithName(securedBy) %}
                       <h1>Secured by {{ securedBy }}</h1>
 
-                      {% if securityScheme.describedBy.headers %}
+                      {% if securityScheme.describedBy.headers.length %}
                         <h3>Headers</h3>
                         <ul>
-                          {% for key, item in securityScheme.describedBy.headers %}
+                          {% for item in securityScheme.describedBy.headers %}
                             {% include "./item.nunjucks" %}
                           {% endfor %}
                         </ul>
                       {% endif %}
 
-                      {% for key, response in securityScheme.describedBy.responses %}
-                        <h2>HTTP status code <a href="http://httpstatus.es/{{ key }}" target="_blank">{{ key }}</a></h2>
+                      {% for response in securityScheme.describedBy.responses.length %}
+                        <h2>HTTP status code <a href="http://httpstatus.es/{{ response.code }}" target="_blank">{{ response.code }}</a></h2>
 {% markdown %}
 {{ response.description}}
 {% endmarkdown %}
-                        {% if response.headers %}
+                        {% if response.headers.length %}
                           <h3>Headers</h3>
                           <ul>
-                            {% for key, item in response.headers %}
+                            {% for item in response.headers %}
                               {% include "./item.nunjucks" %}
                             {% endfor %}
                           </ul>

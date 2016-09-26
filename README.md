@@ -31,7 +31,7 @@ var raml2html = require('raml2html');
 var configWithDefaultTemplates = raml2html.getDefaultConfig();
 var configWithCustomTemplates = raml2html.getDefaultConfig('my-custom-template.nunjucks', __dirname);
 
-// source can either be a filename, url, file contents (string) or parsed RAML object
+// source can either be a filename, url, or parsed RAML object
 raml2html.render(source, configWithDefaultTemplates).then(function(result) {
   // Save the result to a file or do something else with the result
 }, function(error) {
@@ -62,7 +62,7 @@ Please note that if you want to use a different template language, you're probab
 ### Gulp
 You can use the [latest raml2html directly from Gulp](https://gist.github.com/iki/784ddd5ab33c1e1b726b), or use the third party 
 [gulp-raml2html plugin](https://www.npmjs.org/package/gulp-raml2html) (which uses an outdated version of raml2html).
- 
+
 ### Grunt
 There's a third party Grunt plugin at https://www.npmjs.org/package/grunt-raml2html.
 
@@ -72,7 +72,7 @@ Please see https://rawgit.com/raml2html/raml2html/master/examples/example.html f
 
 
 ## RAML version support
-Currently `RAML 0.8` version is fully supported. If you want to use `RAML 1.0`, you might use a temporary overcome (see [#156](https://github.com/raml2html/raml2html/issues/156)) or help to implement [this feature](https://github.com/raml-org/raml-js-parser-2/issues/11).
+raml2html 4 and higher only support RAML 1.0 files. Please stick with raml2html 3.x for RAML 0.8 support.
 
 
 ## Before you report a bug
