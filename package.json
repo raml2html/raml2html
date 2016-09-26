@@ -19,7 +19,7 @@
   },
   "devDependencies": {
     "eslint": "3.6.x",
-    "eslint-config-loopwerk": "5.0.x"
+    "eslint-config-loopwerk": "5.1.x"
   },
   "homepage": "https://github.com/raml2html/raml2html",
   "keywords": [
