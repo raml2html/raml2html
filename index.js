@@ -56,7 +56,7 @@ function getDefaultConfig(mainTemplate, templatesPath) {
       const marked = require('marked');
       const ramljsonexpander = require('raml-jsonschema-expander');
       const renderer = new marked.Renderer();
-      
+
       renderer.table = function (thead, tbody) {
         // Render Bootstrap style tables
         return `<table class="table"><thead>${thead}</thead><tbody>${tbody}</tbody></table>`;
@@ -64,10 +64,11 @@ function getDefaultConfig(mainTemplate, templatesPath) {
 
       // Setup the Nunjucks environment with the markdown parser
       const env = nunjucks.configure(templatesPath, { autoescape: false });
-      
-      if(config.setupNunjucks)
+
+      if (config.setupNunjucks) {
         config.setupNunjucks(env);
-      
+      }
+
       markdown.register(env, (md) => marked(md, { renderer }));
 
       // Parse securedBy and use scopes if they are defined
