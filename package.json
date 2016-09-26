@@ -18,8 +18,8 @@
     "raml2obj": "4.0.0-beta3"
   },
   "devDependencies": {
-    "eslint": "3.5.x",
-    "eslint-config-loopwerk": "4.3.x"
+    "eslint": "3.6.x",
+    "eslint-config-loopwerk": "5.0.x"
   },
   "homepage": "https://github.com/raml2html/raml2html",
   "keywords": [
