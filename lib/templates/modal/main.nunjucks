@@ -1,0 +1,172 @@
+{% import templates.common.macros.badge as badge %}
+{% import templates.modal.macros.tabSection as tabSection %}
+{% import templates.modal.macros.listItem as listItem %}
+
+<div class="modal fade" tabindex="0" id="{{ resource.uniqueId }}_{{ method.method }}">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+        <h4 class="modal-title" id="myModalLabel">
+          {{ badge.render(method) }}
+          <span class="parent">{{ resource.parentUrl }}</span>{{ resource.relativeUri }}
+        </h4>
+      </div>
+
+      <div class="modal-body">
+        {% if method.description %}
+          <div class="alert alert-info">
+            {% markdown %}
+            {{ method.description}}
+            {% endmarkdown %}
+          </div>
+        {% endif %}
+
+        {% if method.securedBy.length %}
+          {% for securedBy in method.securedBy %}
+            {% if securedBy %}
+              <div class="alert alert-warning">
+                {% set securedByScopes = renderSecuredBy(securedBy) %}
+                <span class="glyphicon glyphicon-lock" title="Authentication required"></span> Secured by {{ securedByScopes }}
+                {% set securityScheme = securitySchemes[securedBy] %}
+                {% if securityScheme.description %}
+                  {% markdown %}
+                  {{ securityScheme.description }}
+                  {% endmarkdown %}
+                {% endif %}
+              </div>
+            {% endif %}
+          {% endfor %}
+        {% endif %}
+
+        <!-- Nav tabs -->
+        <ul class="nav nav-tabs">
+          {% if method.allUriParameters.length or method.queryParameters or method.headers or method.body %}
+            <li class="active">
+              <a href="#{{ resource.uniqueId }}_{{ method.method }}_request" data-toggle="tab">Request</a>
+            </li>
+          {% endif %}
+
+          {% if method.responses %}
+            <li{%
+            if not method.allUriParameters.length and not method.queryParameters
+            and not method.headers and not method.body
+            %} class="active"{%
+            endif
+            %}>
+              <a href="#{{ resource.uniqueId }}_{{ method.method }}_response" data-toggle="tab">Response</a>
+            </li>
+          {% endif %}
+
+          {% if method.securedBy.length %}
+            <li>
+              <a href="#{{ resource.uniqueId }}_{{ method.method }}_securedby" data-toggle="tab">Security</a>
+            </li>
+          {% endif %}
+        </ul>
+
+        <!-- Tab panes -->
+        <div class="tab-content">
+          {% if method.allUriParameters.length or method.queryParameters or method.headers or method.body %}
+            <div class="tab-pane active" id="{{ resource.uniqueId }}_{{ method.method }}_request">
+              {% if resource.allUriParameters.length %}
+                {{ tabSection.render('URI Parameters', method.allUriParameter) }}
+              {% endif %}
+
+              {% if method.headers.length %}
+                {{ tabSection.render('Headers', method.headers) }}
+              {% endif %}
+
+              {% if method.queryParameters.length %}
+                {{ tabSection.render('Query Parameters', method.queryParameters) }}
+              {% endif %}
+
+              {% if method.body %}
+                <h3>Body</h3>
+                {% for b in method.body %}
+                  {% if b.type %}
+                    <p><strong>Type</strong>:</p>
+                    <pre><code>{{ b.type | escape }}</code></pre>
+                  {% endif %}
+
+                  {% if b.formParameters.length %}
+                    <strong>Form Parameters</strong>
+                    <ul>
+                      {% for item in b.formParameters %}
+                        {{ listItem.render(item) }}
+                      {% endfor %}
+                    </ul>
+                  {% endif %}
+
+                  {% if b.example %}
+                    <p><strong>Example</strong>:</p>
+                    <pre><code>{{ b.structuredExample.value | escape }}</code></pre>
+                  {% endif %}
+                {% endfor %}
+              {% endif %}
+            </div>
+          {% endif %}
+
+          {% if method.responses %}
+            <div class="tab-pane{%
+            if not method.allUriParameters.length and not method.queryParameters.length
+            and not method.headers.length and not method.body.length
+            %} active{%
+            endif
+            %}" id="{{ resource.uniqueId }}_{{ method.method }}_response">
+              {% for response in method.responses %}
+                <h2>HTTP status code <a href="http://httpstatus.es/{{ response.code }}" target="_blank">{{ response.code }}</a></h2>
+                {% markdown %}
+                {{ response.description}}
+                {% endmarkdown %}
+
+                {% if response.headers.length %}
+                  {{ tabSection.render('Headers', response.headers) }}
+                {% endif %}
+
+                {% if response.body.length %}
+                  <h3>Body</h3>
+                  {% for b in response.body %}
+                    {% if b.type %}
+                      <p><strong>Type</strong>:</p>
+                      <pre><code>{{ b.type | escape }}</code></pre>
+                    {% endif %}
+
+                    {% if b.example %}
+                      <p><strong>Example</strong>:</p>
+                      <pre><code>{{ b.structuredExample.value | escape }}</code></pre>
+                    {% endif %}
+                  {% endfor %}
+                {% endif %}
+              {% endfor %}
+            </div>
+          {% endif %}
+
+          {% if method.securedBy.length %}
+            <div class="tab-pane" id="{{ resource.uniqueId }}_{{ method.method }}_securedby">
+              {% for securedBy in method.securedBy %}
+                {% set securityScheme = securitySchemes[securedBy] %}
+                <h1>Secured by {{ securedBy }}</h1>
+
+                {% if securityScheme.describedBy.headers.length %}
+                  {{ tabSection.render('Headers', securityScheme.describedBy.headers) }}
+                {% endif %}
+
+                {% for response in securityScheme.describedBy.responses.length %}
+                  <h2>HTTP status code <a href="http://httpstatus.es/{{ response.code }}" target="_blank">{{ response.code }}</a></h2>
+                  {% markdown %}
+                  {{ response.description}}
+                  {% endmarkdown %}
+                  {% if response.headers.length %}
+                    {{ tabSection.render('Headers', response.headers) }}
+                  {% endif %}
+                {% endfor %}
+
+              {% endfor %}
+            </div>
+          {% endif %}
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

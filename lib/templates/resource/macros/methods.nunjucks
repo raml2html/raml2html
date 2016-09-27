@@ -1,0 +1,19 @@
+{% import templates.common.macros.badge as badge %}
+
+{% macro render(resource) %}
+
+<div class="list-group">
+  {% for method in resource.methods %}
+    <div onclick="window.location.href = '#{{ resource.uniqueId }}_{{ method.method }}'" class="list-group-item">
+      {{ badge.render(method) }}
+      <div class="method_description">
+        {% markdown %}
+        {{ method.description}}
+        {% endmarkdown %}
+      </div>
+      <div class="clearfix"></div>
+    </div>
+  {% endfor %}
+</div>
+
+{% endmacro %}
