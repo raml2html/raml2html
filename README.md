@@ -27,9 +27,9 @@ raml2html -t examples/custom-template-test/template.nunjucks -i example.raml -o 
 
 #### Using the default templates or your own Nunjucks templates
 ```javascript
-var raml2html = require('raml2html');
-var configWithDefaultTemplates = raml2html.getDefaultConfig();
-var configWithCustomTemplates = raml2html.getDefaultConfig('my-custom-template.nunjucks', __dirname);
+const raml2html = require('raml2html');
+const configWithDefaultTemplates = raml2html.getDefaultConfig();
+const configWithCustomTemplates = raml2html.getDefaultConfig('my-custom-template.nunjucks', __dirname);
 
 // source can either be a filename, url, or parsed RAML object
 raml2html.render(source, configWithDefaultTemplates).then(function(result) {
@@ -53,6 +53,10 @@ raml2html.render(source, config).then(function(result) {
   // Output error
 });
 ```
+
+If you only want to configure the default Nunjucks environment you don't have to override the entire `processRamlObj` 
+function. Just get the default config (`const config = raml2html.getDefaultConfig();`) and add a `setupNunjucks` function 
+to it that takes `env` as its only parameter.
 
 See also `example/script.js` for an example of using raml2html as a library.
 

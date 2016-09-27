@@ -9,10 +9,10 @@
 
 const raml2html = require('..');
 const path = require('path');
-const ramlFile = path.join(__dirname, 'example.raml');
+const ramlFile = path.join(__dirname, 'helloworld.raml');
 
 /**
- * Using the default templates
+ * Using the default templates.
  *
  * raml2html.render() needs a config object with at least a `processRamlObj` property.
  * Instead of creating this config object ourselves, we can just ask for raml2html.getDefaultConfig():
@@ -26,7 +26,7 @@ raml2html.render(ramlFile, config1).then((result) => {
 });
 
 /**
- * Using your own templates using the default processRamlObj function
+ * Using your own templates using the default processRamlObj function.
  */
 const config2 = raml2html.getDefaultConfig('./custom-template-test/template.nunjucks', __dirname);
 
@@ -59,7 +59,7 @@ raml2html.render(ramlFile, config3).then((result) => {
 });
 
 /**
- * You can also customize the postProcessHtml function
+ * You can also customize the postProcessHtml function.
  */
 const config4 = {
   processRamlObj() {
@@ -81,11 +81,26 @@ raml2html.render(ramlFile, config4).then((result) => {
   console.log('error! ', error);
 });
 
-/*
- * Testing if it works with no config at all
+/**
+ * Testing if it works with no config at all. It outputs a JSON version of the RAML file.
  */
 raml2html.render(ramlFile, {}).then((result) => {
   console.log('5: ', Object.keys(result).length);
+}, (error) => {
+  console.log('error! ', error);
+});
+
+/**
+ * If you want to only customize the Nunjucks configuration, just add a setupNunjucks function to the default config.
+ */
+const config6 = raml2html.getDefaultConfig();
+config6.setupNunjucks = function (env) {
+  // Do stuff with env here
+  env.bla = 'bla';
+};
+
+raml2html.render(ramlFile, config6).then((result) => {
+  console.log('6: ', result.length);
 }, (error) => {
   console.log('error! ', error);
 });

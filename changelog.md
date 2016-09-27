@@ -1,5 +1,8 @@
-4.0.0-beta3 - ?
-- Allow Nunjucks config via `toconfig.setupNunjucks` (#261)
+4.0.0-beta3 - September 27, 2016
+- Allow Nunjucks config via a `config.setupNunjucks` function (#261)
+- Fixed securedBy usage in the templates
+- Added a full featured RAML 1.0 example file (world-music-api.raml)
+- Fixed examples/script.js
 
 4.0.0-beta2 - September 26, 2016
 - Using raml2obj 4.0.0-beta3
