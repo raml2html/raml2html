@@ -42,42 +42,6 @@ function render(source, config) {
   });
 }
 
-const renderFns = {
-  /**
-   * Render Bootstrap style tables
-   */
-  table(thead, tbody) {
-    return `<table class="table"><thead>${thead}</thead><tbody>${tbody}</tbody></table>`;
-  },
-
-  /**
-   * Render securedBy
-   * @param securedBy
-   * @returns {string}
-   */
-  securedBy(securedBy) {
-    let out = '';
-    if (typeof securedBy === 'object') {
-      Object.keys(securedBy).forEach((key) => {
-        out += `<b>${key}</b>`;
-
-        if (securedBy[key].scopes.length) {
-          out += ' with scopes:<ul>';
-
-          securedBy[key].scopes.forEach((scope) => {
-            out += `<li>${scope}</li>`;
-          });
-
-          out += '</ul>';
-        }
-      });
-    } else {
-      out = `<b>${securedBy}</b>`;
-    }
-    return out;
-  }
-};
-
 /**
  * @param {String} [mainTemplate] - The filename of the main template, leave empty to use default templates
  * @param {String} [fileRoot] - Optional, by default it uses the current working directory
@@ -92,7 +56,7 @@ function getDefaultConfig(mainTemplate, fileRoot) {
 
     processRamlObj(ramlObj, config) {
       const renderer = new marked.Renderer();
-      renderer.table = renderFns.table;
+      renderer.table = this.renderFns.table;
 
       // Setup the Nunjucks environment with the markdown parser
       const env = nunjucks.configure(fileRoot, { autoescape: false });
@@ -106,7 +70,7 @@ function getDefaultConfig(mainTemplate, fileRoot) {
       markdown.register(env, md => marked(md, { renderer }));
 
       // Parse securedBy and use scopes if they are defined
-      ramlObj.renderSecuredBy = renderFns.securedBy;
+      ramlObj.renderSecuredBy = this.renderFns.securedBy;
 
       // Render the main template using the raml object and fix the double quotes
       let html = env.render(mainTemplate || lib.templates.html, ramlObj);
@@ -132,6 +96,42 @@ function getDefaultConfig(mainTemplate, fileRoot) {
         });
       });
     },
+
+    renderFns: {
+      /**
+       * Render Bootstrap style tables
+       */
+      table(thead, tbody) {
+        return `<table class="table"><thead>${thead}</thead><tbody>${tbody}</tbody></table>`;
+      },
+
+      /**
+       * Render securedBy
+       * @param securedBy
+       * @returns {string}
+       */
+      securedBy(securedBy) {
+        let out = '';
+        if (typeof securedBy === 'object') {
+          Object.keys(securedBy).forEach((key) => {
+            out += `<b>${key}</b>`;
+
+            if (securedBy[key].scopes.length) {
+              out += ' with scopes:<ul>';
+
+              securedBy[key].scopes.forEach((scope) => {
+                out += `<li>${scope}</li>`;
+              });
+
+              out += '</ul>';
+            }
+          });
+        } else {
+          out = `<b>${securedBy}</b>`;
+        }
+        return out;
+      }
+    }
   };
 }
 
