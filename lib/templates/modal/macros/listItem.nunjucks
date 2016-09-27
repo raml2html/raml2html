@@ -1,3 +1,5 @@
+{% macro render(item) %}
+
 <li>
   {% if item.displayName %}
     <strong>{{ item.displayName }}</strong>:
@@ -27,9 +29,9 @@
     )
   </em>
 
-{% markdown %}
-{{ item.description }}
-{% endmarkdown %}
+  {% markdown %}
+  {{ item.description }}
+  {% endmarkdown %}
 
   {% if item.schema %}
     <p><strong>Schema</strong>:</p>
@@ -45,3 +47,5 @@
     {% endif %}
   {% endif %}
 </li>
+
+{% endmacro %}

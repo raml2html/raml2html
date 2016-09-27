@@ -1,0 +1,4 @@
+<h3 id="{{ chapter.uniqueId }}"><a href="#{{ chapter.uniqueId }}">{{ chapter.title }}</a></h3>
+{% markdown %}
+{{ chapter.content }}
+{% endmarkdown %}

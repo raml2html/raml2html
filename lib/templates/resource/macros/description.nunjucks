@@ -1,0 +1,13 @@
+{% macro render(resource) %}
+
+{% if resource.parentUrl %}
+  {% if resource.description %}
+    <div class="resource-description">
+      {% markdown %}
+      {{ resource.description }}
+      {% endmarkdown %}
+    </div>
+  {% endif %}
+{% endif %}
+
+{% endmacro %}

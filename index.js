@@ -6,6 +6,10 @@ const nunjucks = require('nunjucks');
 const markdown = require('nunjucks-markdown');
 const marked = require('marked');
 const Minimize = require('minimize');
+const dirTree = require('./lib/dirTree');
+const path = require('path');
+
+const lib = dirTree(path.join(__dirname, './lib'));
 
 /**
  * Render the source RAML object using the config's processOutput function
@@ -38,30 +42,62 @@ function render(source, config) {
   });
 }
 
+const renderFns = {
+  /**
+   * Render Bootstrap style tables
+   */
+  table(thead, tbody) {
+    return `<table class="table"><thead>${thead}</thead><tbody>${tbody}</tbody></table>`;
+  },
+
+  /**
+   * Render securedBy
+   * @param securedBy
+   * @returns {string}
+   */
+  securedBy(securedBy) {
+    let out = '';
+    if (typeof securedBy === 'object') {
+      Object.keys(securedBy).forEach((key) => {
+        out += `<b>${key}</b>`;
+
+        if (securedBy[key].scopes.length) {
+          out += ' with scopes:<ul>';
+
+          securedBy[key].scopes.forEach((scope) => {
+            out += `<li>${scope}</li>`;
+          });
+
+          out += '</ul>';
+        }
+      });
+    } else {
+      out = `<b>${securedBy}</b>`;
+    }
+    return out;
+  }
+};
+
 /**
  * @param {String} [mainTemplate] - The filename of the main template, leave empty to use default templates
- * @param {String} [templatesPath] - Optional, by default it uses the current working directory
+ * @param {String} [fileRoot] - Optional, by default it uses the current working directory
  * @returns {{processRamlObj: Function, postProcessHtml: Function}}
  */
-function getDefaultConfig(mainTemplate, templatesPath) {
-  if (!mainTemplate) {
-    mainTemplate = './lib/template.nunjucks';
-
-    // When using the default template, make sure that Nunjucks isn't
-    // using the working directory since that might be anything
-    templatesPath = __dirname;
-  }
+function getDefaultConfig(mainTemplate, fileRoot) {
+  fileRoot = fileRoot || __dirname;
 
   return {
+    assets: lib.assets,
+    templates: lib.templates,
+
     processRamlObj(ramlObj, config) {
       const renderer = new marked.Renderer();
-      renderer.table = function (thead, tbody) {
-        // Render Bootstrap style tables
-        return `<table class="table"><thead>${thead}</thead><tbody>${tbody}</tbody></table>`;
-      };
+      renderer.table = renderFns.table;
 
       // Setup the Nunjucks environment with the markdown parser
-      const env = nunjucks.configure(templatesPath, { autoescape: false });
+      const env = nunjucks.configure(fileRoot, { autoescape: false });
+      env.addGlobal('assets', lib.assets);
+      env.addGlobal('templates', lib.templates);
 
       if (config.setupNunjucks) {
         config.setupNunjucks(env);
@@ -70,30 +106,10 @@ function getDefaultConfig(mainTemplate, templatesPath) {
       markdown.register(env, md => marked(md, { renderer }));
 
       // Parse securedBy and use scopes if they are defined
-      ramlObj.renderSecuredBy = function (securedBy) {
-        let out = '';
-        if (typeof securedBy === 'object') {
-          Object.keys(securedBy).forEach((key) => {
-            out += `<b>${key}</b>`;
-
-            if (securedBy[key].scopes.length) {
-              out += ' with scopes:<ul>';
-
-              securedBy[key].scopes.forEach((scope) => {
-                out += `<li>${scope}</li>`;
-              });
-
-              out += '</ul>';
-            }
-          });
-        } else {
-          out = `<b>${securedBy}</b>`;
-        }
-        return out;
-      };
+      ramlObj.renderSecuredBy = renderFns.securedBy;
 
       // Render the main template using the raml object and fix the double quotes
-      let html = env.render(mainTemplate, ramlObj);
+      let html = env.render(mainTemplate || lib.templates.html, ramlObj);
       html = html.replace(/&quot;/g, '"');
 
       // Return the promise with the html

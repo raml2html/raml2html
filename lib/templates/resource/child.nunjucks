@@ -1,0 +1,38 @@
+{% import templates.common.macros.badge as badge %}
+{% import templates.resource.macros.description as resourceDescription %}
+{% import templates.resource.macros.methods as resourceMethods %}
+
+{% if (resource.methods or (resource.description and resource.parentUrl)) %}
+  <div class="panel panel-white">
+    <div class="panel-heading">
+      <h4 class="panel-title">
+        <a class="collapsed" data-toggle="collapse" href="#panel_{{ resource.uniqueId }}">
+          <span class="parent">{{ resource.parentUrl }}</span>{{ resource.relativeUri }}
+        </a>
+
+        <span class="methods">
+          {% for method in resource.methods %}
+            <a href="#{{ resource.uniqueId }}_{{ method.method }}"><!-- modal shown by hashchange event -->
+              {{ badge.render(method) }}
+            </a>
+          {% endfor %}
+        </span>
+      </h4>
+    </div>
+
+    <div id="panel_{{ resource.uniqueId }}" class="panel-collapse collapse">
+      <div class="panel-body">
+        {{ resourceDescription.render(resource) }}
+        {{ resourceMethods.render(resource) }}
+      </div>
+    </div>
+
+    {% for method in resource.methods %}
+      {% include templates.modal.main %}
+    {% endfor %}
+  </div>
+{% endif %}
+
+{% for resource in resource.resources %}
+  {% include templates.resource.child %}
+{% endfor %}

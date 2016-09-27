@@ -1,0 +1,7 @@
+{% macro render(method) %}
+
+<span class="badge badge_{{ method.method }}">
+  {{ method.method }}{% if method.securedBy.length %} <span class="glyphicon glyphicon-lock" title="Authentication required"></span>{% endif %}
+</span>
+
+{% endmacro %}

@@ -1,0 +1,19 @@
+<div class="panel panel-default">
+  <div class="panel-heading">
+    <h3 id="{{ resource.uniqueId }}" class="panel-title">{% if resource.displayName %}{{ resource.displayName}}{% else %}{{ resource.relativeUri }}{% endif %}</h3>
+  </div>
+
+  <div class="panel-body">
+    {% if resource.description %}
+      <div class="top-resource-description">
+        {% markdown %}
+        {{ resource.description }}
+        {% endmarkdown %}
+      </div>
+    {% endif %}
+
+    <div class="panel-group">
+      {% include templates.resource.child %}
+    </div>
+  </div>
+</div>

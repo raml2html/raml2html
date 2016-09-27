@@ -1,0 +1,12 @@
+{% import templates.modal.macros.listItem as listItem %}
+
+{% macro render(title, items) %}
+
+<h3>{{ title }}</h3>
+<ul>
+  {% for item in items %}
+  {{ listItem.render(item) }}
+  {% endfor %}
+</ul>
+
+{% endmacro %}
