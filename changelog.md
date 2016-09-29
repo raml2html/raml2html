@@ -1,3 +1,11 @@
+4.0.0-beta4 - September 29, 2016
+- Using raml2obj 4.0.0-beta5 which expands types and always gives consistent examples arrays
+- Rendering baseUriParameters
+- Rendering `properties` instead of `formParameters`
+- Rendering multiple `examples`
+- Improved rendering of single item enums
+- Removed rendering of `types` for now
+
 4.0.0-beta3 - September 27, 2016
 - Allow Nunjucks config via a `config.setupNunjucks` function (#261)
 - Fixed securedBy usage in the templates

@@ -9,7 +9,11 @@
     {%- if item.required -%}required {% endif -%}
     (
     {%- if item.enum -%}
-      one of {{ item.enum.join(', ') }}
+      {%- if item.enum.length === 1 -%}
+        {{ item.enum.join(', ') }}
+      {%- else -%}
+        one of {{ item.enum.join(', ') }}
+      {%- endif -%}
     {%- else -%}
       {{ item.type }}
     {%- endif -%}
@@ -31,17 +35,21 @@
 {{ item.description }}
 {% endmarkdown %}
 
-  {% if item.schema %}
-    <p><strong>Schema</strong>:</p>
-    <pre><code>{{ item.schema | escape }}</code></pre>
+{#
+  {% if item.type %}
+    <p><strong>Type</strong>:</p>
+    <pre><code>{{ item.type | escape }}</code></pre>
   {% endif %}
+#}
 
-  {% if item.example %}
-    <p><strong>Example</strong>:</p>
-    {% if item.type == 'string' %}
-      <pre>{{ item.example| escape }}</pre>
-    {% else %}
-      <pre><code>{{ item.example | escape }}</code></pre>
-    {% endif %}
+  {% if item.examples.length %}
+    <p><strong>Examples</strong>:</p>
+    {% for example in item.examples %}
+      {% if item.type == 'string' %}
+        <pre>{{ example | escape }}</pre>
+      {% else %}
+        <pre><code>{{ example | escape }}</code></pre>
+      {% endif %}
+    {% endfor %}
   {% endif %}
 </li>

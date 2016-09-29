@@ -84,7 +84,7 @@
 
               <!-- Nav tabs -->
               <ul class="nav nav-tabs">
-                {% if method.allUriParameters.length or method.queryParameters or method.headers or method.body %}
+                {% if method.allUriParameters.length or method.queryString or method.queryParameters or method.headers or method.body %}
                   <li class="active">
                     <a href="#{{ resource.uniqueId }}_{{ method.method }}_request" data-toggle="tab">Request</a>
                   </li>
@@ -93,6 +93,7 @@
                 {% if method.responses %}
                   <li{%
                     if not method.allUriParameters.length and not method.queryParameters
+                    and not method.queryString
                     and not method.headers and not method.body
                     %} class="active"{%
                     endif
@@ -110,7 +111,7 @@
 
               <!-- Tab panes -->
               <div class="tab-content">
-                {% if method.allUriParameters.length or method.queryParameters or method.headers or method.body %}
+                {% if method.allUriParameters.length or method.queryString or method.queryParameters or method.headers or method.body %}
                   <div class="tab-pane active" id="{{ resource.uniqueId }}_{{ method.method }}_request">
                     {% if resource.allUriParameters.length %}
                       <h3>URI Parameters</h3>
@@ -130,6 +131,15 @@
                       </ul>
                     {% endif %}
 
+                    {% if method.queryString and method.queryString.properties.length %}
+                      <h3>Query String</h3>
+                      <ul>
+                        {% for item in method.queryString.properties %}
+                          {% include "./item.nunjucks" %}
+                        {% endfor %}
+                      </ul>
+                    {% endif %}
+
                     {% if method.queryParameters.length %}
                       <h3>Query Parameters</h3>
                       <ul>
@@ -142,23 +152,29 @@
                     {% if method.body %}
                       <h3>Body</h3>
                       {% for b in method.body %}
+                        <p><strong>Type: {{ b.key }}</strong></p>
+
+{#
                         {% if b.type %}
                           <p><strong>Type</strong>:</p>
                           <pre><code>{{ b.type | escape }}</code></pre>
                         {% endif %}
+#}
 
-                        {% if b.formParameters.length %}
-                          <strong>Form Parameters</strong>
+                        {% if b.properties.length %}
+                          <strong>Properties</strong>
                           <ul>
-                            {% for item in b.formParameters %}
+                            {% for item in b.properties %}
                               {% include "./item.nunjucks" %}
                             {% endfor %}
                           </ul>
                         {% endif %}
 
-                        {% if b.example %}
-                          <p><strong>Example</strong>:</p>
-                          <pre><code>{{ b.structuredExample.value | escape }}</code></pre>
+                        {% if b.examples.length %}
+                          <p><strong>Examples</strong>:</p>
+                          {% for example in b.examples %}
+                            <pre><code>{{ example | escape }}</code></pre>
+                          {% endfor %}
                         {% endif %}
                       {% endfor %}
                     {% endif %}
@@ -168,6 +184,7 @@
                 {% if method.responses %}
                   <div class="tab-pane{%
                     if not method.allUriParameters.length and not method.queryParameters.length
+                    and not method.queryString
                     and not method.headers.length and not method.body.length
                     %} active{%
                     endif
@@ -190,14 +207,29 @@
                       {% if response.body.length %}
                         <h3>Body</h3>
                         {% for b in response.body %}
+                          <p><strong>Type: {{ b.key }}</strong></p>
+
+{#
                           {% if b.type %}
                             <p><strong>Type</strong>:</p>
                             <pre><code>{{ b.type | escape }}</code></pre>
                           {% endif %}
+#}
 
-                          {% if b.example %}
-                            <p><strong>Example</strong>:</p>
-                            <pre><code>{{ b.structuredExample.value | escape }}</code></pre>
+                          {% if b.properties.length %}
+                            <strong>Properties</strong>
+                            <ul>
+                              {% for item in b.properties %}
+                                {% include "./item.nunjucks" %}
+                              {% endfor %}
+                            </ul>
+                          {% endif %}
+
+                          {% if b.examples.length %}
+                            <p><strong>Examples</strong>:</p>
+                            {% for example in b.examples %}
+                              <pre><code>{{ example | escape }}</code></pre>
+                            {% endfor %}
                           {% endif %}
                         {% endfor %}
                       {% endif %}

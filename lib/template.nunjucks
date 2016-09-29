@@ -178,6 +178,14 @@
             <h1>{{ title }} API documentation{% if version %} <small>version {{ version }}</small>{% endif %}</h1>
             <p>{{ baseUri }}</p>
 
+            {% if baseUriParameters %}
+              <ul>
+                {% for item in baseUriParameters %}
+                  {% include "./item.nunjucks" %}
+                {% endfor %}
+              </ul>
+            {% endif %}
+
             {% for chapter in documentation %}
               <h3 id="{{ chapter.uniqueId }}"><a href="#{{ chapter.uniqueId }}">{{ chapter.title }}</a></h3>
 {% markdown %}
