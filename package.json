@@ -15,7 +15,7 @@
     "minimize": "2.0.x",
     "nunjucks": "2.5.x",
     "nunjucks-markdown": "2.0.x",
-    "raml2obj": "4.0.0-beta5"
+    "raml2obj": "4.0.0-beta6"
   },
   "devDependencies": {
     "eslint": "3.6.x",

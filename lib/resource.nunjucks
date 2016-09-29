@@ -122,6 +122,15 @@
                       </ul>
                     {% endif %}
 
+                    {% if method.annotations.length %}
+                      <h3>Annotations</h3>
+                      <ul>
+                        {% for item in method.annotations %}
+                          {% include "./item.nunjucks" %}
+                        {% endfor %}
+                      </ul>
+                    {% endif %}
+
                     {% if method.headers.length %}
                       <h3>Headers</h3>
                       <ul>

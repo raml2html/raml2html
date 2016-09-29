@@ -1,9 +1,10 @@
 4.0.0-beta4 - September 29, 2016
-- Using raml2obj 4.0.0-beta5 which expands types and always gives consistent examples arrays
+- Using raml2obj 4.0.0-beta6 which expands types and always gives consistent examples arrays
 - Rendering baseUriParameters
 - Rendering `properties` instead of `formParameters`
 - Rendering multiple `examples`
 - Improved rendering of single item enums
+- Very basic initial rendering of annotations on methods
 - Removed rendering of `types` for now
 
 4.0.0-beta3 - September 27, 2016
