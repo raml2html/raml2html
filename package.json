@@ -1,7 +1,7 @@
 {
   "name": "raml2html",
   "description": "RAML to HTML documentation generator",
-  "version": "4.0.0-beta4",
+  "version": "4.0.0-beta5",
   "author": {
     "name": "Kevin Renskers",
     "email": "info@mixedcase.nl"
@@ -41,7 +41,8 @@
   },
   "files": [
     "index.js",
-    "bin/raml2html"
+    "bin/raml2html",
+    "lib"
   ],
   "engines": {
     "node": ">=4"

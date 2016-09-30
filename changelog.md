@@ -1,3 +1,6 @@
+4.0.0-beta5 - September 30, 2016
+- Fixed files list in package.json
+
 4.0.0-beta4 - September 29, 2016
 - Using raml2obj 4.0.0-beta6 which expands types and always gives consistent examples arrays
 - Rendering baseUriParameters
