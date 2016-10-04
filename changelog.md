@@ -1,3 +1,6 @@
+4.0.0-beta6 - October 4, 2016
+- Using raml2obj 4.0.0-beta7
+
 4.0.0-beta5 - September 30, 2016
 - Fixed files list in package.json
 
