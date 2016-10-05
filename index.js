@@ -25,6 +25,10 @@ function render(source, config) {
   return raml2obj.parse(source).then((ramlObj) => {
     ramlObj.config = config;
 
+    ramlObj.isStandardType = function (type) {
+      return type.indexOf('{') === -1 && type.indexOf('<') === -1;
+    };
+
     if (config.processRamlObj) {
       return config.processRamlObj(ramlObj, config).then((html) => {
         if (config.postProcessHtml) {

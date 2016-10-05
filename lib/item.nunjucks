@@ -37,13 +37,6 @@
 {{ item.description }}
 {% endmarkdown %}
 
-{#
-  {% if item.type %}
-    <p><strong>Type</strong>:</p>
-    <pre><code>{{ item.type | escape }}</code></pre>
-  {% endif %}
-#}
-
   {% if item.examples.length %}
     <p><strong>Examples</strong>:</p>
     {% for example in item.examples %}

@@ -1,3 +1,6 @@
+4.0.0-beta7 - October 5, 2016
+- Rendering types
+
 4.0.0-beta6 - October 4, 2016
 - Using raml2obj 4.0.0-beta7
 
