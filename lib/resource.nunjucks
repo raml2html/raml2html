@@ -163,17 +163,15 @@
                       {% for b in method.body %}
                         <p><strong>Media type</strong>: {{ b.key }}</p>
 
-                        {% if b.type.length %}
-                          {% for type in b.type %}
-                            {% if isStandardType(type) %}
-                              <p><strong>Type</strong>: {{ type }}</p>
-                            {% endif %}
+                        {% if b.type %}
+                          {% if isStandardType(b.type) %}
+                            <p><strong>Type</strong>: {{ b.type }}</p>
+                          {% endif %}
 
-                            {% if not isStandardType(type) %}
-                              <p><strong>Type</strong>:</p>
-                              <pre><code>{{ type | escape }}</code></pre>
-                            {% endif %}
-                          {% endfor %}
+                          {% if not isStandardType(b.type) %}
+                            <p><strong>Type</strong>:</p>
+                            <pre><code>{{ b.type | escape }}</code></pre>
+                          {% endif %}
                         {% endif %}
 
                         {% if b.properties.length %}
@@ -224,17 +222,15 @@
                         {% for b in response.body %}
                           <p><strong>Media type</strong>: {{ b.key }}</p>
 
-                          {% if b.type.length %}
-                            {% for type in b.type %}
-                              {% if isStandardType(type) %}
-                                <p><strong>Type</strong>: {{ type }}</p>
-                              {% endif %}
+                          {% if b.type %}
+                            {% if isStandardType(b.type) %}
+                              <p><strong>Type</strong>: {{ b.type }}</p>
+                            {% endif %}
 
-                              {% if not isStandardType(type) %}
-                                <p><strong>Type</strong>:</p>
-                                <pre><code>{{ type | escape }}</code></pre>
-                              {% endif %}
-                            {% endfor %}
+                            {% if not isStandardType(b.type) %}
+                              <p><strong>Type</strong>:</p>
+                              <pre><code>{{ b.type | escape }}</code></pre>
+                            {% endif %}
                           {% endif %}
 
                           {% if b.properties.length %}

@@ -1,3 +1,6 @@
+4.0.0-beta8 - October 14, 2016
+- Updated raml2obj to 4.0.0-beta9, which deals with type inheritance
+
 4.0.0-beta7 - October 5, 2016
 - Rendering types
 
