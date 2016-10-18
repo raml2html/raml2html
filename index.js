@@ -50,7 +50,9 @@ function render(source, config) {
 function getDefaultConfig(mainTemplate, templatesPath) {
   if (!mainTemplate) {
     mainTemplate = './lib/template.nunjucks';
+  }
 
+  if(!templatesPath) {
     // When using the default template, make sure that Nunjucks isn't
     // using the working directory since that might be anything
     templatesPath = __dirname;

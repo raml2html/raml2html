@@ -1,0 +1,178 @@
+{{#emptyResourceCheck}}
+    <div class="panel panel-white">
+        <div class="panel-heading">
+            <h4 class="panel-title">
+                 <a class="collapsed" data-toggle="collapse" href="#panel_{{uniqueId}}">
+                    <span class="parent">{{parentUrl}}</span>{{relativeUri}}
+                </a>
+
+                <span class="methods">
+                    {{#methods}}
+                        <a href="#{{../uniqueId}}_{{method}}"><!-- modal shown by hashchange event -->
+                            <span class="badge badge_{{method}}">{{method}}{{lock securedBy}}</span>
+                        </a>
+                    {{/methods}}
+                </span>
+            </h4>
+        </div>
+        <div id="panel_{{uniqueId}}" class="panel-collapse collapse">
+            <div class="panel-body">
+                {{#if parentUrl}}
+                    {{#if description}}
+                        <div class="resource-description">{{md description}}</div>
+                    {{/if}}
+                {{/if}}
+
+                <div class="list-group">
+                    {{#methods}}
+                        <div onclick="window.location.href = '#{{../uniqueId}}_{{method}}'" class="list-group-item">
+                            <span class="badge badge_{{method}}">{{method}}{{lock securedBy}}</span>
+                            <div class="method_description">{{md description}}</div>
+                            <div class="clearfix"></div>
+                        </div>
+                    {{/methods}}
+                </div>
+            </div>
+        </div>
+
+        {{#methods}}
+            <div class="modal fade" tabindex="0" id="{{../uniqueId}}_{{method}}">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                            <h4 class="modal-title" id="myModalLabel">
+                                <span class="badge badge_{{method}}">{{method}}{{lock securedBy}}</span>
+                                <span class="parent">{{../parentUrl}}</span>{{../relativeUri}}
+                            </h4>
+                        </div>
+                        <div class="modal-body">
+                            {{#if description}}
+                                <div class="alert alert-info">{{md description}}</div>
+                            {{/if}}
+
+                            {{#if securedBy}}
+                                <div class="alert alert-warning">
+                                    {{lock securedBy}} Secured by {{securedBy}}
+                                </div>
+                            {{/if}}
+
+                            <!-- Nav tabs -->
+                            <ul class="nav nav-tabs">
+                                {{#emptyRequestCheckHelper}}
+                                    <li class="active">
+                                        <a href="#{{../../uniqueId}}_{{method}}_request" data-toggle="tab">Request</a>
+                                    </li>
+                                {{/emptyRequestCheckHelper}}
+
+                                {{#if responses}}
+                                    <li{{#missingRequestCheckHelper}} class="active"{{/missingRequestCheckHelper}}>
+                                        <a href="#{{../../uniqueId}}_{{method}}_response" data-toggle="tab">Response</a>
+                                    </li>
+                                {{/if}}
+                            </ul>
+
+                            <!-- Tab panes -->
+                            <div class="tab-content">
+                                {{#emptyRequestCheckHelper}}
+                                    <div class="tab-pane active" id="{{../../uniqueId}}_{{method}}_request">
+                                        {{#if ../allUriParameters}}
+                                            <h3>URI Parameters</h3>
+                                            <ul>
+                                                {{#each ../../allUriParameters}}
+                                                    {{> item}}
+                                                {{/each}}
+                                            </ul>
+                                        {{/if}}
+
+                                        {{#if headers}}
+                                            <h3>Headers</h3>
+                                            <ul>
+                                                {{#each headers}}
+                                                    {{> item}}
+                                                {{/each}}
+                                            </ul>
+                                        {{/if}}
+
+                                        {{#if queryParameters}}
+                                            <h3>Query Parameters</h3>
+                                            <ul>
+                                                {{#each queryParameters}}
+                                                    {{> item}}
+                                                {{/each}}
+                                            </ul>
+                                        {{/if}}
+
+                                        {{#if body}}
+                                            <h3>Body</h3>
+                                            {{#each body}}
+                                                <p><strong>Type: {{@key}}</strong></p>
+                                                {{#if formParameters}}
+                                                    <strong>Form Parameters</strong>
+                                                    <ul>
+                                                        {{#each formParameters}}
+                                                            {{> item}}
+                                                        {{/each}}
+                                                    </ul>
+                                                {{/if}}
+
+                                                {{#if this.schema}}
+                                                    <p><strong>Schema</strong>:</p>
+                                                    <pre><code>{{this.schema}}</code></pre>
+                                                {{/if}}
+
+                                                {{#if this.example}}
+                                                    <p><strong>Example</strong>:</p>
+                                                    <pre><code>{{this.example}}</code></pre>
+                                                {{/if}}
+                                            {{/each}}
+                                        {{/if}}
+                                    </div>
+                                {{/emptyRequestCheckHelper}}
+
+                                {{#if responses}}
+                                    <div class="tab-pane{{#missingRequestCheckHelper}} active{{/missingRequestCheckHelper}}" id="{{../../uniqueId}}_{{method}}_response">
+                                        {{#each responses}}
+                                            <h2>HTTP status code <a href="http://httpstatus.es/{{@key}}" target="_blank">{{@key}}</a></h2>
+                                            {{md this.description}}
+
+                                            {{#if this.headers}}
+                                                <h3>Headers</h3>
+                                                <ul>
+                                                    {{#each this.headers}}
+                                                        {{> item}}
+                                                    {{/each}}
+                                                </ul>
+                                            {{/if}}
+
+                                            {{#if this.body}}
+                                                <h3>Body</h3>
+                                                {{#each this.body}}
+                                                    <p><strong>Type: {{@key}}</strong></p>
+
+                                                    {{#if this.schema}}
+                                                        <p><strong>Schema</strong>:</p>
+                                                        <pre><code>{{this.schema}}</code></pre>
+                                                    {{/if}}
+
+                                                    {{#if this.example}}
+                                                        <p><strong>Example</strong>:</p>
+                                                        <pre><code>{{this.example}}</code></pre>
+                                                    {{/if}}
+                                                {{/each}}
+                                            {{/if}}
+                                        {{/each}}
+                                    </div>
+                                {{/if}}
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        {{/methods}}
+    </div>
+{{/emptyResourceCheck}}
+
+{{#resources}}
+    {{> resource}}
+{{/resources}}
