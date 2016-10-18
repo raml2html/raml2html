@@ -7,7 +7,7 @@
     <meta name="generator" content="https://github.com/raml2html/raml2html {{ config.raml2HtmlVersion }}">
 
     <link rel="stylesheet" href="https://netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.3.0/styles/default.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootswatch/3.3.7/spacelab/bootstrap.min.css">
     <script type="text/javascript" src="https://code.jquery.com/jquery-1.11.0.min.js"></script>
     <script type="text/javascript" src="https://netdna.bootstrapcdn.com/bootstrap/3.1.1/js/bootstrap.min.js"></script>
     <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.3.0/highlight.min.js"></script>
@@ -103,7 +103,7 @@
         box-shadow: none;
       }
       .panel-white .panel-heading {
-        background: white;
+        background: inherit;
       }
       .tab-pane ul {
         padding-left: 2em;
@@ -133,7 +133,7 @@
       }
       .top-resource-description {
         border-bottom: 1px solid #ddd;
-        background: #fcfcfc;
+        background: inherit;
         padding: 15px 15px 0 15px;
         margin: -15px -15px 10px -15px;
       }

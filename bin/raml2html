@@ -13,6 +13,7 @@ program
   .option('-i, --input [input]', 'RAML input file')
   .option('-t, --template [template]', 'Filename of the custom Nunjucks template')
   .option('-o, --output [output]', 'HTML output file')
+  .option('-s, --skin [theme skin]', "Theme skins are based on https://bootswatch.com/ : default, cerulean, cosmo, cyborg, darkly, flatly, ...")
   .parse(process.argv);
 
 let input = program.input;
@@ -27,8 +28,10 @@ if (!input) {
   input = program.args[0];
 }
 
+let defaultConfiguration = raml2html.getDefaultConfig(`./lib/${program.skin}.nunjucks`)
+
 // Start the rendering process
-raml2html.render(input, raml2html.getDefaultConfig(program.template)).then((result) => {
+raml2html.render(input, defaultConfiguration).then((result) => {
   if (program.output) {
     fs.writeFileSync(program.output, result);
   } else {
@@ -38,6 +41,6 @@ raml2html.render(input, raml2html.getDefaultConfig(program.template)).then((resu
     });
   }
 }).catch((error) => {
-  console.error(error);
+  console.error(new Error(error));
   process.exit(1);
 });
