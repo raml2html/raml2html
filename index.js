@@ -26,6 +26,9 @@ function render(source, config) {
     ramlObj.config = config;
 
     ramlObj.isStandardType = function (type) {
+      if (type.properties) {
+        return false;
+      }
       return type.indexOf('{') === -1 && type.indexOf('<') === -1;
     };
 

@@ -1,3 +1,6 @@
+4.0.0-beta9 - October 19, 2016
+- Deal with object datatypes
+
 4.0.0-beta8 - October 14, 2016
 - Updated raml2obj to 4.0.0-beta9, which deals with type inheritance
 
