@@ -1,7 +1,7 @@
 {
   "name": "raml2html",
   "description": "RAML to HTML documentation generator",
-  "version": "4.0.0-beta8",
+  "version": "4.0.0-beta9",
   "author": {
     "name": "Kevin Renskers",
     "email": "info@mixedcase.nl"
