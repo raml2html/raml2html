@@ -1,3 +1,6 @@
+4.0.0-beta12 - November 1, 2016
+- Improved array type support (#265)
+
 4.0.0-beta11 - November 1, 2016
 - Updated raml2obj to 4.0.0-beta11, solving problems with JSON datatypes
 
