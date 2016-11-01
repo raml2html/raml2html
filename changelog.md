@@ -1,5 +1,8 @@
+4.0.0-beta11 - November 1, 2016
+- Updated raml2obj to 4.0.0-beta11, solving problems with JSON datatypes
+
 4.0.0-beta10 - October 31, 2016
-- Updated raml2obj
+- Updated raml2obj to 4.0.0-beta10
 
 4.0.0-beta9 - October 19, 2016
 - Deal with object datatypes

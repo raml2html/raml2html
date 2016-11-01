@@ -174,6 +174,11 @@
                           {% endif %}
                         {% endif %}
 
+                        {% if b.content %}
+                          <p><strong>Content</strong>:</p>
+                          <pre><code>{{ b.content | escape }}</code></pre>
+                        {% endif %}
+
                         {% if b.properties.length %}
                           <strong>Properties</strong>
                           <ul>
@@ -231,6 +236,11 @@
                               <p><strong>Type</strong>:</p>
                               <pre><code>{{ b.type | escape }}</code></pre>
                             {% endif %}
+                          {% endif %}
+
+                          {% if b.content %}
+                            <p><strong>Content</strong>:</p>
+                            <pre><code>{{ b.content | escape }}</code></pre>
                           {% endif %}
 
                           {% if b.properties.length %}
