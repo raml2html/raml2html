@@ -1,3 +1,6 @@
+4.0.0-beta14 - November 3, 2016
+- Fixed template render error (#272)
+
 4.0.0-beta13 - November 2, 2016
 - Updated raml2obj to 4.0.0-beta13, fixing type expansion in uriParameters (#271)
 

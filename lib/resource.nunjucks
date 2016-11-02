@@ -179,7 +179,7 @@
                           <pre><code>{{ b.content | escape }}</code></pre>
                         {% endif %}
 
-                        {% if b.items %}
+                        {% if b.items and b.items.properties %}
                           {% if isStandardType(b.items) %}
                             <p><strong>Items</strong>: {{ b.items }}</p>
                           {% endif %}
@@ -261,7 +261,7 @@
                             <pre><code>{{ b.content | escape }}</code></pre>
                           {% endif %}
 
-                          {% if b.items %}
+                          {% if b.items and b.items.properties %}
                             {% if isStandardType(b.items) %}
                               <p><strong>Items</strong>: {{ b.items }}</p>
                             {% endif %}
