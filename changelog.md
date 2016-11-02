@@ -1,3 +1,6 @@
+4.0.0-beta13 - November 2, 2016
+- Updated raml2obj to 4.0.0-beta13, fixing type expansion in uriParameters (#271)
+
 4.0.0-beta12 - November 1, 2016
 - Improved array type support (#265)
 
