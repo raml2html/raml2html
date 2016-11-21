@@ -1,7 +1,7 @@
 {
   "name": "raml2html",
   "description": "RAML to HTML documentation generator",
-  "version": "4.0.0-beta14",
+  "version": "4.0.0-beta15",
   "author": {
     "name": "Kevin Renskers",
     "email": "info@mixedcase.nl"
@@ -15,11 +15,12 @@
     "minimize": "2.0.x",
     "nunjucks": "2.5.x",
     "nunjucks-markdown": "2.0.x",
-    "raml2obj": "4.0.0-beta13"
+    "raml2obj": "4.0.0-beta15"
   },
   "devDependencies": {
-    "eslint": "3.9.x",
-    "eslint-config-loopwerk": "5.1.x"
+    "eslint": "3.10.x",
+    "eslint-config-loopwerk": "6.0.x",
+    "glob": "7.1.1"
   },
   "homepage": "https://github.com/raml2html/raml2html",
   "keywords": [
@@ -33,6 +34,7 @@
   },
   "preferGlobal": true,
   "scripts": {
+    "examples": "node examples/render-all-examples.js",
     "lint": "eslint .",
     "lintfix": "eslint . --fix"
   },

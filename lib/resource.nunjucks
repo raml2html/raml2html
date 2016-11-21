@@ -165,10 +165,12 @@
 
                         {% if b.type %}
                           {% if isStandardType(b.type) %}
-                            <p><strong>Type</strong>: {{ b.type }}</p>
-                          {% endif %}
-
-                          {% if not isStandardType(b.type) %}
+                            {% if b.type === 'array' %}
+                              <p><strong>Type</strong>: array of {% if isStandardType(b.items) %}{{ b.items }}{% else %}{{ b.items.displayName }}{% endif %}</p>
+                            {% else %}
+                              <p><strong>Type</strong>: {{ b.type }}</p>
+                            {% endif %}
+                          {% else %}
                             <p><strong>Type</strong>:</p>
                             <pre><code>{{ b.type | escape }}</code></pre>
                           {% endif %}
@@ -247,10 +249,12 @@
 
                           {% if b.type %}
                             {% if isStandardType(b.type) %}
-                              <p><strong>Type</strong>: {{ b.type }}</p>
-                            {% endif %}
-
-                            {% if not isStandardType(b.type) %}
+                              {% if b.type === 'array' %}
+                                <p><strong>Type</strong>: array of {% if isStandardType(b.items) %}{{ b.items }}{% else %}{{ b.items.displayName }}{% endif %}</p>
+                              {% else %}
+                                <p><strong>Type</strong>: {{ b.type }}</p>
+                              {% endif %}
+                            {% else %}
                               <p><strong>Type</strong>:</p>
                               <pre><code>{{ b.type | escape }}</code></pre>
                             {% endif %}

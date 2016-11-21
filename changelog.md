@@ -1,3 +1,7 @@
+4.0.0-beta15 - November 21, 2016
+- Updated raml2obj
+- Fixed rendering of type array of primitives (like string[])
+
 4.0.0-beta14 - November 3, 2016
 - Fixed template render error (#272)
 
