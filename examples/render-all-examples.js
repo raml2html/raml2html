@@ -8,6 +8,7 @@ const config = raml2html.getDefaultConfig();
 const examples = glob.sync('*.raml');
 
 examples.forEach((ramlFile) => {
+  console.log(ramlFile);
   raml2html.render(ramlFile, config).then((result) => {
     const filename = ramlFile.replace('.raml', '.html');
     fs.writeFileSync(filename, result);

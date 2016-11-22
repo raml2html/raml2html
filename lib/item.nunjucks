@@ -1,9 +1,5 @@
 <li>
-  {% if item.displayName %}
-    <strong>{{ item.displayName }}</strong>:
-  {% else %}
-    <strong>{{ item.key }}</strong>:
-  {% endif %}
+  <strong>{{ item.key }}</strong>:
 
   {% if not item.structuredValue %}
     <em>
@@ -16,7 +12,11 @@
           one of {{ item.enum.join(', ') }}
         {%- endif -%}
       {%- else -%}
-        {{ item.type }}
+        {%- if item.type === 'array' -%}
+          array of {% if isStandardType(item.items) %}{{ item.items }}{% else %}{{ item.items.displayName }}{% endif %}
+        {%- else -%}
+          {{ item.type }}
+        {%- endif -%}
       {%- endif -%}
 
       {%- if item.default or item.default == 0 or item.default == false %} - default: {{ item.default }}{%- endif -%}
@@ -36,6 +36,24 @@
 {% markdown %}
 {{ item.description }}
 {% endmarkdown %}
+
+  {% if item.items and item.items.properties %}
+    {% if isStandardType(item.items) %}
+      <p><strong>Items</strong>: {{ item.items }}</p>
+    {% endif %}
+
+    {% if not isStandardType(item.items) %}
+      <p><strong>Items</strong>: {{ item.items.displayName }}</p>
+
+      {% if item.items.properties %}
+        <ul class="items">
+          {% for item in item.items.properties %}
+            {% include "./item.nunjucks" %}
+          {% endfor %}
+        </ul>
+      {% endif %}
+    {% endif %}
+  {% endif %}
 
   {% if item.examples.length %}
     <p><strong>Examples</strong>:</p>

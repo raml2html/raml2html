@@ -1,3 +1,6 @@
+4.0.0-beta16 - November 22, 2016
+- Improved rendering of inherited array properties (#277)
+
 4.0.0-beta15 - November 21, 2016
 - Updated raml2obj
 - Fixed rendering of type array of primitives (like string[])
