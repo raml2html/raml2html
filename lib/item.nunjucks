@@ -69,4 +69,12 @@
   {% if item.structuredValue %}
     <pre><code>{{ item.structuredValue | dump }}</code></pre>
   {% endif %}
+
+  {% if item.properties %}
+    <ul>
+      {% for item in item.properties %}
+        {% include "./item.nunjucks" %}
+      {% endfor %}
+    </ul>
+  {% endif %}
 </li>
