@@ -1,3 +1,6 @@
+4.0.0-beta17 - November 23, 2016
+- Improved rendering of nested properties (#274)
+
 4.0.0-beta16 - November 22, 2016
 - Improved rendering of inherited array properties (#277)
 
