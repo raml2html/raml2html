@@ -1,3 +1,6 @@
+4.0.0-beta18 - November 30, 2016
+- Updated raml2obj
+
 4.0.0-beta17 - November 23, 2016
 - Improved rendering of nested properties (#274)
 
