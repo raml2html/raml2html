@@ -1,3 +1,6 @@
+4.0.0 - December 1, 2016
+- We're releasing 4.0.0 with RAML 1 support. Please keep in mind that we no longer support RAML 0.8 files. For other changes please check the beta's below.
+
 4.0.0-beta18 - November 30, 2016
 - Updated raml2obj
 

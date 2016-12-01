@@ -1,7 +1,7 @@
 {
   "name": "raml2html",
   "description": "RAML to HTML documentation generator",
-  "version": "4.0.0-beta18",
+  "version": "4.0.0",
   "author": {
     "name": "Kevin Renskers",
     "email": "info@mixedcase.nl"
@@ -15,7 +15,7 @@
     "minimize": "2.0.x",
     "nunjucks": "2.5.x",
     "nunjucks-markdown": "2.0.x",
-    "raml2obj": "4.0.0-beta16"
+    "raml2obj": "4.0.x"
   },
   "devDependencies": {
     "eslint": "3.11.x",
