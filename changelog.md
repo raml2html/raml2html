@@ -1,5 +1,76 @@
+4.0.0 - December 1, 2016
+- We're releasing 4.0.0 with RAML 1 support. Please keep in mind that we no longer support RAML 0.8 files. For other changes please check the beta's below.
+
+4.0.0-beta18 - November 30, 2016
+- Updated raml2obj
+
+4.0.0-beta17 - November 23, 2016
+- Improved rendering of nested properties (#274)
+
+4.0.0-beta16 - November 22, 2016
+- Improved rendering of inherited array properties (#277)
+
+4.0.0-beta15 - November 21, 2016
+- Updated raml2obj
+- Fixed rendering of type array of primitives (like string[])
+
+4.0.0-beta14 - November 3, 2016
+- Fixed template render error (#272)
+
+4.0.0-beta13 - November 2, 2016
+- Updated raml2obj to 4.0.0-beta13, fixing type expansion in uriParameters (#271)
+
+4.0.0-beta12 - November 1, 2016
+- Improved array type support (#265)
+
+4.0.0-beta11 - November 1, 2016
+- Updated raml2obj to 4.0.0-beta11, solving problems with JSON datatypes
+
+4.0.0-beta10 - October 31, 2016
+- Updated raml2obj to 4.0.0-beta10
+
+4.0.0-beta9 - October 19, 2016
+- Deal with object datatypes
+
+4.0.0-beta8 - October 14, 2016
+- Updated raml2obj to 4.0.0-beta9, which deals with type inheritance
+
+4.0.0-beta7 - October 5, 2016
+- Rendering types
+
+4.0.0-beta6 - October 4, 2016
+- Using raml2obj 4.0.0-beta7
+
+4.0.0-beta5 - September 30, 2016
+- Fixed files list in package.json
+
+4.0.0-beta4 - September 29, 2016
+- Using raml2obj 4.0.0-beta6 which expands types and always gives consistent examples arrays
+- Rendering baseUriParameters
+- Rendering `properties` instead of `formParameters`
+- Rendering multiple `examples`
+- Improved rendering of single item enums
+- Very basic initial rendering of annotations on methods
+- Removed rendering of `types` for now
+
+4.0.0-beta3 - September 27, 2016
+- Allow Nunjucks config via a `config.setupNunjucks` function (#261)
+- Fixed securedBy usage in the templates
+- Added a full featured RAML 1.0 example file (world-music-api.raml)
+- Fixed examples/script.js
+
+4.0.0-beta2 - September 26, 2016
+- Using raml2obj 4.0.0-beta3
+- Fixed templates to use the changed output from raml2obj
+- Added a new basic example RAML file
+- Removed a bunch of old examples
+
 3.0.1 - September 16, 2016
 - Fixed a problem where the output would be truncated after 65536 characters (#259)
+
+4.0.0-beta1 - August 10, 2016
+- Using raml2obj 4.0.0-beta1, which adds support for RAML 1.0
+  (even though raml2html's template doesn't support that yet)
 
 3.0.0 - August 10, 2016
 - Released without further changes

@@ -2,6 +2,10 @@
 
 const raml2obj = require('raml2obj');
 const pjson = require('./package.json');
+const nunjucks = require('nunjucks');
+const markdown = require('nunjucks-markdown');
+const marked = require('marked');
+const Minimize = require('minimize');
 
 /**
  * Render the source RAML object using the config's processOutput function
@@ -9,8 +13,7 @@ const pjson = require('./package.json');
  * The config object should contain at least the following property:
  * processRamlObj: function that takes the raw RAML object and returns a promise with the rendered HTML
  *
- * @param {(String|Object)} source - The source RAML file. Can be a filename, url, contents of the RAML file,
- * or an already-parsed RAML object.
+ * @param {(String|Object)} source - The source RAML file. Can be a filename, url, or an already-parsed RAML object.
  * @param {Object} config
  * @param {Function} config.processRamlObj
  * @returns a promise
@@ -22,8 +25,15 @@ function render(source, config) {
   return raml2obj.parse(source).then((ramlObj) => {
     ramlObj.config = config;
 
+    ramlObj.isStandardType = function (type) {
+      if (typeof type === 'object') {
+        return false;
+      }
+      return type.indexOf('{') === -1 && type.indexOf('<') === -1;
+    };
+
     if (config.processRamlObj) {
-      return config.processRamlObj(ramlObj).then((html) => {
+      return config.processRamlObj(ramlObj, config).then((html) => {
         if (config.postProcessHtml) {
           return config.postProcessHtml(html);
         }
@@ -50,11 +60,7 @@ function getDefaultConfig(mainTemplate, templatesPath) {
   }
 
   return {
-    processRamlObj(ramlObj) {
-      const nunjucks = require('nunjucks');
-      const markdown = require('nunjucks-markdown');
-      const marked = require('marked');
-      const ramljsonexpander = require('raml-jsonschema-expander');
+    processRamlObj(ramlObj, config) {
       const renderer = new marked.Renderer();
       renderer.table = function (thead, tbody) {
         // Render Bootstrap style tables
@@ -63,7 +69,12 @@ function getDefaultConfig(mainTemplate, templatesPath) {
 
       // Setup the Nunjucks environment with the markdown parser
       const env = nunjucks.configure(templatesPath, { autoescape: false });
-      markdown.register(env, (md) => marked(md, { renderer }));
+
+      if (config.setupNunjucks) {
+        config.setupNunjucks(env);
+      }
+
+      markdown.register(env, md => marked(md, { renderer }));
 
       // Parse securedBy and use scopes if they are defined
       ramlObj.renderSecuredBy = function (securedBy) {
@@ -88,9 +99,6 @@ function getDefaultConfig(mainTemplate, templatesPath) {
         return out;
       };
 
-      // Find and replace the $ref parameters.
-      ramlObj = ramljsonexpander.expandJsonSchemas(ramlObj);
-
       // Render the main template using the raml object and fix the double quotes
       let html = env.render(mainTemplate, ramlObj);
       html = html.replace(/&quot;/g, '"');
@@ -103,7 +111,6 @@ function getDefaultConfig(mainTemplate, templatesPath) {
 
     postProcessHtml(html) {
       // Minimize the generated html and return the promise with the result
-      const Minimize = require('minimize');
       const minimize = new Minimize({ quotes: true });
 
       return new Promise((resolve, reject) => {
@@ -125,6 +132,6 @@ module.exports = {
 };
 
 if (require.main === module) {
-  console.log('This script is meant to be used as a library. You probably want to run bin/raml2html if you\'re looking for a CLI.');
+  console.log("This script is meant to be used as a library. You probably want to run bin/raml2html if you're looking for a CLI.");
   process.exit(1);
 }

@@ -1,18 +1,4 @@
-<!DOCTYPE HTML>
-<html>
-  <head>
-    <title>{{ title }} API documentation</title>
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-    <meta name="generator" content="https://github.com/raml2html/raml2html {{ config.raml2HtmlVersion }}">
-
-    <link rel="stylesheet" href="https://netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.3.0/styles/default.min.css">
-    <script type="text/javascript" src="https://code.jquery.com/jquery-1.11.0.min.js"></script>
-    <script type="text/javascript" src="https://netdna.bootstrapcdn.com/bootstrap/3.1.1/js/bootstrap.min.js"></script>
-    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.3.0/highlight.min.js"></script>
-
-    <script type="text/javascript">
+<!DOCTYPE HTML><html><head><title>Test API documentation</title><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta http-equiv="Content-Type" content="text/html; charset=utf-8"><meta name="generator" content="https://github.com/raml2html/raml2html 4.0.0-beta17"><link rel="stylesheet" href="https://netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css"><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.3.0/styles/default.min.css"><script type="text/javascript" src="https://code.jquery.com/jquery-1.11.0.min.js"></script><script type="text/javascript" src="https://netdna.bootstrapcdn.com/bootstrap/3.1.1/js/bootstrap.min.js"></script><script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.3.0/highlight.min.js"></script><script type="text/javascript">
       $(document).ready(function() {
         $('.page-header pre code, .top-resource-description pre code, .modal-body pre code').each(function(i, block) {
           hljs.highlightBlock(block);
@@ -48,9 +34,7 @@
           } catch(e) {}
         });
       });
-    </script>
-
-    <style>
+    </script><style>
       .hljs {
         background: transparent;
       }
@@ -176,66 +160,4 @@
         font-size: 13px;
         line-height: 1.42857143;
       }
-    </style>
-  </head>
-
-  <body data-spy="scroll" data-target="#sidebar">
-    <div class="container">
-      <div class="row">
-        <div class="col-md-9" role="main">
-          <div class="page-header">
-            <h1>{{ title }} API documentation{% if version %} <small>version {{ version }}</small>{% endif %}</h1>
-            <p>{{ baseUri }}</p>
-
-            {% if baseUriParameters %}
-              <ul>
-                {% for item in baseUriParameters %}
-                  {% include "./item.nunjucks" %}
-                {% endfor %}
-              </ul>
-            {% endif %}
-
-            {% for chapter in documentation %}
-              <h3 id="{{ chapter.uniqueId }}"><a href="#{{ chapter.uniqueId }}">{{ chapter.title }}</a></h3>
-{% markdown %}
-{{ chapter.content }}
-{% endmarkdown %}
-            {% endfor %}
-          </div>
-
-          {% for resource in resources %}
-            <div class="panel panel-default">
-              <div class="panel-heading">
-                <h3 id="{{ resource.uniqueId }}" class="panel-title">{% if resource.displayName %}{{ resource.displayName}}{% else %}{{ resource.relativeUri }}{% endif %}</h3>
-              </div>
-
-              <div class="panel-body">
-                {% if resource.description %}
-                  <div class="top-resource-description">
-{% markdown %}
-{{ resource.description }}
-{% endmarkdown %}
-                  </div>
-                {% endif %}
-
-                <div class="panel-group">
-                  {% include "./resource.nunjucks" %}
-                </div>
-              </div>
-            </div>
-          {% endfor %}
-        </div>
-
-        <div class="col-md-3">
-          <div id="sidebar" class="hidden-print affix" role="complementary">
-            <ul class="nav nav-pills nav-stacked">
-              {% for resource in resources %}
-                <li><a href="#{{ resource.uniqueId}}">{% if resource.displayName %}{{ resource.displayName}}{% else %}{{ resource.relativeUri }}{% endif %}</a></li>
-              {% endfor %}
-            </ul>
-          </div>
-        </div>
-      </div>
-    </div>
-  </body>
-</html>
+    </style></head><body data-spy="scroll" data-target="#sidebar"><div class="container"><div class="row"><div class="col-md-9" role="main"><div class="page-header"><h1>Test API documentation <small>version v1</small></h1><p>https://exmaple.com/{version}</p><ul><li><strong>version</strong>: <em>required (v1)</em></li></ul></div><div class="panel panel-default"><div class="panel-heading"><h3 id="foos" class="panel-title">/foos</h3></div><div class="panel-body"><div class="panel-group"><div class="panel panel-white"><div class="panel-heading"><h4 class="panel-title"><a class="collapsed" data-toggle="collapse" href="#panel_foos"><span class="parent"></span>/foos</a> <span class="methods"><a href="#foos_get"><span class="badge badge_get">get</span></a></span></h4></div><div id="panel_foos" class="panel-collapse collapse"><div class="panel-body"><div class="list-group"><div onclick="window.location.href = '#foos_get'" class="list-group-item"><span class="badge badge_get">get</span><div class="method_description"></div><div class="clearfix"></div></div></div></div></div><div class="modal fade" tabindex="0" id="foos_get"><div class="modal-dialog"><div class="modal-content"><div class="modal-header"><button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button><h4 class="modal-title" id="myModalLabel"><span class="badge badge_get">get</span> <span class="parent"></span>/foos</h4></div><div class="modal-body"><ul class="nav nav-tabs"><li class="active"><a href="#foos_get_response" data-toggle="tab">Response</a></li></ul><div class="tab-content"><div class="tab-pane active" id="foos_get_response"><h2>HTTP status code <a href="http://httpstatus.es/200" target="_blank">200</a></h2><h3>Body</h3><p><strong>Media type</strong>: application/json</p><p><strong>Type</strong>: object</p><strong>Properties</strong><ul><li><strong>a</strong>: <em>required (string)</em></li><li><strong>foos</strong>: <em>required (array of Foo)</em><p><strong>Items</strong>: Foo</p><ul class="items"><li><strong>id</strong>: <em>required (string)</em></li></ul></li></ul></div></div></div></div></div></div></div></div></div></div></div><div class="col-md-3"><div id="sidebar" class="hidden-print affix" role="complementary"><ul class="nav nav-pills nav-stacked"><li><a href="#foos">/foos</a></li></ul></div></div></div></div></body></html>
