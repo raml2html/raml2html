@@ -72,7 +72,9 @@ There's a third party Grunt plugin at https://www.npmjs.org/package/grunt-raml2h
 
 
 ## Example output
-Please see https://rawgit.com/raml2html/raml2html/master/examples/example.html for a live example.
+Please see the following links for live examples:
+https://rawgit.com/raml2html/raml2html/master/examples/helloworld.html
+https://rawgit.com/raml2html/raml2html/master/examples/world-music-api.html
 
 
 ## RAML version support
