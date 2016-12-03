@@ -83,7 +83,7 @@ raml2html 4 and higher only support RAML 1.0 files. Please stick with raml2html 
 
 ## Before you report a bug
 If you get parsing errors, please do not report them to raml2html: it doesn't do the actual RAML parsing.
-Review the error and fix your RAML file, or open a new issue at [raml-js-parser](https://github.com/raml-org/raml-js-parser).
+Review the error and fix your RAML file, or open a new issue at [raml-js-parser](https://github.com/raml-org/raml-js-parser-2).
 
 
 ## Contributing
