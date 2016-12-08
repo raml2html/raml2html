@@ -1,3 +1,6 @@
+4.0.2 - December 8, 2016
+- Improve error output (#289)
+
 4.0.1 - December 8, 2016
 - Documentation fixes
 
