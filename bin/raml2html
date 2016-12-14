@@ -38,6 +38,6 @@ raml2html.render(input, raml2html.getDefaultConfig(program.template)).then((resu
     });
   }
 }).catch((error) => {
-  console.error(error);
+  console.error(JSON.stringify(error, null, 2));
   process.exit(1);
 });

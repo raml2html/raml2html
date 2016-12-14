@@ -7,6 +7,9 @@
 A simple RAML to HTML documentation generator, written for Node.js.
 Check [raml2md](https://github.com/raml2html/raml2md) for a RAML to Markdown generator.
 
+### RAML version support
+raml2html 4 and higher only support RAML 1.0 files. Please stick with raml2html 3.x for RAML 0.8 support.
+
 
 ## Install
 ```
@@ -75,10 +78,6 @@ There's a third party Grunt plugin at https://www.npmjs.org/package/grunt-raml2h
 Please see the following links for live examples:
 https://rawgit.com/raml2html/raml2html/master/examples/helloworld.html
 https://rawgit.com/raml2html/raml2html/master/examples/world-music-api.html
-
-
-## RAML version support
-raml2html 4 and higher only support RAML 1.0 files. Please stick with raml2html 3.x for RAML 0.8 support.
 
 
 ## Before you report a bug
