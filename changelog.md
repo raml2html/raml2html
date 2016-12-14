@@ -1,3 +1,6 @@
+4.0.3 - December 12, 2016
+- Render item examples (#293)
+
 4.0.2 - December 8, 2016
 - Improve error output (#289)
 
