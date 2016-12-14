@@ -189,12 +189,23 @@
                           {% if not isStandardType(b.items) %}
                             <p><strong>Items</strong>: {{ b.items.displayName }}</p>
 
-                            {% if b.items.properties %}
-                              <ul class="items">
-                                {% for item in b.items.properties %}
-                                  {% include "./item.nunjucks" %}
-                                {% endfor %}
-                              </ul>
+                            {% if b.items.properties or b.items.examples.length %}
+                              <div class="items">
+                                {% if b.items.properties %}
+                                  <ul>
+                                    {% for item in b.items.properties %}
+                                      {% include "./item.nunjucks" %}
+                                    {% endfor %}
+                                  </ul>
+                                {% endif %}
+
+                                {% if b.items.examples.length %}
+                                  <p><strong>Examples</strong>:</p>
+                                  {% for example in b.items.examples %}
+                                    <pre><code>{{ example | escape }}</code></pre>
+                                  {% endfor %}
+                                {% endif %}
+                              </div>
                             {% endif %}
                           {% endif %}
                         {% endif %}
@@ -273,12 +284,23 @@
                             {% if not isStandardType(b.items) %}
                               <p><strong>Items</strong>: {{ b.items.displayName }}</p>
 
-                              {% if b.items.properties %}
-                                <ul class="items">
-                                  {% for item in b.items.properties %}
-                                    {% include "./item.nunjucks" %}
-                                  {% endfor %}
-                                </ul>
+                              {% if b.items.properties or b.items.examples.length %}
+                                <div class="items">
+                                  {% if b.items.properties %}
+                                    <ul>
+                                      {% for item in b.items.properties %}
+                                        {% include "./item.nunjucks" %}
+                                      {% endfor %}
+                                    </ul>
+                                  {% endif %}
+
+                                  {% if b.items.examples.length %}
+                                    <p><strong>Examples</strong>:</p>
+                                    {% for example in b.items.examples %}
+                                      <pre><code>{{ example | escape }}</code></pre>
+                                    {% endfor %}
+                                  {% endif %}
+                                </div>
                               {% endif %}
                             {% endif %}
                           {% endif %}

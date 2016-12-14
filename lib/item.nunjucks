@@ -45,12 +45,23 @@
     {% if not isStandardType(item.items) %}
       <p><strong>Items</strong>: {{ item.items.displayName }}</p>
 
-      {% if item.items.properties %}
-        <ul class="items">
-          {% for item in item.items.properties %}
-            {% include "./item.nunjucks" %}
-          {% endfor %}
-        </ul>
+      {% if b.items.properties or b.items.examples.length %}
+        <div class="items">
+          {% if item.items.properties %}
+            <ul>
+              {% for item in item.items.properties %}
+                {% include "./item.nunjucks" %}
+              {% endfor %}
+            </ul>
+          {% endif %}
+
+          {% if item.items.examples.length %}
+            <p><strong>Examples</strong>:</p>
+            {% for example in item.items.examples %}
+              <pre><code>{{ example | escape }}</code></pre>
+            {% endfor %}
+          {% endif %}
+        </div>
       {% endif %}
     {% endif %}
   {% endif %}
