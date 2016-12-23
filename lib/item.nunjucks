@@ -45,7 +45,7 @@
     {% if not isStandardType(item.items) %}
       <p><strong>Items</strong>: {{ item.items.displayName }}</p>
 
-      {% if b.items.properties or b.items.examples.length %}
+      {% if item.items.properties or item.items.examples.length %}
         <div class="items">
           {% if item.items.properties %}
             <ul>
