@@ -1,0 +1,43 @@
+#!/usr/bin/env node
+
+'use strict';
+
+const program = require('commander');
+const fs = require('fs');
+const raml2html = require('..');
+const pjson = require('../package.json');
+
+program
+  .version(pjson.version)
+  .usage('[options] [RAML input file]')
+  .option('-i, --input [input]', 'RAML input file')
+  .option('-t, --template [template]', 'Filename of the custom Nunjucks template')
+  .option('-o, --output [output]', 'HTML output file')
+  .parse(process.argv);
+
+let input = program.input;
+
+if (!input) {
+  if (program.args.length !== 1) {
+    console.error('Error: You need to specify the RAML input file');
+    program.help();
+    process.exit(1);
+  }
+
+  input = program.args[0];
+}
+
+// Start the rendering process
+raml2html.render(input, raml2html.getDefaultConfig(program.template)).then((result) => {
+  if (program.output) {
+    fs.writeFileSync(program.output, result);
+  } else {
+    // Simply output to console
+    process.stdout.write(result, () => {
+      process.exit(0);
+    });
+  }
+}).catch((error) => {
+  console.error(JSON.stringify(error, null, 2));
+  process.exit(1);
+});

@@ -1,7 +1,14 @@
 # RAML to HTML
 
+[![Downloads](https://img.shields.io/npm/dm/raml2html.svg)](https://www.npmjs.com/package/raml2html)
+[![NPM version](http://img.shields.io/npm/v/raml2html.svg)](https://www.npmjs.org/package/raml2html)
+[![js-standard-style](https://img.shields.io/badge/code%20style-airbnb-blue.svg?style=flat)](https://github.com/airbnb/javascript)
+
 A simple RAML to HTML documentation generator, written for Node.js.
-Check [raml2md](https://github.com/kevinrenskers/raml2md) for a RAML to Markdown generator.
+Check [raml2md](https://github.com/raml2html/raml2md) for a RAML to Markdown generator.
+
+### RAML version support
+raml2html 4 and higher only support RAML 1.0 files. Please stick with raml2html 3.x for RAML 0.8 support.
 
 
 ## Install
@@ -13,77 +20,90 @@ npm i -g raml2html
 ## Usage
 
 ### As a command line script
-
 ```
 raml2html --help
 raml2html example.raml > example.html
-raml2html -i example.raml -o example.html
-raml2html -s -i example.raml -o example.html
-```
-
-Using your own templates:
-
-```
-raml2html -t custom-template.handlebars -r custom-resource.handlebars -m custom-item.handlebars -i example.raml -o example.html
+raml2html -t examples/custom-template-test/template.nunjucks -i example.raml -o example.html
 ```
 
 ### As a library
 
-```
-var raml2html = require('raml2html');
+#### Using the default templates or your own Nunjucks templates
+```javascript
+const raml2html = require('raml2html');
+const configWithDefaultTemplates = raml2html.getDefaultConfig();
+const configWithCustomTemplates = raml2html.getDefaultConfig('my-custom-template.nunjucks', __dirname);
 
-// Using the default templates:
-// source can either be a filename, url, file contents (string) or parsed RAML object
-var config = raml2html.getDefaultConfig(https); // https is a boolean, true means https links will be used instead of http
-raml2html.render(source, config, onSuccess, onError);
-
-// Using your own templates:
-// - config should be an object with at least an `template` property
-// - config can also include `helpers` and `partials`
-// - config can also include a function `processOutput` which will receive the raw rendered HTML, onSuccess and onError callbacks
-// - the config object will be accessible from your handlebars templates
-raml2html.render(source, config, onSuccess, onError);
+// source can either be a filename, url, or parsed RAML object
+raml2html.render(source, configWithDefaultTemplates).then(function(result) {
+  // Save the result to a file or do something else with the result
+}, function(error) {
+  // Output error
+});
 ```
+
+#### Using your own processing function, for when you want to use another template language
+```javascript
+/**
+ * config should be an object with at least an `processRamlObj` property which is a function that receives the raw RAML 
+ * object and must return a promise with the result. You can do whatever you want in this function.
+ *
+ * You can also supply a postProcessHtml function that can for example minify the generated HTML.
+ */
+raml2html.render(source, config).then(function(result) {
+  // Save the result to a file or do something else with the result
+}, function(error) {
+  // Output error
+});
+```
+
+If you only want to configure the default Nunjucks environment you don't have to override the entire `processRamlObj` 
+function. Just get the default config (`const config = raml2html.getDefaultConfig();`) and add a `setupNunjucks` function 
+to it that takes `env` as its only parameter.
+
+See also `example/script.js` for an example of using raml2html as a library.
+
+Please note that if you want to use a different template language, you're probably better off directly using
+[raml2obj](https://github.com/raml2html/raml2obj).
 
 ### Gulp
-There's a Gulp plugin at https://www.npmjs.org/package/gulp-raml2html.
+You can use the [latest raml2html directly from Gulp](https://gist.github.com/iki/784ddd5ab33c1e1b726b), or use the third party 
+[gulp-raml2html plugin](https://www.npmjs.org/package/gulp-raml2html) (which uses an outdated version of raml2html).
 
 ### Grunt
-There's a Grunt plugin at https://www.npmjs.org/package/grunt-raml2html.
+There's a third party Grunt plugin at https://www.npmjs.org/package/grunt-raml2html.
 
 
 ## Example output
-![Example output](https://raw.github.com/kevinrenskers/raml2html/master/examples/example.png)
+Please see the following links for live examples:
+https://rawgit.com/raml2html/raml2html/master/examples/helloworld.html
+https://rawgit.com/raml2html/raml2html/master/examples/world-music-api.html
 
 
 ## Before you report a bug
 If you get parsing errors, please do not report them to raml2html: it doesn't do the actual RAML parsing.
-Review the error and fix your RAML file, or open a new issue at [raml-js-parser](https://github.com/raml-org/raml-js-parser).
+Review the error and fix your RAML file, or open a new issue at [raml-js-parser](https://github.com/raml-org/raml-js-parser-2).
 
 
 ## Contributing
 raml2html is an open source project and your contribution is very much appreciated.
 
 1. Check for open issues or open a fresh issue to start a discussion around a feature idea or a bug.
-2. Fork the repository on Github and make your changes on the **develop** branch (or branch off of it).
-   Please retain the code style that is used in the project.
+2. Fork the repository on Github and make your changes on the **develop** branch (or branch off of it).  
+   Please retain the [code style](https://github.com/airbnb/javascript) that is used in the project and `npm run lint` before committing. 
 3. Add an example of the new feature to example.raml (if applicable)
 4. Send a pull request (with the **develop** branch as the target).
 
-A big thank you goes out to everyone who helped with the project, the [contributors](https://github.com/kevinrenskers/raml2html/graphs/contributors)
+If your pull request is merged feel free to ask for push access. We want to get more maintainers! If you do
+have push access, please still work on feature branches and create pull requests, which then get reviewed.
+You can also review other people's pull requests and be involved in that way.
+
+A big thank you goes out to everyone who helped with the project, the [contributors](https://github.com/raml2html/raml2html/graphs/contributors)
 and everyone who took the time to report issues and give feedback.
 
 
 ## Changelog
-See [changelog.md](https://github.com/kevinrenskers/raml2html/blob/master/changelog.md)
-
-
-## To do
-This project is still a work in progress, but the output is very usable already (and is in fact used by multiple
-companies including Google). Still left to do, in no particular order:
-
-* Template options (for example to turn off side bar navigation)
-* Finish HTML output, currently there's still some stuff missing (like securedBy)
+See [changelog.md](https://github.com/raml2html/raml2html/blob/master/changelog.md)
 
 
 ## License

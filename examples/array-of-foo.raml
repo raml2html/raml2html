@@ -1,0 +1,20 @@
+#%RAML 1.0
+title: Test
+description: Test of array support
+version: v1
+baseUri:
+  value: https://exmaple.com/{version}
+protocols: HTTPS
+mediaType: application/json
+
+types:
+  Foo:
+    properties:
+      id: string
+  Foos: Foo[]
+
+/foos:
+  get:
+    responses:
+      200:
+        body: Foos
