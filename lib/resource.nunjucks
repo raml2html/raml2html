@@ -202,7 +202,10 @@
                                 {% if b.items.examples.length %}
                                   <p><strong>Examples</strong>:</p>
                                   {% for example in b.items.examples %}
-                                    <pre><code>{{ example | escape }}</code></pre>
+                                    <hr/>
+                                    <p><strong>{{ example.name }}</strong>: {{ example.displayName }}</p>
+                                    <p>{{ example.description }}</p>
+                                    <pre><code>{{ example.value | escape }}</code></pre>
                                   {% endfor %}
                                 {% endif %}
                               </div>
@@ -222,7 +225,10 @@
                         {% if b.examples.length %}
                           <p><strong>Examples</strong>:</p>
                           {% for example in b.examples %}
-                            <pre><code>{{ example | escape }}</code></pre>
+                            <hr/>
+                            <p><strong>{{ example.name }}</strong>: {{ example.displayName }}</p>
+                            <p>{{ example.description }}</p>
+                            <pre><code>{{ example.value | escape }}</code></pre>
                           {% endfor %}
                         {% endif %}
                       {% endfor %}
@@ -297,7 +303,10 @@
                                   {% if b.items.examples.length %}
                                     <p><strong>Examples</strong>:</p>
                                     {% for example in b.items.examples %}
-                                      <pre><code>{{ example | escape }}</code></pre>
+                                      <hr/>
+                                      <p><strong>{{ example.name }}</strong>: {{ example.displayName }}</p>
+                                      <p>{{ example.description }}</p>
+                                      <pre><code>{{ example.value | escape }}</code></pre>
                                     {% endfor %}
                                   {% endif %}
                                 </div>
@@ -317,7 +326,10 @@
                           {% if b.examples.length %}
                             <p><strong>Examples</strong>:</p>
                             {% for example in b.examples %}
-                              <pre><code>{{ example | escape }}</code></pre>
+                              <hr/>
+                              <p><strong>{{ example.name }}</strong>: {{ example.displayName }}</p>
+                              <p>{{ example.description }}</p>
+                              <pre><code>{{ example.value | escape }}</code></pre>
                             {% endfor %}
                           {% endif %}
                         {% endfor %}
