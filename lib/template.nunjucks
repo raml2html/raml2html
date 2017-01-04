@@ -27,8 +27,7 @@
 
         // open modal on hashes like #_action_get
         $(window).bind('hashchange', function(e) {
-          var anchor_id = document.location.hash.substr(1); //strip #
-          var element = $('#' + anchor_id);
+          var element = $(document.location.hash);
 
           // do we have such element + is it a modal?  --> show it
           if (element.length && element.hasClass('modal')) {
@@ -44,6 +43,7 @@
           try {
             if (history && history.replaceState) {
                 history.replaceState({}, '', '#');
+                window.location.href = '#';
             }
           } catch(e) {}
         });
