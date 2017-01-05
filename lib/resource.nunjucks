@@ -203,8 +203,12 @@
                                   <p><strong>Examples</strong>:</p>
                                   {% for example in b.items.examples %}
                                     <hr/>
-                                    <p><strong>{{ example.name }}</strong>: {{ example.displayName }}</p>
-                                    <p>{{ example.description }}</p>
+                                    {% if (example.name or example.displayName) %}
+                                      <p><strong>{{ example.name }}</strong>: {{ example.displayName }}</p>
+                                    {% endif %}
+                                    {% if (example.description) %}
+                                      <p>{{ example.description }}</p>
+                                    {% endif %}
                                     <pre><code>{{ example.value | escape }}</code></pre>
                                   {% endfor %}
                                 {% endif %}
@@ -226,8 +230,12 @@
                           <p><strong>Examples</strong>:</p>
                           {% for example in b.examples %}
                             <hr/>
-                            <p><strong>{{ example.name }}</strong>: {{ example.displayName }}</p>
-                            <p>{{ example.description }}</p>
+                            {% if (example.name or example.displayName) %}
+                              <p><strong>{{ example.name }}</strong>: {{ example.displayName }}</p>
+                            {% endif %}
+                            {% if (example.description) %}
+                              <p>{{ example.description }}</p>
+                            {% endif %}
                             <pre><code>{{ example.value | escape }}</code></pre>
                           {% endfor %}
                         {% endif %}
@@ -304,8 +312,12 @@
                                     <p><strong>Examples</strong>:</p>
                                     {% for example in b.items.examples %}
                                       <hr/>
-                                      <p><strong>{{ example.name }}</strong>: {{ example.displayName }}</p>
-                                      <p>{{ example.description }}</p>
+                                      {% if (example.name or example.displayName) %}
+                                        <p><strong>{{ example.name }}</strong>: {{ example.displayName }}</p>
+                                      {% endif %}
+                                      {% if (example.description) %}
+                                        <p>{{ example.description }}</p>
+                                      {% endif %}
                                       <pre><code>{{ example.value | escape }}</code></pre>
                                     {% endfor %}
                                   {% endif %}
@@ -327,8 +339,12 @@
                             <p><strong>Examples</strong>:</p>
                             {% for example in b.examples %}
                               <hr/>
-                              <p><strong>{{ example.name }}</strong>: {{ example.displayName }}</p>
-                              <p>{{ example.description }}</p>
+                              {% if (example.name or example.displayName) %}
+                                <p><strong>{{ example.name }}</strong>: {{ example.displayName }}</p>
+                              {% endif %}
+                              {% if (example.description) %}
+                                <p>{{ example.description }}</p>
+                              {% endif %}
                               <pre><code>{{ example.value | escape }}</code></pre>
                             {% endfor %}
                           {% endif %}
