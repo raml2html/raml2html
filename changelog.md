@@ -1,3 +1,7 @@
+4.0.4 - December 27, 2016
+- Put properties before example for item (#299)
+- Fix template variable reference that prevented type properties from rendering (#300)
+
 4.0.3 - December 12, 2016
 - Render item examples (#293)
 
