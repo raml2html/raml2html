@@ -1,6 +1,5 @@
 <li>
   <strong>{{ item.key }}</strong>:
-
   {% if not item.structuredValue %}
     <em>
       {%- if item.required -%}required {% endif -%}
@@ -43,10 +42,10 @@
     {% endif %}
 
     {% if not isStandardType(item.items) %}
-      <p><strong>Items</strong>: {{ item.items.displayName }}</p>
+      <p><strong>{{ item.items.displayName }}</strong>: <em>({{ item.items.type }})</em>
 
-      {% if item.items.properties or item.items.examples.length %}
-        <div class="items">
+      {% if item.items.properties or item.items.examples.length or item.items.schema.length %}
+        <!--<div class="items">-->
           {% if item.items.properties %}
             <ul>
               {% for item in item.items.properties %}
@@ -56,13 +55,25 @@
           {% endif %}
 
           {% if item.items.examples.length %}
-            <p><strong>Examples</strong>:</p>
+            <p><strong>Example{% if item.items.examples.length > 1 %}s{% endif %}</strong>:</p>
             {% for example in item.items.examples %}
-              <pre><code>{{ example | escape }}</code></pre>
+            {% if item.items.type == 'string' or item.items.type == 'integer' %}
+              <code>{{ example | escape }}</code></p>
+            {% else %}
+              </p><pre><code>{{ example | escape }}</code></pre>
+            {% endif %}
             {% endfor %}
           {% endif %}
-        </div>
+
+          {% if item.items.schema.length %}
+            <p><strong>Schema</strong>:</p>
+            {% for schema in item.items.schema %}
+              <pre><code>{{ schema | escape }}</code></pre>
+            {% endfor %}
+          {% endif %}
+        <!--</div>-->
       {% endif %}
+      </p>
     {% endif %}
   {% endif %}
 
@@ -75,13 +86,20 @@
   {% endif %}
 
   {% if item.examples.length %}
-    <p><strong>Examples</strong>:</p>
+    <p><strong>Example{% if items.examples.length > 1 %}s{% endif %}</strong>:
     {% for example in item.examples %}
-      {% if item.type == 'string' %}
-        <pre>{{ example | escape }}</pre>
+      {% if item.type == 'string' or item.type == 'integer' %}
+        <code>{{ example | escape }}</code></p>
       {% else %}
-        <pre><code>{{ example | escape }}</code></pre>
+        </p><pre><code>{{ example | escape }}</code></pre>
       {% endif %}
+    {% endfor %}
+  {% endif %}
+
+  {% if item.schema.length %}
+    <p><strong>Schema</strong>:</p>
+    {% for schema in item.schema %}
+        <pre><code>{{ schema | escape }}</code></pre>
     {% endfor %}
   {% endif %}
 

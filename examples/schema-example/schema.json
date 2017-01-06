@@ -1,0 +1,17 @@
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "type": "object",
+  "title": "Root schema.",
+  "description": "An explanation about the purpose of this instance.",
+  "properties": {
+    "foo": {
+      "type": "string",
+      "minLength": 1,
+      "title": "Foo schema.",
+      "description": "An explanation about the purpose of this instance."
+    }
+  },
+  "required": [
+    "foo"
+  ]
+}

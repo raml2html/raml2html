@@ -1,0 +1,7 @@
+example1:
+  description: "An example with a structured example"
+  type: application-json
+  displayName: an example
+  value: {
+          foo: bar
+         }

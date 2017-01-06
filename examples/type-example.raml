@@ -1,0 +1,92 @@
+#%RAML 1.0
+title: A CRUD API for Yamls and Jsons
+
+uses:
+  example: schema-example/annotations.1_0.yaml
+
+resourceTypes:
+  foo:
+    displayName: Foo Type
+    description: I am a description of Foo
+    usage: Use this resourceType to represent any Foo item
+    post:
+      protocols:
+        - HTTP
+      body:
+        application/json:
+          example: !include schema-example/example.json
+          type: !include schema-example/schema.json
+          description: I am a description of application/json
+      responses:
+        200:
+          description: |
+            This is a long form description of the `200` response. It can be multiple lines...
+
+            * See? Multiple lines.
+            * and a list
+              * heirarchy
+
+            multiple `things` blah
+
+                I am a code block
+
+            ```js
+            I.am.also('a'.code('block'));
+            ```
+          body:
+            application/json:
+              example: !include schema-example/example.json
+              type: !include schema-example/schema.json
+              description: I am a description of application/json
+        500:
+          description: |
+            This is what happens when the server blows up.
+
+/yaml:
+  description: Get all the yamls
+  displayName: Do the YAML
+  get:
+    protocols:
+      - HTTP
+    responses:
+      200:
+        description: I am a /yaml get description
+        body:
+          application/json:
+            examples: !include schema-example/examples.yaml
+            type: !include schema-example/schema.json
+            default: {"foo":"bar"}
+            allowedTargets:
+              - target
+/json:
+  description: Post all the jsons
+  displayName: Do the JSON
+  type: foo
+  post:
+    protocols:
+      - HTTPS
+    description: This is a description of POST
+    body:
+      application/json:
+        type: |
+          {
+            "$schema": "http://json-schema.org/draft-04/schema#",
+            "type": "object",
+            "title": "Root schema.",
+            "description": "An explanation about the purpose of this instance.",
+            "properties": {
+              "foo": {
+                "type": "string",
+                "minLength": 1,
+                "title": "Foo schema.",
+                "description": "An explanation about the purpose of this instance."
+              }
+            },
+            "required": [
+              "foo"
+            ]
+          }
+        example: |
+          {
+            "foo": "bar"
+          }
