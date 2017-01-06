@@ -92,9 +92,11 @@
 
                 {% if method.responses %}
                   <li{%
-                    if not method.allUriParameters.length and not method.queryParameters
+                    if not method.allUriParameters.length
+                    and not method.queryParameters
                     and not method.queryString
-                    and not method.headers and not method.body
+                    and not method.headers
+                    and not method.body
                     %} class="active"{%
                     endif
                     %}>
@@ -103,7 +105,16 @@
                 {% endif %}
 
                 {% if method.securedBy.length %}
-                  <li>
+                  <li{%
+                    if not method.allUriParameters.length
+                    and not method.queryParameters
+                    and not method.queryString
+                    and not method.headers
+                    and not method.body
+                    and not method.responses
+                    %} class="active"{%
+                    endif
+                    %}>
                     <a href="#{{ resource.uniqueId }}_{{ method.method }}_securedby" data-toggle="tab">Security</a>
                   </li>
                 {% endif %}
@@ -111,6 +122,8 @@
 
               <!-- Tab panes -->
               <div class="tab-content">
+                <!-- uncomment below to see what has been parsed for each method -->
+                <!-- <pre><code>{{ method | dump(2) | escape }}</code></pre> -->
                 {% if method.allUriParameters.length or method.queryString or method.queryParameters or method.headers or method.body %}
                   <div class="tab-pane active" id="{{ resource.uniqueId }}_{{ method.method }}_request">
                     {% if resource.allUriParameters.length %}
@@ -161,6 +174,11 @@
                     {% if method.body %}
                       <h3>Body</h3>
                       {% for b in method.body %}
+                        {% if b.description %}
+{% markdown %}
+{{ b.description }}
+{% endmarkdown %}
+                        {% endif %}
                         <p><strong>Media type</strong>: {{ b.key }}</p>
 
                         {% if b.type %}
@@ -168,11 +186,35 @@
                             {% if b.type === 'array' %}
                               <p><strong>Type</strong>: array of {% if isStandardType(b.items) %}{{ b.items }}{% else %}{{ b.items.displayName }}{% endif %}</p>
                             {% else %}
-                              <p><strong>Type</strong>: {{ b.type }}</p>
+                              <p><strong>Type</strong>: {{ b.type | capitalize }}</p>
                             {% endif %}
+                          {% elif b.type.properties or b.type.examples.length or b.type.schema.length %}
+
+                              {% if b.type.properties %}
+                                <ul>
+                                  {% for item in b.type.properties %}
+                                    {% include "./item.nunjucks" %}
+                                  {% endfor %}
+                                </ul>
+                              {% endif %}
+
+                              {% if b.type.examples.length %}
+                                <p><strong>Example{% if b.type.examples.length > 1 %}s{% endif %}</strong>:</p>
+                                {% for example in b.type.examples %}
+                                  <pre><code>{{ example | escape }}</code></pre>
+                                {% endfor %}
+                              {% endif %}
+
+                              {% if b.type.schema.length %}
+                                <p><strong>Schema</strong>:</p>
+                                {% for schema in b.type.schema %}
+                                  <pre><code>{{ schema | escape }}</code></pre>
+                                {% endfor %}
+                              {% endif %}
+
                           {% else %}
-                            <p><strong>Type</strong>:</p>
-                            <pre><code>{{ b.type | escape }}</code></pre>
+                            <p><strong>xType</strong>:</p>
+                            <pre><code>{{ b.type | dump(2) | escape }}</code></pre>
                           {% endif %}
                         {% endif %}
 
@@ -189,7 +231,7 @@
                           {% if not isStandardType(b.items) %}
                             <p><strong>Items</strong>: {{ b.items.displayName }}</p>
 
-                            {% if b.items.properties or b.items.examples.length %}
+                            {% if b.items.properties or b.items.examples.length or b.items.schema.length %}
                               <div class="items">
                                 {% if b.items.properties %}
                                   <ul>
@@ -200,18 +242,26 @@
                                 {% endif %}
 
                                 {% if b.items.examples.length %}
-                                  <p><strong>Examples</strong>:</p>
+                                  <p><strong>Example{% if b.items.examples.length > 1 %}s{% endif %}</strong>:</p>
                                   {% for example in b.items.examples %}
                                     <pre><code>{{ example | escape }}</code></pre>
                                   {% endfor %}
                                 {% endif %}
+
+                                {% if b.items.schema.length %}
+                                  <p><strong>Schema</strong>:</p>
+                                  {% for schema in b.items.schema %}
+                                    <pre><code>{{ schema | escape }}</code></pre>
+                                  {% endfor %}
+                                {% endif %}
+
                               </div>
                             {% endif %}
                           {% endif %}
                         {% endif %}
 
                         {% if b.properties.length %}
-                          <strong>Properties</strong>
+                          <strong>Properties</strong>:
                           <ul>
                             {% for item in b.properties %}
                               {% include "./item.nunjucks" %}
@@ -219,12 +269,30 @@
                           </ul>
                         {% endif %}
 
+                        {% if b.additionalProperties or b.additionalProperties === false %}
+                          <p><strong>Allow Additional Properties</strong>
+                            : {{ b.additionalProperties }}
+                          </p>
+                        {% endif %}
+
                         {% if b.examples.length %}
-                          <p><strong>Examples</strong>:</p>
+                          <p><strong>Example{% if b.examples.length > 1 %}s{% endif %}</strong>:</p>
                           {% for example in b.examples %}
-                            <pre><code>{{ example | escape }}</code></pre>
+                            {% if item.type == 'string' or item.type == 'integer' %}
+                              <code>{{ example | escape }}</code></p>
+                            {% else %}
+                              </p><pre><code>{{ example | escape }}</code></pre>
+                            {% endif %}
                           {% endfor %}
                         {% endif %}
+
+                        {% if b.schema.length %}
+                          <p><strong>Schema</strong>:</p>
+                          {% for schema in b.schema %}
+                            <pre><code>{{ schema | escape }}</code></pre>
+                          {% endfor %}
+                        {% endif %}
+
                       {% endfor %}
                     {% endif %}
                   </div>
@@ -232,9 +300,11 @@
 
                 {% if method.responses %}
                   <div class="tab-pane{%
-                    if not method.allUriParameters.length and not method.queryParameters.length
+                    if not method.allUriParameters.length
+                    and not method.queryParameters.length
                     and not method.queryString
-                    and not method.headers.length and not method.body.length
+                    and not method.headers.length
+                    and not method.body.length
                     %} active{%
                     endif
                     %}" id="{{ resource.uniqueId }}_{{ method.method }}_response">
@@ -256,6 +326,11 @@
                       {% if response.body.length %}
                         <h3>Body</h3>
                         {% for b in response.body %}
+                          {% if b.description %}
+{% markdown %}
+{{ b.description }}
+{% endmarkdown %}
+                          {% endif %}
                           <p><strong>Media type</strong>: {{ b.key }}</p>
 
                           {% if b.type %}
@@ -284,7 +359,7 @@
                             {% if not isStandardType(b.items) %}
                               <p><strong>Items</strong>: {{ b.items.displayName }}</p>
 
-                              {% if b.items.properties or b.items.examples.length %}
+                              {% if b.items.properties or b.items.examples.length or b.items.schema.length %}
                                 <div class="items">
                                   {% if b.items.properties %}
                                     <ul>
@@ -295,18 +370,26 @@
                                   {% endif %}
 
                                   {% if b.items.examples.length %}
-                                    <p><strong>Examples</strong>:</p>
+                                    <p><strong>Example{% if b.items.examples.length > 1 %}s{% endif %}</strong>:</p>
                                     {% for example in b.items.examples %}
                                       <pre><code>{{ example | escape }}</code></pre>
                                     {% endfor %}
                                   {% endif %}
+
+                                  {% if b.items.schema.length %}
+                                    <p><strong>Schema</strong>:</p>
+                                    {% for schema in b.items.schema %}
+                                      <pre><code>{{ schema | escape }}</code></pre>
+                                    {% endfor %}
+                                  {% endif %}
+
                                 </div>
                               {% endif %}
                             {% endif %}
                           {% endif %}
 
                           {% if b.properties.length %}
-                            <strong>Properties</strong>
+                            <strong>Properties</strong>:
                             <ul>
                               {% for item in b.properties %}
                                 {% include "./item.nunjucks" %}
@@ -314,12 +397,26 @@
                             </ul>
                           {% endif %}
 
+                          {% if b.additionalProperties or b.additionalProperties === false %}
+                            <p><strong>Allow Additional Properties</strong>
+                              : {{ b.additionalProperties }}
+                            </p>
+                          {% endif %}
+
                           {% if b.examples.length %}
-                            <p><strong>Examples</strong>:</p>
+                            <p><strong>Example{% if b.examples.length > 1 %}s{% endif %}</strong>:</p>
                             {% for example in b.examples %}
                               <pre><code>{{ example | escape }}</code></pre>
                             {% endfor %}
                           {% endif %}
+
+                          {% if b.schema.length %}
+                            <p><strong>Schema</strong>:</p>
+                            {% for schema in b.schema %}
+                              <pre><code>{{ schema | escape }}</code></pre>
+                            {% endfor %}
+                          {% endif %}
+
                         {% endfor %}
                       {% endif %}
                     {% endfor %}
@@ -327,7 +424,16 @@
                 {% endif %}
 
                 {% if method.securedBy.length %}
-                  <div class="tab-pane" id="{{ resource.uniqueId }}_{{ method.method }}_securedby">
+                  <div class="tab-pane{%
+                    if not method.allUriParameters.length
+                    and not method.queryParameters.length
+                    and not method.queryString
+                    and not method.headers.length
+                    and not method.body.length
+                    and not method.responses
+                    %} active{%
+                    endif
+                    %}" id="{{ resource.uniqueId }}_{{ method.method }}_securedby">
                     {% for securedBy in method.securedBy %}
                       {% set securityScheme = securitySchemes[securedBy] %}
                       <h1>Secured by {{ securedBy }}</h1>

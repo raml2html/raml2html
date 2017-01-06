@@ -5,7 +5,7 @@ const fs = require('fs');
 process.chdir(__dirname);
 
 const config = raml2html.getDefaultConfig();
-const examples = glob.sync('*.raml');
+const examples = glob.sync('raml-examples/**/!(*.*).raml');
 
 examples.forEach((ramlFile) => {
   console.log(ramlFile);
