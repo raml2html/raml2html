@@ -1,7 +1,7 @@
 {
   "name": "raml2html",
   "description": "RAML to HTML documentation generator",
-  "version": "4.0.4",
+  "version": "4.0.5",
   "author": {
     "name": "Kevin Renskers",
     "email": "info@mixedcase.nl"
@@ -34,6 +34,8 @@
   },
   "preferGlobal": true,
   "scripts": {
+    "postinstall": "npm run updatesubmodule",
+    "updatesubmodule": "git submodule update --recursive --remote",
     "examples": "node examples/render-all-examples.js",
     "lint": "eslint .",
     "lintfix": "eslint . --fix"
