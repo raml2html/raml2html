@@ -165,7 +165,7 @@
 
                         {% if b.type %}
                           {% if isStandardType(b.type) %}
-                            {% if b.type === 'array' %}
+                            {% if b.type === 'array' and b.items %}
                               <p><strong>Type</strong>: array of {% if isStandardType(b.items) %}{{ b.items }}{% else %}{{ b.items.displayName }}{% endif %}</p>
                             {% else %}
                               <p><strong>Type</strong>: {{ b.type }}</p>
@@ -260,7 +260,7 @@
 
                           {% if b.type %}
                             {% if isStandardType(b.type) %}
-                              {% if b.type === 'array' %}
+                              {% if b.type === 'array' and b.items %}
                                 <p><strong>Type</strong>: array of {% if isStandardType(b.items) %}{{ b.items }}{% else %}{{ b.items.displayName }}{% endif %}</p>
                               {% else %}
                                 <p><strong>Type</strong>: {{ b.type }}</p>
