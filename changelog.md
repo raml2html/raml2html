@@ -1,3 +1,6 @@
+4.0.5 - January 9, 2017
+- Fix array examples (#302)
+
 4.0.4 - December 27, 2016
 - Put properties before example for item (#299)
 - Fix template variable reference that prevented type properties from rendering (#300)
