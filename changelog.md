@@ -1,3 +1,6 @@
+4.0.6 - January 23, 2017
+- Fixed template render error (#305)
+
 4.0.5 - January 9, 2017
 - Fix array examples (#302)
 

@@ -29,7 +29,7 @@ function render(source, config) {
       if (typeof type === 'object') {
         return false;
       }
-      return type.indexOf('{') === -1 && type.indexOf('<') === -1;
+      return type && type.indexOf('{') === -1 && type.indexOf('<') === -1;
     };
 
     if (config.processRamlObj) {
