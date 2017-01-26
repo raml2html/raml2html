@@ -330,12 +330,21 @@
                   <div class="tab-pane" id="{{ resource.uniqueId }}_{{ method.method }}_securedby">
                     {% for securedBy in method.securedBy %}
                       {% set securityScheme = securitySchemes[securedBy] %}
-                      <h1>Secured by {{ securedBy }}</h1>
+                      <h1>Secured by {% if securityScheme.displayName %}{{ securityScheme.displayName }}{% else %}{{ securedBy }}{% endif %}</h1>
 
                       {% if securityScheme.describedBy.headers.length %}
                         <h3>Headers</h3>
                         <ul>
                           {% for item in securityScheme.describedBy.headers %}
+                            {% include "./item.nunjucks" %}
+                          {% endfor %}
+                        </ul>
+                      {% endif %}
+
+                      {% if securityScheme.describedBy.queryParameters.length %}
+                        <h3>Query Parameters</h3>
+                        <ul>
+                          {% for item in securityScheme.describedBy.queryParameters %}
                             {% include "./item.nunjucks" %}
                           {% endfor %}
                         </ul>
