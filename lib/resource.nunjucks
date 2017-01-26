@@ -341,6 +341,15 @@
                         </ul>
                       {% endif %}
 
+                      {% if securityScheme.describedBy.queryParameters.length %}
+                        <h3>Query Parameters</h3>
+                        <ul>
+                          {% for item in securityScheme.describedBy.queryParameters %}
+                            {% include "./item.nunjucks" %}
+                          {% endfor %}
+                        </ul>
+                      {% endif %}
+
                       {% for response in securityScheme.describedBy.responses.length %}
                         <h2>HTTP status code <a href="http://httpstatus.es/{{ response.code }}" target="_blank">{{ response.code }}</a></h2>
 {% markdown %}
