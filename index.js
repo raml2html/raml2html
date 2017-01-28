@@ -76,12 +76,23 @@ function getDefaultConfig(mainTemplate, templatesPath) {
 
       markdown.register(env, md => marked(md, { renderer }));
 
+      const resolveSecuritySchemeName = (name) => {
+        if (ramlObj.securitySchemes && ramlObj.securitySchemes[name]) {
+          const scheme = ramlObj.securitySchemes[name];
+
+          if (scheme.displayName) {
+            return scheme.displayName;
+          }
+        }
+        return name;
+      };
+
       // Parse securedBy and use scopes if they are defined
       ramlObj.renderSecuredBy = function (securedBy) {
         let out = '';
         if (typeof securedBy === 'object') {
           Object.keys(securedBy).forEach((key) => {
-            out += `<b>${key}</b>`;
+            out += `<b>${resolveSecuritySchemeName(key)}</b>`;
 
             if (securedBy[key].scopes.length) {
               out += ' with scopes:<ul>';
@@ -94,7 +105,7 @@ function getDefaultConfig(mainTemplate, templatesPath) {
             }
           });
         } else {
-          out = `<b>${securedBy}</b>`;
+          out = `<b>${resolveSecuritySchemeName(securedBy)}</b>`;
         }
         return out;
       };

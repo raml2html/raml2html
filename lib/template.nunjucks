@@ -176,6 +176,12 @@
         font-size: 13px;
         line-height: 1.42857143;
       }
+      .examples {
+        margin-left: 0.5em;
+      }
+      .resource-modal li > ul {
+        margin-bottom: 1em;
+      }
     </style>
   </head>
 
@@ -230,7 +236,7 @@
           <div id="sidebar" class="hidden-print affix" role="complementary">
             <ul class="nav nav-pills nav-stacked">
               {% for resource in resources %}
-                <li><a href="#{{ resource.uniqueId}}">{% if resource.displayName %}{{ resource.displayName}}{% else %}{{ resource.relativeUri }}{% endif %}</a></li>
+                <li><a href="#{{ resource.uniqueId}}">{% if resource.displayName %}{{ resource.displayName }}{% else %}{{ resource.relativeUri }}{% endif %}</a></li>
               {% endfor %}
             </ul>
           </div>

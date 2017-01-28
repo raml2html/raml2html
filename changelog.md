@@ -1,3 +1,10 @@
+4.1.0 - January 28, 2017
+- Render more information about examples (name, description) (#313)
+- Render more security scheme data (#310)
+- Updated raml2obj, which
+  - Updated raml-js-parser-2 dependancy
+  - Fixed types' parent overriding behaviour
+
 4.0.6 - January 23, 2017
 - Fixed template render error (#305)
 
