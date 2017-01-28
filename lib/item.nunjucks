@@ -14,6 +14,8 @@
       {%- else -%}
         {%- if item.type === 'array' -%}
           array of {% if isStandardType(item.items) %}{{ item.items }}{% else %}{{ item.items.displayName }}{% endif %}
+        {%- elif item.type.type -%}
+          {{ item.type.type }}
         {%- else -%}
           {{ item.type }}
         {%- endif -%}
@@ -63,9 +65,16 @@
     {% endif %}
   {% endif %}
 
-  {% if item.properties %}
+  {% set subItems = false %}
+  {% if item.properties.length %}
+    {% set subItems = item.properties %}
+  {% elif item.type.properties.length %}
+    {% set subItems = item.type.properties %}
+  {% endif %}
+
+  {% if subItems %}
     <ul>
-      {% for item in item.properties %}
+      {% for item in subItems %}
         {% include "./item.nunjucks" %}
       {% endfor %}
     </ul>
