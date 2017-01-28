@@ -43,7 +43,7 @@
     {% endif %}
 
     {% if not isStandardType(item.items) %}
-      <p><strong>Items</strong>: {{ item.items.displayName }}</p>
+      <p><strong>Items</strong>: {{ item.items.displayName }}{{ "(" + item.items.description + ")" if item.items.description else "" }} </p>
 
       {% if item.items.properties or item.items.examples.length %}
         <div class="items">
