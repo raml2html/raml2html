@@ -76,38 +76,11 @@ function getDefaultConfig(mainTemplate, templatesPath) {
 
       markdown.register(env, md => marked(md, { renderer }));
 
-      const resolveSecuritySchemeName = (name) => {
-        if (ramlObj.securitySchemes && ramlObj.securitySchemes[name]) {
-          const scheme = ramlObj.securitySchemes[name];
-
-          if (scheme.displayName) {
-            return scheme.displayName;
-          }
-        }
-        return name;
-      };
-
-      // Parse securedBy and use scopes if they are defined
-      ramlObj.renderSecuredBy = function (securedBy) {
-        let out = '';
+      ramlObj.getSecuritySchemeName = function (securedBy) {
         if (typeof securedBy === 'object') {
-          Object.keys(securedBy).forEach((key) => {
-            out += `<b>${resolveSecuritySchemeName(key)}</b>`;
-
-            if (securedBy[key].scopes.length) {
-              out += ' with scopes:<ul>';
-
-              securedBy[key].scopes.forEach((scope) => {
-                out += `<li>${scope}</li>`;
-              });
-
-              out += '</ul>';
-            }
-          });
-        } else {
-          out = `<b>${resolveSecuritySchemeName(securedBy)}</b>`;
+          return Object.keys(securedBy)[0];
         }
-        return out;
+        return securedBy;
       };
 
       // Render the main template using the raml object and fix the double quotes
