@@ -1,5 +1,5 @@
 {% if (resource.methods or (resource.description and resource.parentUrl)) %}
-  <div class="panel panel-white">
+  <div class="panel panel-white resource-modal">
     <div class="panel-heading">
       <h4 class="panel-title">
         <a class="collapsed" data-toggle="collapse" href="#panel_{{ resource.uniqueId }}">
@@ -198,13 +198,10 @@
                                     {% endfor %}
                                   </ul>
                                 {% endif %}
-
-                                {% if b.items.examples.length %}
-                                  <p><strong>Examples</strong>:</p>
-                                  {% for example in b.items.examples %}
-                                    <pre><code>{{ example | escape }}</code></pre>
-                                  {% endfor %}
-                                {% endif %}
+                                
+                                {# Request - Array item examples #}
+                                {% set parent = b.items %}
+                                {% include "./examples.nunjucks" %}
                               </div>
                             {% endif %}
                           {% endif %}
@@ -218,13 +215,10 @@
                             {% endfor %}
                           </ul>
                         {% endif %}
-
-                        {% if b.examples.length %}
-                          <p><strong>Examples</strong>:</p>
-                          {% for example in b.examples %}
-                            <pre><code>{{ example | escape }}</code></pre>
-                          {% endfor %}
-                        {% endif %}
+                        
+                        {# Request - Body examples #}
+                        {% set parent = b %}
+                        {% include "./examples.nunjucks" %}
                       {% endfor %}
                     {% endif %}
                   </div>
@@ -241,7 +235,7 @@
                     {% for response in method.responses %}
                       <h2>HTTP status code <a href="http://httpstatus.es/{{ response.code }}" target="_blank">{{ response.code }}</a></h2>
 {% markdown %}
-{{ response.description}}
+{{ response.description }}
 {% endmarkdown %}
 
                       {% if response.headers.length %}
@@ -293,13 +287,10 @@
                                       {% endfor %}
                                     </ul>
                                   {% endif %}
-
-                                  {% if b.items.examples.length %}
-                                    <p><strong>Examples</strong>:</p>
-                                    {% for example in b.items.examples %}
-                                      <pre><code>{{ example | escape }}</code></pre>
-                                    {% endfor %}
-                                  {% endif %}
+                                  
+                                  {# Response - Array item examples #}
+                                  {% set parent = b.items.examples %}
+                                  {% include "./examples.nunjucks" %}
                                 </div>
                               {% endif %}
                             {% endif %}
@@ -313,13 +304,10 @@
                               {% endfor %}
                             </ul>
                           {% endif %}
-
-                          {% if b.examples.length %}
-                            <p><strong>Examples</strong>:</p>
-                            {% for example in b.examples %}
-                              <pre><code>{{ example | escape }}</code></pre>
-                            {% endfor %}
-                          {% endif %}
+                          
+                          {# Response - Body examples #}
+                          {% set parent = b %}
+                          {% include "./examples.nunjucks" %}
                         {% endfor %}
                       {% endif %}
                     {% endfor %}
@@ -353,7 +341,7 @@
                       {% for response in securityScheme.describedBy.responses.length %}
                         <h2>HTTP status code <a href="http://httpstatus.es/{{ response.code }}" target="_blank">{{ response.code }}</a></h2>
 {% markdown %}
-{{ response.description}}
+{{ response.description }}
 {% endmarkdown %}
                         {% if response.headers.length %}
                           <h3>Headers</h3>

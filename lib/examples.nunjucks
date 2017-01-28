@@ -1,0 +1,18 @@
+{% if parent.examples.length %}
+    <p><strong>{{ 'Example' if parent.examples.length == 1 else 'Examples' }}</strong>:</p>
+    <div class="examples">
+        {% for example in parent.examples %}
+            {% if example.displayName or example.description %}
+                <p>
+                {% if example.displayName %}
+                    <strong>{{ example.displayName }}</strong>:<br />
+                {% endif %}
+                {% if example.description %}
+                    {{ example.description }}
+                {% endif %}
+                </p>
+            {% endif %}
+            <pre><code>{{ example.value | escape }}</code></pre>
+        {% endfor %}
+    </div>
+{% endif %}

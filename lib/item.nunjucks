@@ -55,12 +55,9 @@
             </ul>
           {% endif %}
 
-          {% if item.items.examples.length %}
-            <p><strong>Examples</strong>:</p>
-            {% for example in item.items.examples %}
-              <pre><code>{{ example | escape }}</code></pre>
-            {% endfor %}
-          {% endif %}
+          {# Sub-item Examples #}
+          {% set parent = item.items %}
+          {% include "./examples.nunjucks" %}
         </div>
       {% endif %}
     {% endif %}
@@ -73,17 +70,10 @@
       {% endfor %}
     </ul>
   {% endif %}
-
-  {% if item.examples.length %}
-    <p><strong>Examples</strong>:</p>
-    {% for example in item.examples %}
-      {% if item.type == 'string' %}
-        <pre>{{ example | escape }}</pre>
-      {% else %}
-        <pre><code>{{ example | escape }}</code></pre>
-      {% endif %}
-    {% endfor %}
-  {% endif %}
+  
+  {# Item Examples #}
+  {% set parent = item %}
+  {% include "./examples.nunjucks" %}
 
   {% if item.structuredValue %}
     <pre><code>{{ item.structuredValue | dump }}</code></pre>
