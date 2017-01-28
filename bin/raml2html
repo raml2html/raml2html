@@ -10,6 +10,7 @@ const pjson = require('../package.json');
 program
   .version(pjson.version)
   .usage('[options] [RAML input file]')
+  .option('--base-uri [uri]', 'Override the RAML-specified baseUri in the HTML otuput')
   .option('-i, --input [input]', 'RAML input file')
   .option('-t, --template [template]', 'Filename of the custom Nunjucks template')
   .option('-o, --output [output]', 'HTML output file')
@@ -27,8 +28,12 @@ if (!input) {
   input = program.args[0];
 }
 
+const opts = {
+  baseUri: program.baseUri
+}
+
 // Start the rendering process
-raml2html.render(input, raml2html.getDefaultConfig(program.template)).then((result) => {
+raml2html.render(input, raml2html.getDefaultConfig(program.template), opts).then((result) => {
   if (program.output) {
     fs.writeFileSync(program.output, result);
   } else {

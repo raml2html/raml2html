@@ -18,7 +18,7 @@ const Minimize = require('minimize');
  * @param {Function} config.processRamlObj
  * @returns a promise
  */
-function render(source, config) {
+function render(source, config, opts = {}) {
   config = config || {};
   config.raml2HtmlVersion = pjson.version;
 
@@ -33,7 +33,7 @@ function render(source, config) {
     };
 
     if (config.processRamlObj) {
-      return config.processRamlObj(ramlObj, config).then((html) => {
+      return config.processRamlObj(ramlObj, config, opts).then((html) => {
         if (config.postProcessHtml) {
           return config.postProcessHtml(html);
         }
@@ -60,7 +60,9 @@ function getDefaultConfig(mainTemplate, templatesPath) {
   }
 
   return {
-    processRamlObj(ramlObj, config) {
+    processRamlObj(ramlObj, config, opts) {
+      if (opts.baseUri) ramlObj.baseUri = opts.baseUri
+
       const renderer = new marked.Renderer();
       renderer.table = function (thead, tbody) {
         // Render Bootstrap style tables
