@@ -1,3 +1,6 @@
+4.1.1 - February 6, 2017
+- Improved error reporting (#316)
+
 4.1.0 - January 28, 2017
 - Render more information about examples (name, description) (#313)
 - Render more security scheme data (#310)
