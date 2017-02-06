@@ -19,12 +19,17 @@ let input = program.input;
 
 if (!input) {
   if (program.args.length !== 1) {
-    console.error('Error: You need to specify the RAML input file');
-    program.help();
-    process.exit(1);
+    var stdinSize = fs.fstatSync(process.stdin.fd).size;
+    if (stdinSize > 0) {
+      input = fs.readSync(process.stdin.fd, stdinSize)[0];
+    } else {
+      console.error('Error: You need to specify the RAML input file');
+      program.help();
+      process.exit(1);
+    }
+  } else {
+    input = program.args[0];
   }
-
-  input = program.args[0];
 }
 
 // Start the rendering process

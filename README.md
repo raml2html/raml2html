@@ -24,6 +24,7 @@ npm i -g raml2html
 raml2html --help
 raml2html example.raml > example.html
 raml2html -t examples/custom-template-test/template.nunjucks -i example.raml -o example.html
+raml2html < example.raml > example.html
 ```
 
 ### As a library
