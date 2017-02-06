@@ -167,6 +167,23 @@
                           {% if isStandardType(b.type) %}
                             {% if b.type === 'array' and b.items %}
                               <p><strong>Type</strong>: array of {% if isStandardType(b.items) %}{{ b.items }}{% else %}{{ b.items.displayName }}{% endif %}</p>
+                            {% elif b.type === 'union' and b.anyOf.length %}
+                              <p><strong>Possible types</strong>:
+                                <ul>
+                                  {% for super in b.anyOf %}
+                                    <li>
+                                      <p><strong>{{ super.displayName }}</strong></p>
+                                      <div class="items">
+                                        <ul>
+                                          {% for item in super.properties %}
+                                            {% include "./item.nunjucks" %}
+                                          {% endfor %}
+                                        </ul>
+                                      </div>
+                                    </li>
+                                  {% endfor %}
+                                </ul>
+                              </p>
                             {% else %}
                               <p><strong>Type</strong>: {{ b.type }}</p>
                             {% endif %}
@@ -198,7 +215,7 @@
                                     {% endfor %}
                                   </ul>
                                 {% endif %}
-                                
+
                                 {# Request - Array item examples #}
                                 {% set parent = b.items %}
                                 {% include "./examples.nunjucks" %}
@@ -215,7 +232,7 @@
                             {% endfor %}
                           </ul>
                         {% endif %}
-                        
+
                         {# Request - Body examples #}
                         {% set parent = b %}
                         {% include "./examples.nunjucks" %}
@@ -256,6 +273,23 @@
                             {% if isStandardType(b.type) %}
                               {% if b.type === 'array' and b.items %}
                                 <p><strong>Type</strong>: array of {% if isStandardType(b.items) %}{{ b.items }}{% else %}{{ b.items.displayName }}{% endif %}</p>
+                              {% elif b.type === 'union' and b.anyOf.length %}
+                                <p><strong>Possible types</strong>:
+                                  <ul>
+                                    {% for super in b.anyOf %}
+                                      <li>
+                                        <p><strong>{{ super.displayName }}</strong></p>
+                                        <div class="items">
+                                          <ul>
+                                            {% for item in super.properties %}
+                                              {% include "./item.nunjucks" %}
+                                            {% endfor %}
+                                          </ul>
+                                        </div>
+                                      </li>
+                                    {% endfor %}
+                                  </ul>
+                                </p>
                               {% else %}
                                 <p><strong>Type</strong>: {{ b.type }}</p>
                               {% endif %}
@@ -287,7 +321,7 @@
                                       {% endfor %}
                                     </ul>
                                   {% endif %}
-                                  
+
                                   {# Response - Array item examples #}
                                   {% set parent = b.items.examples %}
                                   {% include "./examples.nunjucks" %}
@@ -304,7 +338,7 @@
                               {% endfor %}
                             </ul>
                           {% endif %}
-                          
+
                           {# Response - Body examples #}
                           {% set parent = b %}
                           {% include "./examples.nunjucks" %}
