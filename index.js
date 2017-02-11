@@ -6,6 +6,7 @@ const nunjucks = require('nunjucks');
 const markdown = require('nunjucks-markdown');
 const marked = require('marked');
 const Minimize = require('minimize');
+const path = require('path');
 
 /**
  * Render the source RAML object using the config's processOutput function
@@ -25,13 +26,6 @@ function render(source, config) {
   return raml2obj.parse(source).then((ramlObj) => {
     ramlObj.config = config;
 
-    ramlObj.isStandardType = function (type) {
-      if (typeof type === 'object') {
-        return false;
-      }
-      return type && type.indexOf('{') === -1 && type.indexOf('<') === -1;
-    };
-
     if (config.processRamlObj) {
       return config.processRamlObj(ramlObj, config).then((html) => {
         if (config.postProcessHtml) {
@@ -46,17 +40,31 @@ function render(source, config) {
 }
 
 /**
+ * @param {String} [theme] - The name of a raml2html template, leave empty if you want to use the mainTemplate option
  * @param {String} [mainTemplate] - The filename of the main template, leave empty to use default templates
  * @param {String} [templatesPath] - Optional, by default it uses the current working directory
  * @returns {{processRamlObj: Function, postProcessHtml: Function}}
  */
-function getDefaultConfig(mainTemplate, templatesPath) {
-  if (!mainTemplate) {
-    mainTemplate = './lib/template.nunjucks';
+function getDefaultConfig(theme, mainTemplate, templatesPath) {
+  if (theme && mainTemplate) {
+    console.error("Don't supply both a theme and a template");
+    process.exit(1);
+  }
 
-    // When using the default template, make sure that Nunjucks isn't
-    // using the working directory since that might be anything
-    templatesPath = __dirname;
+  if (!theme && !mainTemplate) {
+    theme = 'raml2html-default-theme';
+  }
+
+  if (theme) {
+    mainTemplate = 'index.nunjucks';
+    templatesPath = path.dirname(require.resolve(`${theme}/package.json`));
+
+    try {
+      const config = require(theme);
+      return config;
+    } catch (err) {
+      // Ignore, use the config from below
+    }
   }
 
   return {
@@ -75,6 +83,13 @@ function getDefaultConfig(mainTemplate, templatesPath) {
       }
 
       markdown.register(env, md => marked(md, { renderer }));
+
+      ramlObj.isStandardType = function (type) {
+        if (typeof type === 'object') {
+          return false;
+        }
+        return type && type.indexOf('{') === -1 && type.indexOf('<') === -1;
+      };
 
       const resolveSecuritySchemeName = (name) => {
         if (ramlObj.securitySchemes && ramlObj.securitySchemes[name]) {
@@ -143,6 +158,6 @@ module.exports = {
 };
 
 if (require.main === module) {
-  console.log("This script is meant to be used as a library. You probably want to run bin/raml2html if you're looking for a CLI.");
+  console.error("This script is meant to be used as a library. You probably want to run bin/raml2html if you're looking for a CLI.");
   process.exit(1);
 }

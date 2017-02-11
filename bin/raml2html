@@ -11,6 +11,7 @@ program
   .version(pjson.version)
   .usage('[options] [RAML input file]')
   .option('-i, --input [input]', 'RAML input file')
+  .option('--theme [theme]', 'Name of a raml2html theme')
   .option('-t, --template [template]', 'Filename of the custom Nunjucks template')
   .option('-o, --output [output]', 'HTML output file')
   .parse(process.argv);
@@ -28,7 +29,7 @@ if (!input) {
 }
 
 // Start the rendering process
-raml2html.render(input, raml2html.getDefaultConfig(program.template)).then((result) => {
+raml2html.render(input, raml2html.getDefaultConfig(program.theme, program.template)).then((result) => {
   if (program.output) {
     fs.writeFileSync(program.output, result);
   } else {

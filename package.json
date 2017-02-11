@@ -1,10 +1,10 @@
 {
   "name": "raml2html",
   "description": "RAML to HTML documentation generator",
-  "version": "4.1.1",
+  "version": "5.0.0",
   "author": {
     "name": "Kevin Renskers",
-    "email": "info@mixedcase.nl"
+    "email": "kevin@mixedcase.nl"
   },
   "bugs": {
     "url": "https://github.com/raml2html/raml2html/issues"
@@ -15,7 +15,9 @@
     "minimize": "2.0.x",
     "nunjucks": "2.5.x",
     "nunjucks-markdown": "2.0.x",
-    "raml2obj": "4.1.x"
+    "raml2obj": "4.1.x",
+    "raml2html-default-theme": "../default-theme",
+    "raml2html-markdown-theme": "../markdown-theme"
   },
   "devDependencies": {
     "eslint": "3.11.x",
@@ -34,7 +36,6 @@
   },
   "preferGlobal": true,
   "scripts": {
-    "examples": "node examples/render-all-examples.js",
     "lint": "eslint .",
     "lintfix": "eslint . --fix"
   },
@@ -43,8 +44,7 @@
   },
   "files": [
     "index.js",
-    "bin/raml2html",
-    "lib"
+    "bin/raml2html"
   ],
   "engines": {
     "node": ">=4"
