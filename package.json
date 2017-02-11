@@ -16,8 +16,7 @@
     "nunjucks": "2.5.x",
     "nunjucks-markdown": "2.0.x",
     "raml2obj": "4.1.x",
-    "raml2html-default-theme": "../default-theme",
-    "raml2html-markdown-theme": "../markdown-theme"
+    "raml2html-default-theme": "1.x"
   },
   "devDependencies": {
     "eslint": "3.11.x",
