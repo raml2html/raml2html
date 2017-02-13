@@ -81,8 +81,8 @@ You can use the [raml2html directly from Gulp](https://gist.github.com/iki/784dd
 
 ## Example output
 Please see the following links for live examples:
-https://rawgit.com/raml2html/default-theme/master/examples/helloworld.html
-https://rawgit.com/raml2html/default-theme/master/examples/world-music-api.html
+- https://rawgit.com/raml2html/default-theme/master/examples/helloworld.html
+- https://rawgit.com/raml2html/default-theme/master/examples/world-music-api.html
 
 
 ## Before you report a bug
