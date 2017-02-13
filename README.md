@@ -4,8 +4,7 @@
 [![NPM version](http://img.shields.io/npm/v/raml2html.svg)](https://www.npmjs.org/package/raml2html)
 [![js-standard-style](https://img.shields.io/badge/code%20style-airbnb-blue.svg?style=flat)](https://github.com/airbnb/javascript)
 
-A simple RAML to HTML documentation generator, written for Node.js.
-Check [raml2md](https://github.com/raml2html/raml2md) for a RAML to Markdown generator.
+A simple RAML to HTML documentation generator, written for Node.js, with theme support.
 
 ### RAML version support
 raml2html 4 and higher only support RAML 1.0 files. Please stick with raml2html 3.x for RAML 0.8 support.
@@ -18,14 +17,15 @@ npm i -g raml2html
 
 
 ## Themes
-raml2html ships with one theme, but you can install more from NPM. For example, to render
-RAML to Markdown, you can use the raml2html-markdown-theme theme:
+raml2html ships with a default theme, but you can install more from NPM. For example, to render
+RAML to Markdown, you can install the raml2html-markdown-theme theme:
 
 ```
 npm i -g raml2html-markdown-theme
 ```
 
-Search NPM for the "raml2html-theme" keyword to find more themes.
+Search NPM for the "raml2html-theme" keyword (or use [this link](https://www.npmjs.com/browse/keyword/raml2html-theme))
+to find more themes.
 
 ## Usage
 
@@ -39,7 +39,7 @@ raml2html --template my-custom-template.nunjucks -i example.raml -o example.html
 
 ### As a library
 
-#### Using the default templates or your own Nunjucks templates
+#### Using the default theme, different themes, or your own Nunjucks templates
 ```javascript
 const raml2html = require('raml2html');
 const configWithDefaultTheme = raml2html.getConfigForTheme();
@@ -54,7 +54,7 @@ raml2html.render(source, configWithDefaultTheme).then(function(result) {
 });
 ```
 
-#### Using your own processing function, for when you want to use another template language
+#### Using your own processing function, for full control over the whole rendering process
 ```javascript
 /**
  * config should be an object with at least an `processRamlObj` property which is a function that receives the raw RAML
@@ -76,17 +76,13 @@ to it that takes `env` as its only parameter.
 See also `example/script.js` for an example of using raml2html as a library.
 
 ### Gulp
-You can use the [latest raml2html directly from Gulp](https://gist.github.com/iki/784ddd5ab33c1e1b726b), or use the third party
-[gulp-raml2html plugin](https://www.npmjs.org/package/gulp-raml2html) (which uses an outdated version of raml2html).
-
-### Grunt
-There's a third party Grunt plugin at https://www.npmjs.org/package/grunt-raml2html.
+You can use the [raml2html directly from Gulp](https://gist.github.com/iki/784ddd5ab33c1e1b726b).
 
 
 ## Example output
 Please see the following links for live examples:
-https://rawgit.com/raml2html/raml2html/master/examples/helloworld.html
-https://rawgit.com/raml2html/raml2html/master/examples/world-music-api.html
+https://rawgit.com/raml2html/default-theme/master/examples/helloworld.html
+https://rawgit.com/raml2html/default-theme/master/examples/world-music-api.html
 
 
 ## Before you report a bug
