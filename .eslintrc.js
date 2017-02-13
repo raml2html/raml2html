@@ -9,5 +9,6 @@ module.exports = {
     'no-param-reassign': 0,
     'max-len': 0,
     'prefer-spread': 0,
+    'global-require': 0,
   }
 };

@@ -6,6 +6,7 @@ const nunjucks = require('nunjucks');
 const markdown = require('nunjucks-markdown');
 const marked = require('marked');
 const Minimize = require('minimize');
+const path = require('path');
 
 /**
  * Render the source RAML object using the config's processOutput function
@@ -25,13 +26,6 @@ function render(source, config) {
   return raml2obj.parse(source).then((ramlObj) => {
     ramlObj.config = config;
 
-    ramlObj.isStandardType = function (type) {
-      if (typeof type === 'object') {
-        return false;
-      }
-      return type && type.indexOf('{') === -1 && type.indexOf('<') === -1;
-    };
-
     if (config.processRamlObj) {
       return config.processRamlObj(ramlObj, config).then((html) => {
         if (config.postProcessHtml) {
@@ -50,15 +44,7 @@ function render(source, config) {
  * @param {String} [templatesPath] - Optional, by default it uses the current working directory
  * @returns {{processRamlObj: Function, postProcessHtml: Function}}
  */
-function getDefaultConfig(mainTemplate, templatesPath) {
-  if (!mainTemplate) {
-    mainTemplate = './lib/template.nunjucks';
-
-    // When using the default template, make sure that Nunjucks isn't
-    // using the working directory since that might be anything
-    templatesPath = __dirname;
-  }
-
+function getConfigForTemplate(mainTemplate, templatesPath) {
   return {
     processRamlObj(ramlObj, config) {
       const renderer = new marked.Renderer();
@@ -75,6 +61,13 @@ function getDefaultConfig(mainTemplate, templatesPath) {
       }
 
       markdown.register(env, md => marked(md, { renderer }));
+
+      ramlObj.isStandardType = function (type) {
+        if (typeof type === 'object') {
+          return false;
+        }
+        return type && type.indexOf('{') === -1 && type.indexOf('<') === -1;
+      };
 
       const resolveSecuritySchemeName = (name) => {
         if (ramlObj.securitySchemes && ramlObj.securitySchemes[name]) {
@@ -137,12 +130,33 @@ function getDefaultConfig(mainTemplate, templatesPath) {
   };
 }
 
+/**
+ * @param {String} [theme] - The name of a raml2html template, leave empty if you want to use the mainTemplate option
+ * @returns {{processRamlObj: Function, postProcessHtml: Function}}
+ */
+function getConfigForTheme(theme) {
+  if (!theme) {
+    theme = 'raml2html-default-theme';
+  }
+
+  try {
+    // See if the theme supplies its own config object, and return it
+    const config = require(theme);
+    return config;
+  } catch (err) {
+    // Nope, forward to getConfigForTemplate
+    const templatesPath = path.dirname(require.resolve(`${theme}/package.json`));
+    return getConfigForTemplate('index.nunjucks', templatesPath);
+  }
+}
+
 module.exports = {
-  getDefaultConfig,
+  getConfigForTemplate,
+  getConfigForTheme,
   render,
 };
 
 if (require.main === module) {
-  console.log("This script is meant to be used as a library. You probably want to run bin/raml2html if you're looking for a CLI.");
+  console.error("This script is meant to be used as a library. You probably want to run bin/raml2html if you're looking for a CLI.");
   process.exit(1);
 }
