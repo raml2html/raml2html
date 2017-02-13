@@ -1,3 +1,12 @@
+5.0.0 - February 14, 2017
+- Added support for themes:
+  - the command line interface now takes an optional `--theme` parameter
+  - we ship two officially supported themes: raml2html-default-theme and raml2html-markdown-theme
+  - themes can overwrite the entire rendering process, allowing themes to use different templating engines
+    or output formats (Markdown, PDF, etc)
+  - the `getDefaultConfig` function has been split into `getConfigForTemplate` and `getConfigForTheme`,
+    use `getConfigForTheme` without any parameters to get the old behaviour of `getDefaultConfig`
+
 4.1.1 - February 6, 2017
 - Improved error reporting (#316)
 
