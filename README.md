@@ -42,12 +42,12 @@ raml2html --template my-custom-template.nunjucks -i example.raml -o example.html
 #### Using the default templates or your own Nunjucks templates
 ```javascript
 const raml2html = require('raml2html');
-const configWithDefaultTemplates = raml2html.getDefaultConfig();
-const configWithCustomTemplates = raml2html.getDefaultConfig('my-custom-template.nunjucks', __dirname);
-const configForTheme = raml2html.getConfigForTheme('raml2html-markdown-theme');
+const configWithDefaultTheme = raml2html.getConfigForTheme();
+const configForDifferentTheme = raml2html.getConfigForTheme('raml2html-markdown-theme');
+const configWithCustomTemplate = raml2html.getConfigForTemplate('my-custom-template.nunjucks', __dirname);
 
 // source can either be a filename, url, or parsed RAML object
-raml2html.render(source, configWithDefaultTemplates).then(function(result) {
+raml2html.render(source, configWithDefaultTheme).then(function(result) {
   // Save the result to a file or do something else with the result
 }, function(error) {
   // Output error

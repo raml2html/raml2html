@@ -29,10 +29,10 @@ if (!input) {
 }
 
 let config;
-if (program.theme) {
-  config = raml2html.getConfigForTheme(program.theme);
+if (program.template) {
+  config = raml2html.getConfigForTemplate(program.template);
 } else {
-  config = raml2html.getDefaultConfig(program.template);
+  config = raml2html.getConfigForTheme(program.theme);
 }
 
 // Start the rendering process

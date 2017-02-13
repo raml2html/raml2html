@@ -44,7 +44,7 @@ function render(source, config) {
  * @param {String} [templatesPath] - Optional, by default it uses the current working directory
  * @returns {{processRamlObj: Function, postProcessHtml: Function}}
  */
-function getDefaultConfig(mainTemplate, templatesPath) {
+function getConfigForTemplate(mainTemplate, templatesPath) {
   return {
     processRamlObj(ramlObj, config) {
       const renderer = new marked.Renderer();
@@ -147,12 +147,12 @@ function getConfigForTheme(theme) {
     // Nope, use the config from below
     const mainTemplate = 'index.nunjucks';
     const templatesPath = path.dirname(require.resolve(`${theme}/package.json`));
-    return getDefaultConfig(mainTemplate, templatesPath);
+    return getConfigForTemplate(mainTemplate, templatesPath);
   }
 }
 
 module.exports = {
-  getDefaultConfig,
+  getConfigForTemplate,
   getConfigForTheme,
   render,
 };
