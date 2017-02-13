@@ -144,10 +144,9 @@ function getConfigForTheme(theme) {
     const config = require(theme);
     return config;
   } catch (err) {
-    // Nope, use the config from below
-    const mainTemplate = 'index.nunjucks';
+    // Nope, forward to getConfigForTemplate
     const templatesPath = path.dirname(require.resolve(`${theme}/package.json`));
-    return getConfigForTemplate(mainTemplate, templatesPath);
+    return getConfigForTemplate('index.nunjucks', templatesPath);
   }
 }
 
