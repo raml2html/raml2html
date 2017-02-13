@@ -43,8 +43,8 @@ raml2html --template my-custom-template.nunjucks -i example.raml -o example.html
 ```javascript
 const raml2html = require('raml2html');
 const configWithDefaultTemplates = raml2html.getDefaultConfig();
-const configWithCustomTemplates = raml2html.getDefaultConfig('raml2html-markdown-theme')
-const configWithCustomTemplates = raml2html.getDefaultConfig(null, 'my-custom-template.nunjucks', __dirname);
+const configWithCustomTemplates = raml2html.getDefaultConfig('my-custom-template.nunjucks', __dirname);
+const configForTheme = raml2html.getConfigForTheme('raml2html-markdown-theme');
 
 // source can either be a filename, url, or parsed RAML object
 raml2html.render(source, configWithDefaultTemplates).then(function(result) {
@@ -74,9 +74,6 @@ function. Just get the default config (`const config = raml2html.getDefaultConfi
 to it that takes `env` as its only parameter.
 
 See also `example/script.js` for an example of using raml2html as a library.
-
-Please note that if you want to use a different template language, you're probably better off directly using
-[raml2obj](https://github.com/raml2html/raml2obj).
 
 ### Gulp
 You can use the [latest raml2html directly from Gulp](https://gist.github.com/iki/784ddd5ab33c1e1b726b), or use the third party

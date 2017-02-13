@@ -28,8 +28,15 @@ if (!input) {
   input = program.args[0];
 }
 
+let config;
+if (program.theme) {
+  config = raml2html.getConfigForTheme(program.theme);
+} else {
+  config = raml2html.getDefaultConfig(program.template);
+}
+
 // Start the rendering process
-raml2html.render(input, raml2html.getDefaultConfig(program.theme, program.template)).then((result) => {
+raml2html.render(input, config).then((result) => {
   if (program.output) {
     fs.writeFileSync(program.output, result);
   } else {

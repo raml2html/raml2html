@@ -40,33 +40,11 @@ function render(source, config) {
 }
 
 /**
- * @param {String} [theme] - The name of a raml2html template, leave empty if you want to use the mainTemplate option
  * @param {String} [mainTemplate] - The filename of the main template, leave empty to use default templates
  * @param {String} [templatesPath] - Optional, by default it uses the current working directory
  * @returns {{processRamlObj: Function, postProcessHtml: Function}}
  */
-function getDefaultConfig(theme, mainTemplate, templatesPath) {
-  if (theme && mainTemplate) {
-    console.error("Don't supply both a theme and a template");
-    process.exit(1);
-  }
-
-  if (!theme && !mainTemplate) {
-    theme = 'raml2html-default-theme';
-  }
-
-  if (theme) {
-    mainTemplate = 'index.nunjucks';
-    templatesPath = path.dirname(require.resolve(`${theme}/package.json`));
-
-    try {
-      const config = require(theme);
-      return config;
-    } catch (err) {
-      // Ignore, use the config from below
-    }
-  }
-
+function getDefaultConfig(mainTemplate, templatesPath) {
   return {
     processRamlObj(ramlObj, config) {
       const renderer = new marked.Renderer();
@@ -152,8 +130,30 @@ function getDefaultConfig(theme, mainTemplate, templatesPath) {
   };
 }
 
+/**
+ * @param {String} [theme] - The name of a raml2html template, leave empty if you want to use the mainTemplate option
+ * @returns {{processRamlObj: Function, postProcessHtml: Function}}
+ */
+function getConfigForTheme(theme) {
+  if (!theme) {
+    theme = 'raml2html-default-theme';
+  }
+
+  try {
+    // See if the theme supplies its own config object, and return it
+    const config = require(theme);
+    return config;
+  } catch (err) {
+    // Nope, use the config from below
+    const mainTemplate = 'index.nunjucks';
+    const templatesPath = path.dirname(require.resolve(`${theme}/package.json`));
+    return getDefaultConfig(mainTemplate, templatesPath);
+  }
+}
+
 module.exports = {
   getDefaultConfig,
+  getConfigForTheme,
   render,
 };
 
