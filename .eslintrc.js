@@ -18,5 +18,6 @@ module.exports = {
   rules: {
     'prettier/prettier': ['error', {trailingComma: 'es5', singleQuote: true}],
     'no-console': 'off',
+    'prefer-const': 'error',
   }
 };

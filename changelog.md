@@ -1,3 +1,9 @@
+5.1.0 - March 9, 2017
+- All program arguments can now be passed on to themes, so themes can support their
+  own config options
+- Switched from using ESLint for code formatting to Prettier. We still use ESLint,
+  Prettier is run as a plugin through it. ESLint still checks for bugs.
+
 5.0.0 - February 14, 2017
 - Added support for themes:
   - the command line interface now takes an optional `--theme` parameter
