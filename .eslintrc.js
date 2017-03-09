@@ -1,7 +1,6 @@
 module.exports = {
   extends: [
     'eslint:recommended',
-    'prettier',
   ],
   plugins: [
     'prettier',
@@ -19,5 +18,8 @@ module.exports = {
     'prettier/prettier': ['error', {trailingComma: 'es5', singleQuote: true}],
     'no-console': 'off',
     'prefer-const': 'error',
+    'eqeqeq': 'error',
+    'no-useless-return': 'error',
+    'prefer-spread': 'error',
   }
 };

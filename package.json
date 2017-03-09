@@ -20,7 +20,6 @@
   },
   "devDependencies": {
     "eslint": "3.14.x",
-    "eslint-config-prettier": "1.5.x",
     "eslint-plugin-prettier": "2.0.x",
     "glob": "7.1.x",
     "prettier": "0.22.x"
