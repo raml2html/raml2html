@@ -24,9 +24,12 @@ const argv = yargs
   .describe('t', 'Template path')
   .describe('theme', 'Theme name')
   .example('raml2html example.raml > example.html')
-  .example('raml2html --theme raml2html-markdown-theme example.raml > example.html')
-  .example('raml2html --template my-template.nunjucks -i example.raml -o example.html')
-  .argv;
+  .example(
+    'raml2html --theme raml2html-markdown-theme example.raml > example.html'
+  )
+  .example(
+    'raml2html --template my-template.nunjucks -i example.raml -o example.html'
+  ).argv;
 
 let input = argv.input;
 
@@ -48,21 +51,24 @@ if (argv.template) {
 }
 
 // Start the rendering process
-raml2html.render(input, config).then((result) => {
-  if (argv.output) {
-    fs.writeFileSync(argv.output, result);
-  } else {
-    // Simply output to console
-    process.stdout.write(result, () => {
-      process.exit(0);
-    });
-  }
-}).catch((error) => {
-  if (error.message) {
-    console.error(error.message);
-  }
-  if (error.parserErrors) {
-    console.error(JSON.stringify(error.parserErrors, null, 2));
-  }
-  process.exit(1);
-});
+raml2html
+  .render(input, config)
+  .then(result => {
+    if (argv.output) {
+      fs.writeFileSync(argv.output, result);
+    } else {
+      // Simply output to console
+      process.stdout.write(result, () => {
+        process.exit(0);
+      });
+    }
+  })
+  .catch(error => {
+    if (error.message) {
+      console.error(error.message);
+    }
+    if (error.parserErrors) {
+      console.error(JSON.stringify(error.parserErrors, null, 2));
+    }
+    process.exit(1);
+  });
