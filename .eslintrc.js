@@ -1,14 +1,22 @@
 module.exports = {
-  extends: 'loopwerk',
+  extends: [
+    'eslint:recommended',
+    'prettier',
+  ],
+  plugins: [
+    'prettier',
+  ],
   env: {
+    es6: true,
     browser: false,
-    node: true
+    node: true,
+    commonjs: true,
+  },
+  parserOptions: {
+    ecmaVersion: 7,
   },
   rules: {
-    'func-names': 0,
-    'no-param-reassign': 0,
-    'max-len': 0,
-    'prefer-spread': 0,
-    'global-require': 0,
+    'prettier/prettier': ['error', {trailingComma: 'es5', singleQuote: true}],
+    'no-console': 'off',
   }
 };

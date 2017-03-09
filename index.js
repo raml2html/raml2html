@@ -23,11 +23,11 @@ function render(source, config) {
   config = config || {};
   config.raml2HtmlVersion = pjson.version;
 
-  return raml2obj.parse(source).then((ramlObj) => {
+  return raml2obj.parse(source).then(ramlObj => {
     ramlObj.config = config;
 
     if (config.processRamlObj) {
-      return config.processRamlObj(ramlObj, config).then((html) => {
+      return config.processRamlObj(ramlObj, config).then(html => {
         if (config.postProcessHtml) {
           return config.postProcessHtml(html);
         }
@@ -48,7 +48,7 @@ function getConfigForTemplate(mainTemplate, templatesPath) {
   return {
     processRamlObj(ramlObj, config) {
       const renderer = new marked.Renderer();
-      renderer.table = function (thead, tbody) {
+      renderer.table = function(thead, tbody) {
         // Render Bootstrap style tables
         return `<table class="table"><thead>${thead}</thead><tbody>${tbody}</tbody></table>`;
       };
@@ -62,14 +62,14 @@ function getConfigForTemplate(mainTemplate, templatesPath) {
 
       markdown.register(env, md => marked(md, { renderer }));
 
-      ramlObj.isStandardType = function (type) {
+      ramlObj.isStandardType = function(type) {
         if (typeof type === 'object') {
           return false;
         }
         return type && type.indexOf('{') === -1 && type.indexOf('<') === -1;
       };
 
-      const resolveSecuritySchemeName = (name) => {
+      const resolveSecuritySchemeName = name => {
         if (ramlObj.securitySchemes && ramlObj.securitySchemes[name]) {
           const scheme = ramlObj.securitySchemes[name];
 
@@ -81,16 +81,16 @@ function getConfigForTemplate(mainTemplate, templatesPath) {
       };
 
       // Parse securedBy and use scopes if they are defined
-      ramlObj.renderSecuredBy = function (securedBy) {
+      ramlObj.renderSecuredBy = function(securedBy) {
         let out = '';
         if (typeof securedBy === 'object') {
-          Object.keys(securedBy).forEach((key) => {
+          Object.keys(securedBy).forEach(key => {
             out += `<b>${resolveSecuritySchemeName(key)}</b>`;
 
             if (securedBy[key].scopes.length) {
               out += ' with scopes:<ul>';
 
-              securedBy[key].scopes.forEach((scope) => {
+              securedBy[key].scopes.forEach(scope => {
                 out += `<li>${scope}</li>`;
               });
 
@@ -108,7 +108,7 @@ function getConfigForTemplate(mainTemplate, templatesPath) {
       html = html.replace(/&quot;/g, '"');
 
       // Return the promise with the html
-      return new Promise((resolve) => {
+      return new Promise(resolve => {
         resolve(html);
       });
     },
@@ -132,20 +132,30 @@ function getConfigForTemplate(mainTemplate, templatesPath) {
 
 /**
  * @param {String} [theme] - The name of a raml2html template, leave empty if you want to use the mainTemplate option
+ * @param {Object} [programArguments] - An object containing all program aruments
  * @returns {{processRamlObj: Function, postProcessHtml: Function}}
  */
-function getConfigForTheme(theme) {
+function getConfigForTheme(theme, programArguments) {
   if (!theme) {
     theme = 'raml2html-default-theme';
   }
 
   try {
-    // See if the theme supplies its own config object, and return it
+    // See if the theme supplies its own config object (or function that creates this object), and return it
     const config = require(theme);
+
+    // If it's a function then call it with the program arguments
+    if (typeof config === 'function') {
+      return config(programArguments);
+    }
+
+    // Otherwise we assume it's a config object (default behavior)
     return config;
   } catch (err) {
     // Nope, forward to getConfigForTemplate
-    const templatesPath = path.dirname(require.resolve(`${theme}/package.json`));
+    const templatesPath = path.dirname(
+      require.resolve(`${theme}/package.json`)
+    );
     return getConfigForTemplate('index.nunjucks', templatesPath);
   }
 }
@@ -157,6 +167,8 @@ module.exports = {
 };
 
 if (require.main === module) {
-  console.error("This script is meant to be used as a library. You probably want to run bin/raml2html if you're looking for a CLI.");
+  console.error(
+    "This script is meant to be used as a library. You probably want to run bin/raml2html if you're looking for a CLI."
+  );
   process.exit(1);
 }
