@@ -20,6 +20,5 @@ module.exports = {
     'prefer-const': 'error',
     'eqeqeq': 'error',
     'no-useless-return': 'error',
-    'prefer-spread': 'error',
   }
 };
