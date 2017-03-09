@@ -2,43 +2,55 @@
 
 'use strict';
 
-const program = require('commander');
+const yargs = require('yargs');
 const fs = require('fs');
 const raml2html = require('..');
 const pjson = require('../package.json');
 
-program
+const argv = yargs
+  .usage('Usage: raml2html [options] [RAML input file]')
   .version(pjson.version)
-  .usage('[options] [RAML input file]')
-  .option('-i, --input [input]', 'RAML input file')
-  .option('--theme [theme]', 'Name of a raml2html theme')
-  .option('-t, --template [template]', 'Filename of the custom Nunjucks template')
-  .option('-o, --output [output]', 'HTML output file')
-  .parse(process.argv);
+  .alias('i', 'input')
+  .alias('o', 'output')
+  .alias('t', 'template')
+  .alias('h', 'help')
+  .help('h')
+  .string('i')
+  .string('o')
+  .string('t')
+  .string('theme')
+  .describe('i', 'Input file')
+  .describe('o', 'Output file')
+  .describe('t', 'Template path')
+  .describe('theme', 'Theme name')
+  .example('raml2html example.raml > example.html')
+  .example('raml2html --theme raml2html-markdown-theme example.raml > example.html')
+  .example('raml2html --template my-template.nunjucks -i example.raml -o example.html')
+  .argv;
 
-let input = program.input;
+let input = argv.input;
 
 if (!input) {
-  if (program.args.length !== 1) {
-    console.error('Error: You need to specify the RAML input file');
-    program.help();
+  if (argv._.length !== 1) {
+    console.error('Error: You need to specify the RAML input file\n');
+    yargs.showHelp();
     process.exit(1);
   }
 
-  input = program.args[0];
+  input = argv._[0];
 }
 
 let config;
-if (program.template) {
-  config = raml2html.getConfigForTemplate(program.template);
+if (argv.template) {
+  config = raml2html.getConfigForTemplate(argv.template);
 } else {
-  config = raml2html.getConfigForTheme(program.theme);
+  config = raml2html.getConfigForTheme(argv.theme, argv);
 }
 
 // Start the rendering process
 raml2html.render(input, config).then((result) => {
-  if (program.output) {
-    fs.writeFileSync(program.output, result);
+  if (argv.output) {
+    fs.writeFileSync(argv.output, result);
   } else {
     // Simply output to console
     process.stdout.write(result, () => {

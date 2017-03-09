@@ -132,16 +132,24 @@ function getConfigForTemplate(mainTemplate, templatesPath) {
 
 /**
  * @param {String} [theme] - The name of a raml2html template, leave empty if you want to use the mainTemplate option
+ * @param {Object} [programArguments] - An object containing all program aruments
  * @returns {{processRamlObj: Function, postProcessHtml: Function}}
  */
-function getConfigForTheme(theme) {
+function getConfigForTheme(theme, programArguments) {
   if (!theme) {
     theme = 'raml2html-default-theme';
   }
 
   try {
-    // See if the theme supplies its own config object, and return it
+    // See if the theme supplies its own config object (or function that creates this object), and return it
     const config = require(theme);
+
+    // If it's a function then call it with the program arguments
+    if (typeof config === 'function') {
+      return config(programArguments);
+    }
+
+    // Otherwise we assume it's a config object (default behavior)
     return config;
   } catch (err) {
     // Nope, forward to getConfigForTemplate
