@@ -2,7 +2,7 @@
 
 [![Downloads](https://img.shields.io/npm/dm/raml2html.svg)](https://www.npmjs.com/package/raml2html)
 [![NPM version](http://img.shields.io/npm/v/raml2html.svg)](https://www.npmjs.org/package/raml2html)
-[![js-standard-style](https://img.shields.io/badge/code%20style-airbnb-blue.svg?style=flat)](https://github.com/airbnb/javascript)
+[![Prettier](https://img.shields.io/badge/code%20style-prettier-blue.svg?style=flat)](https://github.com/prettier/prettier)
 
 A simple RAML to HTML documentation generator, written for Node.js, with theme support.
 
@@ -95,7 +95,7 @@ raml2html is an open source project and your contribution is very much appreciat
 
 1. Check for open issues or open a fresh issue to start a discussion around a feature idea or a bug.
 2. Fork the repository on Github and make your changes on the **develop** branch (or branch off of it).
-   Please retain the [code style](https://github.com/airbnb/javascript) that is used in the project and `npm run lint` before committing.
+   Run `npm run lint` before committing to check for common problems and auto format all code.
 3. Add an example of the new feature to example.raml (if applicable)
 4. Send a pull request (with the **develop** branch as the target).
 
