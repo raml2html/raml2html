@@ -17,7 +17,7 @@ const ramlFile = path.join(__dirname, 'helloworld.raml');
  * raml2html.render() needs a config object with at least a `processRamlObj` property.
  * Instead of creating this config object ourselves, we can just ask for raml2html.getDefaultConfig():
  */
-const config1 = raml2html.getDefaultConfig();
+const config1 = raml2html.getConfigForTheme('raml2html-default-theme');
 
 raml2html.render(ramlFile, config1).then(
   result => {
@@ -31,7 +31,7 @@ raml2html.render(ramlFile, config1).then(
 /**
  * Using your own templates using the default processRamlObj function.
  */
-const config2 = raml2html.getDefaultConfig(
+const config2 = raml2html.getConfigForTemplate(
   './custom-template-test/template.nunjucks',
   __dirname
 );
@@ -111,7 +111,7 @@ raml2html.render(ramlFile, {}).then(
 /**
  * If you want to only customize the Nunjucks configuration, just add a setupNunjucks function to the default config.
  */
-const config6 = raml2html.getDefaultConfig();
+const config6 = raml2html.getConfigForTheme('raml2html-default-theme');
 config6.setupNunjucks = function(env) {
   // Do stuff with env here
   env.bla = 'bla';
