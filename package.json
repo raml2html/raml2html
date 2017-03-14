@@ -21,7 +21,6 @@
   "devDependencies": {
     "eslint": "3.14.x",
     "eslint-plugin-prettier": "2.0.x",
-    "glob": "7.1.x",
     "prettier": "0.22.x"
   },
   "homepage": "https://github.com/raml2html/raml2html",
