@@ -73,7 +73,7 @@ If you only want to configure the default Nunjucks environment you don't have to
 function. Just get the default config (`const config = raml2html.getDefaultConfig();`) and add a `setupNunjucks` function
 to it that takes `env` as its only parameter.
 
-See also `example/script.js` for an example of using raml2html as a library.
+See also `example/script.js` for multiple examples of using raml2html as a library.
 
 ### Gulp
 You can use the [raml2html directly from Gulp](https://gist.github.com/iki/784ddd5ab33c1e1b726b).
