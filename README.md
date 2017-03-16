@@ -85,7 +85,7 @@ Please see the following links for live examples:
 
 ## Before you report a bug
 If you get parsing errors, please do not report them to raml2html: it doesn't do the actual RAML parsing.
-Review the error and fix your RAML file, or open a new issue at [raml-js-parser](https://github.com/raml-org/raml-js-parser-2).
+Review the error and fix your RAML file, or open a new issue at [raml-js-parser-2](https://github.com/raml-org/raml-js-parser-2).
 
 
 ## Contributing
