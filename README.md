@@ -61,6 +61,8 @@ raml2html.render(source, configWithDefaultTheme).then(function(result) {
  * object and must return a promise with the result. You can do whatever you want in this function.
  *
  * You can also supply a postProcessHtml function that can for example minify the generated HTML.
+ *
+ * You can also add a setupNunjucks function that takes the env as its only parameter.
  */
 raml2html.render(source, config).then(function(result) {
   // Save the result to a file or do something else with the result
@@ -68,10 +70,6 @@ raml2html.render(source, config).then(function(result) {
   // Output error
 });
 ```
-
-If you only want to configure the default Nunjucks environment you don't have to override the entire `processRamlObj`
-function. Just get the default config (`const config = raml2html.getDefaultConfig();`) and add a `setupNunjucks` function
-to it that takes `env` as its only parameter.
 
 See also `example/script.js` for multiple examples of using raml2html as a library.
 
