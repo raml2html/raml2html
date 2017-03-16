@@ -69,40 +69,6 @@ function getConfigForTemplate(mainTemplate, templatesPath) {
         return type && type.indexOf('{') === -1 && type.indexOf('<') === -1;
       };
 
-      const resolveSecuritySchemeName = name => {
-        if (ramlObj.securitySchemes && ramlObj.securitySchemes[name]) {
-          const scheme = ramlObj.securitySchemes[name];
-
-          if (scheme.displayName) {
-            return scheme.displayName;
-          }
-        }
-        return name;
-      };
-
-      // Parse securedBy and use scopes if they are defined
-      ramlObj.renderSecuredBy = function(securedBy) {
-        let out = '';
-        if (typeof securedBy === 'object') {
-          Object.keys(securedBy).forEach(key => {
-            out += `<b>${resolveSecuritySchemeName(key)}</b>`;
-
-            if (securedBy[key].scopes.length) {
-              out += ' with scopes:<ul>';
-
-              securedBy[key].scopes.forEach(scope => {
-                out += `<li>${scope}</li>`;
-              });
-
-              out += '</ul>';
-            }
-          });
-        } else {
-          out = `<b>${resolveSecuritySchemeName(securedBy)}</b>`;
-        }
-        return out;
-      };
-
       // Render the main template using the raml object and fix the double quotes
       let html = env.render(mainTemplate, ramlObj);
       html = html.replace(/&quot;/g, '"');
