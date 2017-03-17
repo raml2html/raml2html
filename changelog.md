@@ -1,5 +1,5 @@
 6.0.0 - March 17, 2017
-- Updated to raml2obj 5.1.0, which has backwards incompatible changes to securedBy
+- Updated from raml2obj 4.1.0 to 5.1.0, which has backwards incompatible changes to securedBy
   (among other bug fixes)
 - Updated to raml2html-default-theme 2.0.0 to deal with these securedBy changes
 
