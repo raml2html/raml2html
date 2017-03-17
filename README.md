@@ -61,6 +61,8 @@ raml2html.render(source, configWithDefaultTheme).then(function(result) {
  * object and must return a promise with the result. You can do whatever you want in this function.
  *
  * You can also supply a postProcessHtml function that can for example minify the generated HTML.
+ *
+ * You can also add a setupNunjucks function that takes the env as its only parameter.
  */
 raml2html.render(source, config).then(function(result) {
   // Save the result to a file or do something else with the result
@@ -69,11 +71,7 @@ raml2html.render(source, config).then(function(result) {
 });
 ```
 
-If you only want to configure the default Nunjucks environment you don't have to override the entire `processRamlObj`
-function. Just get the default config (`const config = raml2html.getDefaultConfig();`) and add a `setupNunjucks` function
-to it that takes `env` as its only parameter.
-
-See also `example/script.js` for an example of using raml2html as a library.
+See also `example/script.js` for multiple examples of using raml2html as a library.
 
 ### Gulp
 You can use the [raml2html directly from Gulp](https://gist.github.com/iki/784ddd5ab33c1e1b726b).
@@ -87,7 +85,7 @@ Please see the following links for live examples:
 
 ## Before you report a bug
 If you get parsing errors, please do not report them to raml2html: it doesn't do the actual RAML parsing.
-Review the error and fix your RAML file, or open a new issue at [raml-js-parser](https://github.com/raml-org/raml-js-parser-2).
+Review the error and fix your RAML file, or open a new issue at [raml-js-parser-2](https://github.com/raml-org/raml-js-parser-2).
 
 
 ## Contributing
@@ -98,6 +96,14 @@ raml2html is an open source project and your contribution is very much appreciat
    Run `npm run lint` before committing to check for common problems and auto format all code.
 3. Add an example of the new feature to example.raml (if applicable)
 4. Send a pull request (with the **develop** branch as the target).
+
+To get the best environment to work on raml2html and the default theme, follow these steps.
+
+1. Checkout raml2html-default-theme's develop branch; `npm link`.
+2. Checkout raml2html's develop branch; first `npm link raml2html-default-theme` and then `npm link`.
+
+Now both projects are installed globally, but using the local development versions of both.
+From the theme repo's example folder you can run the `render-all-examples` script without problem.
 
 If your pull request is merged feel free to ask for push access. We want to get more maintainers! If you do
 have push access, please still work on feature branches and create pull requests, which then get reviewed.
