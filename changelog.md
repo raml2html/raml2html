@@ -1,3 +1,6 @@
+6.1.0 - March 24, 2017
+- Updated raml2obj dependency, also made it less strict
+
 6.0.0 - March 17, 2017
 - Updated from raml2obj 4.1.0 to 5.1.0, which has backwards incompatible changes to securedBy
   (among other bug fixes)
