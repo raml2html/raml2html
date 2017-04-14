@@ -1,3 +1,6 @@
+6.1.1 - April 14, 2017
+- Updated third party dependencies
+
 6.1.0 - March 24, 2017
 - Updated raml2obj dependency, also made it less strict
 
