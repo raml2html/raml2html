@@ -44,7 +44,7 @@ raml2html --template my-custom-template.nunjucks -i example.raml -o example.html
 const raml2html = require('raml2html');
 const configWithDefaultTheme = raml2html.getConfigForTheme();
 const configForDifferentTheme = raml2html.getConfigForTheme('raml2html-markdown-theme');
-const configWithCustomTemplate = raml2html.getConfigForTemplate('my-custom-template.nunjucks', __dirname);
+const configWithCustomTemplate = raml2html.getConfigForTemplate('~/path/to/my-custom-template.nunjucks');
 
 // source can either be a filename, url, or parsed RAML object
 raml2html.render(source, configWithDefaultTheme).then(function(result) {

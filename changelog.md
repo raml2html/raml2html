@@ -1,3 +1,6 @@
+6.2.0 - April 21, 2017
+- Fixed template path handling (#343)
+
 6.1.1 - April 14, 2017
 - Updated third party dependencies
 

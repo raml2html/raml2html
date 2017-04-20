@@ -32,8 +32,7 @@ raml2html.render(ramlFile, config1).then(
  * Using your own templates using the default processRamlObj function.
  */
 const config2 = raml2html.getConfigForTemplate(
-  './custom-template-test/template.nunjucks',
-  __dirname
+  './custom-template-test/template.nunjucks'
 );
 
 raml2html.render(ramlFile, config2).then(

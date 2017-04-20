@@ -7,6 +7,7 @@ const markdown = require('nunjucks-markdown');
 const marked = require('marked');
 const Minimize = require('minimize');
 const path = require('path');
+const fs = require('fs');
 
 /**
  * Render the source RAML object using the config's processOutput function
@@ -41,10 +42,12 @@ function render(source, config) {
 
 /**
  * @param {String} [mainTemplate] - The filename of the main template, leave empty to use default templates
- * @param {String} [templatesPath] - Optional, by default it uses the current working directory
  * @returns {{processRamlObj: Function, postProcessHtml: Function}}
  */
-function getConfigForTemplate(mainTemplate, templatesPath) {
+function getConfigForTemplate(mainTemplate) {
+  const templatesPath = path.dirname(fs.realpathSync(mainTemplate));
+  const templateFile = path.basename(fs.realpathSync(mainTemplate));
+
   return {
     processRamlObj(ramlObj, config) {
       const renderer = new marked.Renderer();
@@ -70,7 +73,7 @@ function getConfigForTemplate(mainTemplate, templatesPath) {
       };
 
       // Render the main template using the raml object and fix the double quotes
-      let html = env.render(mainTemplate, ramlObj);
+      let html = env.render(templateFile, ramlObj);
       html = html.replace(/&quot;/g, '"');
 
       // Return the promise with the html
@@ -122,7 +125,7 @@ function getConfigForTheme(theme, programArguments) {
     const templatesPath = path.dirname(
       require.resolve(`${theme}/package.json`)
     );
-    return getConfigForTemplate('index.nunjucks', templatesPath);
+    return getConfigForTemplate(path.join(templatesPath, 'index.nunjucks'));
   }
 }
 
