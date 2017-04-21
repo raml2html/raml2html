@@ -97,14 +97,6 @@ raml2html is an open source project and your contribution is very much appreciat
 3. Add an example of the new feature to example.raml (if applicable)
 4. Send a pull request (with the **develop** branch as the target).
 
-To get the best environment to work on raml2html and the default theme, follow these steps.
-
-1. Checkout raml2html-default-theme's develop branch; `npm link`.
-2. Checkout raml2html's develop branch; first `npm link raml2html-default-theme` and then `npm link`.
-
-Now both projects are installed globally, but using the local development versions of both.
-From the theme repo's example folder you can run the `render-all-examples` script without problem.
-
 If your pull request is merged feel free to ask for push access. We want to get more maintainers! If you do
 have push access, please still work on feature branches and create pull requests, which then get reviewed.
 You can also review other people's pull requests and be involved in that way.
@@ -112,6 +104,14 @@ You can also review other people's pull requests and be involved in that way.
 A big thank you goes out to everyone who helped with the project, the [contributors](https://github.com/raml2html/raml2html/graphs/contributors)
 and everyone who took the time to report issues and give feedback.
 
+### Local setup
+To get the best environment to work on raml2html and the default theme, follow these steps.
+
+1. Checkout raml2html-default-theme's develop branch; `npm link`.
+2. Checkout raml2html's develop branch; first `npm link raml2html-default-theme` and then `npm link`.
+
+Now both projects are installed globally, but using the local development versions of both.
+From the theme repo's example folder you can run the `render-all-examples` script without problem.
 
 ## Changelog
 See [changelog.md](https://github.com/raml2html/raml2html/blob/master/changelog.md)
