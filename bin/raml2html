@@ -13,15 +13,18 @@ const argv = yargs
   .alias('i', 'input')
   .alias('o', 'output')
   .alias('t', 'template')
+  .alias('v', 'validate')
   .alias('h', 'help')
   .help('h')
   .string('i')
   .string('o')
   .string('t')
   .string('theme')
+  .boolean('v')
   .describe('i', 'Input file')
   .describe('o', 'Output file')
   .describe('t', 'Template path')
+  .describe('v', 'Validate RAML and examples (off by default)')
   .describe('theme', 'Theme name')
   .example('raml2html example.raml > example.html')
   .example(
@@ -52,7 +55,7 @@ if (argv.template) {
 
 // Start the rendering process
 raml2html
-  .render(input, config)
+  .render(input, config, argv.validate)
   .then(result => {
     if (argv.output) {
       fs.writeFileSync(argv.output, result);

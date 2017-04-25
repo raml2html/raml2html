@@ -17,14 +17,15 @@ const fs = require('fs');
  *
  * @param {(String|Object)} source - The source RAML file. Can be a filename, url, or an already-parsed RAML object.
  * @param {Object} config
+ * @param {bool} validation - use validation (off by default)
  * @param {Function} config.processRamlObj
  * @returns a promise
  */
-function render(source, config) {
+function render(source, config, validation) {
   config = config || {};
   config.raml2HtmlVersion = pjson.version;
 
-  return raml2obj.parse(source).then(ramlObj => {
+  return raml2obj.parse(source, validation).then(ramlObj => {
     ramlObj.config = config;
 
     if (config.processRamlObj) {
