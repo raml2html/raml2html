@@ -29,7 +29,7 @@ RAML to Markdown, you can install the raml2html-markdown-theme theme:
 npm i -g raml2html-markdown-theme
 ```
 
-Search NPM for the "raml2html-theme" keyword (or use [this link](https://www.npmjs.com/browse/keyword/raml2html-theme))
+Search NPM for the "raml2html-theme" keyword (or use [this link](https://www.npmjs.com/search?q=raml2html-theme))
 to find more themes.
 
 ## Usage
