@@ -17,21 +17,21 @@ const fs = require('fs');
  *
  * @param {(String|Object)} source - The source RAML file. Can be a filename, url, or an already-parsed RAML object.
  * @param {Object} config
- * @param {bool} validation - use validation (off by default)
+ * @param {Object} options
  * @param {Function} config.processRamlObj
  * @returns a promise
  */
-function render(source, config, validation) {
+function render(source, config, options) {
   config = config || {};
   config.raml2HtmlVersion = pjson.version;
 
-  return raml2obj.parse(source, validation).then(ramlObj => {
+  return raml2obj.parse(source, options.validate).then(ramlObj => {
     ramlObj.config = config;
 
     if (config.processRamlObj) {
-      return config.processRamlObj(ramlObj, config).then(html => {
+      return config.processRamlObj(ramlObj, config, options).then(html => {
         if (config.postProcessHtml) {
-          return config.postProcessHtml(html);
+          return config.postProcessHtml(html, config, options);
         }
         return html;
       });
@@ -50,7 +50,7 @@ function getConfigForTemplate(mainTemplate) {
   const templateFile = path.basename(fs.realpathSync(mainTemplate));
 
   return {
-    processRamlObj(ramlObj, config) {
+    processRamlObj(ramlObj, config, options) {
       const renderer = new marked.Renderer();
       renderer.table = function(thead, tbody) {
         // Render Bootstrap style tables
@@ -83,19 +83,23 @@ function getConfigForTemplate(mainTemplate) {
       });
     },
 
-    postProcessHtml(html) {
-      // Minimize the generated html and return the promise with the result
-      const minimize = new Minimize({ quotes: true });
+    postProcessHtml(html, config, options) {
+      if (options.pretty) {
+        return html;
+      } else {
+        // Minimize the generated html and return the promise with the result
+        const minimize = new Minimize({ quotes: true });
 
-      return new Promise((resolve, reject) => {
-        minimize.parse(html, (error, result) => {
-          if (error) {
-            reject(new Error(error));
-          } else {
-            resolve(result);
-          }
+        return new Promise((resolve, reject) => {
+          minimize.parse(html, (error, result) => {
+            if (error) {
+              reject(new Error(error));
+            } else {
+              resolve(result);
+            }
+          });
         });
-      });
+      }
     },
   };
 }
