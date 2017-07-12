@@ -25,6 +25,11 @@ function render(source, config, options) {
   config = config || {};
   config.raml2HtmlVersion = pjson.version;
 
+  // Check if option is `validation` to keep backward compatibility
+  if (typeof options === 'boolean') {
+    options = {validate: options};
+  }
+
   return raml2obj.parse(source, options.validate).then(ramlObj => {
     ramlObj.config = config;
 
