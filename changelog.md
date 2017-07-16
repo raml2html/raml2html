@@ -1,3 +1,6 @@
+6.4.0 - July 16, 2017
+- Added a new --pretty command line option to turn off html minification
+
 6.3.0 - April 25, 2017
 - Added a new --validate command line option to turn on validation, which is now off by default (#345)
 
