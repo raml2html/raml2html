@@ -1,3 +1,6 @@
+6.4.1 - August 4, 2017
+- Fixed a bug where if no options were given at all to the render function you'd get an error
+
 6.4.0 - July 16, 2017
 - Added a new --pretty command line option to turn off html minification
 

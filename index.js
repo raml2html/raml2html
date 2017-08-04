@@ -25,9 +25,17 @@ function render(source, config, options) {
   config = config || {};
   config.raml2HtmlVersion = pjson.version;
 
-  // Check if option is `validation` to keep backward compatibility
+  // Check if option is old boolean `validation` to keep backward compatibility
   if (typeof options === 'boolean') {
-    options = {validate: options};
+    options = {
+      validate: options,
+    };
+  }
+
+  if (options === undefined) {
+    options = {
+      validate: false,
+    };
   }
 
   return raml2obj.parse(source, options.validate).then(ramlObj => {
