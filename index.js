@@ -10,6 +10,35 @@ const path = require('path');
 const fs = require('fs');
 
 /**
+ * Ensures that the properties of all types are in array, not object format
+ *
+ * @param  {object} ramlObj
+ * @return {object} modified ramlObj
+ */
+function allPropertyObjToArray(ramlObj) {
+  var typeKeys = Object.keys(ramlObj.types);
+
+  for (var i = 0; i < typeKeys.length; i++) {
+    var properties = ramlObj.types[typeKeys[i]].properties;
+
+    if (properties && !Array.isArray(properties)) {
+      var propertiesArray = [];
+      var propertyKeys = Object.keys(properties);
+
+      for (var j = 0; j < propertyKeys.length; j++) {
+        var newProperty = properties[propertyKeys[j]];
+        newProperty.key = newProperty.displayName;
+        propertiesArray.push(newProperty);
+      }
+
+      ramlObj.types[typeKeys[i]].properties = propertiesArray;
+    }
+  }
+
+  return ramlObj;
+}
+
+/**
  * Render the source RAML object using the config's processOutput function
  *
  * The config object should contain at least the following property:
@@ -40,6 +69,7 @@ function render(source, config, options) {
 
   return raml2obj.parse(source, options.validate).then(ramlObj => {
     ramlObj.config = config;
+    ramlObj = allPropertyObjToArray(ramlObj);
 
     if (config.processRamlObj) {
       return config.processRamlObj(ramlObj, config, options).then(html => {
