@@ -63,7 +63,7 @@ function getConfigForTemplate(mainTemplate) {
   const templateFile = path.basename(fs.realpathSync(mainTemplate));
 
   return {
-    processRamlObj(ramlObj, config, options) {
+    processRamlObj(ramlObj, config) {
       const renderer = new marked.Renderer();
       renderer.table = function(thead, tbody) {
         // Render Bootstrap style tables

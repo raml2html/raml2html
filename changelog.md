@@ -1,3 +1,6 @@
+6.4.2 - November 10, 2017
+- Switched marked dependency to 8fold-marked
+
 6.4.1 - August 4, 2017
 - Fixed a bug where if no options were given at all to the render function you'd get an error
 
