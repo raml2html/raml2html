@@ -9,11 +9,6 @@ A simple RAML to HTML documentation generator, written for Node.js, with theme s
 ### RAML version support
 raml2html 4 and higher only support RAML 1.0 files. Please stick with raml2html 3.x for RAML 0.8 support.
 
-### Support future development
-If you'd like to support sustainable open source development, and make it possible for me to
-consistently spend some time on raml2html, please [support me on Patreon](https://www.patreon.com/kevinrenskers).
-Or better yet, become a contributor!
-
 
 ## Install
 ```
