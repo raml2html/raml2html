@@ -4,7 +4,7 @@ const raml2obj = require('raml2obj');
 const pjson = require('./package.json');
 const nunjucks = require('nunjucks');
 const markdown = require('nunjucks-markdown');
-const marked = require('marked');
+const marked = require('8fold-marked');
 const Minimize = require('minimize');
 const path = require('path');
 const fs = require('fs');
@@ -63,7 +63,7 @@ function getConfigForTemplate(mainTemplate) {
   const templateFile = path.basename(fs.realpathSync(mainTemplate));
 
   return {
-    processRamlObj(ramlObj, config, options) {
+    processRamlObj(ramlObj, config) {
       const renderer = new marked.Renderer();
       renderer.table = function(thead, tbody) {
         // Render Bootstrap style tables
