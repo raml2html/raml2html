@@ -114,11 +114,6 @@ Now both projects are installed globally, but using the local development versio
 From the theme repo's example folder you can run the `render-all-examples` script without problem.
 
 
-## Supporters
-If you'd like to financially support raml2html and be listed right here as a supporter, please
-[support me on Patreon](https://www.patreon.com/kevinrenskers).
-
-
 ## Changelog
 See [changelog.md](https://github.com/raml2html/raml2html/blob/master/changelog.md)
 
