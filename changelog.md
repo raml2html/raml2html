@@ -1,3 +1,7 @@
+6.5.0 - January 9, 2018
+- Switched marked dependency back to marked
+- Updated other dependencies like yargs, eslint, and prettier
+
 6.4.2 - November 10, 2017
 - Switched marked dependency to 8fold-marked
 
