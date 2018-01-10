@@ -40,6 +40,7 @@ function render(source, config, options) {
 
   return raml2obj.parse(source, options.validate).then(ramlObj => {
     ramlObj.config = config;
+    ramlObj.options = options;
 
     if (config.processRamlObj) {
       return config.processRamlObj(ramlObj, config, options).then(html => {
