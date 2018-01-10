@@ -39,8 +39,6 @@ function render(source, config, options) {
   }
 
   return raml2obj.parse(source, options.validate).then(ramlObj => {
-    ramlObj.config = config;
-
     if (config.processRamlObj) {
       return config.processRamlObj(ramlObj, config, options).then(html => {
         if (config.postProcessHtml) {
@@ -63,7 +61,11 @@ function getConfigForTemplate(mainTemplate) {
   const templateFile = path.basename(fs.realpathSync(mainTemplate));
 
   return {
-    processRamlObj(ramlObj, config) {
+    processRamlObj(ramlObj, config, options) {
+      // Extend ramlObj with config and options so the templates can use those values
+      ramlObj.config = config;
+      ramlObj.options = options;
+      
       const renderer = new marked.Renderer();
       renderer.table = function(thead, tbody) {
         // Render Bootstrap style tables
