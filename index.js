@@ -40,6 +40,14 @@ function render(source, config, options) {
 
   return raml2obj.parse(source, options.validate).then(ramlObj => {
     ramlObj.config = config;
+    if (options.audience) {
+      if (ramlObj.options) {
+        ramlObj.options.audience = options.audience;
+      } else {
+        ramlObj.options = {};
+        ramlObj.options.audience = options.audience;
+      }
+    }
 
     if (config.processRamlObj) {
       return config.processRamlObj(ramlObj, config, options).then(html => {
