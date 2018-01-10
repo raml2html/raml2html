@@ -1,3 +1,6 @@
+6.6.0 - January 20, 2018
+- CLI options are now added to ramlObj, so they can be used in templates
+
 6.5.0 - January 9, 2018
 - Switched marked dependency back to marked
 - Updated other dependencies like yargs, eslint, and prettier
