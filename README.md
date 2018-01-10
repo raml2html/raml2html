@@ -35,6 +35,7 @@ raml2html --help
 raml2html example.raml > example.html
 raml2html --theme raml2html-markdown-theme example.raml > example.html
 raml2html --template my-custom-template.nunjucks -i example.raml -o example.html
+raml2html --template my-custom-template.nunjucks -i example.raml -o example.html --audience internal
 ```
 
 ### As a library
