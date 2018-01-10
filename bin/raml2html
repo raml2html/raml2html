@@ -29,7 +29,7 @@ const argv = yargs
   .describe('v', 'Validate RAML and examples (off by default)')
   .describe('p', 'Make the output file pretty (readable)')
   .describe('theme', 'Theme name')
-  .describe('audience', 'Audience of the output. This parameter is passed to the template, use it for conditional formatting.')
+  .describe('<yourparam>', 'The name and value of this parameter is passed to the template, use it for conditional formatting.')
   .example('raml2html example.raml > example.html')
   .example(
     'raml2html --theme raml2html-markdown-theme example.raml > example.html'
