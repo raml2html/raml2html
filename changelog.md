@@ -1,3 +1,6 @@
+6.7.0 - February 13, 2018
+- Added the `pretty` library as a dependency, for use with the `--pretty` option
+
 6.6.0 - January 20, 2018
 - CLI options are now added to ramlObj, so they can be used in templates
 
