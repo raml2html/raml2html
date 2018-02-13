@@ -14,6 +14,7 @@
     "minimize": "2.1.x",
     "nunjucks": "2.5.x",
     "nunjucks-markdown": "2.0.x",
+    "pretty": "^2.0.0",
     "raml2html-default-theme": "2.x",
     "raml2obj": "5.x",
     "yargs": "10.x"
