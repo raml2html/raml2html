@@ -6,6 +6,7 @@ const nunjucks = require('nunjucks');
 const markdown = require('nunjucks-markdown');
 const marked = require('marked');
 const Minimize = require('minimize');
+const pretty = require('pretty');
 const path = require('path');
 const fs = require('fs');
 
@@ -65,7 +66,7 @@ function getConfigForTemplate(mainTemplate) {
       // Extend ramlObj with config and options so the templates can use those values
       ramlObj.config = config;
       ramlObj.options = options;
-      
+
       const renderer = new marked.Renderer();
       renderer.table = function(thead, tbody) {
         // Render Bootstrap style tables
@@ -100,7 +101,7 @@ function getConfigForTemplate(mainTemplate) {
 
     postProcessHtml(html, config, options) {
       if (options.pretty) {
-        return html;
+        return pretty(html, { ocd: true });
       } else {
         // Minimize the generated html and return the promise with the result
         const minimize = new Minimize({ quotes: true });
