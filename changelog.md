@@ -1,3 +1,6 @@
+7.0.0 - February 18, 2018
+- Using raml2obj 6.0.0 and the new default theme 2.7.0
+
 6.7.0 - February 13, 2018
 - Added the `pretty` library as a dependency, for use with the `--pretty` option
 
