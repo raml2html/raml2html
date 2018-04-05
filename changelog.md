@@ -1,3 +1,6 @@
+7.1.0 - April 6, 2018
+- Themes can now supply their own `writeOutput` function to control how they handle the output
+
 7.0.0 - February 18, 2018
 - Using raml2obj 6.0.0 and the new default theme 2.7.0
 
