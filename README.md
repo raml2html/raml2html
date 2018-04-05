@@ -61,8 +61,10 @@ raml2html.render(source, configWithDefaultTheme).then(function(result) {
  * object and must return a promise with the result. You can do whatever you want in this function.
  *
  * You can also supply a postProcessHtml function that can for example minify the generated HTML.
+ * 
+ * You can also supply a writeOutput function that takes over writing the output (to disk for example).
  *
- * You can also add a setupNunjucks function that takes the env as its only parameter.
+ * You can also supply a setupNunjucks function that takes the env as its only parameter.
  */
 raml2html.render(source, config).then(function(result) {
   // Save the result to a file or do something else with the result
