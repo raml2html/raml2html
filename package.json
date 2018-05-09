@@ -10,19 +10,20 @@
     "url": "https://github.com/raml2html/raml2html/issues"
   },
   "dependencies": {
+    "colors": "^1.1.x",
     "marked": "0.3.12",
     "minimize": "2.1.x",
-    "nunjucks": "2.5.x",
+    "nunjucks": "^3.1.2",
     "nunjucks-markdown": "2.0.x",
     "pretty": "^2.0.0",
-    "raml2html-default-theme": "^2.7.0",
+    "raml2html-default-theme": "^2.8.0",
     "raml2obj": "6.x",
-    "yargs": "10.x"
+    "yargs": "^10.1.2"
   },
   "devDependencies": {
-    "eslint": "4.x",
-    "eslint-plugin-prettier": "2.x",
-    "prettier": "1.x"
+    "eslint": "^4.19.1",
+    "eslint-plugin-prettier": "^2.6.0",
+    "prettier": "^1.12.1"
   },
   "homepage": "https://github.com/raml2html/raml2html",
   "keywords": [
