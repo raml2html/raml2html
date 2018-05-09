@@ -4,6 +4,8 @@
 
 const fs = require('fs');
 const yargs = require('yargs');
+const colors = require('colors');
+const path = require('path');
 const raml2html = require('..');
 const pjson = require('../package.json');
 
@@ -74,6 +76,25 @@ function writeOutput(result, config, argv) {
   });
 }
 
+function issueSrc(issue) {
+  return `${path.join(path.dirname(input), issue.path)}:${issue.range.start.line}:${issue.range.start.column}`;
+}
+
+function reportParserErrors(parserErrors) {
+  parserErrors.forEach(issue => {
+    const src = issueSrc(issue);
+    var stackTrace = ""
+    if (issue.trace) {
+      stackTrace = "\n  " + issue.trace.map(issueSrc).join("\n  ");
+    }
+    if (issue.isWarning) {
+      console.log(`[${src}] ${colors.yellow('WARNING')} ${colors.yellow(issue.message)}${stackTrace}`);
+    } else {
+      console.log(`[${src}] ${colors.red('ERROR')} ${colors.red(issue.message)}${stackTrace}`);
+    }
+  });
+}
+
 // Start the rendering process
 raml2html
   .render(input, config, argv)
@@ -86,7 +107,7 @@ raml2html
       console.error(error.message);
     }
     if (error.parserErrors) {
-      console.error(JSON.stringify(error.parserErrors, null, 2));
+      reportParserErrors(error.parserErrors);
     }
     process.exit(1);
   });
