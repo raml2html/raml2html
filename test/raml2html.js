@@ -11,10 +11,10 @@ function sanitizePrettyOutput(output) {
   return output.replace(new RegExp(process.cwd(), 'g'), '');
 }
 
-function spawn(args) {
+function spawn(args, options) {
   const raml2html = path.join(__dirname, '../bin/raml2html');
 
-  return spawnSync(raml2html, args);
+  return spawnSync(raml2html, args, options);
 }
 
 t.test('raml2html', t => {
@@ -40,7 +40,9 @@ t.test('raml2html', t => {
     });
 
     t.test('pretty print', t => {
-      const raml2html = spawn(['-v', '--pretty-errors', raml]);
+      const raml2html = spawn(['-v', '--pretty-errors', raml], {
+        env: Object.assign({FORCE_COLOR: 1}, process.env)
+      });
 
       t.same(raml2html.status, 1, 'check status');
       t.matchSnapshot(
@@ -57,7 +59,9 @@ t.test('raml2html', t => {
         '--pretty-errors',
         '--suppress-warnings',
         raml,
-      ]);
+      ], {
+        env: Object.assign({FORCE_COLOR: 1}, process.env)
+      });
 
       t.same(raml2html.status, 1, 'check status');
       t.matchSnapshot(

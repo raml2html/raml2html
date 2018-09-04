@@ -264,22 +264,22 @@ Api contains errors.
 `
 
 exports[`test/raml2html.js TAP raml2html with validation pretty print > pretty printed output 1`] = `
-Api contains errors.
+[41mApi contains errors.[49m
 
-[/test/fixtures/traits/offset.raml:3:2] INHERITING_UNKNOWN_TYPE: Inheriting from unknown type
-[/test/fixtures/api.raml:8:2] UNRECOGNIZED_ELEMENT: Unrecognized resource type: 'collection'.
-[/test/fixtures/api.raml:21:12] REQUIRED_PROPERTY_MISSING: Required property 'foobar' is missing
-[/test/fixtures/api.raml:22:14] UNKNOWN_PROPERTY: Unknown property: 'baz'
-[/test/fixtures/traits/offset.raml:3:2] INHERITING_UNKNOWN_TYPE: Inheriting from unknown type
+[31m[/test/fixtures/traits/offset.raml:3:2] INHERITING_UNKNOWN_TYPE: Inheriting from unknown type[39m
+[31m[/test/fixtures/api.raml:8:2] UNRECOGNIZED_ELEMENT: Unrecognized resource type: 'collection'.[39m
+[31m[/test/fixtures/api.raml:21:12] REQUIRED_PROPERTY_MISSING: Required property 'foobar' is missing[39m
+[33m[/test/fixtures/api.raml:22:14] UNKNOWN_PROPERTY: Unknown property: 'baz'[39m
+[31m[/test/fixtures/traits/offset.raml:3:2] INHERITING_UNKNOWN_TYPE: Inheriting from unknown type[39m
 
 `
 
 exports[`test/raml2html.js TAP raml2html with validation pretty print without warnings > pretty printed output 1`] = `
-Api contains errors.
+[41mApi contains errors.[49m
 
-[/test/fixtures/traits/offset.raml:3:2] INHERITING_UNKNOWN_TYPE: Inheriting from unknown type
-[/test/fixtures/api.raml:8:2] UNRECOGNIZED_ELEMENT: Unrecognized resource type: 'collection'.
-[/test/fixtures/api.raml:21:12] REQUIRED_PROPERTY_MISSING: Required property 'foobar' is missing
-[/test/fixtures/traits/offset.raml:3:2] INHERITING_UNKNOWN_TYPE: Inheriting from unknown type
+[31m[/test/fixtures/traits/offset.raml:3:2] INHERITING_UNKNOWN_TYPE: Inheriting from unknown type[39m
+[31m[/test/fixtures/api.raml:8:2] UNRECOGNIZED_ELEMENT: Unrecognized resource type: 'collection'.[39m
+[31m[/test/fixtures/api.raml:21:12] REQUIRED_PROPERTY_MISSING: Required property 'foobar' is missing[39m
+[31m[/test/fixtures/traits/offset.raml:3:2] INHERITING_UNKNOWN_TYPE: Inheriting from unknown type[39m
 
 `
