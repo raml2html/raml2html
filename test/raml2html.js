@@ -22,7 +22,7 @@ t.test('raml2html', t => {
     const raml = path.join(__dirname, './fixtures/api.raml');
 
     t.test('json errors', t => {
-      const raml2html = spawn(['-v', raml]);
+      const raml2html = spawn(['-v', '--raw-errors', raml]);
 
       t.same(raml2html.status, 1, 'check status');
       t.matchSnapshot(getStderr(raml2html), 'json output');
@@ -31,7 +31,12 @@ t.test('raml2html', t => {
     });
 
     t.test('json errors suppress warnings', t => {
-      const raml2html = spawn(['-v', '--suppress-warnings', raml]);
+      const raml2html = spawn([
+        '-v',
+        '--raw-errors',
+        '--suppress-warnings',
+        raml,
+      ]);
 
       t.same(raml2html.status, 1, 'check status');
       t.matchSnapshot(getStderr(raml2html), 'without warnings json output');
@@ -40,8 +45,8 @@ t.test('raml2html', t => {
     });
 
     t.test('pretty print', t => {
-      const raml2html = spawn(['-v', '--pretty-errors', raml], {
-        env: Object.assign({FORCE_COLOR: 1}, process.env)
+      const raml2html = spawn(['-v', raml], {
+        env: Object.assign({ FORCE_COLOR: 1 }, process.env),
       });
 
       t.same(raml2html.status, 1, 'check status');
@@ -54,13 +59,8 @@ t.test('raml2html', t => {
     });
 
     t.test('pretty print without warnings', t => {
-      const raml2html = spawn([
-        '-v',
-        '--pretty-errors',
-        '--suppress-warnings',
-        raml,
-      ], {
-        env: Object.assign({FORCE_COLOR: 1}, process.env)
+      const raml2html = spawn(['-v', '--suppress-warnings', raml], {
+        env: Object.assign({ FORCE_COLOR: 1 }, process.env),
       });
 
       t.same(raml2html.status, 1, 'check status');

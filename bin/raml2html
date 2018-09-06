@@ -24,7 +24,7 @@ const argv = yargs
   .string('t')
   .string('theme')
   .boolean('v')
-  .boolean('pretty-errors')
+  .boolean('raw-errors')
   .boolean('suppress-warnings')
   .boolean('p')
   .describe('i', 'Input file')
@@ -39,15 +39,12 @@ const argv = yargs
   .example(
     'raml2html --theme raml2html-markdown-theme example.raml > example.html'
   )
-  .example(
-    'raml2html -v --pretty-errors example.raml > example.html'
-  )
+  .example('raml2html -v --raw-errors example.raml > example.html')
   .example(
     'raml2html --template my-template.nunjucks -i example.raml -o example.html'
   )
-  .implies('pretty-errors', 'validate')
-  .implies('suppress-warnings', 'validate')
-  .argv;
+  .implies('raw-errors', 'validate')
+  .implies('suppress-warnings', 'validate').argv;
 
 let input = argv.input;
 
@@ -89,7 +86,11 @@ function writeOutput(result, config, argv) {
 function errorPath(error) {
   const dir = path.dirname(input);
 
-  return `${path.join(dir, error.path)}:${error.range.start.line}:${error.range.start.column}`;
+  return [
+    path.join(dir, error.path),
+    error.range.start.line,
+    error.range.start.column,
+  ].join(':');
 }
 
 function errorMessage(error) {
@@ -97,7 +98,7 @@ function errorMessage(error) {
 }
 
 function writeParserErrors(parserErrors) {
-  parserErrors.forEach((error) => {
+  parserErrors.forEach(error => {
     let message = `[${errorPath(error)}] ${errorMessage(error)}`;
 
     if (error.isWarning) {
@@ -126,13 +127,13 @@ raml2html
       let parserErrors = error.parserErrors;
 
       if (argv.suppressWarnings) {
-        parserErrors = parserErrors.filter((error) => !error.isWarning);
+        parserErrors = parserErrors.filter(error => !error.isWarning);
       }
 
-      if (argv.prettyErrors) {
-        writeParserErrors(parserErrors);
-      } else {
+      if (argv.rawErrors) {
         console.error(JSON.stringify(parserErrors, null, 2));
+      } else {
+        writeParserErrors(parserErrors);
       }
     }
 
