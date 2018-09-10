@@ -23,8 +23,7 @@
   "devDependencies": {
     "eslint": "4.x",
     "eslint-plugin-prettier": "2.x",
-    "prettier": "1.x",
-    "tap": "^12.0.1"
+    "prettier": "1.x"
   },
   "homepage": "https://github.com/raml2html/raml2html",
   "keywords": [
@@ -38,8 +37,7 @@
   },
   "preferGlobal": true,
   "scripts": {
-    "lint": "eslint . --fix",
-    "test": "tap test"
+    "lint": "eslint . --fix"
   },
   "bin": {
     "raml2html": "./bin/raml2html"
