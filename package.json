@@ -10,6 +10,7 @@
     "url": "https://github.com/raml2html/raml2html/issues"
   },
   "dependencies": {
+    "chalk": "^2.4.1",
     "marked": "0.3.12",
     "minimize": "2.1.x",
     "nunjucks": "2.5.x",
@@ -46,6 +47,6 @@
     "bin/raml2html"
   ],
   "engines": {
-    "node": ">=4"
+    "node": ">=6"
   }
 }
