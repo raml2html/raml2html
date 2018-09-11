@@ -36,8 +36,12 @@ const argv = yargs
   .describe('p', 'Make the output file pretty (readable)')
   .describe('pretty-errors', 'Make the validate output pretty')
   .describe('suppress-warnings', 'Suppress warnings from output')
+  .describe('e', 'Extensions and overlays paths')
   .describe('theme', 'Theme name')
   .example('raml2html example.raml > example.html')
+  .example(
+    'raml2html -e extension.raml overlay.raml -i example.raml -o example.html'
+  )
   .example(
     'raml2html --theme raml2html-markdown-theme example.raml > example.html'
   )
