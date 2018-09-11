@@ -39,18 +39,23 @@ function render(source, config, options) {
     };
   }
 
-  return raml2obj.parse(source, options.validate).then(ramlObj => {
-    if (config.processRamlObj) {
-      return config.processRamlObj(ramlObj, config, options).then(html => {
-        if (config.postProcessHtml) {
-          return config.postProcessHtml(html, config, options);
-        }
-        return html;
-      });
-    }
+  return raml2obj
+    .parse(source, {
+      validate: options.validate,
+      extensionsAndOverlays: options.extensionsAndOverlays,
+    })
+    .then(ramlObj => {
+      if (config.processRamlObj) {
+        return config.processRamlObj(ramlObj, config, options).then(html => {
+          if (config.postProcessHtml) {
+            return config.postProcessHtml(html, config, options);
+          }
+          return html;
+        });
+      }
 
-    return ramlObj;
-  });
+      return ramlObj;
+    });
 }
 
 /**

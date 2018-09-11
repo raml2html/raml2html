@@ -17,7 +17,7 @@
     "nunjucks-markdown": "2.0.x",
     "pretty": "^2.0.0",
     "raml2html-default-theme": "^2.7.0",
-    "raml2obj": "6.x",
+    "raml2obj": "^6.1.0",
     "yargs": "10.x"
   },
   "devDependencies": {
