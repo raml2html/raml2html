@@ -97,17 +97,27 @@ function errorMessage(error) {
   return `${error.code}: ${error.message}`;
 }
 
-function writeParserErrors(parserErrors) {
-  parserErrors.forEach(error => {
-    let message = `[${errorPath(error)}] ${errorMessage(error)}`;
+function errorStackTrace(error, nocolor) {
+  let message = `${errorMessage(error)} (${errorPath(error)})`;
 
+  if (!nocolor) {
     if (error.isWarning) {
       message = chalk.yellow(message);
     } else {
       message = chalk.red(message);
     }
+  }
 
-    console.error(message);
+  if (error.trace) {
+    message += '\n  ' + errorStackTrace(error.trace[0], true);
+  }
+
+  return message;
+}
+
+function writeParserErrors(parserErrors) {
+  parserErrors.forEach(error => {
+    console.error(errorStackTrace(error));
   });
 }
 
