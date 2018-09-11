@@ -98,7 +98,7 @@ function errorMessage(error) {
 }
 
 function errorStackTrace(error, nocolor) {
-  let message = `${errorPath(error)}: ${errorMessage(error)}`;
+  let message = `${errorMessage(error)} (${errorPath(error)})`;
 
   if (!nocolor) {
     if (error.isWarning) {
