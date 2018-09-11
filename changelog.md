@@ -1,3 +1,7 @@
+7.2.0 - September 11, 2018
+- You can now give paths to extensions and overlays using the `-e` option
+- Pretty printed parse errors by default when using the `--validate` option (turn off with `--raw-errors`)
+
 7.1.0 - April 6, 2018
 - Themes can now supply their own `writeOutput` function to control how they handle the output
 
