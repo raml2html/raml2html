@@ -83,8 +83,7 @@ function writeOutput(result, config, argv) {
       });
     } else {
       // Simply output to console
-      process.stdout.write(result);
-      resolve();
+      process.stdout.write(result, resolve);
     }
   });
 }

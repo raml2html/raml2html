@@ -1,3 +1,6 @@
+7.2.1 - November 27, 2018
+- Refix #259
+
 7.2.0 - September 11, 2018
 - You can now give paths to extensions and overlays using the `-e` option
 - Pretty printed parse errors by default when using the `--validate` option (turn off with `--raw-errors`)
