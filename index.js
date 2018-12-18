@@ -45,6 +45,15 @@ function render(source, config, options) {
       extensionsAndOverlays: options.extensionsAndOverlays,
     })
     .then(ramlObj => {
+      if (options.public) {
+        ramlObj.resources = ramlObj.resources.filter(obj => {
+          const isPrivate = obj.annotations.find(
+            annotation =>
+              annotation.name === 'private' && annotation.structuredValue
+          );
+          return !isPrivate;
+        });
+      }
       if (config.processRamlObj) {
         return config.processRamlObj(ramlObj, config, options).then(html => {
           if (config.postProcessHtml) {
