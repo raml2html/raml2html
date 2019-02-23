@@ -12,45 +12,43 @@ const pjson = require('../package.json');
 const argv = yargs
   .usage('Usage: raml2html [options] [RAML input file]')
   .version(pjson.version)
-  .alias('i', 'input')
-  .alias('o', 'output')
-  .alias('t', 'template')
-  .alias('p', 'pretty')
-  .alias('v', 'validate')
-  .alias('h', 'help')
-  .alias('e', 'extensionsAndOverlays')
+
   .help('h')
+  .alias('h', 'help')
+
   .string('i')
-  .string('o')
-  .string('t')
-  .string('theme')
-  .array('e')
-  .boolean('v')
-  .boolean('raw-errors')
-  .boolean('suppress-warnings')
-  .boolean('p')
+  .alias('i', 'input')
   .describe('i', 'Input file')
+
+  .string('o')
+  .alias('o', 'output')
   .describe('o', 'Output file')
+  
+  .string('t')
+  .alias('t', 'template')
   .describe('t', 'Template path')
-  .describe('v', 'Validate RAML and examples (off by default)')
-  .describe('p', 'Make the output file pretty (readable)')
-  .describe('pretty-errors', 'Make the validate output pretty')
-  .describe('suppress-warnings', 'Suppress warnings from output')
+  
+  .boolean('p')
+  .alias('p', 'pretty')
+  .describe('p', 'Pretty output (non-minified)')
+
+  .boolean('v')
+  .alias('v', 'validate')
+  .describe('v', 'Validate RAML (off by default)')
+
+  .array('e')
+  .alias('e', 'extensionsAndOverlays')
   .describe('e', 'Extensions and overlays paths')
+
+  .string('theme')  
   .describe('theme', 'Theme name')
+  
   .example('raml2html example.raml > example.html')
-  .example(
-    'raml2html -e extension.raml overlay.raml -i example.raml -o example.html'
-  )
-  .example(
-    'raml2html --theme raml2html-markdown-theme example.raml > example.html'
-  )
-  .example('raml2html -v --raw-errors example.raml > example.html')
-  .example(
-    'raml2html --template my-template.nunjucks -i example.raml -o example.html'
-  )
-  .implies('raw-errors', 'validate')
-  .implies('suppress-warnings', 'validate').argv;
+  .example('raml2html --template my-template.nunjucks -i example.raml -o example.html')
+  .example('raml2html --theme raml2html-markdown-theme example.raml > example.html')
+  .example('raml2html -v example.raml > example.html')
+  .example('raml2html -e extension.raml overlay.raml -i example.raml -o example.html')
+  .argv;
 
 let input = argv.input;
 

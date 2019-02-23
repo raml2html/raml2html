@@ -1,3 +1,6 @@
+7.2.2 - February 23, 2019
+- Removed unused CLI options and examples
+
 7.2.1 - November 27, 2018
 - Refix #259
 
