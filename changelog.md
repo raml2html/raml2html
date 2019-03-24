@@ -1,3 +1,6 @@
+7.3.0 - March 24, 2019
+- Updated 3rd party dependencies like marked and nunjucks
+
 7.2.2 - February 23, 2019
 - Removed unused CLI options and examples
 
