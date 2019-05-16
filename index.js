@@ -43,6 +43,8 @@ function render(source, config, options) {
     .parse(source, {
       validate: options.validate,
       extensionsAndOverlays: options.extensionsAndOverlays,
+      httpResolver: options.httpResolver,
+      fsResolver: options.fsResolver,
     })
     .then(ramlObj => {
       if (config.processRamlObj) {
