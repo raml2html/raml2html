@@ -1,3 +1,6 @@
+7.4.0 - May 29, 2019
+- Add support for RAML parser resolvers options
+
 7.3.0 - March 24, 2019
 - Updated 3rd party dependencies like marked and nunjucks
 
