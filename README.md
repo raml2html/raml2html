@@ -1,7 +1,7 @@
 # raml2html
 
 [![Downloads](https://img.shields.io/npm/dm/raml2html.svg)](https://www.npmjs.com/package/raml2html)
-[![NPM version](http://img.shields.io/npm/v/raml2html.svg)](https://www.npmjs.org/package/raml2html)
+[![NPM version](https://img.shields.io/npm/v/raml2html.svg)](https://www.npmjs.org/package/raml2html)
 [![Prettier](https://img.shields.io/badge/code%20style-prettier-blue.svg?style=flat)](https://github.com/prettier/prettier)
 
 A simple RAML to HTML documentation generator, written for Node.js, with theme support.
