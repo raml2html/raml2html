@@ -1,9 +1,9 @@
 'use strict';
-
 const raml2obj = require('raml2obj');
 const pjson = require('./package.json');
 const nunjucks = require('nunjucks');
 const markdown = require('nunjucks-markdown');
+const njIncludeData = require('nunjucks-includeData');
 const marked = require('marked');
 const Minimize = require('minimize');
 const pretty = require('pretty');
@@ -81,12 +81,17 @@ function getConfigForTemplate(mainTemplate) {
       };
 
       // Setup the Nunjucks environment with the markdown parser
-      const env = nunjucks.configure(templatesPath, { autoescape: false });
+      var env = nunjucks.configure(templatesPath, { autoescape: false });
+
+      env.addFilter('addUniqueNr', function(name) {
+        return name + '-' + Date.now() + '-' + Math.random().toString(36).substr(2);
+        });
 
       if (config.setupNunjucks) {
         config.setupNunjucks(env);
       }
 
+      njIncludeData.install(env); // Init the extension with the nunjucks environment
       markdown.register(env, md => marked(md, { renderer }));
 
       ramlObj.isStandardType = function(type) {
