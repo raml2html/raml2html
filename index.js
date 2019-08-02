@@ -3,7 +3,6 @@ const raml2obj = require('raml2obj');
 const pjson = require('./package.json');
 const nunjucks = require('nunjucks');
 const markdown = require('nunjucks-markdown');
-const njIncludeData = require('nunjucks-includeData');
 const marked = require('marked');
 const Minimize = require('minimize');
 const pretty = require('pretty');
@@ -91,7 +90,6 @@ function getConfigForTemplate(mainTemplate) {
         config.setupNunjucks(env);
       }
 
-      njIncludeData.install(env); // Init the extension with the nunjucks environment
       markdown.register(env, md => marked(md, { renderer }));
 
       ramlObj.isStandardType = function(type) {
