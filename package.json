@@ -1,7 +1,7 @@
 {
   "name": "raml2html",
   "description": "RAML to HTML documentation generator",
-  "version": "7.5.0",
+  "version": "7.6.0",
   "author": {
     "name": "Kevin Renskers",
     "email": "kevin@mixedcase.nl"
@@ -13,17 +13,17 @@
     "chalk": "^2.4.2",
     "marked": "^0.6.3",
     "minimize": "2.2.x",
-    "nunjucks": "^3.2.0",
+    "nunjucks": "^3.2.1",
     "nunjucks-markdown": "2.0.x",
     "pretty": "^2.0.0",
     "raml2html-default-theme": "^2.9.3",
-    "raml2obj": "^6.6.0",
-    "yargs": "14.x"
+    "raml2obj": "^6.7.0",
+    "yargs": "^14.2.3"
   },
   "devDependencies": {
-    "eslint": "6.x",
-    "eslint-plugin-prettier": "^3.1.0",
-    "prettier": "^1.18.2"
+    "eslint": "^6.8.0",
+    "eslint-plugin-prettier": "^3.1.4",
+    "prettier": "^1.19.1"
   },
   "homepage": "https://github.com/raml2html/raml2html",
   "keywords": [

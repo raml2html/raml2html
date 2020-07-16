@@ -1,3 +1,6 @@
+7.6.0 - Jul 16, 2020
+- Updared dependencies
+
 7.5.0 - Oct 30, 2019
 - Update dependencies
 
