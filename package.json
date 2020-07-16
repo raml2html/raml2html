@@ -16,7 +16,7 @@
     "nunjucks": "^3.2.1",
     "nunjucks-markdown": "2.0.x",
     "pretty": "^2.0.0",
-    "raml2html-default-theme": "^2.9.3",
+    "raml2html-default-theme": "git+https://github.com/planmill/default-theme.git",
     "raml2obj": "^6.7.0",
     "yargs": "^14.2.3"
   },
