@@ -1,8 +1,11 @@
+7.7.0 - Jan 25, 2021
+- Updated dependencies
+
 7.6.0 - Jul 16, 2020
-- Updared dependencies
+- Updated dependencies
 
 7.5.0 - Oct 30, 2019
-- Update dependencies
+- Updated dependencies
 
 7.4.0 - May 29, 2019
 - Add support for RAML parser resolvers options
