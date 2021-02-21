@@ -4,7 +4,7 @@
   "version": "7.7.0",
   "author": {
     "name": "Kevin Renskers",
-    "email": "kevin@mixedcase.nl"
+    "email": "kevin@loopwerk.io"
   },
   "bugs": {
     "url": "https://github.com/raml2html/raml2html/issues"
@@ -17,13 +17,13 @@
     "nunjucks-markdown": "2.0.x",
     "pretty": "^2.0.0",
     "raml2html-default-theme": "^2.10.0",
-    "raml2obj": "^6.7.0",
+    "raml2obj": "^6.8.0",
     "yargs": "^14.2.3"
   },
   "devDependencies": {
-    "eslint": "^6.8.0",
+    "eslint": "^7.20.0",
     "eslint-plugin-prettier": "^3.3.1",
-    "prettier": "^1.19.1"
+    "prettier": "^2.2.1"
   },
   "homepage": "https://github.com/raml2html/raml2html",
   "keywords": [
