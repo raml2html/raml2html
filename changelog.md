@@ -1,3 +1,6 @@
+7.8.0 - Feb 21, 2021
+- Updated dependencies
+
 7.7.0 - Jan 25, 2021
 - Updated dependencies
 

@@ -1,7 +1,7 @@
 {
   "name": "raml2html",
   "description": "RAML to HTML documentation generator",
-  "version": "7.7.0",
+  "version": "7.8.0",
   "author": {
     "name": "Kevin Renskers",
     "email": "kevin@loopwerk.io"
