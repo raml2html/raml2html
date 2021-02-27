@@ -75,10 +75,7 @@ raml2html.render(source, config).then(function(result) {
 });
 ```
 
-See also `example/script.js` for multiple examples of using raml2html as a library.
-
-### Gulp
-You can use the [raml2html directly from Gulp](https://gist.github.com/iki/784ddd5ab33c1e1b726b).
+See also [examples/script.js](https://github.com/raml2html/raml2html/blob/master/examples/script.js) for multiple examples of using raml2html as a library.
 
 
 ## Example output

@@ -36,7 +36,7 @@
 - Added the `pretty` library as a dependency, for use with the `--pretty` option
 
 6.6.0 - January 20, 2018
-- CLI options are now added to ramlObj, so they can be used in templates
+- CLI options are now added to ramlobj, so they can be used in templates
 
 6.5.0 - January 9, 2018
 - Switched marked dependency back to marked
@@ -49,10 +49,10 @@
 - Fixed a bug where if no options were given at all to the render function you'd get an error
 
 6.4.0 - July 16, 2017
-- Added a new --pretty command line option to turn off html minification
+- Added a new `--pretty` command line option to turn off html minification
 
 6.3.0 - April 25, 2017
-- Added a new --validate command line option to turn on validation, which is now off by default (#345)
+- Added a new `--validate` command line option to turn on validation, which is now off by default (#345)
 
 6.2.0 - April 21, 2017
 - Fixed template path handling (#343)
@@ -69,10 +69,8 @@
 - Updated to raml2html-default-theme 2.0.0 to deal with these securedBy changes
 
 5.1.0 - March 9, 2017
-- All program arguments can now be passed on to themes, so themes can support their
-  own config options
-- Switched from using ESLint for code formatting to Prettier. We still use ESLint,
-  Prettier is run as a plugin through it. ESLint still checks for bugs.
+- All program arguments can now be passed on to themes, so themes can support their own config options
+- Switched from using ESLint for code formatting to Prettier. We still use ESLint, Prettier is run as a plugin through it. ESLint still checks for bugs.
 
 5.0.0 - February 14, 2017
 - Added support for themes:
