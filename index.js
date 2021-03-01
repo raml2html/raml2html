@@ -1,5 +1,4 @@
 'use strict';
-
 const raml2obj = require('raml2obj');
 const pjson = require('./package.json');
 const nunjucks = require('nunjucks');
@@ -81,7 +80,11 @@ function getConfigForTemplate(mainTemplate) {
       };
 
       // Setup the Nunjucks environment with the markdown parser
-      const env = nunjucks.configure(templatesPath, { autoescape: false });
+      var env = nunjucks.configure(templatesPath, { autoescape: false });
+
+      env.addFilter('addUniqueNr', function(name) {
+        return name + '-' + Date.now() + '-' + Math.random().toString(36).substr(2);
+        });
 
       if (config.setupNunjucks) {
         config.setupNunjucks(env);
