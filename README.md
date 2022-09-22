@@ -92,11 +92,10 @@ Review the error and fix your RAML file, or open a new issue at [raml-js-parser-
 ## Contributing
 raml2html is an open source project and your contribution is very much appreciated.
 
-1. Check for open issues or open a fresh issue to start a discussion around a feature idea or a bug.
-2. Fork the repository on Github and make your changes on the **develop** branch (or branch off of it).
+1. Fork the repository on Github and make your changes on the **develop** branch (or branch off of it).
    Run `npm run lint` before committing to check for common problems and auto format all code.
-3. Add an example of the new feature to example.raml (if applicable)
-4. Send a pull request (with the **develop** branch as the target).
+2. Add an example of the new feature to example.raml (if applicable)
+3. Send a pull request (with the **develop** branch as the target).
 
 If your pull request is merged feel free to ask for push access. We want to get more maintainers! If you do
 have push access, please still work on feature branches and create pull requests, which then get reviewed.
